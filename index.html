@@ -3,228 +3,249 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patel Mohammad Zaki | Portfolio</title>
+  <title>Patel Mohammad Zaki | Software Engineer & Data Specialist</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: '#3b82f6',
-            brandDark: '#1d4ed8',
-            surface: '#0f172a',
-            surfaceCard: '#1e293b',
-          }
-        }
-      }
-    }
-  </script>
-</head>
-<body class="bg-[#0b0f19] text-slate-200 font-sans antialiased selection:bg-brand selection:text-white">
+  <!-- Google Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Navbar -->
-  <nav class="fixed top-0 left-0 w-full bg-[#0b0f19]/80 backdrop-blur-md border-b border-slate-800 z-50">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#hero" class="text-xl font-bold tracking-tight text-white hover:text-brand transition">
-        Zaki<span class="text-brand">.dev</span>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #050505;
+      color: #e5e5e5;
+    }
+    .heading-caps {
+      font-family: 'Space Grotesk', sans-serif;
+      font-variant: small-caps;
+      text-transform: lowercase;
+      letter-spacing: 0.08em;
+    }
+    .portrait-frame {
+      box-shadow: 0 0 35px rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="selection:bg-white selection:text-black antialiased">
+
+  <!-- Minimal Monochrome Navbar -->
+  <nav class="fixed top-0 left-0 w-full bg-[#050505]/90 backdrop-blur-md border-b border-neutral-800 z-50">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#hero" class="text-xl font-bold tracking-tight text-white heading-caps">
+        Zaki<span class="text-neutral-500">.Portfolio</span>
       </a>
-      <div class="space-x-6 text-sm font-medium hidden md:flex">
-        <a href="#about" class="hover:text-brand transition">About</a>
-        <a href="#skills" class="hover:text-brand transition">Skills</a>
-        <a href="#experience" class="hover:text-brand transition">Experience</a>
-        <a href="#projects" class="hover:text-brand transition">Projects</a>
-        <a href="#contact" class="hover:text-brand transition">Contact</a>
+      <div class="space-x-8 text-xs font-semibold heading-caps hidden md:flex text-neutral-400">
+        <a href="#about" class="hover:text-white transition">About</a>
+        <a href="#skills" class="hover:text-white transition">Skills</a>
+        <a href="#projects" class="hover:text-white transition">Projects</a>
+        <a href="#certifications" class="hover:text-white transition">Certifications</a>
+        <a href="#experience" class="hover:text-white transition">Experience</a>
+        <a href="#contact" class="hover:text-white transition">Contact</a>
       </div>
-      <a href="resume.pdf" download class="bg-brand hover:bg-brandDark text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2">
-        <i class="fa-solid fa-download"></i> Resume
+      <a href="resume.pdf" download class="bg-white hover:bg-neutral-200 text-black px-5 py-2.5 rounded-none text-xs font-bold heading-caps transition flex items-center gap-2 border border-white">
+        <i class="fa-solid fa-arrow-down"></i> Download CV
       </a>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section id="hero" class="pt-32 pb-20 px-6 max-w-6xl mx-auto min-h-screen flex flex-col justify-center">
-    <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+  <section id="hero" class="pt-36 pb-24 px-6 max-w-6xl mx-auto min-h-screen flex flex-col justify-center">
+    <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 lg:gap-16">
+      
       <div class="space-y-6 md:w-3/5 text-center md:text-left">
-        <div class="inline-block px-3 py-1 bg-brand/10 border border-brand/30 rounded-full text-brand text-xs font-semibold uppercase tracking-wider">
-          Available for Opportunities
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 border border-neutral-800 bg-neutral-900/60 rounded-full text-neutral-300 text-xs font-mono tracking-widest uppercase">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Open For Immediate Hire
         </div>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
-          Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Patel Mohammad Zaki</span>
+        
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-white leading-tight heading-caps">
+          Patel Mohammad Zaki
         </h1>
-        <p class="text-lg text-slate-400 leading-relaxed">
-          Computer Science Engineering student focused on building intelligent web applications, AI integrations, and data-driven solutions.
+        
+        <p class="text-base sm:text-lg text-neutral-400 max-w-xl font-normal leading-relaxed">
+          Computer Science Engineer specializing in production-grade AI systems, full-stack application architectures, and end-to-end data analytics.
         </p>
-        <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
-          <a href="#projects" class="bg-brand hover:bg-brandDark text-white font-medium px-6 py-3 rounded-lg transition shadow-lg shadow-blue-500/20">
-            View Projects
+
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+          <a href="#projects" class="bg-white hover:bg-neutral-200 text-black px-7 py-3 text-xs font-bold heading-caps tracking-wider transition border border-white">
+            Explore Work
           </a>
-          <a href="#contact" class="border border-slate-700 hover:border-slate-500 bg-surfaceCard text-slate-300 font-medium px-6 py-3 rounded-lg transition">
-            Get in Touch
+          <a href="mailto:zakipatel2811@gmail.com" class="border border-neutral-700 hover:border-white bg-neutral-950 text-white px-7 py-3 text-xs font-bold heading-caps tracking-wider transition">
+            Direct Hire Inquiries
           </a>
         </div>
-        <div class="flex items-center justify-center md:justify-start gap-5 pt-4 text-slate-400 text-xl">
-          <a href="https://github.com/zakipatel89" target="_blank" class="hover:text-brand transition"><i class="fa-brands fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="hover:text-brand transition"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="mailto:zakipatel2811@gmail.com" class="hover:text-brand transition"><i class="fa-solid fa-envelope"></i></a>
-          <a href="https://wa.me/918468809905" target="_blank" class="hover:text-brand transition"><i class="fa-brands fa-whatsapp"></i></a>
+
+        <div class="flex items-center justify-center md:justify-start gap-6 pt-6 text-neutral-400 text-lg border-t border-neutral-900">
+          <a href="https://github.com/zakipatel89" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="mailto:zakipatel2811@gmail.com" class="hover:text-white transition"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://wa.me/918468809905" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
       </div>
+
+      <!-- Studio Portrait Framing -->
       <div class="md:w-2/5 flex justify-center">
-        <div class="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-2xl p-1 bg-gradient-to-tr from-brand to-indigo-500 shadow-2xl">
-          <img src="profile.jpg" alt="Patel Mohammad Zaki" class="w-full h-full object-cover rounded-2xl bg-surfaceCard">
+        <div class="relative w-64 h-80 sm:w-72 sm:h-96 portrait-frame border-2 border-neutral-700 bg-neutral-900 group">
+          <img src="profile.jpg" alt="Patel Mohammad Zaki" class="w-full h-full object-cover object-top filter grayscale contrast-125 group-hover:grayscale-0 transition duration-700 ease-in-out">
+          <div class="absolute -bottom-3 -right-3 w-full h-full border border-neutral-800 -z-10 pointer-events-none"></div>
         </div>
       </div>
+
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-20 px-6 border-t border-slate-800/80 bg-surface/40">
-    <div class="max-w-6xl mx-auto space-y-10">
+  <section id="about" class="py-24 px-6 border-t border-neutral-900 bg-neutral-950/60">
+    <div class="max-w-6xl mx-auto space-y-12">
       <div class="space-y-2">
-        <h2 class="text-3xl font-bold text-white tracking-tight">About Me</h2>
-        <div class="w-12 h-1 bg-brand rounded"></div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white heading-caps">Executive Profile</h2>
+        <div class="w-16 h-0.5 bg-white"></div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-400 leading-relaxed text-base">
-        <div class="space-y-4">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-neutral-400 leading-relaxed text-sm sm:text-base">
+        <div class="space-y-5">
           <p>
-            I am a final-year Computer Science Engineering student at Brahmdevdada Mane Institute of Technology (BMIT), Solapur, with a diploma in Electronics and Telecommunication Engineering.
+            I am a final-year Computer Science Engineering candidate at Brahmdevdada Mane Institute of Technology (BMIT), backed by a formal background in Electronics and Telecommunication Engineering.
           </p>
           <p>
-            My core technical interests lie at the intersection of full-stack engineering, applied Artificial Intelligence, and data analytics. I enjoy transforming algorithmic concepts and intelligent workflows into production-ready web tools.
+            My engineering philosophy centers on architectural efficiency: building modular applications that seamlessly connect modern frontend user experiences with intelligent AI engines (such as Google Gemini) and robust relational or document-based data layers.
+          </p>
+          <p>
+            Having completed structured virtual simulations across premier global organizations (PwC, Tata, Accenture, BCG), I bring a proven mindset toward data governance, dashboard design, and structured problem resolution.
           </p>
         </div>
-        <div class="bg-surfaceCard p-6 rounded-xl border border-slate-800 space-y-3">
-          <h3 class="text-white font-semibold text-lg border-b border-slate-700/60 pb-2">Academic Snapshot</h3>
-          <ul class="space-y-2 text-sm">
-            <li class="flex justify-between"><span class="text-slate-400">Degree:</span> <span class="text-slate-200 font-medium">B.Tech in CSE (Final Year)</span></li>
-            <li class="flex justify-between"><span class="text-slate-400">College:</span> <span class="text-slate-200 font-medium">BMIT, Solapur</span></li>
-            <li class="flex justify-between"><span class="text-slate-400">Diploma:</span> <span class="text-slate-200 font-medium">GP Solapur (75.59%)</span></li>
-            <li class="flex justify-between"><span class="text-slate-400">SSC (10th):</span> <span class="text-slate-200 font-medium">89.20%</span></li>
-            <li class="flex justify-between"><span class="text-slate-400">Location:</span> <span class="text-slate-200 font-medium">Solapur, Maharashtra</span></li>
+
+        <div class="border border-neutral-800 bg-[#0a0a0a] p-8 space-y-4">
+          <h3 class="text-white text-base font-bold heading-caps border-b border-neutral-800 pb-3">Academic & Operational Qualifications</h3>
+          <ul class="space-y-3 text-xs sm:text-sm">
+            <li class="flex justify-between py-1 border-b border-neutral-900"><span class="text-neutral-500 font-mono">DEGREE</span> <span class="text-white font-medium">B.Tech in Computer Science & Engineering</span></li>
+            <li class="flex justify-between py-1 border-b border-neutral-900"><span class="text-neutral-500 font-mono">INSTITUTE</span> <span class="text-white font-medium">BMIT, Solapur (Final Year)</span></li>
+            <li class="flex justify-between py-1 border-b border-neutral-900"><span class="text-neutral-500 font-mono">DIPLOMA</span> <span class="text-white font-medium">Electronics & Telecommunication (75.59%)</span></li>
+            <li class="flex justify-between py-1 border-b border-neutral-900"><span class="text-neutral-500 font-mono">SECONDARY (10th)</span> <span class="text-white font-medium">SSC Board (89.20%)</span></li>
+            <li class="flex justify-between py-1 border-b border-neutral-900"><span class="text-neutral-500 font-mono">STATUS</span> <span class="text-emerald-400 font-medium">Immediate Availability for Roles</span></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="py-20 px-6 max-w-6xl mx-auto space-y-10">
+  <!-- Technical Competencies -->
+  <section id="skills" class="py-24 px-6 max-w-6xl mx-auto space-y-12">
     <div class="space-y-2">
-      <h2 class="text-3xl font-bold text-white tracking-tight">Technical Skills</h2>
-      <div class="w-12 h-1 bg-brand rounded"></div>
+      <h2 class="text-3xl sm:text-4xl font-bold text-white heading-caps">Technical Architecture & Stack</h2>
+      <div class="w-16 h-0.5 bg-white"></div>
     </div>
+
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       
-      <div class="bg-surfaceCard p-6 rounded-xl border border-slate-800 space-y-3">
-        <div class="text-brand text-2xl"><i class="fa-solid fa-code"></i></div>
-        <h3 class="text-white font-semibold">Web Technologies</h3>
-        <div class="flex flex-wrap gap-2 text-xs">
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">Next.js</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">Node.js</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">Express.js</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">Django (Python)</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">HTML5 / CSS3</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">JavaScript</span>
-        </div>
+      <div class="border border-neutral-800 bg-[#0a0a0a] p-6 space-y-4 hover:border-neutral-500 transition">
+        <h3 class="text-white text-base font-bold heading-caps">Web & Frameworks</h3>
+        <ul class="text-xs text-neutral-400 space-y-2 font-mono">
+          <li>• Next.js / React</li>
+          <li>• Node.js & Express</li>
+          <li>• Python (Django)</li>
+          <li>• JavaScript (ES6+)</li>
+          <li>• HTML5 & Tailwind CSS</li>
+        </ul>
       </div>
 
-      <div class="bg-surfaceCard p-6 rounded-xl border border-slate-800 space-y-3">
-        <div class="text-brand text-2xl"><i class="fa-solid fa-brain"></i></div>
-        <h3 class="text-white font-semibold">AI & Machine Learning</h3>
-        <div class="flex flex-wrap gap-2 text-xs">
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">Google Gemini API</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">NLP Fundamentals</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">ML Algorithms</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">Prompt Engineering</span>
-        </div>
+      <div class="border border-neutral-800 bg-[#0a0a0a] p-6 space-y-4 hover:border-neutral-500 transition">
+        <h3 class="text-white text-base font-bold heading-caps">Artificial Intelligence</h3>
+        <ul class="text-xs text-neutral-400 space-y-2 font-mono">
+          <li>• Google Gemini API Integration</li>
+          <li>• NLP Query Modeling</li>
+          <li>• Prompt System Design</li>
+          <li>• Algorithm-to-Code Translation</li>
+          <li>• Machine Learning Foundations</li>
+        </ul>
       </div>
 
-      <div class="bg-surfaceCard p-6 rounded-xl border border-slate-800 space-y-3">
-        <div class="text-brand text-2xl"><i class="fa-solid fa-chart-line"></i></div>
-        <h3 class="text-white font-semibold">Data & Analytics</h3>
-        <div class="flex flex-wrap gap-2 text-xs">
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">Power BI</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">Data Interpretation</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">Reporting</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">Advanced Excel</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">Data Visualization</span>
-        </div>
+      <div class="border border-neutral-800 bg-[#0a0a0a] p-6 space-y-4 hover:border-neutral-500 transition">
+        <h3 class="text-white text-base font-bold heading-caps">Data & BI Systems</h3>
+        <ul class="text-xs text-neutral-400 space-y-2 font-mono">
+          <li>• Microsoft Power BI Dashboards</li>
+          <li>• Advanced Microsoft Excel</li>
+          <li>• Data Cleaning & Wrangling</li>
+          <li>• KPI Data Visualization</li>
+          <li>• Commercial Customer Analytics</li>
+        </ul>
       </div>
 
-      <div class="bg-surfaceCard p-6 rounded-xl border border-slate-800 space-y-3">
-        <div class="text-brand text-2xl"><i class="fa-solid fa-database"></i></div>
-        <h3 class="text-white font-semibold">Databases & Cloud</h3>
-        <div class="flex flex-wrap gap-2 text-xs">
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">MongoDB</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">MySQL</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">AWS Cloud (Basics)</span>
-          <span class="px-2.5 py-1 bg-slate-800 rounded text-slate-300">Git / GitHub</span>
-        </div>
+      <div class="border border-neutral-800 bg-[#0a0a0a] p-6 space-y-4 hover:border-neutral-500 transition">
+        <h3 class="text-white text-base font-bold heading-caps">Cloud & Databases</h3>
+        <ul class="text-xs text-neutral-400 space-y-2 font-mono">
+          <li>• AWS VPC & Cloud Fundamentals</li>
+          <li>• MongoDB (NoSQL)</li>
+          <li>• MySQL (Relational)</li>
+          <li>• Git & GitHub Versioning</li>
+          <li>• Scalable Deployment</li>
+        </ul>
       </div>
 
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="py-20 px-6 border-t border-slate-800/80 bg-surface/40">
-    <div class="max-w-6xl mx-auto space-y-10">
+  <!-- Featured Projects -->
+  <section id="projects" class="py-24 px-6 border-t border-neutral-900 bg-neutral-950/60">
+    <div class="max-w-6xl mx-auto space-y-12">
       <div class="space-y-2">
-        <h2 class="text-3xl font-bold text-white tracking-tight">Featured Projects</h2>
-        <div class="w-12 h-1 bg-brand rounded"></div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white heading-caps">Engineered Deployments</h2>
+        <div class="w-16 h-0.5 bg-white"></div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         
         <!-- Project 1: NextIDE -->
-        <div class="bg-surfaceCard border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-slate-700 transition">
+        <div class="border border-neutral-800 bg-[#090909] p-8 flex flex-col justify-between space-y-6 hover:border-white transition duration-300">
           <div class="space-y-4">
-            <div class="flex justify-between items-start">
-              <span class="text-xs font-semibold px-2.5 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-md">AI Development Tool</span>
-              <a href="https://github.com/zakipatel89" target="_blank" class="text-slate-400 hover:text-white transition"><i class="fa-brands fa-github text-xl"></i></a>
+            <div class="flex justify-between items-center text-xs font-mono text-neutral-500">
+              <span>PROD / DEV TOOL</span>
+              <span>GEMINI AI ENGINE</span>
             </div>
-            <h3 class="text-2xl font-bold text-white">NextIDE – AI Algorithm-to-Code Platform</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">
-              Intelligent web platform designed to convert natural English algorithm descriptions into syntactically accurate executable source code. Includes an interactive code editor, real-time code execution, custom I/O testing, and user history tracking.
+            <h3 class="text-2xl font-bold text-white heading-caps">NextIDE – AI Algorithm-to-Code Platform</h3>
+            <p class="text-neutral-400 text-xs sm:text-sm leading-relaxed">
+              Designed and implemented a full-stack platform that transforms natural English algorithmic descriptions into syntactically sound code across multiple targets. Includes live in-browser compiler runtime, sandboxed I/O testing, secure credentials, and execution timeline records.
             </p>
-            <div class="flex flex-wrap gap-2 pt-2">
-              <span class="text-xs px-2.5 py-1 bg-slate-800 rounded text-slate-300">Next.js</span>
-              <span class="text-xs px-2.5 py-1 bg-slate-800 rounded text-slate-300">Node.js</span>
-              <span class="text-xs px-2.5 py-1 bg-slate-800 rounded text-slate-300">Express.js</span>
-              <span class="text-xs px-2.5 py-1 bg-slate-800 rounded text-slate-300">Google Gemini API</span>
-              <span class="text-xs px-2.5 py-1 bg-slate-800 rounded text-slate-300">MongoDB</span>
+            <div class="flex flex-wrap gap-2 pt-2 text-[11px] font-mono text-neutral-300">
+              <span class="px-2 py-1 bg-neutral-900 border border-neutral-800">Next.js</span>
+              <span class="px-2 py-1 bg-neutral-900 border border-neutral-800">Node.js</span>
+              <span class="px-2 py-1 bg-neutral-900 border border-neutral-800">Express</span>
+              <span class="px-2 py-1 bg-neutral-900 border border-neutral-800">Google Gemini API</span>
+              <span class="px-2 py-1 bg-neutral-900 border border-neutral-800">MongoDB</span>
             </div>
           </div>
-          <div class="pt-6">
-            <a href="https://github.com/zakipatel89" target="_blank" class="inline-flex items-center gap-2 text-sm text-brand font-semibold hover:underline">
-              View Repository <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          <div class="pt-4 border-t border-neutral-900 flex justify-between items-center">
+            <a href="https://github.com/zakipatel89" target="_blank" class="text-xs font-bold text-white heading-caps hover:underline flex items-center gap-2">
+              Source Code <i class="fa-solid fa-arrow-right text-[10px]"></i>
             </a>
           </div>
         </div>
 
         <!-- Project 2: AI Shopping Assistant -->
-        <div class="bg-surfaceCard border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-slate-700 transition">
+        <div class="border border-neutral-800 bg-[#090909] p-8 flex flex-col justify-between space-y-6 hover:border-white transition duration-300">
           <div class="space-y-4">
-            <div class="flex justify-between items-start">
-              <span class="text-xs font-semibold px-2.5 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-md">Smart E-Commerce</span>
-              <a href="https://github.com/zakipatel89" target="_blank" class="text-slate-400 hover:text-white transition"><i class="fa-brands fa-github text-xl"></i></a>
+            <div class="flex justify-between items-center text-xs font-mono text-neutral-500">
+              <span>E-COMMERCE / INTELLIGENCE</span>
+              <span>NLP ENGINE</span>
             </div>
-            <h3 class="text-2xl font-bold text-white">AI-Based Shopping Assistant</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">
-              Conversational e-commerce assistant leveraging NLP and Machine Learning to parse user intent, compare product prices across multi-retailer databases, and offer personalized product suggestions based on user shopping behavior.
+            <h3 class="text-2xl font-bold text-white heading-caps">AI-Based Shopping Assistant System</h3>
+            <p class="text-neutral-400 text-xs sm:text-sm leading-relaxed">
+              Engineered an AI-backed personal shopping assistant eliminating manual lookup bottlenecks. Leveraged NLP to parse natural conversational parameters (budget, sizing, color, brand preferences) to query multi-retailer stores in real-time, executing automated price comparison models.
             </p>
-            <div class="flex flex-wrap gap-2 pt-2">
-              <span class="text-xs px-2.5 py-1 bg-slate-800 rounded text-slate-300">Python (Django)</span>
-              <span class="text-xs px-2.5 py-1 bg-slate-800 rounded text-slate-300">Machine Learning / NLP</span>
-              <span class="text-xs px-2.5 py-1 bg-slate-800 rounded text-slate-300">MySQL</span>
-              <span class="text-xs px-2.5 py-1 bg-slate-800 rounded text-slate-300">JavaScript</span>
+            <div class="flex flex-wrap gap-2 pt-2 text-[11px] font-mono text-neutral-300">
+              <span class="px-2 py-1 bg-neutral-900 border border-neutral-800">Python (Django)</span>
+              <span class="px-2 py-1 bg-neutral-900 border border-neutral-800">Machine Learning</span>
+              <span class="px-2 py-1 bg-neutral-900 border border-neutral-800">MySQL</span>
+              <span class="px-2 py-1 bg-neutral-900 border border-neutral-800">NLP Algorithms</span>
+              <span class="px-2 py-1 bg-neutral-900 border border-neutral-800">JavaScript</span>
             </div>
           </div>
-          <div class="pt-6">
-            <a href="https://github.com/zakipatel89" target="_blank" class="inline-flex items-center gap-2 text-sm text-brand font-semibold hover:underline">
-              View Repository <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          <div class="pt-4 border-t border-neutral-900 flex justify-between items-center">
+            <a href="https://github.com/zakipatel89" target="_blank" class="text-xs font-bold text-white heading-caps hover:underline flex items-center gap-2">
+              Source Code <i class="fa-solid fa-arrow-right text-[10px]"></i>
             </a>
           </div>
         </div>
@@ -233,95 +254,199 @@
     </div>
   </section>
 
-  <!-- Virtual Internships & Experience Section -->
-  <section id="experience" class="py-20 px-6 max-w-6xl mx-auto space-y-10">
+  <!-- Licenses & Certifications -->
+  <section id="certifications" class="py-24 px-6 max-w-6xl mx-auto space-y-12">
     <div class="space-y-2">
-      <h2 class="text-3xl font-bold text-white tracking-tight">Experience & Case Studies</h2>
-      <div class="w-12 h-1 bg-brand rounded"></div>
+      <h2 class="text-3xl sm:text-4xl font-bold text-white heading-caps">Verified Certifications & Credentials</h2>
+      <div class="w-16 h-0.5 bg-white"></div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <div class="bg-surfaceCard p-6 rounded-xl border border-slate-800 space-y-2">
-        <span class="text-xs text-brand font-medium">Forage Virtual Experience</span>
-        <h4 class="text-lg font-bold text-white">PwC Switzerland</h4>
-        <p class="text-sm text-slate-400">Power BI Virtual Case Study focusing on data modeling, dashboards, and key business insights.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+      <div class="border border-neutral-800 bg-[#0a0a0a] p-5 flex flex-col justify-between space-y-4 hover:border-neutral-500 transition">
+        <div>
+          <span class="text-[10px] text-neutral-500 font-mono uppercase">Cloud Infrastructure</span>
+          <h4 class="text-sm font-bold text-white heading-caps mt-1">AWS Compute Service</h4>
+        </div>
+        <a href="C-%20AWS%20Compute%20Service.pdf" target="_blank" class="text-[11px] font-mono text-white underline hover:text-neutral-400">
+          Verify Document →
+        </a>
       </div>
 
-      <div class="bg-surfaceCard p-6 rounded-xl border border-slate-800 space-y-2">
-        <span class="text-xs text-brand font-medium">Forage Virtual Experience</span>
-        <h4 class="text-lg font-bold text-white">Tata Group</h4>
-        <p class="text-sm text-slate-400">Data Visualization program creating executive presentations and exploratory business charts.</p>
+      <div class="border border-neutral-800 bg-[#0a0a0a] p-5 flex flex-col justify-between space-y-4 hover:border-neutral-500 transition">
+        <div>
+          <span class="text-[10px] text-neutral-500 font-mono uppercase">Cloud Architecture</span>
+          <h4 class="text-sm font-bold text-white heading-caps mt-1">Cloud Computing Architecture</h4>
+        </div>
+        <a href="C-Cloud%20Computing%20Architechture.pdf" target="_blank" class="text-[11px] font-mono text-white underline hover:text-neutral-400">
+          Verify Document →
+        </a>
       </div>
 
-      <div class="bg-surfaceCard p-6 rounded-xl border border-slate-800 space-y-2">
-        <span class="text-xs text-brand font-medium">Forage Virtual Experience</span>
-        <h4 class="text-lg font-bold text-white">Accenture</h4>
-        <p class="text-sm text-slate-400">Data Analytics program analyzing dataset trends, cleaning messy data, and delivering actionable solutions.</p>
+      <div class="border border-neutral-800 bg-[#0a0a0a] p-5 flex flex-col justify-between space-y-4 hover:border-neutral-500 transition">
+        <div>
+          <span class="text-[10px] text-neutral-500 font-mono uppercase">Cloud Networking</span>
+          <h4 class="text-sm font-bold text-white heading-caps mt-1">Cloud Networking With AWS VPC</h4>
+        </div>
+        <a href="C-Cloud%20Networking%20With%20AWS%20VPC.pdf" target="_blank" class="text-[11px] font-mono text-white underline hover:text-neutral-400">
+          Verify Document →
+        </a>
       </div>
 
-      <div class="bg-surfaceCard p-6 rounded-xl border border-slate-800 space-y-2">
-        <span class="text-xs text-brand font-medium">Forage Virtual Experience</span>
-        <h4 class="text-lg font-bold text-white">Boston Consulting Group (BCG)</h4>
-        <p class="text-sm text-slate-400">Data Science simulation solving real customer churn problems with predictive analysis.</p>
+      <div class="border border-neutral-800 bg-[#0a0a0a] p-5 flex flex-col justify-between space-y-4 hover:border-neutral-500 transition">
+        <div>
+          <span class="text-[10px] text-neutral-500 font-mono uppercase">Operations</span>
+          <h4 class="text-sm font-bold text-white heading-caps mt-1">Cloud Engineer Roles & Duties</h4>
+        </div>
+        <a href="C-Cloud%20Engineer%20Roles%20and%20Responsibilities.pdf" target="_blank" class="text-[11px] font-mono text-white underline hover:text-neutral-400">
+          Verify Document →
+        </a>
       </div>
 
-      <div class="bg-surfaceCard p-6 rounded-xl border border-slate-800 space-y-2">
-        <span class="text-xs text-brand font-medium">Forage Virtual Experience</span>
-        <h4 class="text-lg font-bold text-white">British Airways</h4>
-        <p class="text-sm text-slate-400">Data Science simulation analyzing customer review sentiment and booking behavior.</p>
+      <div class="border border-neutral-800 bg-[#0a0a0a] p-5 flex flex-col justify-between space-y-4 hover:border-neutral-500 transition">
+        <div>
+          <span class="text-[10px] text-neutral-500 font-mono uppercase">Quantium</span>
+          <h4 class="text-sm font-bold text-white heading-caps mt-1">Data Analytics Simulation</h4>
+        </div>
+        <a href="Data%20Analytics%20By%20quantium.pdf" target="_blank" class="text-[11px] font-mono text-white underline hover:text-neutral-400">
+          Verify Document →
+        </a>
+      </div>
+
+      <div class="border border-neutral-800 bg-[#0a0a0a] p-5 flex flex-col justify-between space-y-4 hover:border-neutral-500 transition">
+        <div>
+          <span class="text-[10px] text-neutral-500 font-mono uppercase">KPMG</span>
+          <h4 class="text-sm font-bold text-white heading-caps mt-1">Data Analytics Consulting</h4>
+        </div>
+        <a href="Data%20Analytics%20Consulting%20By%20KPMG.pdf" target="_blank" class="text-[11px] font-mono text-white underline hover:text-neutral-400">
+          Verify Document →
+        </a>
+      </div>
+
+      <div class="border border-neutral-800 bg-[#0a0a0a] p-5 flex flex-col justify-between space-y-4 hover:border-neutral-500 transition">
+        <div>
+          <span class="text-[10px] text-neutral-500 font-mono uppercase">Microsoft Office</span>
+          <h4 class="text-sm font-bold text-white heading-caps mt-1">Excel for Beginners</h4>
+        </div>
+        <a href="C-Exel%20for%20Beginners.pdf" target="_blank" class="text-[11px] font-mono text-white underline hover:text-neutral-400">
+          Verify Document →
+        </a>
+      </div>
+
+      <div class="border border-neutral-800 bg-[#0a0a0a] p-5 flex flex-col justify-between space-y-4 hover:border-neutral-500 transition">
+        <div>
+          <span class="text-[10px] text-neutral-500 font-mono uppercase">Tata Consultancy Services</span>
+          <h4 class="text-sm font-bold text-white heading-caps mt-1">Communication Skills (TCS)</h4>
+        </div>
+        <a href="Communication%20Skills%20By%20TCS.pdf" target="_blank" class="text-[11px] font-mono text-white underline hover:text-neutral-400">
+          Verify Document →
+        </a>
       </div>
 
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-20 px-6 border-t border-slate-800/80 bg-surface/40">
-    <div class="max-w-4xl mx-auto text-center space-y-8">
+  <!-- Virtual Internships & Experience -->
+  <section id="experience" class="py-24 px-6 border-t border-neutral-900 bg-neutral-950/60">
+    <div class="max-w-6xl mx-auto space-y-12">
+      <div class="space-y-2">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white heading-caps">Corporate Experience Simulations</h2>
+        <div class="w-16 h-0.5 bg-white"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="border border-neutral-800 bg-[#090909] p-6 space-y-3 flex flex-col justify-between hover:border-neutral-600 transition">
+          <div class="space-y-2">
+            <span class="text-[10px] font-mono text-neutral-500 uppercase">Power BI Case Study</span>
+            <h4 class="text-base font-bold text-white heading-caps">PwC Switzerland</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">Conducted operational data modeling, executive summary charts, and retention pattern analysis.</p>
+          </div>
+          <a href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf" target="_blank" class="text-xs font-mono text-white underline">View Credential →</a>
+        </div>
+
+        <div class="border border-neutral-800 bg-[#090909] p-6 space-y-3 flex flex-col justify-between hover:border-neutral-600 transition">
+          <div class="space-y-2">
+            <span class="text-[10px] font-mono text-neutral-500 uppercase">Data Visualization</span>
+            <h4 class="text-base font-bold text-white heading-caps">Tata Group</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">Synthesized sales trends into executive-level dashboard charts for boardroom review scenarios.</p>
+          </div>
+          <a href="Data%20Visualisation%20By%20TATA.pdf" target="_blank" class="text-xs font-mono text-white underline">View Credential →</a>
+        </div>
+
+        <div class="border border-neutral-800 bg-[#090909] p-6 space-y-3 flex flex-col justify-between hover:border-neutral-600 transition">
+          <div class="space-y-2">
+            <span class="text-[10px] font-mono text-neutral-500 uppercase">Analytics & Modeling</span>
+            <h4 class="text-base font-bold text-white heading-caps">Accenture</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">Executed data preparation, normalization, and business strategy synthesis on commercial content sets.</p>
+          </div>
+          <a href="Data%20Analytics%20by%20Acccenture.pdf" target="_blank" class="text-xs font-mono text-white underline">View Credential →</a>
+        </div>
+
+        <div class="border border-neutral-800 bg-[#090909] p-6 space-y-3 flex flex-col justify-between hover:border-neutral-600 transition">
+          <div class="space-y-2">
+            <span class="text-[10px] font-mono text-neutral-500 uppercase">Data Science Simulation</span>
+            <h4 class="text-base font-bold text-white heading-caps">Boston Consulting Group (BCG)</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">Assessed churn vulnerability using predictive models and financial impact metrics.</p>
+          </div>
+          <a href="BCG%20Data%20Science.pdf" target="_blank" class="text-xs font-mono text-white underline">View Credential →</a>
+        </div>
+
+        <div class="border border-neutral-800 bg-[#090909] p-6 space-y-3 flex flex-col justify-between hover:border-neutral-600 transition">
+          <div class="space-y-2">
+            <span class="text-[10px] font-mono text-neutral-500 uppercase">Predictive Analytics</span>
+            <h4 class="text-base font-bold text-white heading-caps">British Airways</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">Performed consumer sentiment classification and booking behavior regression tests.</p>
+          </div>
+          <a href="Data%20Science%20By%20British%20Airways.pdf" target="_blank" class="text-xs font-mono text-white underline">View Credential →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- High-Impact Direct Contact / Hire Section -->
+  <section id="contact" class="py-24 px-6 border-t border-neutral-900 bg-[#050505]">
+    <div class="max-w-4xl mx-auto space-y-12 text-center">
+      
       <div class="space-y-3">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Let's Connect</h2>
-        <p class="text-slate-400 max-w-xl mx-auto">
-          Currently open to internships, entry-level engineering roles, and data analytics opportunities.
+        <h2 class="text-4xl sm:text-5xl font-extrabold text-white heading-caps tracking-wide">
+          Direct Acquisition & Engagement
+        </h2>
+        <p class="text-neutral-400 text-sm sm:text-base max-w-xl mx-auto">
+          Currently interviewing for software engineering, full-stack, AI integration, and data analyst roles. Fast-track hiring inquiries welcome.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
-        <a href="mailto:zakipatel2811@gmail.com" class="p-6 bg-surfaceCard rounded-xl border border-slate-800 hover:border-slate-700 transition flex items-center gap-4">
-          <div class="text-brand text-2xl"><i class="fa-solid fa-envelope"></i></div>
-          <div>
-            <p class="text-xs text-slate-400">Email Me</p>
-            <p class="text-sm font-medium text-white truncate">zakipatel2811@gmail.com</p>
-          </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left pt-6">
+        <a href="mailto:zakipatel2811@gmail.com" class="p-6 border border-neutral-800 bg-neutral-950 hover:border-white transition space-y-1 block">
+          <p class="text-[10px] font-mono text-neutral-500 uppercase">Direct Email</p>
+          <p class="text-sm font-bold text-white truncate">zakipatel2811@gmail.com</p>
         </a>
 
-        <a href="https://wa.me/918468809905" target="_blank" class="p-6 bg-surfaceCard rounded-xl border border-slate-800 hover:border-slate-700 transition flex items-center gap-4">
-          <div class="text-green-500 text-2xl"><i class="fa-brands fa-whatsapp"></i></div>
-          <div>
-            <p class="text-xs text-slate-400">WhatsApp / Call</p>
-            <p class="text-sm font-medium text-white">+91 8468809905</p>
-          </div>
+        <a href="https://wa.me/918468809905" target="_blank" class="p-6 border border-neutral-800 bg-neutral-950 hover:border-white transition space-y-1 block">
+          <p class="text-[10px] font-mono text-neutral-500 uppercase">Phone & WhatsApp</p>
+          <p class="text-sm font-bold text-white">+91 8468809905</p>
         </a>
 
-        <a href="https://www.linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="p-6 bg-surfaceCard rounded-xl border border-slate-800 hover:border-slate-700 transition flex items-center gap-4">
-          <div class="text-blue-400 text-2xl"><i class="fa-brands fa-linkedin"></i></div>
-          <div>
-            <p class="text-xs text-slate-400">LinkedIn</p>
-            <p class="text-sm font-medium text-white">Connect Profile</p>
-          </div>
+        <a href="https://www.linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="p-6 border border-neutral-800 bg-neutral-950 hover:border-white transition space-y-1 block">
+          <p class="text-[10px] font-mono text-neutral-500 uppercase">LinkedIn Network</p>
+          <p class="text-sm font-bold text-white">Patel Mohammad Zaki</p>
         </a>
       </div>
 
-      <div class="pt-8">
-        <a href="https://github.com/zakipatel89" target="_blank" class="inline-flex items-center gap-2 text-slate-400 hover:text-white transition">
-          <i class="fa-brands fa-github text-xl"></i> github.com/zakipatel89
+      <div class="pt-6">
+        <a href="resume.pdf" download class="inline-block bg-white hover:bg-neutral-200 text-black px-8 py-3.5 text-xs font-bold heading-caps tracking-widest transition border border-white">
+          Download Complete Resume (PDF)
         </a>
       </div>
+
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="py-8 text-center text-xs text-slate-500 border-t border-slate-800/80">
-    <p>© 2026 Patel Mohammad Zaki. Built with Next-gen Web Standards.</p>
+  <!-- Clean Monochrome Footer -->
+  <footer class="py-8 text-center text-[11px] font-mono text-neutral-600 border-t border-neutral-900 bg-black">
+    <p>© 2026 Patel Mohammad Zaki. Engineered for Enterprise Impact.</p>
   </footer>
 
 </body>
