@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Patel Zaki — Engineering Intelligence & Resilient Systems</title>
+<title>Patel Mohammad Zaki — Engineering Intelligence & Resilient Systems</title>
 
 <meta name="description"
 content="Portfolio of Patel Mohammad Zaki — Final Year Computer Science Engineering student focused on Software Engineering, Data Analytics, Data Science and AI.">
@@ -24,7 +24,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 <!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
-<!-- Cinzel — PRESERVED -->
+<!-- Cinzel -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -56,11 +56,11 @@ html{
 
 body{
     margin:0;
-    background:
-        radial-gradient(circle at 50% -20%,rgba(30,64,175,.20),transparent 40%),
-        #020617;
+    background: #020617;
     color:var(--text);
     overflow-x:hidden;
+    /* GPU Acceleration for the entire body rendering */
+    transform: translateZ(0); 
 }
 
 /* =========================================
@@ -80,10 +80,6 @@ body{
     border-radius:20px;
 }
 
-/* =========================================
-   SELECTION
-========================================= */
-
 ::selection{
     background:#2563eb;
     color:white;
@@ -101,8 +97,9 @@ body{
     border-radius:50%;
     pointer-events:none;
     z-index:99999;
-    transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%) translateZ(0);
     box-shadow:0 0 20px #3b82f6;
+    will-change: transform;
 }
 
 .cursor-ring{
@@ -113,11 +110,12 @@ body{
     border-radius:50%;
     pointer-events:none;
     z-index:99998;
-    transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%) translateZ(0);
     transition:
-        width .25s ease,
-        height .25s ease,
-        border-color .25s ease;
+        width .2s ease-out,
+        height .2s ease-out,
+        border-color .2s ease-out;
+    will-change: transform, width, height;
 }
 
 .cursor-ring.active{
@@ -127,7 +125,7 @@ body{
 }
 
 /* =========================================
-   BACKGROUND
+   BACKGROUND (Optimized for 120Hz)
 ========================================= */
 
 #webgl-canvas{
@@ -136,6 +134,9 @@ body{
     width:100%;
     height:100%;
     z-index:-5;
+    pointer-events: none;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .noise{
@@ -145,6 +146,7 @@ body{
     pointer-events:none;
     opacity:.035;
     background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+    transform: translateZ(0);
 }
 
 .grid-bg{
@@ -152,18 +154,12 @@ body{
     inset:0;
     z-index:-4;
     pointer-events:none;
-
     background-image:
         linear-gradient(rgba(59,130,246,.035) 1px,transparent 1px),
         linear-gradient(90deg,rgba(59,130,246,.035) 1px,transparent 1px);
-
     background-size:55px 55px;
-
-    mask-image:linear-gradient(
-        to bottom,
-        black,
-        transparent 90%
-    );
+    mask-image:linear-gradient(to bottom, black, transparent 90%);
+    transform: translateZ(0);
 }
 
 .ambient{
@@ -171,13 +167,14 @@ body{
     inset:0;
     z-index:-6;
     pointer-events:none;
-
     background:
         radial-gradient(circle at 15% 20%,rgba(37,99,235,.18),transparent 35%),
         radial-gradient(circle at 85% 25%,rgba(14,165,233,.13),transparent 35%),
         radial-gradient(circle at 50% 90%,rgba(79,70,229,.12),transparent 40%);
-
-    filter:blur(70px);
+    /* Reduced blur slightly to improve rendering speed */
+    filter:blur(60px);
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 /* =========================================
@@ -192,9 +189,7 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    transition:
-        opacity .8s ease,
-        visibility .8s ease;
+    transition: opacity .6s ease-out, visibility .6s ease-out;
 }
 
 #loader.hide{
@@ -205,6 +200,7 @@ body{
 .loader-inner{
     width:min(500px,85vw);
     text-align:center;
+    transform: translateZ(0);
 }
 
 .loader-symbol{
@@ -212,6 +208,7 @@ body{
     height:70px;
     margin:auto;
     position:relative;
+    will-change: transform;
 }
 
 .loader-symbol::before,
@@ -222,6 +219,7 @@ body{
     border:1px solid rgba(96,165,250,.5);
     transform:rotate(45deg);
     animation:loaderRotate 3s linear infinite;
+    will-change: transform;
 }
 
 .loader-symbol::after{
@@ -231,9 +229,7 @@ body{
 }
 
 @keyframes loaderRotate{
-    to{
-        transform:rotate(405deg);
-    }
+    to{ transform:rotate(405deg); }
 }
 
 .loader-name{
@@ -262,6 +258,7 @@ body{
     width:0%;
     background:linear-gradient(90deg,#2563eb,#38bdf8,#bfdbfe);
     box-shadow:0 0 20px #3b82f6;
+    will-change: width;
 }
 
 /* =========================================
@@ -275,18 +272,17 @@ body{
     right:0;
     height:78px;
     z-index:500;
-
     background:rgba(2,6,23,.55);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-
+    /* Optimized Blur for Nav */
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
     border-bottom:1px solid rgba(255,255,255,.06);
-
-    transition:.3s ease;
+    transition:background-color .3s ease, box-shadow .3s ease;
+    transform: translateZ(0);
 }
 
 .navbar.scrolled{
-    background:rgba(2,6,23,.88);
+    background:rgba(2,6,23,.92);
     box-shadow:0 15px 50px rgba(0,0,0,.3);
 }
 
@@ -295,7 +291,6 @@ body{
     height:100%;
     margin:auto;
     padding:0 25px;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -305,7 +300,6 @@ body{
     display:flex;
     align-items:center;
     gap:13px;
-
     color:white;
     text-decoration:none;
     font-size:14px;
@@ -318,9 +312,7 @@ body{
     height:12px;
     transform:rotate(45deg);
     background:#60a5fa;
-    box-shadow:
-        0 0 10px #3b82f6,
-        0 0 30px rgba(59,130,246,.5);
+    box-shadow: 0 0 10px #3b82f6, 0 0 30px rgba(59,130,246,.5);
 }
 
 .nav-links{
@@ -334,7 +326,7 @@ body{
     text-decoration:none;
     font-size:10px;
     letter-spacing:.12em;
-    transition:.25s ease;
+    transition:color .25s ease;
     position:relative;
 }
 
@@ -346,16 +338,11 @@ body{
     bottom:-8px;
     height:1px;
     background:#60a5fa;
-    transition:.3s ease;
+    transition:right .3s ease-out;
 }
 
-.nav-links a:hover{
-    color:white;
-}
-
-.nav-links a:hover::after{
-    right:0;
-}
+.nav-links a:hover{ color:white; }
+.nav-links a:hover::after{ right:0; }
 
 .nav-resume{
     padding:10px 15px;
@@ -365,7 +352,7 @@ body{
     text-decoration:none;
     font-size:9px;
     letter-spacing:.1em;
-    transition:.3s;
+    transition:all .3s ease;
 }
 
 .nav-resume:hover{
@@ -395,6 +382,8 @@ body{
     z-index:10000;
     background:linear-gradient(90deg,#2563eb,#38bdf8,#bfdbfe);
     box-shadow:0 0 12px #3b82f6;
+    will-change: width;
+    transform: translateZ(0);
 }
 
 /* =========================================
@@ -430,9 +419,7 @@ body{
     background:linear-gradient(90deg,#3b82f6,transparent);
 }
 
-.muted{
-    color:#8fa3bf;
-}
+.muted{ color:#8fa3bf; }
 
 /* =========================================
    HERO
@@ -442,16 +429,9 @@ body{
     min-height:100vh;
     max-width:1250px;
     margin:auto;
-
-    padding:
-        155px 25px
-        90px;
-
+    padding: 155px 25px 90px;
     display:grid;
-    grid-template-columns:
-        minmax(0,1.35fr)
-        minmax(350px,.65fr);
-
+    grid-template-columns: minmax(0,1.35fr) minmax(350px,.65fr);
     align-items:center;
     gap:70px;
 }
@@ -460,17 +440,15 @@ body{
     display:inline-flex;
     align-items:center;
     gap:10px;
-
     border:1px solid rgba(96,165,250,.25);
     background:rgba(30,64,175,.08);
-
     padding:9px 14px;
-
     font-size:9px;
     letter-spacing:.25em;
     color:#93c5fd;
-
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    transform: translateZ(0);
 }
 
 .status-dot{
@@ -480,80 +458,53 @@ body{
     border-radius:50%;
     box-shadow:0 0 12px #3b82f6;
     animation:pulse 1.8s infinite;
+    will-change: transform, opacity;
 }
 
 @keyframes pulse{
-    50%{
-        opacity:.35;
-        transform:scale(.7);
-    }
+    50%{ opacity:.35; transform:scale(.7); }
 }
 
 .hero h1{
     margin:28px 0 0;
-
-    font-size:
-        clamp(43px,7vw,88px);
-
+    font-size: clamp(43px,7vw,88px);
     line-height:.99;
-
     font-weight:900;
-
     letter-spacing:-.03em;
 }
 
 .hero h1 span{
-    background:
-        linear-gradient(
-            110deg,
-            #ffffff 10%,
-            #93c5fd 42%,
-            #38bdf8 70%,
-            #ffffff 90%
-        );
-
+    background: linear-gradient(110deg, #ffffff 10%, #93c5fd 42%, #38bdf8 70%, #ffffff 90%);
     background-size:220% auto;
-
     color:transparent;
     background-clip:text;
     -webkit-background-clip:text;
-
     animation:textShimmer 6s linear infinite;
+    will-change: background-position;
 }
 
 @keyframes textShimmer{
-    to{
-        background-position:220% center;
-    }
+    to{ background-position:220% center; }
 }
 
 .hero-subtitle{
     margin-top:22px;
-
-    font-size:
-        clamp(14px,1.5vw,18px);
-
+    font-size: clamp(14px,1.5vw,18px);
     line-height:1.8;
-
     max-width:730px;
-
     color:#a8bad2;
 }
 
 .hero-description{
     margin-top:25px;
-
     max-width:690px;
-
     color:#7f93ae;
-
     font-size:13px;
     line-height:1.9;
 }
 
 .hero-actions{
     margin-top:34px;
-
     display:flex;
     flex-wrap:wrap;
     gap:13px;
@@ -564,19 +515,15 @@ body{
     align-items:center;
     justify-content:center;
     gap:10px;
-
     padding:14px 21px;
-
     text-decoration:none;
-
     font-size:9px;
     font-weight:800;
     letter-spacing:.16em;
-
-    transition:.3s ease;
-
+    transition:transform .3s ease, box-shadow .3s ease, background-color .3s ease;
     position:relative;
     overflow:hidden;
+    will-change: transform;
 }
 
 .btn-primary{
@@ -604,19 +551,17 @@ body{
 .hero-socials{
     display:flex;
     gap:18px;
-
     margin-top:34px;
     padding-top:22px;
-
     border-top:1px solid rgba(255,255,255,.07);
-
     max-width:600px;
 }
 
 .hero-socials a{
     color:#64748b;
     font-size:17px;
-    transition:.3s;
+    transition:color .3s, transform .3s;
+    will-change: transform;
 }
 
 .hero-socials a:hover{
@@ -638,52 +583,47 @@ body{
     position:relative;
     width:min(370px,80vw);
     aspect-ratio:4/5;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .profile-frame::before{
     content:"";
     position:absolute;
     inset:-12px;
-
     border:1px solid rgba(96,165,250,.25);
-
-    transform:rotate(4deg);
-
-    transition:.5s;
+    transform:rotate(4deg) translateZ(0);
+    transition:transform .4s ease-out, border-color .4s ease;
+    will-change: transform;
 }
 
 .profile-frame::after{
     content:"";
     position:absolute;
     inset:-24px;
-
     border:1px solid rgba(56,189,248,.10);
-
-    transform:rotate(-5deg);
-
-    transition:.5s;
+    transform:rotate(-5deg) translateZ(0);
+    transition:transform .4s ease-out;
+    will-change: transform;
 }
 
 .profile-frame:hover::before{
-    transform:rotate(0deg) scale(1.03);
+    transform:rotate(0deg) scale(1.03) translateZ(0);
     border-color:rgba(96,165,250,.5);
 }
 
 .profile-frame:hover::after{
-    transform:rotate(0deg) scale(1.06);
+    transform:rotate(0deg) scale(1.06) translateZ(0);
 }
 
 .profile-image{
     position:absolute;
     inset:0;
-
     overflow:hidden;
-
     border:1px solid rgba(255,255,255,.16);
-
     background:#07101f;
-
     z-index:2;
+    transform: translateZ(0);
 }
 
 .profile-image img{
@@ -691,13 +631,9 @@ body{
     height:100%;
     object-fit:cover;
     object-position:top;
-
-    filter:
-        brightness(.92)
-        contrast(1.08)
-        saturate(.9);
-
-    transition:1s;
+    filter: brightness(.92) contrast(1.08) saturate(.9);
+    transition:transform .6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
 }
 
 .profile-frame:hover img{
@@ -707,14 +643,7 @@ body{
 .profile-overlay{
     position:absolute;
     inset:0;
-
-    background:
-        linear-gradient(
-            to bottom,
-            transparent 40%,
-            rgba(2,6,23,.9)
-        );
-
+    background: linear-gradient(to bottom, transparent 40%, rgba(2,6,23,.9));
     z-index:3;
 }
 
@@ -745,20 +674,8 @@ body{
     height:25px;
     border-color:#60a5fa;
 }
-
-.corner-tl{
-    top:-1px;
-    left:-1px;
-    border-top:2px solid;
-    border-left:2px solid;
-}
-
-.corner-br{
-    bottom:-1px;
-    right:-1px;
-    border-bottom:2px solid;
-    border-right:2px solid;
-}
+.corner-tl{ top:-1px; left:-1px; border-top:2px solid; border-left:2px solid; }
+.corner-br{ bottom:-1px; right:-1px; border-bottom:2px solid; border-right:2px solid; }
 
 /* =========================================
    FLOATING STATUS
@@ -766,31 +683,20 @@ body{
 
 .float-status{
     position:absolute;
-
     background:rgba(2,6,23,.8);
     border:1px solid rgba(96,165,250,.2);
-
-    backdrop-filter:blur(18px);
-
+    /* Optimized Blur for smaller components */
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
     padding:12px 15px;
-
     z-index:10;
-
     box-shadow:0 15px 50px rgba(0,0,0,.3);
-
     animation:float 5s ease-in-out infinite;
+    will-change: transform;
 }
 
-.float-status.one{
-    top:12%;
-    right:-35px;
-}
-
-.float-status.two{
-    bottom:12%;
-    left:-45px;
-    animation-delay:-2s;
-}
+.float-status.one{ top:12%; right:-35px; }
+.float-status.two{ bottom:12%; left:-45px; animation-delay:-2s; }
 
 .float-status span{
     display:block;
@@ -807,9 +713,7 @@ body{
 }
 
 @keyframes float{
-    50%{
-        transform:translateY(-12px);
-    }
+    50%{ transform:translateY(-12px); }
 }
 
 /* =========================================
@@ -820,7 +724,6 @@ body{
     max-width:1250px;
     margin:-25px auto 0;
     padding:0 25px 70px;
-
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:12px;
@@ -828,13 +731,13 @@ body{
 
 .metric{
     padding:22px;
-
     border:1px solid rgba(148,163,184,.10);
     background:rgba(8,15,31,.55);
-
-    backdrop-filter:blur(14px);
-
-    transition:.35s;
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    transition:transform .3s ease, border-color .3s ease, background-color .3s ease;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .metric:hover{
@@ -857,39 +760,24 @@ body{
 }
 
 /* =========================================
-   GLASS CARD
+   GLASS CARD (Optimized)
 ========================================= */
 
 .glass{
-    background:
-        linear-gradient(
-            145deg,
-            rgba(15,23,42,.72),
-            rgba(3,7,18,.62)
-        );
-
+    background: linear-gradient(145deg, rgba(15,23,42,.72), rgba(3,7,18,.62));
     border:1px solid rgba(148,163,184,.11);
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.25),
-        inset 0 1px rgba(255,255,255,.05);
-
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-
-    transition:
-        transform .35s ease,
-        border-color .35s ease,
-        box-shadow .35s ease;
+    box-shadow: 0 25px 80px rgba(0,0,0,.25), inset 0 1px rgba(255,255,255,.05);
+    /* Heavy Blur Optimization - reduced radius */
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    transition: transform .3s ease-out, border-color .3s ease-out, box-shadow .3s ease-out;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .glass:hover{
     border-color:rgba(96,165,250,.32);
-
-    box-shadow:
-        0 30px 90px rgba(0,0,0,.35),
-        0 0 35px rgba(37,99,235,.08),
-        inset 0 1px rgba(255,255,255,.08);
+    box-shadow: 0 30px 90px rgba(0,0,0,.35), 0 0 35px rgba(37,99,235,.08), inset 0 1px rgba(255,255,255,.08);
 }
 
 /* =========================================
@@ -903,9 +791,7 @@ body{
     margin-top:55px;
 }
 
-.about-copy{
-    padding:35px;
-}
+.about-copy{ padding:35px; }
 
 .about-copy p{
     color:#91a4bd;
@@ -914,43 +800,24 @@ body{
     margin:0 0 20px;
 }
 
-.about-copy p:last-child{
-    margin-bottom:0;
-}
+.about-copy p:last-child{ margin-bottom:0; }
 
-.identity-card{
-    padding:30px;
-}
+.identity-card{ padding:30px; }
 
 .identity-row{
     display:flex;
     justify-content:space-between;
     gap:20px;
-
     padding:15px 0;
-
     border-bottom:1px solid rgba(255,255,255,.06);
-
     font-size:10px;
 }
 
-.identity-row:last-child{
-    border-bottom:0;
-}
+.identity-row:last-child{ border-bottom:0; }
 
-.identity-row span:first-child{
-    color:#64748b;
-    letter-spacing:.12em;
-}
-
-.identity-row span:last-child{
-    color:white;
-    text-align:right;
-}
-
-.identity-row .highlight{
-    color:#60a5fa !important;
-}
+.identity-row span:first-child{ color:#64748b; letter-spacing:.12em; }
+.identity-row span:last-child{ color:white; text-align:right; }
+.identity-row .highlight{ color:#60a5fa !important; }
 
 /* =========================================
    JOURNEY TIMELINE
@@ -964,19 +831,11 @@ body{
 .timeline::before{
     content:"";
     position:absolute;
-
     left:20px;
     top:0;
     bottom:0;
-
     width:1px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #3b82f6,
-            rgba(59,130,246,.05)
-        );
+    background: linear-gradient(to bottom, #3b82f6, rgba(59,130,246,.05));
 }
 
 .timeline-item{
@@ -987,44 +846,20 @@ body{
 
 .timeline-dot{
     position:absolute;
-
     left:12px;
     top:6px;
-
     width:17px;
     height:17px;
-
     border:2px solid #60a5fa;
     background:#020617;
-
     transform:rotate(45deg);
-
-    box-shadow:
-        0 0 15px rgba(59,130,246,.5);
+    box-shadow: 0 0 15px rgba(59,130,246,.5);
 }
 
-.timeline-card{
-    padding:25px;
-}
-
-.timeline-year{
-    color:#60a5fa;
-    font-size:9px;
-    letter-spacing:.25em;
-}
-
-.timeline-card h3{
-    margin-top:8px;
-    color:white;
-    font-size:20px;
-}
-
-.timeline-card p{
-    margin-top:10px;
-    color:#7f93ae;
-    font-size:12px;
-    line-height:1.8;
-}
+.timeline-card{ padding:25px; }
+.timeline-year{ color:#60a5fa; font-size:9px; letter-spacing:.25em; }
+.timeline-card h3{ margin-top:8px; color:white; font-size:20px; }
+.timeline-card p{ margin-top:10px; color:#7f93ae; font-size:12px; line-height:1.8; }
 
 /* =========================================
    SKILLS
@@ -1041,31 +876,23 @@ body{
     display:flex;
     flex-wrap:wrap;
     gap:5px;
-
     padding:5px;
-
     border:1px solid rgba(255,255,255,.08);
     background:rgba(2,6,23,.55);
-
     border-radius:10px;
+    transform: translateZ(0);
 }
 
 .filter{
     border:0;
     background:transparent;
-
     color:#64748b;
-
     padding:8px 12px;
-
     font-family:inherit;
-
     font-size:8px;
     letter-spacing:.08em;
-
     cursor:pointer;
-
-    transition:.25s;
+    transition:background-color .2s, color .2s;
 }
 
 .filter.active,
@@ -1076,61 +903,37 @@ body{
 
 .skills-grid{
     margin-top:45px;
-
     display:grid;
-
-    grid-template-columns:
-        repeat(4,minmax(0,1fr));
-
+    grid-template-columns: repeat(4,minmax(0,1fr));
     gap:12px;
 }
 
 .skill{
     padding:18px;
-
     display:flex;
     align-items:center;
     gap:13px;
-
     cursor:default;
-
-    transition:
-        opacity .25s,
-        transform .25s,
-        border-color .25s;
+    transition: opacity .3s ease-out, transform .3s ease-out, border-color .3s ease;
+    will-change: transform, opacity;
 }
 
-.skill.hidden{
-    display:none;
-}
+.skill.hidden{ display:none; }
 
 .skill-icon{
     width:43px;
     height:43px;
-
     flex:none;
-
     display:grid;
     place-items:center;
-
     background:rgba(30,64,175,.14);
     border:1px solid rgba(96,165,250,.15);
-
     color:#60a5fa;
-
     font-size:18px;
 }
 
-.skill h4{
-    color:white;
-    font-size:11px;
-}
-
-.skill small{
-    color:#64748b;
-    font-size:7px;
-    letter-spacing:.12em;
-}
+.skill h4{ color:white; font-size:11px; }
+.skill small{ color:#64748b; font-size:7px; letter-spacing:.12em; }
 
 /* =========================================
    PROJECTS
@@ -1138,11 +941,8 @@ body{
 
 .project-grid{
     margin-top:55px;
-
     display:grid;
-    grid-template-columns:
-        repeat(2,minmax(0,1fr));
-
+    grid-template-columns: repeat(2,minmax(0,1fr));
     gap:20px;
 }
 
@@ -1151,113 +951,57 @@ body{
     overflow:hidden;
     padding:30px;
     min-height:360px;
-
     cursor:pointer;
 }
 
 .project::before{
     content:"";
-
     position:absolute;
-
     width:250px;
     height:250px;
-
     right:-100px;
     top:-100px;
-
     border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(59,130,246,.18),
-            transparent 65%
-        );
-
-    transition:.5s;
+    background: radial-gradient(circle, rgba(59,130,246,.18), transparent 65%);
+    transition:transform .4s ease-out;
+    will-change: transform;
 }
 
-.project:hover::before{
-    transform:scale(1.5);
-}
+.project:hover::before{ transform:scale(1.5); }
 
-.project-number{
-    color:#3b82f6;
-    font-size:9px;
-    letter-spacing:.25em;
-}
-
-.project-category{
-    color:#64748b;
-    font-size:8px;
-    letter-spacing:.14em;
-    margin-top:10px;
-}
-
-.project h3{
-    margin-top:20px;
-
-    color:white;
-
-    font-size:
-        clamp(22px,3vw,30px);
-
-    line-height:1.15;
-}
-
-.project p{
-    margin-top:15px;
-
-    color:#8194ad;
-
-    font-size:11px;
-    line-height:1.9;
-
-    max-width:560px;
-}
+.project-number{ color:#3b82f6; font-size:9px; letter-spacing:.25em; }
+.project-category{ color:#64748b; font-size:8px; letter-spacing:.14em; margin-top:10px; }
+.project h3{ margin-top:20px; color:white; font-size: clamp(22px,3vw,30px); line-height:1.15; }
+.project p{ margin-top:15px; color:#8194ad; font-size:11px; line-height:1.9; max-width:560px; }
 
 .project-tags{
     display:flex;
     flex-wrap:wrap;
     gap:7px;
-
     margin-top:22px;
 }
 
 .project-tag{
     padding:6px 8px;
-
     border:1px solid rgba(255,255,255,.08);
-
     color:#a8bad2;
-
     background:rgba(255,255,255,.025);
-
     font-size:7px;
 }
 
 .project-footer{
     position:absolute;
-
     left:30px;
     right:30px;
     bottom:25px;
-
     padding-top:17px;
-
     border-top:1px solid rgba(255,255,255,.07);
-
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
-.project-open{
-    color:#60a5fa;
-    font-size:8px;
-    letter-spacing:.15em;
-}
+.project-open{ color:#60a5fa; font-size:8px; letter-spacing:.15em; }
 
 /* =========================================
    EXPERIENCE
@@ -1265,51 +1009,25 @@ body{
 
 .experience-grid{
     margin-top:50px;
-
     display:grid;
-    grid-template-columns:
-        repeat(3,minmax(0,1fr));
-
+    grid-template-columns: repeat(3,minmax(0,1fr));
     gap:15px;
 }
 
-.experience{
-    padding:25px;
-    min-height:220px;
-}
-
-.exp-label{
-    color:#60a5fa;
-    font-size:8px;
-    letter-spacing:.2em;
-}
-
-.experience h3{
-    color:white;
-    margin-top:12px;
-    font-size:16px;
-}
-
-.experience p{
-    color:#7f93ae;
-    margin-top:12px;
-    font-size:10px;
-    line-height:1.8;
-}
+.experience{ padding:25px; min-height:220px; }
+.exp-label{ color:#60a5fa; font-size:8px; letter-spacing:.2em; }
+.experience h3{ color:white; margin-top:12px; font-size:16px; }
+.experience p{ color:#7f93ae; margin-top:12px; font-size:10px; line-height:1.8; }
 
 .exp-link{
     display:inline-block;
     margin-top:18px;
-
     color:#93c5fd;
-
     font-size:8px;
     text-decoration:none;
+    transition:color .2s;
 }
-
-.exp-link:hover{
-    color:white;
-}
+.exp-link:hover{ color:white; }
 
 /* =========================================
    CERTIFICATIONS
@@ -1317,51 +1035,30 @@ body{
 
 .cert-grid{
     margin-top:50px;
-
     display:grid;
-
-    grid-template-columns:
-        repeat(4,minmax(0,1fr));
-
+    grid-template-columns: repeat(4,minmax(0,1fr));
     gap:13px;
 }
 
 .cert{
     padding:22px;
     min-height:160px;
-
     display:flex;
     flex-direction:column;
     justify-content:space-between;
 }
 
-.cert-icon{
-    color:#60a5fa;
-    font-size:18px;
-}
-
-.cert small{
-    color:#64748b;
-    font-size:7px;
-    letter-spacing:.16em;
-}
-
-.cert h3{
-    color:white;
-    font-size:11px;
-    line-height:1.5;
-    margin-top:6px;
-}
+.cert-icon{ color:#60a5fa; font-size:18px; }
+.cert small{ color:#64748b; font-size:7px; letter-spacing:.16em; }
+.cert h3{ color:white; font-size:11px; line-height:1.5; margin-top:6px; }
 
 .cert a{
     color:#93c5fd;
     font-size:8px;
     text-decoration:none;
+    transition:color .2s;
 }
-
-.cert a:hover{
-    color:white;
-}
+.cert a:hover{ color:white; }
 
 /* =========================================
    TERMINAL
@@ -1369,77 +1066,29 @@ body{
 
 .terminal{
     margin-top:55px;
-
     border:1px solid rgba(96,165,250,.18);
-
     background:#02040a;
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.4),
-        0 0 60px rgba(37,99,235,.05);
-
+    box-shadow: 0 30px 100px rgba(0,0,0,.4), 0 0 60px rgba(37,99,235,.05);
     overflow:hidden;
+    transform: translateZ(0);
 }
 
 .terminal-head{
     height:38px;
-
     display:flex;
     align-items:center;
-
     gap:7px;
-
     padding:0 15px;
-
     border-bottom:1px solid rgba(255,255,255,.06);
-
     background:#070b14;
 }
 
-.terminal-dot{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:#334155;
-}
-
-.terminal-title{
-    margin-left:10px;
-    color:#64748b;
-    font-size:8px;
-    letter-spacing:.12em;
-}
-
-.terminal-body{
-    padding:25px;
-
-    color:#8fb9df;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size:11px;
-
-    line-height:2;
-}
-
-.terminal-body span{
-    color:#60a5fa;
-}
-
-.terminal-cursor{
-    display:inline-block;
-    width:7px;
-    height:14px;
-    background:#60a5fa;
-    vertical-align:middle;
-    animation:blink 1s infinite;
-}
-
-@keyframes blink{
-    50%{opacity:0}
-}
+.terminal-dot{ width:8px; height:8px; border-radius:50%; background:#334155; }
+.terminal-title{ margin-left:10px; color:#64748b; font-size:8px; letter-spacing:.12em; }
+.terminal-body{ padding:25px; color:#8fb9df; font-family:"Courier New", monospace; font-size:11px; line-height:2; }
+.terminal-body span{ color:#60a5fa; }
+.terminal-cursor{ display:inline-block; width:7px; height:14px; background:#60a5fa; vertical-align:middle; animation:blink 1s infinite; }
+@keyframes blink{ 50%{opacity:0} }
 
 /* =========================================
    CONTACT
@@ -1447,87 +1096,46 @@ body{
 
 .contact-box{
     margin-top:55px;
-
     padding:60px 40px;
-
     text-align:center;
-
     position:relative;
     overflow:hidden;
 }
 
 .contact-box::before{
     content:"";
-
     position:absolute;
     width:500px;
     height:500px;
-
     left:50%;
     top:50%;
-
     transform:translate(-50%,-50%);
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(37,99,235,.12),
-            transparent 65%
-        );
-
+    background: radial-gradient(circle, rgba(37,99,235,.12), transparent 65%);
     pointer-events:none;
 }
 
-.contact-title{
-    position:relative;
-
-    font-size:
-        clamp(35px,6vw,70px);
-
-    font-weight:900;
-
-    color:white;
-}
-
-.contact-text{
-    position:relative;
-
-    max-width:620px;
-    margin:20px auto 0;
-
-    color:#8194ad;
-
-    font-size:12px;
-    line-height:1.9;
-}
+.contact-title{ position:relative; font-size: clamp(35px,6vw,70px); font-weight:900; color:white; }
+.contact-text{ position:relative; max-width:620px; margin:20px auto 0; color:#8194ad; font-size:12px; line-height:1.9; }
 
 .contact-grid{
     position:relative;
-
     margin-top:35px;
-
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-
     gap:10px;
 }
 
 .contact-link{
     padding:13px 18px;
-
     color:#a8bad2;
-
     border:1px solid rgba(255,255,255,.08);
-
     text-decoration:none;
-
     font-size:8px;
     letter-spacing:.1em;
-
     background:rgba(255,255,255,.02);
-
-    transition:.3s;
+    transition:transform .3s ease, border-color .3s ease, color .3s ease;
+    will-change: transform;
 }
 
 .contact-link:hover{
@@ -1542,15 +1150,10 @@ body{
 
 footer{
     padding:40px 25px;
-
     text-align:center;
-
     border-top:1px solid rgba(255,255,255,.06);
-
     color:#475569;
-
     font-size:8px;
-
     letter-spacing:.12em;
 }
 
@@ -1561,107 +1164,47 @@ footer{
 .modal{
     position:fixed;
     inset:0;
-
     background:rgba(0,0,0,.78);
-
-    backdrop-filter:blur(14px);
-
+    backdrop-filter:blur(8px);
     z-index:9000;
-
     display:none;
-
     align-items:center;
     justify-content:center;
-
     padding:20px;
+    transform: translateZ(0);
 }
 
-.modal.show{
-    display:flex;
-}
+.modal.show{ display:flex; }
 
 .modal-card{
     width:min(720px,100%);
-
     max-height:90vh;
     overflow:auto;
-
     padding:35px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(15,23,42,.97),
-            rgba(2,6,23,.98)
-        );
-
+    background: linear-gradient(145deg, rgba(15,23,42,.97), rgba(2,6,23,.98));
     border:1px solid rgba(96,165,250,.25);
-
-    box-shadow:
-        0 40px 120px rgba(0,0,0,.7),
-        0 0 60px rgba(37,99,235,.1);
-
+    box-shadow: 0 40px 120px rgba(0,0,0,.7), 0 0 60px rgba(37,99,235,.1);
     position:relative;
 }
 
 .modal-close{
     position:absolute;
-
     top:15px;
     right:18px;
-
     width:34px;
     height:34px;
-
     border:1px solid rgba(255,255,255,.1);
-
     background:rgba(255,255,255,.03);
-
     color:#94a3b8;
-
     cursor:pointer;
-
-    transition:.3s;
+    transition:color .2s, border-color .2s;
 }
 
-.modal-close:hover{
-    color:white;
-    border-color:#60a5fa;
-}
-
-.modal-label{
-    color:#60a5fa;
-    font-size:8px;
-    letter-spacing:.25em;
-}
-
-.modal-title{
-    margin-top:12px;
-
-    font-size:
-        clamp(28px,5vw,46px);
-
-    color:white;
-
-    line-height:1.1;
-}
-
-.modal-description{
-    margin-top:20px;
-
-    color:#8fa3bf;
-
-    font-size:12px;
-    line-height:1.9;
-}
-
-.modal-stack{
-    margin-top:25px;
-
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-}
+.modal-close:hover{ color:white; border-color:#60a5fa; }
+.modal-label{ color:#60a5fa; font-size:8px; letter-spacing:.25em; }
+.modal-title{ margin-top:12px; font-size: clamp(28px,5vw,46px); color:white; line-height:1.1; }
+.modal-description{ margin-top:20px; color:#8fa3bf; font-size:12px; line-height:1.9; }
+.modal-stack{ margin-top:25px; display:flex; flex-wrap:wrap; gap:7px; }
 
 /* =========================================
    COMMAND PALETTE
@@ -1670,83 +1213,53 @@ footer{
 .command{
     position:fixed;
     inset:0;
-
     z-index:9500;
-
     background:rgba(0,0,0,.72);
-
-    backdrop-filter:blur(15px);
-
+    backdrop-filter:blur(8px);
     display:none;
-
     align-items:flex-start;
     justify-content:center;
-
     padding-top:14vh;
+    transform: translateZ(0);
 }
 
-.command.show{
-    display:flex;
-}
+.command.show{ display:flex; }
 
 .command-box{
     width:min(650px,90vw);
-
     border:1px solid rgba(96,165,250,.25);
-
     background:#050a14;
-
     box-shadow:0 30px 100px rgba(0,0,0,.6);
-
     overflow:hidden;
 }
 
 .command-input{
     width:100%;
-
     border:0;
     outline:0;
-
     padding:20px;
-
     background:transparent;
-
     color:white;
-
     font-family:inherit;
-
     font-size:12px;
 }
 
-.command-items{
-    border-top:1px solid rgba(255,255,255,.06);
-}
+.command-items{ border-top:1px solid rgba(255,255,255,.06); }
 
 .command-item{
     display:flex;
-
     align-items:center;
     gap:14px;
-
     width:100%;
-
     padding:14px 20px;
-
     border:0;
-
     background:transparent;
-
     color:#8fa3bf;
-
     font-family:inherit;
-
     text-align:left;
-
     cursor:pointer;
-
     font-size:9px;
-
-    transition:.2s;
+    transition:background-color .2s, color .2s;
 }
 
 .command-item:hover{
@@ -1755,21 +1268,19 @@ footer{
 }
 
 /* =========================================
-   REVEAL ANIMATION
+   REVEAL ANIMATION (Optimized)
 ========================================= */
 
 .reveal{
     opacity:0;
-    transform:translateY(35px);
-
-    transition:
-        opacity .8s cubic-bezier(.16,1,.3,1),
-        transform .8s cubic-bezier(.16,1,.3,1);
+    transform:translateY(25px) translateZ(0);
+    transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+    will-change: opacity, transform;
 }
 
 .reveal.visible{
     opacity:1;
-    transform:translateY(0);
+    transform:translateY(0) translateZ(0);
 }
 
 /* =========================================
@@ -1777,201 +1288,67 @@ footer{
 ========================================= */
 
 @media(max-width:1050px){
-
-    .nav-links{
-        gap:15px;
-    }
-
-    .hero{
-        grid-template-columns:1fr;
-        text-align:center;
-    }
-
-    .hero-description{
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    .hero-actions,
-    .hero-socials{
-        justify-content:center;
-    }
-
-    .hero-visual{
-        order:-1;
-    }
-
-    .float-status.one{
-        right:0;
-    }
-
-    .float-status.two{
-        left:0;
-    }
-
-    .metrics{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .about-grid{
-        grid-template-columns:1fr;
-    }
-
-    .skills-grid{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .cert-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+    .nav-links{ gap:15px; }
+    .hero{ grid-template-columns:1fr; text-align:center; }
+    .hero-description{ margin-left:auto; margin-right:auto; }
+    .hero-actions, .hero-socials{ justify-content:center; }
+    .hero-visual{ order:-1; }
+    .float-status.one{ right:0; }
+    .float-status.two{ left:0; }
+    .metrics{ grid-template-columns:repeat(2,1fr); }
+    .about-grid{ grid-template-columns:1fr; }
+    .skills-grid{ grid-template-columns:repeat(3,1fr); }
+    .cert-grid{ grid-template-columns:repeat(2,1fr); }
 }
 
 @media(max-width:800px){
-
-    .nav-links,
-    .nav-resume{
-        display:none;
-    }
-
-    .mobile-menu{
-        display:block;
-    }
-
+    .nav-links, .nav-resume{ display:none; }
+    .mobile-menu{ display:block; }
     .mobile-nav{
         position:absolute;
-
         top:78px;
         left:15px;
         right:15px;
-
         display:none;
-
         padding:15px;
-
         background:rgba(2,6,23,.96);
-
         border:1px solid rgba(255,255,255,.08);
-
         box-shadow:0 20px 50px rgba(0,0,0,.5);
     }
-
-    .mobile-nav.show{
-        display:block;
-    }
-
+    .mobile-nav.show{ display:block; }
     .mobile-nav a{
         display:block;
-
         padding:14px;
-
         color:#94a3b8;
-
         text-decoration:none;
-
         border-bottom:1px solid rgba(255,255,255,.05);
-
         font-size:9px;
     }
-
-    .hero{
-        padding-top:125px;
-    }
-
-    .hero h1{
-        font-size:clamp(40px,12vw,70px);
-    }
-
-    .skills-head{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-
-    .skills-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .project-grid{
-        grid-template-columns:1fr;
-    }
-
-    .experience-grid{
-        grid-template-columns:1fr;
-    }
-
-    .cert-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+    .hero{ padding-top:125px; }
+    .hero h1{ font-size:clamp(40px,12vw,70px); }
+    .skills-head{ flex-direction:column; align-items:flex-start; }
+    .skills-grid{ grid-template-columns:repeat(2,1fr); }
+    .project-grid{ grid-template-columns:1fr; }
+    .experience-grid{ grid-template-columns:1fr; }
+    .cert-grid{ grid-template-columns:repeat(2,1fr); }
 }
 
 @media(max-width:550px){
-
-    .section{
-        padding:90px 18px;
-    }
-
-    .hero{
-        padding-left:18px;
-        padding-right:18px;
-    }
-
-    .metrics{
-        grid-template-columns:1fr 1fr;
-        padding-left:18px;
-        padding-right:18px;
-    }
-
-    .metric{
-        padding:15px;
-    }
-
-    .metric-value{
-        font-size:20px;
-    }
-
-    .skills-grid{
-        grid-template-columns:1fr;
-    }
-
-    .cert-grid{
-        grid-template-columns:1fr;
-    }
-
-    .profile-frame{
-        width:min(300px,80vw);
-    }
-
-    .float-status{
-        display:none;
-    }
-
-    .about-copy,
-    .identity-card,
-    .project,
-    .contact-box{
-        padding:24px;
-    }
-
-    .project-footer{
-        left:24px;
-        right:24px;
-    }
-
-    .timeline-item{
-        padding-left:55px;
-    }
-
-    .timeline::before{
-        left:15px;
-    }
-
-    .timeline-dot{
-        left:7px;
-    }
-
-    .cursor-dot,
-    .cursor-ring{
-        display:none;
-    }
+    .section{ padding:90px 18px; }
+    .hero{ padding-left:18px; padding-right:18px; }
+    .metrics{ grid-template-columns:1fr 1fr; padding-left:18px; padding-right:18px; }
+    .metric{ padding:15px; }
+    .metric-value{ font-size:20px; }
+    .skills-grid{ grid-template-columns:1fr; }
+    .cert-grid{ grid-template-columns:1fr; }
+    .profile-frame{ width:min(300px,80vw); }
+    .float-status{ display:none; }
+    .about-copy, .identity-card, .project, .contact-box{ padding:24px; }
+    .project-footer{ left:24px; right:24px; }
+    .timeline-item{ padding-left:55px; }
+    .timeline::before{ left:15px; }
+    .timeline-dot{ left:7px; }
+    .cursor-dot, .cursor-ring{ display:none; }
 }
 
 /* =========================================
@@ -1979,10 +1356,7 @@ footer{
 ========================================= */
 
 @media(prefers-reduced-motion:reduce){
-
-    *,
-    *::before,
-    *::after{
+    *, *::before, *::after{
         animation-duration:.01ms !important;
         animation-iteration-count:1 !important;
         scroll-behavior:auto !important;
@@ -2007,7 +1381,7 @@ footer{
         <div class="loader-symbol"></div>
 
         <div class="loader-name">
-            PATEL ZAKI
+            PATEL MOHAMMAD ZAKI
         </div>
 
         <div class="loader-status">
@@ -2015,16 +1389,11 @@ footer{
         </div>
 
         <div class="loader-track">
-            <div class="loader-progress"
-                 id="loaderProgress"></div>
+            <div class="loader-progress" id="loaderProgress"></div>
         </div>
 
         <div id="loaderPercent"
-             style="
-             margin-top:10px;
-             color:#475569;
-             font-size:9px;
-             letter-spacing:.2em;">
+             style="margin-top:10px; color:#475569; font-size:9px; letter-spacing:.2em;">
             0%
         </div>
 
@@ -2062,12 +1431,11 @@ footer{
 
     <div class="nav-container">
 
-        <a href="#home"
-           class="brand">
+        <a href="#home" class="brand">
 
             <span class="brand-mark"></span>
 
-            PATEL ZAKI
+            PATEL MOHAMMAD ZAKI
 
         </a>
 
@@ -2084,9 +1452,7 @@ footer{
         </div>
 
 
-        <a href="resume.pdf"
-           download
-           class="nav-resume">
+        <a href="resume.pdf" download class="nav-resume">
 
             <i class="fa-solid fa-download"></i>
 
@@ -2095,8 +1461,7 @@ footer{
         </a>
 
 
-        <button class="mobile-menu"
-                id="mobileMenu">
+        <button class="mobile-menu" id="mobileMenu">
 
             <i class="fa-solid fa-bars"></i>
 
@@ -2105,8 +1470,7 @@ footer{
     </div>
 
 
-    <div class="mobile-nav"
-         id="mobileNav">
+    <div class="mobile-nav" id="mobileNav">
 
         <a href="#about">PROFILE</a>
         <a href="#journey">JOURNEY</a>
@@ -2115,8 +1479,7 @@ footer{
         <a href="#experience">EXPERIENCE</a>
         <a href="#contact">CONTACT</a>
 
-        <a href="resume.pdf"
-           download>
+        <a href="resume.pdf" download>
 
             DOWNLOAD RESUME
 
@@ -2161,8 +1524,7 @@ footer{
 
         <div class="hero-subtitle">
 
-            Building intelligent, data-driven and reliable
-            software solutions.
+            Building intelligent, data-driven and reliable software solutions.
 
         </div>
 
@@ -2181,8 +1543,7 @@ footer{
 
         <div class="hero-actions">
 
-            <a href="#projects"
-               class="btn btn-primary">
+            <a href="#projects" class="btn btn-primary">
 
                 EXPLORE PROJECTS
 
@@ -2191,8 +1552,7 @@ footer{
             </a>
 
 
-            <a href="#contact"
-               class="btn btn-outline">
+            <a href="#contact" class="btn btn-outline">
 
                 LET'S CONNECT
 
@@ -2201,9 +1561,7 @@ footer{
             </a>
 
 
-            <a href="resume.pdf"
-               download
-               class="btn btn-outline">
+            <a href="resume.pdf" download class="btn btn-outline">
 
                 RESUME
 
@@ -2216,35 +1574,28 @@ footer{
 
         <div class="hero-socials">
 
-            <a href="https://github.com/zakipatel89"
-               target="_blank"
-               aria-label="GitHub">
+            <a href="https://github.com/zakipatel89" target="_blank" aria-label="GitHub">
 
                 <i class="fa-brands fa-github"></i>
 
             </a>
 
 
-            <a href="https://www.linkedin.com/in/zaki-patel-25767a285/"
-               target="_blank"
-               aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/zaki-patel-25767a285/" target="_blank" aria-label="LinkedIn">
 
                 <i class="fa-brands fa-linkedin-in"></i>
 
             </a>
 
 
-            <a href="mailto:zakipatel2811@gmail.com"
-               aria-label="Email">
+            <a href="mailto:zakipatel2811@gmail.com" aria-label="Email">
 
                 <i class="fa-solid fa-envelope"></i>
 
             </a>
 
 
-            <a href="https://wa.me/918468809905"
-               target="_blank"
-               aria-label="WhatsApp">
+            <a href="https://wa.me/918468809905" target="_blank" aria-label="WhatsApp">
 
                 <i class="fa-brands fa-whatsapp"></i>
 
@@ -2292,8 +1643,7 @@ footer{
 
             <div class="profile-image">
 
-                <img src="profile.jpg"
-                     alt="Patel Mohammad Zaki">
+                <img src="profile.jpg" alt="Patel Mohammad Zaki">
 
                 <div class="profile-overlay"></div>
 
@@ -2342,9 +1692,7 @@ footer{
 
     <div class="metric reveal">
 
-        <div class="metric-value"
-             data-count="75.59"
-             data-decimal="2">
+        <div class="metric-value" data-count="75.59" data-decimal="2">
             0
         </div>
 
@@ -2400,8 +1748,7 @@ footer{
      ABOUT
 ========================================= -->
 
-<section id="about"
-         class="section">
+<section id="about" class="section">
 
     <div class="reveal">
 
@@ -2544,8 +1891,7 @@ footer{
      JOURNEY
 ========================================= -->
 
-<section id="journey"
-         class="section">
+<section id="journey" class="section">
 
     <div class="reveal">
 
@@ -2678,8 +2024,7 @@ footer{
      SKILLS
 ========================================= -->
 
-<section id="skills"
-         class="section">
+<section id="skills" class="section">
 
     <div class="skills-head reveal">
 
@@ -2702,33 +2047,27 @@ footer{
 
         <div class="filter-bar">
 
-            <button class="filter active"
-                    data-filter="all">
+            <button class="filter active" data-filter="all">
                 ALL
             </button>
 
-            <button class="filter"
-                    data-filter="data">
+            <button class="filter" data-filter="data">
                 DATA
             </button>
 
-            <button class="filter"
-                    data-filter="ai">
+            <button class="filter" data-filter="ai">
                 AI
             </button>
 
-            <button class="filter"
-                    data-filter="software">
+            <button class="filter" data-filter="software">
                 SOFTWARE
             </button>
 
-            <button class="filter"
-                    data-filter="cloud">
+            <button class="filter" data-filter="cloud">
                 CLOUD
             </button>
 
-            <button class="filter"
-                    data-filter="tools">
+            <button class="filter" data-filter="tools">
                 TOOLS
             </button>
 
@@ -2740,8 +2079,7 @@ footer{
     <div class="skills-grid">
 
 
-        <div class="glass skill reveal"
-             data-category="data">
+        <div class="glass skill reveal" data-category="data">
 
             <div class="skill-icon">
                 <i class="fa-brands fa-python"></i>
@@ -2755,8 +2093,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="data">
+        <div class="glass skill reveal" data-category="data">
 
             <div class="skill-icon">
                 <i class="fa-solid fa-database"></i>
@@ -2770,8 +2107,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="data">
+        <div class="glass skill reveal" data-category="data">
 
             <div class="skill-icon">
                 <i class="fa-solid fa-table"></i>
@@ -2785,8 +2121,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="data">
+        <div class="glass skill reveal" data-category="data">
 
             <div class="skill-icon">
                 <i class="fa-solid fa-chart-column"></i>
@@ -2800,8 +2135,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="data">
+        <div class="glass skill reveal" data-category="data">
 
             <div class="skill-icon">
                 <i class="fa-solid fa-chart-line"></i>
@@ -2815,8 +2149,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="data">
+        <div class="glass skill reveal" data-category="data">
 
             <div class="skill-icon">
                 <i class="fa-solid fa-cubes"></i>
@@ -2830,8 +2163,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="ai">
+        <div class="glass skill reveal" data-category="ai">
 
             <div class="skill-icon">
                 <i class="fa-solid fa-brain"></i>
@@ -2845,8 +2177,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="ai">
+        <div class="glass skill reveal" data-category="ai">
 
             <div class="skill-icon">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -2860,8 +2191,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="ai">
+        <div class="glass skill reveal" data-category="ai">
 
             <div class="skill-icon">
                 <i class="fa-solid fa-language"></i>
@@ -2875,8 +2205,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="software">
+        <div class="glass skill reveal" data-category="software">
 
             <div class="skill-icon">
                 <i class="fa-brands fa-html5"></i>
@@ -2890,8 +2219,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="software">
+        <div class="glass skill reveal" data-category="software">
 
             <div class="skill-icon">
                 <i class="fa-brands fa-js"></i>
@@ -2905,8 +2233,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="software">
+        <div class="glass skill reveal" data-category="software">
 
             <div class="skill-icon">
                 <i class="fa-brands fa-git-alt"></i>
@@ -2920,8 +2247,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="cloud">
+        <div class="glass skill reveal" data-category="cloud">
 
             <div class="skill-icon">
                 <i class="fa-brands fa-microsoft"></i>
@@ -2935,8 +2261,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="cloud">
+        <div class="glass skill reveal" data-category="cloud">
 
             <div class="skill-icon">
                 <i class="fa-brands fa-aws"></i>
@@ -2950,8 +2275,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="tools">
+        <div class="glass skill reveal" data-category="tools">
 
             <div class="skill-icon">
                 <i class="fa-solid fa-code"></i>
@@ -2965,8 +2289,7 @@ footer{
         </div>
 
 
-        <div class="glass skill reveal"
-             data-category="tools">
+        <div class="glass skill reveal" data-category="tools">
 
             <div class="skill-icon">
                 <i class="fa-solid fa-file-excel"></i>
@@ -2988,8 +2311,7 @@ footer{
      PROJECTS
 ========================================= -->
 
-<section id="projects"
-         class="section">
+<section id="projects" class="section">
 
     <div class="reveal">
 
@@ -3013,8 +2335,7 @@ footer{
 
         <!-- PROJECT 01 -->
 
-        <article class="glass project reveal"
-                 data-project="ecommerce">
+        <article class="glass project reveal" data-project="ecommerce">
 
             <div>
 
@@ -3041,25 +2362,11 @@ footer{
 
                 <div class="project-tags">
 
-                    <span class="project-tag">
-                        WEB
-                    </span>
-
-                    <span class="project-tag">
-                        AI CHATBOT
-                    </span>
-
-                    <span class="project-tag">
-                        PRODUCT SEARCH
-                    </span>
-
-                    <span class="project-tag">
-                        RECOMMENDATIONS
-                    </span>
-
-                    <span class="project-tag">
-                        ORDER SUPPORT
-                    </span>
+                    <span class="project-tag">WEB</span>
+                    <span class="project-tag">AI CHATBOT</span>
+                    <span class="project-tag">PRODUCT SEARCH</span>
+                    <span class="project-tag">RECOMMENDATIONS</span>
+                    <span class="project-tag">ORDER SUPPORT</span>
 
                 </div>
 
@@ -3072,9 +2379,7 @@ footer{
                     OPEN CASE STUDY
                 </span>
 
-                <i class="fa-solid fa-arrow-up-right-from-square"
-                   style="color:#60a5fa;font-size:11px;">
-                </i>
+                <i class="fa-solid fa-arrow-up-right-from-square" style="color:#60a5fa;font-size:11px;"></i>
 
             </div>
 
@@ -3083,8 +2388,7 @@ footer{
 
         <!-- PROJECT 02 -->
 
-        <article class="glass project reveal"
-                 data-project="mobile-ai">
+        <article class="glass project reveal" data-project="mobile-ai">
 
             <div>
 
@@ -3110,25 +2414,11 @@ footer{
 
                 <div class="project-tags">
 
-                    <span class="project-tag">
-                        PYTHON
-                    </span>
-
-                    <span class="project-tag">
-                        FLASK
-                    </span>
-
-                    <span class="project-tag">
-                        PANDAS
-                    </span>
-
-                    <span class="project-tag">
-                        AI API
-                    </span>
-
-                    <span class="project-tag">
-                        CHATBOT
-                    </span>
+                    <span class="project-tag">PYTHON</span>
+                    <span class="project-tag">FLASK</span>
+                    <span class="project-tag">PANDAS</span>
+                    <span class="project-tag">AI API</span>
+                    <span class="project-tag">CHATBOT</span>
 
                 </div>
 
@@ -3141,9 +2431,7 @@ footer{
                     OPEN CASE STUDY
                 </span>
 
-                <i class="fa-solid fa-arrow-up-right-from-square"
-                   style="color:#60a5fa;font-size:11px;">
-                </i>
+                <i class="fa-solid fa-arrow-up-right-from-square" style="color:#60a5fa;font-size:11px;"></i>
 
             </div>
 
@@ -3152,8 +2440,7 @@ footer{
 
         <!-- PROJECT 03 -->
 
-        <article class="glass project reveal"
-                 data-project="analytics">
+        <article class="glass project reveal" data-project="analytics">
 
             <div>
 
@@ -3180,25 +2467,11 @@ footer{
 
                 <div class="project-tags">
 
-                    <span class="project-tag">
-                        EXCEL
-                    </span>
-
-                    <span class="project-tag">
-                        SQL
-                    </span>
-
-                    <span class="project-tag">
-                        POWER BI
-                    </span>
-
-                    <span class="project-tag">
-                        DATA CLEANING
-                    </span>
-
-                    <span class="project-tag">
-                        KPI
-                    </span>
+                    <span class="project-tag">EXCEL</span>
+                    <span class="project-tag">SQL</span>
+                    <span class="project-tag">POWER BI</span>
+                    <span class="project-tag">DATA CLEANING</span>
+                    <span class="project-tag">KPI</span>
 
                 </div>
 
@@ -3211,9 +2484,7 @@ footer{
                     OPEN CASE STUDY
                 </span>
 
-                <i class="fa-solid fa-arrow-up-right-from-square"
-                   style="color:#60a5fa;font-size:11px;">
-                </i>
+                <i class="fa-solid fa-arrow-up-right-from-square" style="color:#60a5fa;font-size:11px;"></i>
 
             </div>
 
@@ -3222,8 +2493,7 @@ footer{
 
         <!-- PROJECT 04 -->
 
-        <article class="glass project reveal"
-                 data-project="assistant">
+        <article class="glass project reveal" data-project="assistant">
 
             <div>
 
@@ -3249,21 +2519,10 @@ footer{
 
                 <div class="project-tags">
 
-                    <span class="project-tag">
-                        NLP
-                    </span>
-
-                    <span class="project-tag">
-                        PYTHON
-                    </span>
-
-                    <span class="project-tag">
-                        DATABASE
-                    </span>
-
-                    <span class="project-tag">
-                        RECOMMENDATIONS
-                    </span>
+                    <span class="project-tag">NLP</span>
+                    <span class="project-tag">PYTHON</span>
+                    <span class="project-tag">DATABASE</span>
+                    <span class="project-tag">RECOMMENDATIONS</span>
 
                 </div>
 
@@ -3276,9 +2535,7 @@ footer{
                     OPEN CASE STUDY
                 </span>
 
-                <i class="fa-solid fa-arrow-up-right-from-square"
-                   style="color:#60a5fa;font-size:11px;">
-                </i>
+                <i class="fa-solid fa-arrow-up-right-from-square" style="color:#60a5fa;font-size:11px;"></i>
 
             </div>
 
@@ -3293,8 +2550,7 @@ footer{
      EXPERIENCE
 ========================================= -->
 
-<section id="experience"
-         class="section">
+<section id="experience" class="section">
 
     <div class="reveal">
 
@@ -3332,11 +2588,7 @@ footer{
                 practices.
             </p>
 
-            <div style="
-                margin-top:15px;
-                color:#475569;
-                font-size:8px;
-                letter-spacing:.1em;">
+            <div style="margin-top:15px; color:#475569; font-size:8px; letter-spacing:.1em;">
                 2026
             </div>
 
@@ -3359,12 +2611,8 @@ footer{
                 analytical insights.
             </p>
 
-            <a class="exp-link"
-               href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf"
-               target="_blank">
-
+            <a class="exp-link" href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf" target="_blank">
                 VIEW DOCUMENT →
-
             </a>
 
         </div>
@@ -3385,12 +2633,8 @@ footer{
                 analytical communication experience.
             </p>
 
-            <a class="exp-link"
-               href="Data%20Visualisation%20By%20TATA.pdf"
-               target="_blank">
-
+            <a class="exp-link" href="Data%20Visualisation%20By%20TATA.pdf" target="_blank">
                 VIEW DOCUMENT →
-
             </a>
 
         </div>
@@ -3412,12 +2656,8 @@ footer{
                 business-oriented insights.
             </p>
 
-            <a class="exp-link"
-               href="Data%20Analytics%20by%20Acccenture.pdf"
-               target="_blank">
-
+            <a class="exp-link" href="Data%20Analytics%20by%20Acccenture.pdf" target="_blank">
                 VIEW DOCUMENT →
-
             </a>
 
         </div>
@@ -3438,12 +2678,8 @@ footer{
                 churn analysis and predictive modelling concepts.
             </p>
 
-            <a class="exp-link"
-               href="BCG%20Data%20Science.pdf"
-               target="_blank">
-
+            <a class="exp-link" href="BCG%20Data%20Science.pdf" target="_blank">
                 VIEW DOCUMENT →
-
             </a>
 
         </div>
@@ -3465,12 +2701,8 @@ footer{
                 analysis concepts.
             </p>
 
-            <a class="exp-link"
-               href="Data%20Science%20By%20British%20Airways.pdf"
-               target="_blank">
-
+            <a class="exp-link" href="Data%20Science%20By%20British%20Airways.pdf" target="_blank">
                 VIEW DOCUMENT →
-
             </a>
 
         </div>
@@ -3484,8 +2716,7 @@ footer{
      CERTIFICATIONS
 ========================================= -->
 
-<section id="certifications"
-         class="section">
+<section id="certifications" class="section">
 
     <div class="reveal">
 
@@ -3525,11 +2756,8 @@ footer{
 
             </div>
 
-            <a href="C-%20AWS%20Compute%20Service.pdf"
-               target="_blank">
-
+            <a href="C-%20AWS%20Compute%20Service.pdf" target="_blank">
                 VIEW CERTIFICATE →
-
             </a>
 
         </div>
@@ -3553,11 +2781,8 @@ footer{
 
             </div>
 
-            <a href="C-Cloud%20Computing%20Architechture.pdf"
-               target="_blank">
-
+            <a href="C-Cloud%20Computing%20Architechture.pdf" target="_blank">
                 VIEW CERTIFICATE →
-
             </a>
 
         </div>
@@ -3581,11 +2806,8 @@ footer{
 
             </div>
 
-            <a href="C-Cloud%20Networking%20With%20AWS%20VPC.pdf"
-               target="_blank">
-
+            <a href="C-Cloud%20Networking%20With%20AWS%20VPC.pdf" target="_blank">
                 VIEW CERTIFICATE →
-
             </a>
 
         </div>
@@ -3609,11 +2831,8 @@ footer{
 
             </div>
 
-            <a href="C-Cloud%20Engineer%20Roles%20and%20Responsibilities.pdf"
-               target="_blank">
-
+            <a href="C-Cloud%20Engineer%20Roles%20and%20Responsibilities.pdf" target="_blank">
                 VIEW CERTIFICATE →
-
             </a>
 
         </div>
@@ -3637,11 +2856,8 @@ footer{
 
             </div>
 
-            <a href="Data%20Analytics%20By%20quantium.pdf"
-               target="_blank">
-
+            <a href="Data%20Analytics%20By%20quantium.pdf" target="_blank">
                 VIEW CERTIFICATE →
-
             </a>
 
         </div>
@@ -3665,11 +2881,8 @@ footer{
 
             </div>
 
-            <a href="Data%20Analytics%20Consulting%20By%20KPMG.pdf"
-               target="_blank">
-
+            <a href="Data%20Analytics%20Consulting%20By%20KPMG.pdf" target="_blank">
                 VIEW CERTIFICATE →
-
             </a>
 
         </div>
@@ -3693,11 +2906,8 @@ footer{
 
             </div>
 
-            <a href="C-Exel%20for%20Beginners.pdf"
-               target="_blank">
-
+            <a href="C-Exel%20for%20Beginners.pdf" target="_blank">
                 VIEW CERTIFICATE →
-
             </a>
 
         </div>
@@ -3721,11 +2931,8 @@ footer{
 
             </div>
 
-            <a href="Communication%20Skills%20By%20TCS.pdf"
-               target="_blank">
-
+            <a href="Communication%20Skills%20By%20TCS.pdf" target="_blank">
                 VIEW CERTIFICATE →
-
             </a>
 
         </div>
@@ -3812,8 +3019,7 @@ footer{
      CONTACT
 ========================================= -->
 
-<section id="contact"
-         class="section">
+<section id="contact" class="section">
 
     <div class="glass contact-box reveal">
 
@@ -3840,8 +3046,7 @@ footer{
 
         <div class="contact-grid">
 
-            <a class="contact-link"
-               href="mailto:zakipatel2811@gmail.com">
+            <a class="contact-link" href="mailto:zakipatel2811@gmail.com">
 
                 <i class="fa-solid fa-envelope"></i>
 
@@ -3850,9 +3055,7 @@ footer{
             </a>
 
 
-            <a class="contact-link"
-               href="https://www.linkedin.com/in/zaki-patel-25767a285/"
-               target="_blank">
+            <a class="contact-link" href="https://www.linkedin.com/in/zaki-patel-25767a285/" target="_blank">
 
                 <i class="fa-brands fa-linkedin"></i>
 
@@ -3861,9 +3064,7 @@ footer{
             </a>
 
 
-            <a class="contact-link"
-               href="https://github.com/zakipatel89"
-               target="_blank">
+            <a class="contact-link" href="https://github.com/zakipatel89" target="_blank">
 
                 <i class="fa-brands fa-github"></i>
 
@@ -3872,9 +3073,7 @@ footer{
             </a>
 
 
-            <a class="contact-link"
-               href="https://wa.me/918468809905"
-               target="_blank">
+            <a class="contact-link" href="https://wa.me/918468809905" target="_blank">
 
                 <i class="fa-brands fa-whatsapp"></i>
 
@@ -3883,9 +3082,7 @@ footer{
             </a>
 
 
-            <a class="contact-link"
-               href="resume.pdf"
-               download>
+            <a class="contact-link" href="resume.pdf" download>
 
                 <i class="fa-solid fa-file-arrow-down"></i>
 
@@ -3906,36 +3103,30 @@ footer{
      PROJECT MODAL
 ========================================= -->
 
-<div class="modal"
-     id="projectModal">
+<div class="modal" id="projectModal">
 
     <div class="modal-card">
 
-        <button class="modal-close"
-                id="modalClose">
+        <button class="modal-close" id="modalClose">
 
             <i class="fa-solid fa-xmark"></i>
 
         </button>
 
 
-        <div class="modal-label"
-             id="modalLabel">
+        <div class="modal-label" id="modalLabel">
         </div>
 
 
-        <h2 class="modal-title"
-            id="modalTitle">
+        <h2 class="modal-title" id="modalTitle">
         </h2>
 
 
-        <p class="modal-description"
-           id="modalDescription">
+        <p class="modal-description" id="modalDescription">
         </p>
 
 
-        <div class="modal-stack"
-             id="modalStack">
+        <div class="modal-stack" id="modalStack">
         </div>
 
     </div>
@@ -3947,8 +3138,7 @@ footer{
      COMMAND PALETTE
 ========================================= -->
 
-<div class="command"
-     id="commandPalette">
+<div class="command" id="commandPalette">
 
     <div class="command-box">
 
@@ -3960,73 +3150,32 @@ footer{
 
         <div class="command-items">
 
-            <button class="command-item"
-                    data-target="#about">
-
-                <i class="fa-solid fa-user"></i>
-
-                Open Profile
-
+            <button class="command-item" data-target="#about">
+                <i class="fa-solid fa-user"></i> Open Profile
             </button>
 
-
-            <button class="command-item"
-                    data-target="#journey">
-
-                <i class="fa-solid fa-route"></i>
-
-                View Journey
-
+            <button class="command-item" data-target="#journey">
+                <i class="fa-solid fa-route"></i> View Journey
             </button>
 
-
-            <button class="command-item"
-                    data-target="#skills">
-
-                <i class="fa-solid fa-code"></i>
-
-                Explore Skills
-
+            <button class="command-item" data-target="#skills">
+                <i class="fa-solid fa-code"></i> Explore Skills
             </button>
 
-
-            <button class="command-item"
-                    data-target="#projects">
-
-                <i class="fa-solid fa-layer-group"></i>
-
-                Explore Projects
-
+            <button class="command-item" data-target="#projects">
+                <i class="fa-solid fa-layer-group"></i> Explore Projects
             </button>
 
-
-            <button class="command-item"
-                    data-target="#experience">
-
-                <i class="fa-solid fa-briefcase"></i>
-
-                View Experience
-
+            <button class="command-item" data-target="#experience">
+                <i class="fa-solid fa-briefcase"></i> View Experience
             </button>
 
-
-            <button class="command-item"
-                    data-target="#contact">
-
-                <i class="fa-solid fa-paper-plane"></i>
-
-                Contact Zaki
-
+            <button class="command-item" data-target="#contact">
+                <i class="fa-solid fa-paper-plane"></i> Contact Patel Zaki
             </button>
 
-
-            <button class="command-item"
-                    onclick="window.location.href='resume.pdf'">
-
-                <i class="fa-solid fa-file-arrow-down"></i>
-
-                Download Resume
-
+            <button class="command-item" onclick="window.location.href='resume.pdf'">
+                <i class="fa-solid fa-file-arrow-down"></i> Download Resume
             </button>
 
         </div>
@@ -4052,165 +3201,104 @@ footer{
 <script>
 
 /* =========================================
-   LOADER
+   LOADER (Optimized)
 ========================================= */
 
 let progress = 0;
 
-const loader =
-    document.getElementById("loader");
-
-const loaderProgress =
-    document.getElementById("loaderProgress");
-
-const loaderPercent =
-    document.getElementById("loaderPercent");
-
+const loader = document.getElementById("loader");
+const loaderProgress = document.getElementById("loaderProgress");
+const loaderPercent = document.getElementById("loaderPercent");
 
 const loaderTimer = setInterval(() => {
-
-    progress += Math.floor(
-        Math.random() * 7
-    ) + 3;
-
+    progress += Math.floor(Math.random() * 7) + 3;
     if(progress >= 100){
-
         progress = 100;
-
         clearInterval(loaderTimer);
-
         setTimeout(() => {
-
             loader.classList.add("hide");
-
         },500);
-
     }
-
-    loaderProgress.style.width =
-        progress + "%";
-
-    loaderPercent.textContent =
-        progress + "%";
-
+    // requestAnimationFrame ensures smooth rendering of UI changes
+    requestAnimationFrame(() => {
+        loaderProgress.style.width = progress + "%";
+        loaderPercent.textContent = progress + "%";
+    });
 },50);
 
-
 /* =========================================
-   NAVBAR
+   NAVBAR (Throttled Scroll)
 ========================================= */
 
-const navbar =
-    document.getElementById("navbar");
+const navbar = document.getElementById("navbar");
+let isNavScrolled = false;
 
 window.addEventListener("scroll",() => {
-
-    if(window.scrollY > 50){
-
-        navbar.classList.add("scrolled");
-
-    }else{
-
-        navbar.classList.remove("scrolled");
-
+    const shouldBeScrolled = window.scrollY > 50;
+    if (shouldBeScrolled !== isNavScrolled) {
+        isNavScrolled = shouldBeScrolled;
+        requestAnimationFrame(() => {
+            if(isNavScrolled){
+                navbar.classList.add("scrolled");
+            }else{
+                navbar.classList.remove("scrolled");
+            }
+        });
     }
-
-});
-
+}, { passive: true });
 
 /* =========================================
    MOBILE NAV
 ========================================= */
 
-const mobileMenu =
-    document.getElementById("mobileMenu");
-
-const mobileNav =
-    document.getElementById("mobileNav");
-
+const mobileMenu = document.getElementById("mobileMenu");
+const mobileNav = document.getElementById("mobileNav");
 
 mobileMenu.addEventListener("click",() => {
-
     mobileNav.classList.toggle("show");
-
 });
 
-
-document.querySelectorAll(
-    ".mobile-nav a"
-).forEach(link => {
-
+document.querySelectorAll(".mobile-nav a").forEach(link => {
     link.addEventListener("click",() => {
-
         mobileNav.classList.remove("show");
-
     });
-
 });
-
 
 /* =========================================
-   SCROLL PROGRESS
+   SCROLL PROGRESS (Throttled)
 ========================================= */
 
-const scrollProgress =
-    document.getElementById("scroll-progress");
-
+const scrollProgress = document.getElementById("scroll-progress");
 
 window.addEventListener("scroll",() => {
-
-    const scrollTop =
-        document.documentElement.scrollTop;
-
-    const height =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-
-    const percentage =
-        (scrollTop / height) * 100;
-
-    scrollProgress.style.width =
-        percentage + "%";
-
-});
+    requestAnimationFrame(() => {
+        const scrollTop = document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const percentage = (scrollTop / height) * 100;
+        scrollProgress.style.width = percentage + "%";
+    });
+}, { passive: true });
 
 
 /* =========================================
    REVEAL
 ========================================= */
 
-const observer =
-    new IntersectionObserver(
+const observer = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add("visible");
+                // Stop observing once revealed to save CPU
+                observer.unobserve(entry.target); 
+            }
+        });
+    },
+    { threshold:.12 }
+);
 
-        entries => {
-
-            entries.forEach(entry => {
-
-                if(entry.isIntersecting){
-
-                    entry.target.classList.add(
-                        "visible"
-                    );
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold:.12
-        }
-
-    );
-
-
-document.querySelectorAll(
-    ".reveal"
-).forEach(element => {
-
+document.querySelectorAll(".reveal").forEach(element => {
     observer.observe(element);
-
 });
 
 
@@ -4218,59 +3306,32 @@ document.querySelectorAll(
    SKILL FILTER
 ========================================= */
 
-const filters =
-    document.querySelectorAll(".filter");
-
-const skills =
-    document.querySelectorAll(".skill");
-
+const filters = document.querySelectorAll(".filter");
+const skills = document.querySelectorAll(".skill");
 
 filters.forEach(filter => {
-
     filter.addEventListener("click",() => {
-
-        filters.forEach(f =>
-            f.classList.remove("active")
-        );
-
+        filters.forEach(f => f.classList.remove("active"));
         filter.classList.add("active");
-
-        const category =
-            filter.dataset.filter;
+        
+        const category = filter.dataset.filter;
 
         skills.forEach(skill => {
-
-            if(
-                category === "all" ||
-                skill.dataset.category === category
-            ){
-
+            if(category === "all" || skill.dataset.category === category){
                 skill.classList.remove("hidden");
-
                 requestAnimationFrame(() => {
-
                     skill.style.opacity = "1";
-                    skill.style.transform = "scale(1)";
-
+                    skill.style.transform = "scale(1) translateZ(0)";
                 });
-
             }else{
-
                 skill.style.opacity = "0";
-                skill.style.transform = "scale(.95)";
-
+                skill.style.transform = "scale(.95) translateZ(0)";
                 setTimeout(() => {
-
                     skill.classList.add("hidden");
-
-                },200);
-
+                },250);
             }
-
         });
-
     });
-
 });
 
 
@@ -4278,156 +3339,79 @@ filters.forEach(filter => {
    COUNTERS
 ========================================= */
 
-const counters =
-    document.querySelectorAll(
-        "[data-count]"
-    );
+const counters = document.querySelectorAll("[data-count]");
 
+const counterObserver = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            if(!entry.isIntersecting) return;
+            
+            const element = entry.target;
+            const target = parseFloat(element.dataset.count);
+            const decimal = parseInt(element.dataset.decimal || 0);
+            let current = 0;
+            const duration = 1200;
+            const start = performance.now();
 
-const counterObserver =
-    new IntersectionObserver(
+            function update(time){
+                const elapsed = time - start;
+                const progress = Math.min(elapsed / duration, 1);
+                current = target * progress;
+                element.textContent = current.toFixed(decimal);
 
-        entries => {
-
-            entries.forEach(entry => {
-
-                if(!entry.isIntersecting)
-                    return;
-
-                const element =
-                    entry.target;
-
-                const target =
-                    parseFloat(
-                        element.dataset.count
-                    );
-
-                const decimal =
-                    parseInt(
-                        element.dataset.decimal || 0
-                    );
-
-                let current = 0;
-
-                const duration = 1200;
-
-                const start =
-                    performance.now();
-
-                function update(time){
-
-                    const elapsed =
-                        time - start;
-
-                    const progress =
-                        Math.min(
-                            elapsed / duration,
-                            1
-                        );
-
-                    current =
-                        target * progress;
-
-                    element.textContent =
-                        current.toFixed(decimal);
-
-                    if(progress < 1){
-
-                        requestAnimationFrame(
-                            update
-                        );
-
-                    }
-
+                if(progress < 1){
+                    requestAnimationFrame(update);
                 }
-
-                requestAnimationFrame(update);
-
-                counterObserver.unobserve(
-                    element
-                );
-
-            });
-
-        }
-
-    );
-
-
-counters.forEach(counter =>
-    counterObserver.observe(counter)
+            }
+            requestAnimationFrame(update);
+            counterObserver.unobserve(element);
+        });
+    }
 );
+
+counters.forEach(counter => counterObserver.observe(counter));
 
 
 /* =========================================
-   CUSTOM CURSOR
+   CUSTOM CURSOR (Throttled using rAF)
 ========================================= */
 
-const cursorDot =
-    document.querySelector(".cursor-dot");
+const cursorDot = document.querySelector(".cursor-dot");
+const cursorRing = document.querySelector(".cursor-ring");
 
-const cursorRing =
-    document.querySelector(".cursor-ring");
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+let ringX = mouseX;
+let ringY = mouseY;
+let isDesktop = window.innerWidth > 800;
 
-
-let mouseX = 0;
-let mouseY = 0;
-
-let ringX = 0;
-let ringY = 0;
+window.addEventListener("resize", () => {
+    isDesktop = window.innerWidth > 800;
+}, {passive:true});
 
 
 window.addEventListener("mousemove",e => {
-
+    if(!isDesktop) return;
     mouseX = e.clientX;
     mouseY = e.clientY;
-
-    cursorDot.style.left =
-        mouseX + "px";
-
-    cursorDot.style.top =
-        mouseY + "px";
-
-});
-
+    
+    // Direct DOM update for dot to avoid any perceivable lag
+    cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%,-50%)`;
+}, {passive:true});
 
 function animateCursor(){
-
-    ringX +=
-        (mouseX - ringX) * .14;
-
-    ringY +=
-        (mouseY - ringY) * .14;
-
-    cursorRing.style.left =
-        ringX + "px";
-
-    cursorRing.style.top =
-        ringY + "px";
-
-    requestAnimationFrame(
-        animateCursor
-    );
-
+    if(isDesktop){
+        ringX += (mouseX - ringX) * 0.2; // Increased interpolation speed for responsiveness
+        ringY += (mouseY - ringY) * 0.2;
+        cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%,-50%)`;
+    }
+    requestAnimationFrame(animateCursor);
 }
-
 animateCursor();
 
-
-document.querySelectorAll(
-    "a,button,.project,.skill"
-).forEach(element => {
-
-    element.addEventListener(
-        "mouseenter",
-        () => cursorRing.classList.add("active")
-    );
-
-    element.addEventListener(
-        "mouseleave",
-        () => cursorRing.classList.remove("active")
-    );
-
+document.querySelectorAll("a,button,.project,.skill").forEach(element => {
+    element.addEventListener("mouseenter", () => cursorRing.classList.add("active"));
+    element.addEventListener("mouseleave", () => cursorRing.classList.remove("active"));
 });
 
 
@@ -4436,97 +3420,30 @@ document.querySelectorAll(
 ========================================= */
 
 const projectData = {
-
     ecommerce: {
-
-        label:
-            "PROJECT / 01 · E-COMMERCE / AI",
-
-        title:
-            "Mobile Shopping E-Commerce Website with AI Chatbot",
-
-        description:
-            "A mobile-oriented e-commerce concept combining product discovery, customer assistance, order tracking and AI-powered conversational interaction. The project reflects the goal of making shopping workflows more accessible through intelligent assistance.",
-
-        stack:[
-            "E-Commerce",
-            "AI Chatbot",
-            "Product Search",
-            "Recommendations",
-            "Order Tracking",
-            "Customer Support"
-        ]
-
+        label: "PROJECT / 01 · E-COMMERCE / AI",
+        title: "Mobile Shopping E-Commerce Website with AI Chatbot",
+        description: "A mobile-oriented e-commerce concept combining product discovery, customer assistance, order tracking and AI-powered conversational interaction. The project reflects the goal of making shopping workflows more accessible through intelligent assistance.",
+        stack:[ "E-Commerce", "AI Chatbot", "Product Search", "Recommendations", "Order Tracking", "Customer Support" ]
     },
-
-
     "mobile-ai": {
-
-        label:
-            "PROJECT / 02 · AI / RETAIL",
-
-        title:
-            "Zaid Mobile Shop AI Assistant",
-
-        description:
-            "A practical AI assistant concept designed around a mobile shop. The idea brings together new and used phones, accessories, repairs and customer assistance into one conversational experience.",
-
-        stack:[
-            "Python",
-            "Flask",
-            "Pandas",
-            "AI API",
-            "Chatbot",
-            "Retail Assistant"
-        ]
-
+        label: "PROJECT / 02 · AI / RETAIL",
+        title: "Zaid Mobile Shop AI Assistant",
+        description: "A practical AI assistant concept designed around a mobile shop. The idea brings together new and used phones, accessories, repairs and customer assistance into one conversational experience.",
+        stack:[ "Python", "Flask", "Pandas", "AI API", "Chatbot", "Retail Assistant" ]
     },
-
-
     analytics: {
-
-        label:
-            "PROJECT / 03 · DATA ANALYTICS",
-
-        title:
-            "Data Analytics Dashboard",
-
-        description:
-            "A data analytics workflow focused on turning raw information into clean datasets, useful KPIs, visual patterns and decision-support dashboards.",
-
-        stack:[
-            "Excel",
-            "SQL",
-            "Power BI",
-            "Data Cleaning",
-            "KPIs",
-            "Visualization"
-        ]
-
+        label: "PROJECT / 03 · DATA ANALYTICS",
+        title: "Data Analytics Dashboard",
+        description: "A data analytics workflow focused on turning raw information into clean datasets, useful KPIs, visual patterns and decision-support dashboards.",
+        stack:[ "Excel", "SQL", "Power BI", "Data Cleaning", "KPIs", "Visualization" ]
     },
-
-
     assistant: {
-
-        label:
-            "PROJECT / 04 · AI / DATA",
-
-        title:
-            "Conversational Shopping Assistant",
-
-        description:
-            "An intelligent shopping workflow concept where natural-language requirements can be transformed into product discovery and recommendation logic.",
-
-        stack:[
-            "NLP",
-            "Python",
-            "Database",
-            "Recommendations",
-            "Conversational AI"
-        ]
-
+        label: "PROJECT / 04 · AI / DATA",
+        title: "Conversational Shopping Assistant",
+        description: "An intelligent shopping workflow concept where natural-language requirements can be transformed into product discovery and recommendation logic.",
+        stack:[ "NLP", "Python", "Database", "Recommendations", "Conversational AI" ]
     }
-
 };
 
 
@@ -4534,466 +3451,168 @@ const projectData = {
    PROJECT MODAL
 ========================================= */
 
-const projectModal =
-    document.getElementById(
-        "projectModal"
-    );
+const projectModal = document.getElementById("projectModal");
+const modalClose = document.getElementById("modalClose");
+const modalLabel = document.getElementById("modalLabel");
+const modalTitle = document.getElementById("modalTitle");
+const modalDescription = document.getElementById("modalDescription");
+const modalStack = document.getElementById("modalStack");
 
-const modalClose =
-    document.getElementById(
-        "modalClose"
-    );
-
-const modalLabel =
-    document.getElementById(
-        "modalLabel"
-    );
-
-const modalTitle =
-    document.getElementById(
-        "modalTitle"
-    );
-
-const modalDescription =
-    document.getElementById(
-        "modalDescription"
-    );
-
-const modalStack =
-    document.getElementById(
-        "modalStack"
-    );
-
-
-document.querySelectorAll(
-    ".project"
-).forEach(project => {
-
+document.querySelectorAll(".project").forEach(project => {
     project.addEventListener("click",() => {
-
-        const data =
-            projectData[
-                project.dataset.project
-            ];
-
+        const data = projectData[project.dataset.project];
         if(!data) return;
 
-        modalLabel.textContent =
-            data.label;
+        modalLabel.textContent = data.label;
+        modalTitle.textContent = data.title;
+        modalDescription.textContent = data.description;
+        modalStack.innerHTML = data.stack.map(item => `<span class="project-tag">${item}</span>`).join("");
 
-        modalTitle.textContent =
-            data.title;
-
-        modalDescription.textContent =
-            data.description;
-
-        modalStack.innerHTML =
-            data.stack.map(
-                item =>
-                `<span class="project-tag">
-                    ${item}
-                </span>`
-            ).join("");
-
-        projectModal.classList.add(
-            "show"
-        );
-
-        document.body.style.overflow =
-            "hidden";
-
+        projectModal.classList.add("show");
+        document.body.style.overflow = "hidden";
     });
-
 });
 
-
 function closeModal(){
-
-    projectModal.classList.remove(
-        "show"
-    );
-
-    document.body.style.overflow =
-        "";
-
+    projectModal.classList.remove("show");
+    document.body.style.overflow = "";
 }
 
-
-modalClose.addEventListener(
-    "click",
-    closeModal
-);
-
-
-projectModal.addEventListener(
-    "click",
-    e => {
-
-        if(e.target === projectModal){
-
-            closeModal();
-
-        }
-
-    }
-);
-
-
-document.addEventListener(
-    "keydown",
-    e => {
-
-        if(e.key === "Escape"){
-
-            closeModal();
-
-        }
-
-    }
-);
+modalClose.addEventListener("click", closeModal);
+projectModal.addEventListener("click", e => {
+    if(e.target === projectModal) closeModal();
+});
+document.addEventListener("keydown", e => {
+    if(e.key === "Escape") closeModal();
+});
 
 
 /* =========================================
    COMMAND PALETTE
 ========================================= */
 
-const commandPalette =
-    document.getElementById(
-        "commandPalette"
-    );
-
-const commandInput =
-    document.getElementById(
-        "commandInput"
-    );
-
+const commandPalette = document.getElementById("commandPalette");
+const commandInput = document.getElementById("commandInput");
 
 function openCommand(){
-
-    commandPalette.classList.add(
-        "show"
-    );
-
-    setTimeout(() => {
-
-        commandInput.focus();
-
-    },100);
-
+    commandPalette.classList.add("show");
+    setTimeout(() => { commandInput.focus(); },100);
 }
-
 
 function closeCommand(){
-
-    commandPalette.classList.remove(
-        "show"
-    );
-
+    commandPalette.classList.remove("show");
     commandInput.value = "";
-
 }
 
-
-document.addEventListener(
-    "keydown",
-    e => {
-
-        if(
-            (e.ctrlKey || e.metaKey) &&
-            e.key.toLowerCase() === "k"
-        ){
-
-            e.preventDefault();
-
-            openCommand();
-
-        }
-
-        if(
-            e.key === "Escape" &&
-            commandPalette.classList.contains("show")
-        ){
-
-            closeCommand();
-
-        }
-
+document.addEventListener("keydown", e => {
+    if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k"){
+        e.preventDefault();
+        openCommand();
     }
-);
-
-
-commandPalette.addEventListener(
-    "click",
-    e => {
-
-        if(e.target === commandPalette){
-
-            closeCommand();
-
-        }
-
+    if(e.key === "Escape" && commandPalette.classList.contains("show")){
+        closeCommand();
     }
-);
+});
 
+commandPalette.addEventListener("click", e => {
+    if(e.target === commandPalette) closeCommand();
+});
 
-document.querySelectorAll(
-    ".command-item"
-).forEach(item => {
-
+document.querySelectorAll(".command-item").forEach(item => {
     item.addEventListener("click",() => {
-
-        const target =
-            item.dataset.target;
-
+        const target = item.dataset.target;
         if(target){
-
             closeCommand();
-
             setTimeout(() => {
-
-                document.querySelector(
-                    target
-                ).scrollIntoView({
-                    behavior:"smooth"
-                });
-
+                document.querySelector(target).scrollIntoView({ behavior:"smooth" });
             },100);
-
         }
-
     });
+});
 
+commandInput.addEventListener("input", () => {
+    const query = commandInput.value.toLowerCase().trim();
+    document.querySelectorAll(".command-item").forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(query) ? "flex" : "none";
+    });
 });
 
 
 /* =========================================
-   COMMAND SEARCH
+   THREE.JS HIGH-TECH DATA NETWORK (Optimized)
 ========================================= */
 
-commandInput.addEventListener(
-    "input",
-    () => {
-
-        const query =
-            commandInput.value
-            .toLowerCase()
-            .trim();
-
-        document.querySelectorAll(
-            ".command-item"
-        ).forEach(item => {
-
-            const text =
-                item.textContent
-                .toLowerCase();
-
-            item.style.display =
-                text.includes(query)
-                    ? "flex"
-                    : "none";
-
-        });
-
-    }
-);
-
-
-/* =========================================
-   THREE.JS HIGH-TECH DATA NETWORK
-========================================= */
-
-const canvas =
-    document.getElementById(
-        "webgl-canvas"
-    );
-
-
-const scene =
-    new THREE.Scene();
-
-
-const camera =
-    new THREE.PerspectiveCamera(
-        60,
-        window.innerWidth /
-        window.innerHeight,
-        .1,
-        1000
-    );
-
-
+const canvas = document.getElementById("webgl-canvas");
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 32;
 
+// Optimize renderer
+const renderer = new THREE.WebGLRenderer({
+    canvas:canvas,
+    alpha:true,
+    antialias:false, // Turned off antialiasing for better performance on large grids
+    powerPreference: "high-performance"
+});
 
-const renderer =
-    new THREE.WebGLRenderer({
-
-        canvas:canvas,
-
-        alpha:true,
-
-        antialias:true
-
-    });
-
-
-renderer.setPixelRatio(
-    Math.min(
-        window.devicePixelRatio,
-        2
-    )
-);
-
-
-renderer.setSize(
-    window.innerWidth,
-    window.innerHeight
-);
-
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Capped pixel ratio for performance
+renderer.setSize(window.innerWidth, window.innerHeight);
 
 /* ---------- PARTICLES ---------- */
 
-const particleCount =
-    window.innerWidth < 700
-        ? 280
-        : 650;
+// Reduced particle count for smoother frame rendering
+const particleCount = window.innerWidth < 700 ? 150 : 350; 
+const particlePositions = new Float32Array(particleCount * 3);
 
-
-const particlePositions =
-    new Float32Array(
-        particleCount * 3
-    );
-
-
-for(
-    let i=0;
-    i<particleCount*3;
-    i++
-){
-
-    particlePositions[i] =
-        (Math.random()-.5) * 90;
-
+for(let i=0; i<particleCount*3; i++){
+    particlePositions[i] = (Math.random()-.5) * 90;
 }
 
+const particleGeometry = new THREE.BufferGeometry();
+particleGeometry.setAttribute("position", new THREE.BufferAttribute(particlePositions, 3));
 
-const particleGeometry =
-    new THREE.BufferGeometry();
+const particleMaterial = new THREE.PointsMaterial({
+    color:0x60a5fa,
+    size: window.innerWidth < 700 ? .15 : .2,
+    transparent:true,
+    opacity:.4, // Lower opacity to reduce overdraw
+    depthWrite: false
+});
 
-
-particleGeometry.setAttribute(
-    "position",
-    new THREE.BufferAttribute(
-        particlePositions,
-        3
-    )
-);
-
-
-const particleMaterial =
-    new THREE.PointsMaterial({
-
-        color:0x60a5fa,
-
-        size:
-            window.innerWidth < 700
-            ? .09
-            : .12,
-
-        transparent:true,
-
-        opacity:.55
-
-    });
-
-
-const particles =
-    new THREE.Points(
-        particleGeometry,
-        particleMaterial
-    );
-
-
+const particles = new THREE.Points(particleGeometry, particleMaterial);
 scene.add(particles);
-
 
 /* ---------- CORE ---------- */
 
-const coreGeometry =
-    new THREE.IcosahedronGeometry(
-        9,
-        2
-    );
+// Reduced geometry complexity from Icosahedron to lower poly count
+const coreGeometry = new THREE.IcosahedronGeometry(9, 1); 
+const coreMaterial = new THREE.MeshBasicMaterial({
+    color:0x2563eb,
+    wireframe:true,
+    transparent:true,
+    opacity:.1,
+    depthWrite: false
+});
 
-
-const coreMaterial =
-    new THREE.MeshBasicMaterial({
-
-        color:0x2563eb,
-
-        wireframe:true,
-
-        transparent:true,
-
-        opacity:.13
-
-    });
-
-
-const core =
-    new THREE.Mesh(
-        coreGeometry,
-        coreMaterial
-    );
-
-
-core.position.set(
-    18,
-    2,
-    -15
-);
-
-
+const core = new THREE.Mesh(coreGeometry, coreMaterial);
+core.position.set(18, 2, -15);
 scene.add(core);
 
 
 /* ---------- SECOND CORE ---------- */
 
-const secondGeometry =
-    new THREE.IcosahedronGeometry(
-        5,
-        1
-    );
+const secondGeometry = new THREE.IcosahedronGeometry(5, 0); 
+const secondMaterial = new THREE.MeshBasicMaterial({
+    color:0x38bdf8,
+    wireframe:true,
+    transparent:true,
+    opacity:.06,
+    depthWrite: false
+});
 
-
-const secondMaterial =
-    new THREE.MeshBasicMaterial({
-
-        color:0x38bdf8,
-
-        wireframe:true,
-
-        transparent:true,
-
-        opacity:.08
-
-    });
-
-
-const secondCore =
-    new THREE.Mesh(
-        secondGeometry,
-        secondMaterial
-    );
-
-
-secondCore.position.set(
-    -17,
-    -5,
-    -10
-);
-
-
+const secondCore = new THREE.Mesh(secondGeometry, secondMaterial);
+secondCore.position.set(-17, -5, -10);
 scene.add(secondCore);
 
 
@@ -5001,208 +3620,99 @@ scene.add(secondCore);
 
 let targetMouseX = 0;
 let targetMouseY = 0;
-
 let smoothMouseX = 0;
 let smoothMouseY = 0;
 
-
-window.addEventListener(
-    "mousemove",
-    e => {
-
-        targetMouseX =
-            (e.clientX /
-             window.innerWidth) -
-            .5;
-
-        targetMouseY =
-            (e.clientY /
-             window.innerHeight) -
-            .5;
-
-    }
-);
+window.addEventListener("mousemove", e => {
+    if(!isDesktop) return; // Only track on desktop
+    targetMouseX = (e.clientX / window.innerWidth) - .5;
+    targetMouseY = (e.clientY / window.innerHeight) - .5;
+}, {passive:true});
 
 
-/* ---------- ANIMATION ---------- */
+/* ---------- ANIMATION LOOP (Optimized) ---------- */
 
-const clock =
-    new THREE.Clock();
-
+const clock = new THREE.Clock();
 
 function animate3D(){
+    requestAnimationFrame(animate3D);
 
-    requestAnimationFrame(
-        animate3D
-    );
+    const elapsed = clock.getElapsedTime();
 
-    const elapsed =
-        clock.getElapsedTime();
+    if(isDesktop) {
+        smoothMouseX += (targetMouseX - smoothMouseX) * .05;
+        smoothMouseY += (targetMouseY - smoothMouseY) * .05;
+    }
 
+    particles.rotation.y = elapsed * .01;
+    particles.rotation.x = elapsed * .005;
 
-    smoothMouseX +=
-        (targetMouseX -
-         smoothMouseX) * .03;
+    core.rotation.x = elapsed * .05;
+    core.rotation.y = elapsed * .08;
 
-    smoothMouseY +=
-        (targetMouseY -
-         smoothMouseY) * .03;
+    secondCore.rotation.x = -elapsed * .08;
+    secondCore.rotation.z = elapsed * .05;
 
+    if(isDesktop) {
+        core.position.x = 18 + smoothMouseX * 5;
+        core.position.y = 2 - smoothMouseY * 4;
+        secondCore.position.x = -17 - smoothMouseX * 3;
+        
+        camera.position.x += (smoothMouseX * 2 - camera.position.x) * .05;
+        camera.position.y += (-smoothMouseY * 2 - camera.position.y) * .05;
+    }
 
-    particles.rotation.y =
-        elapsed * .015;
-
-    particles.rotation.x =
-        elapsed * .005;
-
-
-    core.rotation.x =
-        elapsed * .08;
-
-    core.rotation.y =
-        elapsed * .12;
-
-
-    secondCore.rotation.x =
-        -elapsed * .12;
-
-    secondCore.rotation.z =
-        elapsed * .08;
-
-
-    core.position.x =
-        18 +
-        smoothMouseX * 5;
-
-    core.position.y =
-        2 -
-        smoothMouseY * 4;
-
-
-    secondCore.position.x =
-        -17 -
-        smoothMouseX * 3;
-
-
-    camera.position.x +=
-        (smoothMouseX * 2 -
-         camera.position.x) * .025;
-
-
-    camera.position.y +=
-        (-smoothMouseY * 2 -
-         camera.position.y) * .025;
-
-
-    camera.lookAt(
-        0,
-        0,
-        -5
-    );
-
-
-    renderer.render(
-        scene,
-        camera
-    );
-
+    camera.lookAt(0, 0, -5);
+    renderer.render(scene, camera);
 }
-
 
 animate3D();
 
-
 /* =========================================
-   RESIZE
+   RESIZE (Throttled)
 ========================================= */
 
-window.addEventListener(
-    "resize",
-    () => {
-
-        camera.aspect =
-            window.innerWidth /
-            window.innerHeight;
-
+let resizeTimeout;
+window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
-
-        renderer.setSize(
-            window.innerWidth,
-            window.innerHeight
-        );
-
-        renderer.setPixelRatio(
-            Math.min(
-                window.devicePixelRatio,
-                2
-            )
-        );
-
-    }
-);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }, 100);
+}, {passive:true});
 
 
 /* =========================================
-   CARD TILT
+   CARD TILT (Optimized with rAF)
 ========================================= */
 
-document.querySelectorAll(
-    ".glass"
-).forEach(card => {
+document.querySelectorAll(".glass").forEach(card => {
+    let ticking = false;
 
-    card.addEventListener(
-        "mousemove",
-        e => {
-
-            if(
-                window.innerWidth < 800
-            ) return;
-
-            const rect =
-                card.getBoundingClientRect();
-
-            const x =
-                e.clientX -
-                rect.left;
-
-            const y =
-                e.clientY -
-                rect.top;
-
-            const centerX =
-                rect.width / 2;
-
-            const centerY =
-                rect.height / 2;
-
-            const rotateX =
-                ((y-centerY) /
-                centerY) * -2;
-
-            const rotateY =
-                ((x-centerX) /
-                centerX) * 2;
-
-            card.style.transform =
-                `perspective(900px)
-                 rotateX(${rotateX}deg)
-                 rotateY(${rotateY}deg)
-                 translateY(-4px)`;
-
+    card.addEventListener("mousemove", e => {
+        if(window.innerWidth < 800) return;
+        
+        if(!ticking) {
+            requestAnimationFrame(() => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y-centerY) / centerY) * -2;
+                const rotateY = ((x-centerX) / centerX) * 2;
+                
+                card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0) translateY(-4px)`;
+                ticking = false;
+            });
+            ticking = true;
         }
-    );
+    });
 
-
-    card.addEventListener(
-        "mouseleave",
-        () => {
-
-            card.style.transform =
-                "";
-
-        }
-    );
-
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "translateZ(0)";
+    });
 });
 
 
@@ -5210,32 +3720,14 @@ document.querySelectorAll(
    SMOOTH ANCHOR FALLBACK
 ========================================= */
 
-document.querySelectorAll(
-    'a[href^="#"]'
-).forEach(anchor => {
-
-    anchor.addEventListener(
-        "click",
-        e => {
-
-            const target =
-                document.querySelector(
-                    anchor.getAttribute("href")
-                );
-
-            if(!target) return;
-
-            e.preventDefault();
-
-            target.scrollIntoView({
-                behavior:"smooth"
-            });
-
-        }
-    );
-
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", e => {
+        const target = document.querySelector(anchor.getAttribute("href"));
+        if(!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior:"smooth" });
+    });
 });
-
 
 </script>
 
