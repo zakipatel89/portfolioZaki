@@ -1,3735 +1,690 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Patel Mohammad Zaki — Engineering Intelligence & Resilient Systems</title>
-
-<meta name="description"
-content="Portfolio of Patel Mohammad Zaki — Final Year Computer Science Engineering student focused on Software Engineering, Data Analytics, Data Science and AI.">
-
-<meta name="theme-color" content="#030712">
-
-<!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Font Awesome -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-<!-- Three.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-<!-- GSAP -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
-<!-- Cinzel -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap"
-rel="stylesheet">
-
-
-<style>
-
-:root{
-    --bg:#020617;
-    --bg2:#030712;
-    --blue:#3b82f6;
-    --cyan:#38bdf8;
-    --ice:#bfdbfe;
-    --text:#e5edf9;
-    --muted:#8fa3bf;
-    --border:rgba(148,163,184,.13);
-}
-
-*{
-    font-family:'Cinzel','Times New Roman',serif;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    margin:0;
-    background: #020617;
-    color:var(--text);
-    overflow-x:hidden;
-    /* GPU Acceleration for the entire body rendering */
-    transform: translateZ(0); 
-}
-
-/* =========================================
-   CUSTOM SCROLLBAR
-========================================= */
-
-::-webkit-scrollbar{
-    width:7px;
-}
-
-::-webkit-scrollbar-track{
-    background:#020617;
-}
-
-::-webkit-scrollbar-thumb{
-    background:linear-gradient(#2563eb,#38bdf8);
-    border-radius:20px;
-}
-
-::selection{
-    background:#2563eb;
-    color:white;
-}
-
-/* =========================================
-   CURSOR
-========================================= */
-
-.cursor-dot{
-    position:fixed;
-    width:6px;
-    height:6px;
-    background:#93c5fd;
-    border-radius:50%;
-    pointer-events:none;
-    z-index:99999;
-    transform:translate(-50%,-50%) translateZ(0);
-    box-shadow:0 0 20px #3b82f6;
-    will-change: transform;
-}
-
-.cursor-ring{
-    position:fixed;
-    width:34px;
-    height:34px;
-    border:1px solid rgba(96,165,250,.6);
-    border-radius:50%;
-    pointer-events:none;
-    z-index:99998;
-    transform:translate(-50%,-50%) translateZ(0);
-    transition:
-        width .2s ease-out,
-        height .2s ease-out,
-        border-color .2s ease-out;
-    will-change: transform, width, height;
-}
-
-.cursor-ring.active{
-    width:55px;
-    height:55px;
-    border-color:#60a5fa;
-}
-
-/* =========================================
-   BACKGROUND (Optimized for 120Hz)
-========================================= */
-
-#webgl-canvas{
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100%;
-    z-index:-5;
-    pointer-events: none;
-    will-change: transform;
-    transform: translateZ(0);
-}
-
-.noise{
-    position:fixed;
-    inset:0;
-    z-index:-3;
-    pointer-events:none;
-    opacity:.035;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-    transform: translateZ(0);
-}
-
-.grid-bg{
-    position:fixed;
-    inset:0;
-    z-index:-4;
-    pointer-events:none;
-    background-image:
-        linear-gradient(rgba(59,130,246,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(59,130,246,.035) 1px,transparent 1px);
-    background-size:55px 55px;
-    mask-image:linear-gradient(to bottom, black, transparent 90%);
-    transform: translateZ(0);
-}
-
-.ambient{
-    position:fixed;
-    inset:0;
-    z-index:-6;
-    pointer-events:none;
-    background:
-        radial-gradient(circle at 15% 20%,rgba(37,99,235,.18),transparent 35%),
-        radial-gradient(circle at 85% 25%,rgba(14,165,233,.13),transparent 35%),
-        radial-gradient(circle at 50% 90%,rgba(79,70,229,.12),transparent 40%);
-    /* Reduced blur slightly to improve rendering speed */
-    filter:blur(60px);
-    transform: translateZ(0);
-    will-change: transform;
-}
-
-/* =========================================
-   LOADER
-========================================= */
-
-#loader{
-    position:fixed;
-    inset:0;
-    background:#01040b;
-    z-index:100000;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition: opacity .6s ease-out, visibility .6s ease-out;
-}
-
-#loader.hide{
-    opacity:0;
-    visibility:hidden;
-}
-
-.loader-inner{
-    width:min(500px,85vw);
-    text-align:center;
-    transform: translateZ(0);
-}
-
-.loader-symbol{
-    width:70px;
-    height:70px;
-    margin:auto;
-    position:relative;
-    will-change: transform;
-}
-
-.loader-symbol::before,
-.loader-symbol::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    border:1px solid rgba(96,165,250,.5);
-    transform:rotate(45deg);
-    animation:loaderRotate 3s linear infinite;
-    will-change: transform;
-}
-
-.loader-symbol::after{
-    transform:rotate(-45deg);
-    border-color:rgba(56,189,248,.25);
-    animation-direction:reverse;
-}
-
-@keyframes loaderRotate{
-    to{ transform:rotate(405deg); }
-}
-
-.loader-name{
-    margin-top:35px;
-    font-size:clamp(22px,4vw,40px);
-    letter-spacing:.22em;
-    font-weight:800;
-}
-
-.loader-status{
-    margin-top:10px;
-    color:#60a5fa;
-    font-size:10px;
-    letter-spacing:.35em;
-}
-
-.loader-track{
-    margin:28px auto 0;
-    height:2px;
-    width:100%;
-    background:rgba(255,255,255,.08);
-}
-
-.loader-progress{
-    height:100%;
-    width:0%;
-    background:linear-gradient(90deg,#2563eb,#38bdf8,#bfdbfe);
-    box-shadow:0 0 20px #3b82f6;
-    will-change: width;
-}
-
-/* =========================================
-   NAVIGATION
-========================================= */
-
-.navbar{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    height:78px;
-    z-index:500;
-    background:rgba(2,6,23,.55);
-    /* Optimized Blur for Nav */
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(255,255,255,.06);
-    transition:background-color .3s ease, box-shadow .3s ease;
-    transform: translateZ(0);
-}
-
-.navbar.scrolled{
-    background:rgba(2,6,23,.92);
-    box-shadow:0 15px 50px rgba(0,0,0,.3);
-}
-
-.nav-container{
-    max-width:1250px;
-    height:100%;
-    margin:auto;
-    padding:0 25px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:13px;
-    color:white;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:800;
-    letter-spacing:.15em;
-}
-
-.brand-mark{
-    width:12px;
-    height:12px;
-    transform:rotate(45deg);
-    background:#60a5fa;
-    box-shadow: 0 0 10px #3b82f6, 0 0 30px rgba(59,130,246,.5);
-}
-
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:28px;
-}
-
-.nav-links a{
-    color:#8fa3bf;
-    text-decoration:none;
-    font-size:10px;
-    letter-spacing:.12em;
-    transition:color .25s ease;
-    position:relative;
-}
-
-.nav-links a::after{
-    content:"";
-    position:absolute;
-    left:0;
-    right:100%;
-    bottom:-8px;
-    height:1px;
-    background:#60a5fa;
-    transition:right .3s ease-out;
-}
-
-.nav-links a:hover{ color:white; }
-.nav-links a:hover::after{ right:0; }
-
-.nav-resume{
-    padding:10px 15px;
-    border:1px solid rgba(96,165,250,.35);
-    background:rgba(37,99,235,.08);
-    color:white;
-    text-decoration:none;
-    font-size:9px;
-    letter-spacing:.1em;
-    transition:all .3s ease;
-}
-
-.nav-resume:hover{
-    background:rgba(37,99,235,.22);
-    border-color:#60a5fa;
-    box-shadow:0 0 25px rgba(59,130,246,.2);
-}
-
-.mobile-menu{
-    display:none;
-    color:white;
-    background:none;
-    border:0;
-    font-size:22px;
-}
-
-/* =========================================
-   SCROLL PROGRESS
-========================================= */
-
-#scroll-progress{
-    position:fixed;
-    top:0;
-    left:0;
-    height:2px;
-    width:0%;
-    z-index:10000;
-    background:linear-gradient(90deg,#2563eb,#38bdf8,#bfdbfe);
-    box-shadow:0 0 12px #3b82f6;
-    will-change: width;
-    transform: translateZ(0);
-}
-
-/* =========================================
-   GLOBAL
-========================================= */
-
-.section{
-    max-width:1250px;
-    margin:auto;
-    padding:125px 25px;
-}
-
-.section-label{
-    color:#60a5fa;
-    font-size:10px;
-    letter-spacing:.32em;
-    font-weight:700;
-}
-
-.section-title{
-    margin-top:10px;
-    font-size:clamp(32px,5vw,58px);
-    line-height:1.05;
-    font-weight:800;
-    color:white;
-    letter-spacing:.02em;
-}
-
-.section-line{
-    margin-top:20px;
-    width:90px;
-    height:2px;
-    background:linear-gradient(90deg,#3b82f6,transparent);
-}
-
-.muted{ color:#8fa3bf; }
-
-/* =========================================
-   HERO
-========================================= */
-
-.hero{
-    min-height:100vh;
-    max-width:1250px;
-    margin:auto;
-    padding: 155px 25px 90px;
-    display:grid;
-    grid-template-columns: minmax(0,1.35fr) minmax(350px,.65fr);
-    align-items:center;
-    gap:70px;
-}
-
-.hero-kicker{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    border:1px solid rgba(96,165,250,.25);
-    background:rgba(30,64,175,.08);
-    padding:9px 14px;
-    font-size:9px;
-    letter-spacing:.25em;
-    color:#93c5fd;
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
-    transform: translateZ(0);
-}
-
-.status-dot{
-    width:7px;
-    height:7px;
-    background:#60a5fa;
-    border-radius:50%;
-    box-shadow:0 0 12px #3b82f6;
-    animation:pulse 1.8s infinite;
-    will-change: transform, opacity;
-}
-
-@keyframes pulse{
-    50%{ opacity:.35; transform:scale(.7); }
-}
-
-.hero h1{
-    margin:28px 0 0;
-    font-size: clamp(43px,7vw,88px);
-    line-height:.99;
-    font-weight:900;
-    letter-spacing:-.03em;
-}
-
-.hero h1 span{
-    background: linear-gradient(110deg, #ffffff 10%, #93c5fd 42%, #38bdf8 70%, #ffffff 90%);
-    background-size:220% auto;
-    color:transparent;
-    background-clip:text;
-    -webkit-background-clip:text;
-    animation:textShimmer 6s linear infinite;
-    will-change: background-position;
-}
-
-@keyframes textShimmer{
-    to{ background-position:220% center; }
-}
-
-.hero-subtitle{
-    margin-top:22px;
-    font-size: clamp(14px,1.5vw,18px);
-    line-height:1.8;
-    max-width:730px;
-    color:#a8bad2;
-}
-
-.hero-description{
-    margin-top:25px;
-    max-width:690px;
-    color:#7f93ae;
-    font-size:13px;
-    line-height:1.9;
-}
-
-.hero-actions{
-    margin-top:34px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:13px;
-}
-
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    padding:14px 21px;
-    text-decoration:none;
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:.16em;
-    transition:transform .3s ease, box-shadow .3s ease, background-color .3s ease;
-    position:relative;
-    overflow:hidden;
-    will-change: transform;
-}
-
-.btn-primary{
-    background:white;
-    color:#020617;
-}
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-    box-shadow:0 15px 40px rgba(255,255,255,.12);
-}
-
-.btn-outline{
-    border:1px solid rgba(148,163,184,.25);
-    background:rgba(255,255,255,.03);
-    color:white;
-}
-
-.btn-outline:hover{
-    border-color:#60a5fa;
-    background:rgba(37,99,235,.1);
-    transform:translateY(-3px);
-}
-
-.hero-socials{
-    display:flex;
-    gap:18px;
-    margin-top:34px;
-    padding-top:22px;
-    border-top:1px solid rgba(255,255,255,.07);
-    max-width:600px;
-}
-
-.hero-socials a{
-    color:#64748b;
-    font-size:17px;
-    transition:color .3s, transform .3s;
-    will-change: transform;
-}
-
-.hero-socials a:hover{
-    color:#60a5fa;
-    transform:translateY(-3px);
-}
-
-/* =========================================
-   HERO VISUAL
-========================================= */
-
-.hero-visual{
-    position:relative;
-    display:flex;
-    justify-content:center;
-}
-
-.profile-frame{
-    position:relative;
-    width:min(370px,80vw);
-    aspect-ratio:4/5;
-    will-change: transform;
-    transform: translateZ(0);
-}
-
-.profile-frame::before{
-    content:"";
-    position:absolute;
-    inset:-12px;
-    border:1px solid rgba(96,165,250,.25);
-    transform:rotate(4deg) translateZ(0);
-    transition:transform .4s ease-out, border-color .4s ease;
-    will-change: transform;
-}
-
-.profile-frame::after{
-    content:"";
-    position:absolute;
-    inset:-24px;
-    border:1px solid rgba(56,189,248,.10);
-    transform:rotate(-5deg) translateZ(0);
-    transition:transform .4s ease-out;
-    will-change: transform;
-}
-
-.profile-frame:hover::before{
-    transform:rotate(0deg) scale(1.03) translateZ(0);
-    border-color:rgba(96,165,250,.5);
-}
-
-.profile-frame:hover::after{
-    transform:rotate(0deg) scale(1.06) translateZ(0);
-}
-
-.profile-image{
-    position:absolute;
-    inset:0;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.16);
-    background:#07101f;
-    z-index:2;
-    transform: translateZ(0);
-}
-
-.profile-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:top;
-    filter: brightness(.92) contrast(1.08) saturate(.9);
-    transition:transform .6s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform;
-}
-
-.profile-frame:hover img{
-    transform:scale(1.05);
-}
-
-.profile-overlay{
-    position:absolute;
-    inset:0;
-    background: linear-gradient(to bottom, transparent 40%, rgba(2,6,23,.9));
-    z-index:3;
-}
-
-.profile-info{
-    position:absolute;
-    bottom:20px;
-    left:20px;
-    right:20px;
-    z-index:4;
-}
-
-.profile-info small{
-    color:#60a5fa;
-    font-size:8px;
-    letter-spacing:.3em;
-}
-
-.profile-info h3{
-    margin-top:6px;
-    color:white;
-    font-size:18px;
-}
-
-.profile-corner{
-    position:absolute;
-    z-index:5;
-    width:25px;
-    height:25px;
-    border-color:#60a5fa;
-}
-.corner-tl{ top:-1px; left:-1px; border-top:2px solid; border-left:2px solid; }
-.corner-br{ bottom:-1px; right:-1px; border-bottom:2px solid; border-right:2px solid; }
-
-/* =========================================
-   FLOATING STATUS
-========================================= */
-
-.float-status{
-    position:absolute;
-    background:rgba(2,6,23,.8);
-    border:1px solid rgba(96,165,250,.2);
-    /* Optimized Blur for smaller components */
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
-    padding:12px 15px;
-    z-index:10;
-    box-shadow:0 15px 50px rgba(0,0,0,.3);
-    animation:float 5s ease-in-out infinite;
-    will-change: transform;
-}
-
-.float-status.one{ top:12%; right:-35px; }
-.float-status.two{ bottom:12%; left:-45px; animation-delay:-2s; }
-
-.float-status span{
-    display:block;
-    color:#64748b;
-    font-size:7px;
-    letter-spacing:.18em;
-}
-
-.float-status strong{
-    display:block;
-    color:white;
-    font-size:11px;
-    margin-top:5px;
-}
-
-@keyframes float{
-    50%{ transform:translateY(-12px); }
-}
-
-/* =========================================
-   HERO METRICS
-========================================= */
-
-.metrics{
-    max-width:1250px;
-    margin:-25px auto 0;
-    padding:0 25px 70px;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-}
-
-.metric{
-    padding:22px;
-    border:1px solid rgba(148,163,184,.10);
-    background:rgba(8,15,31,.55);
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
-    transition:transform .3s ease, border-color .3s ease, background-color .3s ease;
-    will-change: transform;
-    transform: translateZ(0);
-}
-
-.metric:hover{
-    border-color:rgba(96,165,250,.3);
-    transform:translateY(-5px);
-    background:rgba(15,23,42,.7);
-}
-
-.metric-value{
-    font-size:26px;
-    font-weight:800;
-    color:white;
-}
-
-.metric-label{
-    margin-top:5px;
-    color:#64748b;
-    font-size:8px;
-    letter-spacing:.18em;
-}
-
-/* =========================================
-   GLASS CARD (Optimized)
-========================================= */
-
-.glass{
-    background: linear-gradient(145deg, rgba(15,23,42,.72), rgba(3,7,18,.62));
-    border:1px solid rgba(148,163,184,.11);
-    box-shadow: 0 25px 80px rgba(0,0,0,.25), inset 0 1px rgba(255,255,255,.05);
-    /* Heavy Blur Optimization - reduced radius */
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-    transition: transform .3s ease-out, border-color .3s ease-out, box-shadow .3s ease-out;
-    will-change: transform;
-    transform: translateZ(0);
-}
-
-.glass:hover{
-    border-color:rgba(96,165,250,.32);
-    box-shadow: 0 30px 90px rgba(0,0,0,.35), 0 0 35px rgba(37,99,235,.08), inset 0 1px rgba(255,255,255,.08);
-}
-
-/* =========================================
-   ABOUT
-========================================= */
-
-.about-grid{
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:25px;
-    margin-top:55px;
-}
-
-.about-copy{ padding:35px; }
-
-.about-copy p{
-    color:#91a4bd;
-    font-size:13px;
-    line-height:2;
-    margin:0 0 20px;
-}
-
-.about-copy p:last-child{ margin-bottom:0; }
-
-.identity-card{ padding:30px; }
-
-.identity-row{
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-    padding:15px 0;
-    border-bottom:1px solid rgba(255,255,255,.06);
-    font-size:10px;
-}
-
-.identity-row:last-child{ border-bottom:0; }
-
-.identity-row span:first-child{ color:#64748b; letter-spacing:.12em; }
-.identity-row span:last-child{ color:white; text-align:right; }
-.identity-row .highlight{ color:#60a5fa !important; }
-
-/* =========================================
-   JOURNEY TIMELINE
-========================================= */
-
-.timeline{
-    margin-top:60px;
-    position:relative;
-}
-
-.timeline::before{
-    content:"";
-    position:absolute;
-    left:20px;
-    top:0;
-    bottom:0;
-    width:1px;
-    background: linear-gradient(to bottom, #3b82f6, rgba(59,130,246,.05));
-}
-
-.timeline-item{
-    position:relative;
-    padding-left:70px;
-    margin-bottom:48px;
-}
-
-.timeline-dot{
-    position:absolute;
-    left:12px;
-    top:6px;
-    width:17px;
-    height:17px;
-    border:2px solid #60a5fa;
-    background:#020617;
-    transform:rotate(45deg);
-    box-shadow: 0 0 15px rgba(59,130,246,.5);
-}
-
-.timeline-card{ padding:25px; }
-.timeline-year{ color:#60a5fa; font-size:9px; letter-spacing:.25em; }
-.timeline-card h3{ margin-top:8px; color:white; font-size:20px; }
-.timeline-card p{ margin-top:10px; color:#7f93ae; font-size:12px; line-height:1.8; }
-
-/* =========================================
-   SKILLS
-========================================= */
-
-.skills-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:end;
-    gap:25px;
-}
-
-.filter-bar{
-    display:flex;
-    flex-wrap:wrap;
-    gap:5px;
-    padding:5px;
-    border:1px solid rgba(255,255,255,.08);
-    background:rgba(2,6,23,.55);
-    border-radius:10px;
-    transform: translateZ(0);
-}
-
-.filter{
-    border:0;
-    background:transparent;
-    color:#64748b;
-    padding:8px 12px;
-    font-family:inherit;
-    font-size:8px;
-    letter-spacing:.08em;
-    cursor:pointer;
-    transition:background-color .2s, color .2s;
-}
-
-.filter.active,
-.filter:hover{
-    background:rgba(37,99,235,.18);
-    color:white;
-}
-
-.skills-grid{
-    margin-top:45px;
-    display:grid;
-    grid-template-columns: repeat(4,minmax(0,1fr));
-    gap:12px;
-}
-
-.skill{
-    padding:18px;
-    display:flex;
-    align-items:center;
-    gap:13px;
-    cursor:default;
-    transition: opacity .3s ease-out, transform .3s ease-out, border-color .3s ease;
-    will-change: transform, opacity;
-}
-
-.skill.hidden{ display:none; }
-
-.skill-icon{
-    width:43px;
-    height:43px;
-    flex:none;
-    display:grid;
-    place-items:center;
-    background:rgba(30,64,175,.14);
-    border:1px solid rgba(96,165,250,.15);
-    color:#60a5fa;
-    font-size:18px;
-}
-
-.skill h4{ color:white; font-size:11px; }
-.skill small{ color:#64748b; font-size:7px; letter-spacing:.12em; }
-
-/* =========================================
-   PROJECTS
-========================================= */
-
-.project-grid{
-    margin-top:55px;
-    display:grid;
-    grid-template-columns: repeat(2,minmax(0,1fr));
-    gap:20px;
-}
-
-.project{
-    position:relative;
-    overflow:hidden;
-    padding:30px;
-    min-height:360px;
-    cursor:pointer;
-}
-
-.project::before{
-    content:"";
-    position:absolute;
-    width:250px;
-    height:250px;
-    right:-100px;
-    top:-100px;
-    border-radius:50%;
-    background: radial-gradient(circle, rgba(59,130,246,.18), transparent 65%);
-    transition:transform .4s ease-out;
-    will-change: transform;
-}
-
-.project:hover::before{ transform:scale(1.5); }
-
-.project-number{ color:#3b82f6; font-size:9px; letter-spacing:.25em; }
-.project-category{ color:#64748b; font-size:8px; letter-spacing:.14em; margin-top:10px; }
-.project h3{ margin-top:20px; color:white; font-size: clamp(22px,3vw,30px); line-height:1.15; }
-.project p{ margin-top:15px; color:#8194ad; font-size:11px; line-height:1.9; max-width:560px; }
-
-.project-tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-    margin-top:22px;
-}
-
-.project-tag{
-    padding:6px 8px;
-    border:1px solid rgba(255,255,255,.08);
-    color:#a8bad2;
-    background:rgba(255,255,255,.025);
-    font-size:7px;
-}
-
-.project-footer{
-    position:absolute;
-    left:30px;
-    right:30px;
-    bottom:25px;
-    padding-top:17px;
-    border-top:1px solid rgba(255,255,255,.07);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.project-open{ color:#60a5fa; font-size:8px; letter-spacing:.15em; }
-
-/* =========================================
-   EXPERIENCE
-========================================= */
-
-.experience-grid{
-    margin-top:50px;
-    display:grid;
-    grid-template-columns: repeat(3,minmax(0,1fr));
-    gap:15px;
-}
-
-.experience{ padding:25px; min-height:220px; }
-.exp-label{ color:#60a5fa; font-size:8px; letter-spacing:.2em; }
-.experience h3{ color:white; margin-top:12px; font-size:16px; }
-.experience p{ color:#7f93ae; margin-top:12px; font-size:10px; line-height:1.8; }
-
-.exp-link{
-    display:inline-block;
-    margin-top:18px;
-    color:#93c5fd;
-    font-size:8px;
-    text-decoration:none;
-    transition:color .2s;
-}
-.exp-link:hover{ color:white; }
-
-/* =========================================
-   CERTIFICATIONS
-========================================= */
-
-.cert-grid{
-    margin-top:50px;
-    display:grid;
-    grid-template-columns: repeat(4,minmax(0,1fr));
-    gap:13px;
-}
-
-.cert{
-    padding:22px;
-    min-height:160px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-}
-
-.cert-icon{ color:#60a5fa; font-size:18px; }
-.cert small{ color:#64748b; font-size:7px; letter-spacing:.16em; }
-.cert h3{ color:white; font-size:11px; line-height:1.5; margin-top:6px; }
-
-.cert a{
-    color:#93c5fd;
-    font-size:8px;
-    text-decoration:none;
-    transition:color .2s;
-}
-.cert a:hover{ color:white; }
-
-/* =========================================
-   TERMINAL
-========================================= */
-
-.terminal{
-    margin-top:55px;
-    border:1px solid rgba(96,165,250,.18);
-    background:#02040a;
-    box-shadow: 0 30px 100px rgba(0,0,0,.4), 0 0 60px rgba(37,99,235,.05);
-    overflow:hidden;
-    transform: translateZ(0);
-}
-
-.terminal-head{
-    height:38px;
-    display:flex;
-    align-items:center;
-    gap:7px;
-    padding:0 15px;
-    border-bottom:1px solid rgba(255,255,255,.06);
-    background:#070b14;
-}
-
-.terminal-dot{ width:8px; height:8px; border-radius:50%; background:#334155; }
-.terminal-title{ margin-left:10px; color:#64748b; font-size:8px; letter-spacing:.12em; }
-.terminal-body{ padding:25px; color:#8fb9df; font-family:"Courier New", monospace; font-size:11px; line-height:2; }
-.terminal-body span{ color:#60a5fa; }
-.terminal-cursor{ display:inline-block; width:7px; height:14px; background:#60a5fa; vertical-align:middle; animation:blink 1s infinite; }
-@keyframes blink{ 50%{opacity:0} }
-
-/* =========================================
-   CONTACT
-========================================= */
-
-.contact-box{
-    margin-top:55px;
-    padding:60px 40px;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-}
-
-.contact-box::before{
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    background: radial-gradient(circle, rgba(37,99,235,.12), transparent 65%);
-    pointer-events:none;
-}
-
-.contact-title{ position:relative; font-size: clamp(35px,6vw,70px); font-weight:900; color:white; }
-.contact-text{ position:relative; max-width:620px; margin:20px auto 0; color:#8194ad; font-size:12px; line-height:1.9; }
-
-.contact-grid{
-    position:relative;
-    margin-top:35px;
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-.contact-link{
-    padding:13px 18px;
-    color:#a8bad2;
-    border:1px solid rgba(255,255,255,.08);
-    text-decoration:none;
-    font-size:8px;
-    letter-spacing:.1em;
-    background:rgba(255,255,255,.02);
-    transition:transform .3s ease, border-color .3s ease, color .3s ease;
-    will-change: transform;
-}
-
-.contact-link:hover{
-    color:white;
-    border-color:#60a5fa;
-    transform:translateY(-3px);
-}
-
-/* =========================================
-   FOOTER
-========================================= */
-
-footer{
-    padding:40px 25px;
-    text-align:center;
-    border-top:1px solid rgba(255,255,255,.06);
-    color:#475569;
-    font-size:8px;
-    letter-spacing:.12em;
-}
-
-/* =========================================
-   MODAL
-========================================= */
-
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.78);
-    backdrop-filter:blur(8px);
-    z-index:9000;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    transform: translateZ(0);
-}
-
-.modal.show{ display:flex; }
-
-.modal-card{
-    width:min(720px,100%);
-    max-height:90vh;
-    overflow:auto;
-    padding:35px;
-    background: linear-gradient(145deg, rgba(15,23,42,.97), rgba(2,6,23,.98));
-    border:1px solid rgba(96,165,250,.25);
-    box-shadow: 0 40px 120px rgba(0,0,0,.7), 0 0 60px rgba(37,99,235,.1);
-    position:relative;
-}
-
-.modal-close{
-    position:absolute;
-    top:15px;
-    right:18px;
-    width:34px;
-    height:34px;
-    border:1px solid rgba(255,255,255,.1);
-    background:rgba(255,255,255,.03);
-    color:#94a3b8;
-    cursor:pointer;
-    transition:color .2s, border-color .2s;
-}
-
-.modal-close:hover{ color:white; border-color:#60a5fa; }
-.modal-label{ color:#60a5fa; font-size:8px; letter-spacing:.25em; }
-.modal-title{ margin-top:12px; font-size: clamp(28px,5vw,46px); color:white; line-height:1.1; }
-.modal-description{ margin-top:20px; color:#8fa3bf; font-size:12px; line-height:1.9; }
-.modal-stack{ margin-top:25px; display:flex; flex-wrap:wrap; gap:7px; }
-
-/* =========================================
-   COMMAND PALETTE
-========================================= */
-
-.command{
-    position:fixed;
-    inset:0;
-    z-index:9500;
-    background:rgba(0,0,0,.72);
-    backdrop-filter:blur(8px);
-    display:none;
-    align-items:flex-start;
-    justify-content:center;
-    padding-top:14vh;
-    transform: translateZ(0);
-}
-
-.command.show{ display:flex; }
-
-.command-box{
-    width:min(650px,90vw);
-    border:1px solid rgba(96,165,250,.25);
-    background:#050a14;
-    box-shadow:0 30px 100px rgba(0,0,0,.6);
-    overflow:hidden;
-}
-
-.command-input{
-    width:100%;
-    border:0;
-    outline:0;
-    padding:20px;
-    background:transparent;
-    color:white;
-    font-family:inherit;
-    font-size:12px;
-}
-
-.command-items{ border-top:1px solid rgba(255,255,255,.06); }
-
-.command-item{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    width:100%;
-    padding:14px 20px;
-    border:0;
-    background:transparent;
-    color:#8fa3bf;
-    font-family:inherit;
-    text-align:left;
-    cursor:pointer;
-    font-size:9px;
-    transition:background-color .2s, color .2s;
-}
-
-.command-item:hover{
-    color:white;
-    background:rgba(37,99,235,.1);
-}
-
-/* =========================================
-   REVEAL ANIMATION (Optimized)
-========================================= */
-
-.reveal{
-    opacity:0;
-    transform:translateY(25px) translateZ(0);
-    transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
-    will-change: opacity, transform;
-}
-
-.reveal.visible{
-    opacity:1;
-    transform:translateY(0) translateZ(0);
-}
-
-/* =========================================
-   RESPONSIVE
-========================================= */
-
-@media(max-width:1050px){
-    .nav-links{ gap:15px; }
-    .hero{ grid-template-columns:1fr; text-align:center; }
-    .hero-description{ margin-left:auto; margin-right:auto; }
-    .hero-actions, .hero-socials{ justify-content:center; }
-    .hero-visual{ order:-1; }
-    .float-status.one{ right:0; }
-    .float-status.two{ left:0; }
-    .metrics{ grid-template-columns:repeat(2,1fr); }
-    .about-grid{ grid-template-columns:1fr; }
-    .skills-grid{ grid-template-columns:repeat(3,1fr); }
-    .cert-grid{ grid-template-columns:repeat(2,1fr); }
-}
-
-@media(max-width:800px){
-    .nav-links, .nav-resume{ display:none; }
-    .mobile-menu{ display:block; }
-    .mobile-nav{
-        position:absolute;
-        top:78px;
-        left:15px;
-        right:15px;
-        display:none;
-        padding:15px;
-        background:rgba(2,6,23,.96);
-        border:1px solid rgba(255,255,255,.08);
-        box-shadow:0 20px 50px rgba(0,0,0,.5);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#03050c">
+  <meta name="description" content="Patel Mohammad Zaki — Final-year Computer Science Engineering student focused on Data Analytics, Data Science, AI, Cloud Computing, DevOps fundamentals and software systems.">
+  <title>Patel Mohammad Zaki | Data • AI • Engineering</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#03050c;
+      --panel:rgba(9,14,28,.68);
+      --line:rgba(148,163,184,.13);
+      --blue:#60a5fa;
+      --cyan:#22d3ee;
+      --text:#e8eef8;
+      --muted:#94a3b8;
     }
-    .mobile-nav.show{ display:block; }
-    .mobile-nav a{
-        display:block;
-        padding:14px;
-        color:#94a3b8;
-        text-decoration:none;
-        border-bottom:1px solid rgba(255,255,255,.05);
-        font-size:9px;
+    *{font-family:'Cinzel','Times New Roman',serif;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;background:
+      radial-gradient(circle at 50% -10%,rgba(37,99,235,.18),transparent 38%),
+      radial-gradient(circle at 100% 55%,rgba(34,211,238,.07),transparent 30%),
+      var(--bg);color:var(--text);overflow-x:hidden
     }
-    .hero{ padding-top:125px; }
-    .hero h1{ font-size:clamp(40px,12vw,70px); }
-    .skills-head{ flex-direction:column; align-items:flex-start; }
-    .skills-grid{ grid-template-columns:repeat(2,1fr); }
-    .project-grid{ grid-template-columns:1fr; }
-    .experience-grid{ grid-template-columns:1fr; }
-    .cert-grid{ grid-template-columns:repeat(2,1fr); }
-}
-
-@media(max-width:550px){
-    .section{ padding:90px 18px; }
-    .hero{ padding-left:18px; padding-right:18px; }
-    .metrics{ grid-template-columns:1fr 1fr; padding-left:18px; padding-right:18px; }
-    .metric{ padding:15px; }
-    .metric-value{ font-size:20px; }
-    .skills-grid{ grid-template-columns:1fr; }
-    .cert-grid{ grid-template-columns:1fr; }
-    .profile-frame{ width:min(300px,80vw); }
-    .float-status{ display:none; }
-    .about-copy, .identity-card, .project, .contact-box{ padding:24px; }
-    .project-footer{ left:24px; right:24px; }
-    .timeline-item{ padding-left:55px; }
-    .timeline::before{ left:15px; }
-    .timeline-dot{ left:7px; }
-    .cursor-dot, .cursor-ring{ display:none; }
-}
-
-/* =========================================
-   REDUCED MOTION
-========================================= */
-
-@media(prefers-reduced-motion:reduce){
-    *, *::before, *::after{
-        animation-duration:.01ms !important;
-        animation-iteration-count:1 !important;
-        scroll-behavior:auto !important;
-        transition-duration:.01ms !important;
+    body::before{
+      content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.04;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")
     }
-}
-
-</style>
+    ::selection{background:#2563eb;color:white}
+    ::-webkit-scrollbar{width:8px}
+    ::-webkit-scrollbar-track{background:#02040a}
+    ::-webkit-scrollbar-thumb{background:linear-gradient(#2563eb,#22d3ee);border-radius:20px}
+    .small-caps{font-variant:small-caps;letter-spacing:.1em}
+    .justified{text-align:justify;text-justify:inter-word;line-height:1.9}
+    #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:1000;background:linear-gradient(90deg,#2563eb,#60a5fa,#22d3ee);box-shadow:0 0 14px #3b82f6}
+    #webgl{position:fixed;inset:0;width:100%;height:100%;z-index:-5;pointer-events:none}
+    .grid-bg{position:fixed;inset:0;z-index:-4;pointer-events:none;opacity:.42;background-image:linear-gradient(rgba(96,165,250,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(96,165,250,.035) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
+    .spotlight{position:fixed;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),rgba(59,130,246,.10),transparent 60%)}
+    .glass{
+      background:linear-gradient(145deg,rgba(15,23,42,.72),rgba(5,10,21,.56));
+      border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+      box-shadow:0 18px 48px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .glass:hover{border-color:rgba(96,165,250,.42);box-shadow:0 24px 80px rgba(30,64,175,.18),inset 0 1px 0 rgba(255,255,255,.08)}
+    .card{
+      transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s,background .35s
+    }
+    .tilt{transform-style:preserve-3d}
+    .tilt::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.05),transparent 70%);transform:translateX(-120%);transition:transform .8s}
+    .tilt:hover::after{transform:translateX(120%)}
+    .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+    .reveal.show{opacity:1;transform:none}
+    .hero-title span{display:inline-block;background:linear-gradient(110deg,#fff 15%,#bfdbfe 48%,#60a5fa 72%,#fff 95%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
+    @keyframes shine{to{background-position:220% center}}
+    .pulse-dot{animation:pulseDot 1.8s infinite}
+    @keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(96,165,250,.35)}50%{box-shadow:0 0 0 9px rgba(96,165,250,0)}}
+    .orbit{position:absolute;border:1px solid rgba(96,165,250,.2);border-radius:50%;animation:spin 18s linear infinite}
+    .orbit.o1{inset:-18px}.orbit.o2{inset:-36px;animation-duration:27s;animation-direction:reverse;border-color:rgba(34,211,238,.12)}
+    .orbit i{position:absolute;width:7px;height:7px;border-radius:50%;background:#60a5fa;box-shadow:0 0 16px #60a5fa}
+    .orbit.o1 i{top:-3px;left:50%}.orbit.o2 i{right:10%;bottom:8%;background:#22d3ee;box-shadow:0 0 16px #22d3ee}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .photo-frame{position:relative;isolation:isolate}
+    .photo-frame::before{content:"";position:absolute;inset:-2px;border-radius:26px;background:conic-gradient(from 0deg,transparent,#3b82f6,#22d3ee,transparent 55%);animation:spin 8s linear infinite;z-index:-1;filter:blur(.4px)}
+    .photo-inner{border-radius:24px;overflow:hidden;background:#080d18;border:1px solid rgba(255,255,255,.13)}
+    .photo-inner img{transition:transform 1s cubic-bezier(.2,.8,.2,1),filter .6s}
+    .photo-frame:hover img{transform:scale(1.055);filter:brightness(1.04) contrast(1.06)}
+    .navlink{position:relative}.navlink::after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:1px;background:#60a5fa;transition:width .3s}.navlink:hover::after{width:100%}
+    .filter.active{background:rgba(37,99,235,.22);border-color:rgba(96,165,250,.6);color:white;box-shadow:0 0 24px rgba(37,99,235,.16)}
+    .skill.hide{display:none}.skill{animation:pop .35s ease}
+    @keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+    .tag{border:1px solid rgba(148,163,184,.13);background:rgba(255,255,255,.035);transition:.25s}.tag:hover{border-color:rgba(96,165,250,.45);background:rgba(59,130,246,.09)}
+    .timeline-line{background:linear-gradient(#2563eb 0%,#60a5fa 50%,#22d3ee 100%)}
+    .metric{position:relative;overflow:hidden}.metric::before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,transparent,rgba(96,165,250,.08),transparent 25%);animation:spin 12s linear infinite}
+    .metric>*{position:relative}
+    .cmd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace!important}
+    .modal{opacity:0;pointer-events:none;transition:.25s}.modal.open{opacity:1;pointer-events:auto}
+    .modal-box{transform:translateY(18px) scale(.97);transition:.3s}.modal.open .modal-box{transform:none}
+    .cursor-ring{position:fixed;width:28px;height:28px;border:1px solid rgba(96,165,250,.45);border-radius:50%;pointer-events:none;z-index:999;transform:translate(-50%,-50%);transition:width .15s,height .15s,background .15s}
+    @media (max-width:768px){.cursor-ring{display:none}.justified{text-align:left}.orbit.o2{inset:-25px}}
+    
+    .gpu{transform:translateZ(0);backface-visibility:hidden}
+    .soft-glow{box-shadow:0 0 28px rgba(59,130,246,.10)}
+    .devops-line{background:linear-gradient(90deg,transparent,rgba(96,165,250,.45),transparent)}
+    @media (max-width:900px){
+      .glass{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+      .hero-title{letter-spacing:-.02em}
+    }
+    @media (max-width:640px){
+      #webgl{opacity:.52}
+      .grid-bg{opacity:.25}
+      .spotlight{display:none}
+    }
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+  </style>
 </head>
 
-
 <body>
+  <div id="progress"></div>
+  <canvas id="webgl"></canvas>
+  <div class="grid-bg"></div>
+  <div class="spotlight"></div>
+  <div id="cursorRing" class="cursor-ring"></div>
 
-<!-- =========================================
-     LOADER
-========================================= -->
-
-<div id="loader">
-
-    <div class="loader-inner">
-
-        <div class="loader-symbol"></div>
-
-        <div class="loader-name">
-            PATEL MOHAMMAD ZAKI
-        </div>
-
-        <div class="loader-status">
-            INITIALIZING PERSONAL SYSTEM
-        </div>
-
-        <div class="loader-track">
-            <div class="loader-progress" id="loaderProgress"></div>
-        </div>
-
-        <div id="loaderPercent"
-             style="margin-top:10px; color:#475569; font-size:9px; letter-spacing:.2em;">
-            0%
-        </div>
-
+  <!-- PRELOADER -->
+  <div id="preloader" class="fixed inset-0 z-[999] flex items-center justify-center bg-[#02040a] transition duration-700">
+    <div class="w-full max-w-sm px-8 text-center">
+      <div class="mx-auto mb-7 h-12 w-12 rounded-full border border-blue-400/40 border-t-blue-400 animate-spin"></div>
+      <p class="small-caps text-[10px] tracking-[.35em] text-blue-300">Initializing portfolio</p>
+      <h2 class="mt-3 text-xl sm:text-2xl font-bold tracking-[.15em] text-white">PATEL MOHAMMAD ZAKI</h2>
+      <div class="mt-7 h-px w-full bg-white/10 overflow-hidden"><div id="loaderBar" class="h-full w-0 bg-gradient-to-r from-blue-600 via-blue-300 to-cyan-300 shadow-[0_0_18px_#3b82f6]"></div></div>
+      <div class="mt-2 flex justify-between text-[9px] text-slate-500 cmd"><span>BOOT_SEQUENCE</span><span id="loaderPct">0%</span></div>
     </div>
+  </div>
 
-</div>
-
-
-<!-- =========================================
-     EFFECT LAYERS
-========================================= -->
-
-<div id="scroll-progress"></div>
-
-<div class="ambient"></div>
-<div class="grid-bg"></div>
-<div class="noise"></div>
-
-<canvas id="webgl-canvas"></canvas>
-
-
-<!-- =========================================
-     CUSTOM CURSOR
-========================================= -->
-
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
-
-
-<!-- =========================================
-     NAVBAR
-========================================= -->
-
-<nav class="navbar" id="navbar">
-
-    <div class="nav-container">
-
-        <a href="#home" class="brand">
-
-            <span class="brand-mark"></span>
-
-            PATEL MOHAMMAD ZAKI
-
-        </a>
-
-
-        <div class="nav-links">
-
-            <a href="#about">PROFILE</a>
-            <a href="#journey">JOURNEY</a>
-            <a href="#skills">SKILLS</a>
-            <a href="#projects">PROJECTS</a>
-            <a href="#experience">EXPERIENCE</a>
-            <a href="#contact">CONTACT</a>
-
-        </div>
-
-
-        <a href="resume.pdf" download class="nav-resume">
-
-            <i class="fa-solid fa-download"></i>
-
-            RESUME
-
-        </a>
-
-
-        <button class="mobile-menu" id="mobileMenu">
-
-            <i class="fa-solid fa-bars"></i>
-
+  <!-- NAV -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#03050c]/65 backdrop-blur-lg">
+    <nav class="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-7">
+      <a href="#home" class="flex items-center gap-3 text-sm sm:text-base font-bold tracking-widest text-white">
+        <span class="grid h-7 w-7 place-items-center rounded-lg border border-blue-400/40 bg-blue-500/10 text-[10px] text-blue-300">PZ</span>
+        <span class="hidden sm:block">PATEL MOHAMMAD ZAKI</span>
+        <span class="sm:hidden">ZAKI</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-7 text-[10px] font-semibold text-slate-300 small-caps">
+        <a class="navlink" href="#about">Profile</a>
+        <a class="navlink" href="#skills">Stack</a>
+        <a class="navlink" href="#projects">Projects</a>
+        <a class="navlink" href="#journey">Journey</a>
+        <a class="navlink" href="#certifications">Credentials</a>
+        <a class="navlink" href="#contact">Contact</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="commandBtn" class="hidden sm:inline-flex h-9 items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 text-[10px] text-slate-300 hover:border-blue-400/40 hover:text-white transition">
+          <i class="fa-solid fa-terminal text-blue-400"></i><span class="cmd">CMD</span><kbd class="ml-1 rounded border border-white/10 px-1.5 py-0.5 text-[8px]">K</kbd>
         </button>
-
-    </div>
-
-
-    <div class="mobile-nav" id="mobileNav">
-
-        <a href="#about">PROFILE</a>
-        <a href="#journey">JOURNEY</a>
-        <a href="#skills">SKILLS</a>
-        <a href="#projects">PROJECTS</a>
-        <a href="#experience">EXPERIENCE</a>
-        <a href="#contact">CONTACT</a>
-
-        <a href="resume.pdf" download>
-
-            DOWNLOAD RESUME
-
+        <a href="resume.pdf" download class="inline-flex items-center gap-2 rounded-lg border border-blue-400/30 bg-blue-500/10 px-3 sm:px-4 py-2 text-[9px] font-bold text-white small-caps hover:bg-blue-500/20 transition">
+          <i class="fa-solid fa-file-arrow-down text-blue-300"></i><span class="hidden sm:inline">Resume</span>
         </a>
+      </div>
+    </nav>
+  </header>
 
-    </div>
+  <main>
+    <!-- HERO -->
+    <section id="home" class="relative mx-auto flex min-h-screen max-w-7xl items-center px-5 pb-16 pt-28 sm:px-7 lg:pt-24">
+      <div class="grid w-full items-center gap-14 lg:grid-cols-[1.15fr_.85fr]">
+        <div class="reveal">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-500/[.07] px-3.5 py-2 text-[9px] tracking-[.22em] text-blue-200 small-caps">
+            <span class="pulse-dot h-1.5 w-1.5 rounded-full bg-blue-400"></span>
+            FINAL-YEAR CSE • DATA • AI • CLOUD • DEVOPS
+          </div>
 
-</nav>
+          <h1 class="hero-title max-w-5xl text-4xl font-extrabold leading-[1.08] sm:text-6xl lg:text-[5.25rem]">
+            <span>Turning Data</span><br>
+            <span>Into Intelligent</span><br>
+            <span>Systems.</span>
+          </h1>
 
+          <div class="mt-6 max-w-2xl text-sm leading-7 text-slate-300 sm:text-[15px]">
+            <p class="justified">I’m <strong class="text-white">Patel Mohammad Zaki</strong>, a final-year Computer Science Engineering student at BMIT, Solapur, with an Electronics & Telecommunication diploma foundation. I’m building toward roles across <strong class="text-blue-200">Data Analytics, Data Science, AI, Cloud & Software Engineering</strong> — combining analytical thinking with practical application development.</p>
+          </div>
 
-<!-- =========================================
-     HERO
-========================================= -->
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="#projects" class="magnetic rounded-lg bg-white px-6 py-3 text-[10px] font-extrabold tracking-widest text-black small-caps hover:bg-blue-50 transition">Explore Projects <i class="fa-solid fa-arrow-right ml-2"></i></a>
+            <a href="#contact" class="magnetic rounded-lg border border-white/15 bg-white/5 px-6 py-3 text-[10px] font-extrabold tracking-widest text-white small-caps hover:border-blue-400/50 hover:bg-blue-500/10 transition">Let's Connect</a>
+          </div>
 
-<main id="home">
-
-<section class="hero">
-
-    <div class="hero-content reveal">
-
-        <div class="hero-kicker">
-
-            <span class="status-dot"></span>
-
-            FINAL-YEAR COMPUTER SCIENCE ENGINEER
-
+          <div class="mt-8 flex flex-wrap items-center gap-4 border-t border-white/10 pt-6 text-slate-400">
+            <a aria-label="GitHub" href="https://github.com/zakipatel89" target="_blank" rel="noreferrer" class="hover:text-white transition"><i class="fa-brands fa-github text-lg"></i></a>
+            <a aria-label="LinkedIn" href="https://www.linkedin.com/in/zaki-patel-25767a285/" target="_blank" rel="noreferrer" class="hover:text-blue-300 transition"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
+            <a aria-label="Email" href="mailto:zakipatel2811@gmail.com" class="hover:text-blue-300 transition"><i class="fa-solid fa-envelope text-lg"></i></a>
+            <a aria-label="WhatsApp" href="https://wa.me/918468809905" target="_blank" rel="noreferrer" class="hover:text-emerald-300 transition"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+            <span class="ml-1 text-[9px] text-slate-600 small-caps">Data • AI • Cloud • DevOps • Software</span>
+          </div>
         </div>
 
-
-        <h1>
-
-            ENGINEERING
-
-            <span>
-                INTELLIGENCE
-            </span>
-
-            & RESILIENT SYSTEMS
-
-        </h1>
-
-
-        <div class="hero-subtitle">
-
-            Building intelligent, data-driven and reliable software solutions.
-
-        </div>
-
-
-        <p class="hero-description">
-
-            I’m Patel Mohammad Zaki — a final-year Computer Science
-            Engineering student from Solapur, building my path across
-            Software Engineering, Data Analytics, Data Science and AI.
-            I like turning raw ideas, messy data and real-world
-            problems into systems that are useful, understandable
-            and scalable.
-
-        </p>
-
-
-        <div class="hero-actions">
-
-            <a href="#projects" class="btn btn-primary">
-
-                EXPLORE PROJECTS
-
-                <i class="fa-solid fa-arrow-down"></i>
-
-            </a>
-
-
-            <a href="#contact" class="btn btn-outline">
-
-                LET'S CONNECT
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </a>
-
-
-            <a href="resume.pdf" download class="btn btn-outline">
-
-                RESUME
-
-                <i class="fa-solid fa-file-arrow-down"></i>
-
-            </a>
-
-        </div>
-
-
-        <div class="hero-socials">
-
-            <a href="https://github.com/zakipatel89" target="_blank" aria-label="GitHub">
-
-                <i class="fa-brands fa-github"></i>
-
-            </a>
-
-
-            <a href="https://www.linkedin.com/in/zaki-patel-25767a285/" target="_blank" aria-label="LinkedIn">
-
-                <i class="fa-brands fa-linkedin-in"></i>
-
-            </a>
-
-
-            <a href="mailto:zakipatel2811@gmail.com" aria-label="Email">
-
-                <i class="fa-solid fa-envelope"></i>
-
-            </a>
-
-
-            <a href="https://wa.me/918468809905" target="_blank" aria-label="WhatsApp">
-
-                <i class="fa-brands fa-whatsapp"></i>
-
-            </a>
-
-
-            <span style="
-                margin-left:auto;
-                color:#475569;
-                font-size:8px;
-                align-self:center;
-                letter-spacing:.15em;">
-
-                PRESS
-
-                <strong style="color:#94a3b8;">
-                    CTRL + K
-                </strong>
-
-                FOR COMMANDS
-
-            </span>
-
-        </div>
-
-    </div>
-
-
-    <!-- HERO PHOTO -->
-
-    <div class="hero-visual reveal">
-
-        <div class="float-status one">
-
-            <span>CURRENT MODE</span>
-
-            <strong>
-                BUILD / LEARN / DEPLOY
-            </strong>
-
-        </div>
-
-
-        <div class="profile-frame">
-
-            <div class="profile-image">
-
-                <img src="profile.jpg" alt="Patel Mohammad Zaki">
-
-                <div class="profile-overlay"></div>
-
-
-                <div class="profile-info">
-
-                    <small>
-                        PATEL MOHAMMAD ZAKI
-                    </small>
-
-                    <h3>
-                        CSE • DATA • AI
-                    </h3>
-
+        <div class="reveal flex justify-center lg:justify-end" style="transition-delay:.12s">
+          <div class="photo-frame w-[min(78vw,360px)]">
+            <div class="orbit o1"><i></i></div>
+            <div class="orbit o2"><i></i></div>
+            <div class="photo-inner relative aspect-[4/5]">
+              <img src="profile.jpg" alt="Patel Mohammad Zaki" class="h-full w-full object-cover object-top">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#02050c] via-transparent to-transparent"></div>
+              <div class="absolute left-5 right-5 bottom-5 flex items-end justify-between">
+                <div>
+                  <p class="text-[9px] tracking-[.25em] text-blue-300 small-caps">Portfolio / 2026</p>
+                  <p class="mt-1 text-sm font-bold text-white">PATEL ZAKI</p>
                 </div>
-
+                <span class="grid h-9 w-9 place-items-center rounded-full border border-white/15 bg-black/30 text-blue-300"><i class="fa-solid fa-code text-xs"></i></span>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- METRICS -->
+    <section class="mx-auto max-w-7xl px-5 pb-10 sm:px-7">
+      <div class="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <div class="metric glass card rounded-2xl p-5 reveal"><p class="text-[9px] text-blue-300 small-caps">Current Stage</p><p class="mt-2 text-lg font-bold text-white">Final Year</p><p class="mt-1 text-[9px] text-slate-500">B.Tech CSE</p></div>
+        <div class="metric glass card rounded-2xl p-5 reveal"><p class="text-[9px] text-blue-300 small-caps">Foundation</p><p class="mt-2 text-lg font-bold text-white">75.59%</p><p class="mt-1 text-[9px] text-slate-500">Diploma • E&TC</p></div>
+        <div class="metric glass card rounded-2xl p-5 reveal"><p class="text-[9px] text-blue-300 small-caps">Core Direction</p><p class="mt-2 text-lg font-bold text-white">Data + AI</p><p class="mt-1 text-[9px] text-slate-500">Analytics • ML • Systems</p></div>
+        <div class="metric glass card rounded-2xl p-5 reveal"><p class="text-[9px] text-blue-300 small-caps">Cloud Track</p><p class="mt-2 text-lg font-bold text-white">AWS + DevOps</p><p class="mt-1 text-[9px] text-slate-500">Cloud • Containers • CI/CD</p></div>
+      </div>
+    </section>
 
-            <div class="profile-corner corner-tl"></div>
-            <div class="profile-corner corner-br"></div>
+    <!-- ABOUT -->
+    <section id="about" class="mx-auto max-w-7xl px-5 py-24 sm:px-7">
+      <div class="mb-12 reveal">
+        <p class="text-[9px] tracking-[.28em] text-blue-400 small-caps">01 / PROFILE</p>
+        <h2 class="mt-3 text-3xl font-bold text-white sm:text-5xl">The person behind the stack.</h2>
+        <div class="mt-4 h-px w-24 bg-gradient-to-r from-blue-500 to-transparent"></div>
+      </div>
 
+      <div class="grid gap-7 lg:grid-cols-[1.15fr_.85fr]">
+        <div class="glass card rounded-3xl p-7 sm:p-9 reveal">
+          <p class="text-sm leading-8 text-slate-300">My journey started with an <strong class="text-white">Electronics & Telecommunication Engineering diploma</strong> at Government Polytechnic Solapur and continued into Computer Science Engineering at <strong class="text-white">Brahmdevdada Mane Institute of Technology</strong>.</p>
+          <p class="mt-5 text-sm leading-8 text-slate-300">Today, my interests sit at the intersection of <strong class="text-blue-200">data, artificial intelligence and software systems</strong>. I enjoy taking a problem from raw information → analysis → model or logic → interface → usable product.</p>
+          <p class="mt-5 text-sm leading-8 text-slate-300">My portfolio work includes an AI-assisted developer environment, an AI shopping/e-commerce concept, analytics and visualization simulations, and hands-on learning across cloud technologies. The goal is simple: keep turning what I learn into something that can be demonstrated.</p>
+          <div class="mt-7 flex flex-wrap gap-2">
+            <span class="tag rounded-full px-3 py-1.5 text-[9px] text-slate-300">Problem Solving</span>
+            <span class="tag rounded-full px-3 py-1.5 text-[9px] text-slate-300">Data Analytics</span>
+            <span class="tag rounded-full px-3 py-1.5 text-[9px] text-slate-300">AI Applications</span>
+            <span class="tag rounded-full px-3 py-1.5 text-[9px] text-slate-300">Cloud Fundamentals</span>
+            <span class="tag rounded-full px-3 py-1.5 text-[9px] text-slate-300">Web Development</span>
+          </div>
         </div>
 
+        <div class="glass rounded-3xl p-7 reveal" style="transition-delay:.1s">
+          <div class="flex items-center justify-between border-b border-white/10 pb-4">
+            <h3 class="text-xs font-bold text-white small-caps">Academic Snapshot</h3>
+            <i class="fa-solid fa-graduation-cap text-blue-400"></i>
+          </div>
+          <div class="divide-y divide-white/5 text-[10px]">
+            <div class="flex justify-between gap-4 py-4"><span class="text-slate-500 small-caps">B.Tech</span><span class="text-right text-slate-200">CSE • Final Year</span></div>
+            <div class="flex justify-between gap-4 py-4"><span class="text-slate-500 small-caps">Institute</span><span class="text-right text-slate-200">BMIT, Solapur</span></div>
+            <div class="flex justify-between gap-4 py-4"><span class="text-slate-500 small-caps">Diploma</span><span class="text-right text-slate-200">E&TC • 2021–2024</span></div>
+            <div class="flex justify-between gap-4 py-4"><span class="text-slate-500 small-caps">Diploma Score</span><span class="text-right text-blue-300">75.59% • Distinction</span></div>
+            <div class="flex justify-between gap-4 py-4"><span class="text-slate-500 small-caps">Honors</span><span class="text-right text-slate-200">AI & Data Science</span></div>
+          </div>
+          <div class="mt-5 rounded-xl border border-blue-400/10 bg-blue-500/[.04] p-4">
+            <p class="cmd text-[9px] text-blue-300">$ whoami</p>
+            <p class="mt-2 text-[11px] leading-6 text-slate-300">CSE student building a practical bridge between analytics, AI and software engineering.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="float-status two">
-
-            <span>BASED IN</span>
-
-            <strong>
-                SOLAPUR, INDIA
-            </strong>
-
+    <!-- SKILLS -->
+    <section id="skills" class="border-y border-white/5 bg-white/[.008]">
+      <div class="mx-auto max-w-7xl px-5 py-24 sm:px-7">
+        <div class="flex flex-col justify-between gap-6 lg:flex-row lg:items-end reveal">
+          <div>
+            <p class="text-[9px] tracking-[.28em] text-blue-400 small-caps">02 / STACK</p>
+            <h2 class="mt-3 text-3xl font-bold text-white sm:text-5xl">Technologies I work with.</h2>
+            <p class="mt-4 max-w-2xl text-xs leading-6 text-slate-400">A portfolio view of the languages, web technologies, data tools, AI concepts and developer tools represented across my projects and learning.</p>
+          </div>
+          <div class="flex max-w-full flex-wrap gap-2 rounded-xl border border-white/10 bg-black/20 p-1.5">
+            <button class="filter active rounded-lg border border-transparent px-3 py-2 text-[9px] text-slate-300" data-filter="all">All</button>
+            <button class="filter rounded-lg border border-transparent px-3 py-2 text-[9px] text-slate-300" data-filter="data">Data</button>
+            <button class="filter rounded-lg border border-transparent px-3 py-2 text-[9px] text-slate-300" data-filter="ai">AI</button>
+            <button class="filter rounded-lg border border-transparent px-3 py-2 text-[9px] text-slate-300" data-filter="web">Web</button>
+            <button class="filter rounded-lg border border-transparent px-3 py-2 text-[9px] text-slate-300" data-filter="cloud">Cloud</button>
+            <button class="filter rounded-lg border border-transparent px-3 py-2 text-[9px] text-slate-300" data-filter="tools">Tools</button>
+          </div>
         </div>
 
-    </div>
+        <div id="skillsGrid" class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          <div class="skill glass card rounded-2xl p-4" data-cat="data"><i class="fa-solid fa-chart-column text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">Power BI</h4><p class="mt-1 text-[9px] text-slate-500">Analytics</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="data"><i class="fa-brands fa-python text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">Python</h4><p class="mt-1 text-[9px] text-slate-500">Data / Programming</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="data"><i class="fa-solid fa-table text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">SQL / MySQL</h4><p class="mt-1 text-[9px] text-slate-500">Databases</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="data"><i class="fa-solid fa-cubes-stacked text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">Pandas / NumPy</h4><p class="mt-1 text-[9px] text-slate-500">Data Processing</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="data"><i class="fa-solid fa-chart-line text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">Visualization</h4><p class="mt-1 text-[9px] text-slate-500">Matplotlib</p></div>
 
-</section>
+          <div class="skill glass card rounded-2xl p-4" data-cat="ai"><i class="fa-solid fa-brain text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">Machine Learning</h4><p class="mt-1 text-[9px] text-slate-500">Scikit-learn</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="ai"><i class="fa-solid fa-wand-magic-sparkles text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">AI APIs</h4><p class="mt-1 text-[9px] text-slate-500">LLM Integration</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="ai"><i class="fa-solid fa-comments text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">Prompt Engineering</h4><p class="mt-1 text-[9px] text-slate-500">AI Applications</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="ai"><i class="fa-solid fa-language text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">NLP Concepts</h4><p class="mt-1 text-[9px] text-slate-500">Conversational AI</p></div>
 
+          <div class="skill glass card rounded-2xl p-4" data-cat="web"><i class="fa-brands fa-html5 text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">HTML / CSS</h4><p class="mt-1 text-[9px] text-slate-500">Frontend</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="web"><i class="fa-brands fa-js text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">JavaScript</h4><p class="mt-1 text-[9px] text-slate-500">Frontend Logic</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="web"><i class="fa-brands fa-react text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">React / Next.js</h4><p class="mt-1 text-[9px] text-slate-500">Web Apps</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="web"><i class="fa-brands fa-node-js text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">Node / Express</h4><p class="mt-1 text-[9px] text-slate-500">Backend</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="web"><i class="fa-solid fa-database text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">MongoDB</h4><p class="mt-1 text-[9px] text-slate-500">Persistence</p></div>
 
-<!-- =========================================
-     METRICS
-========================================= -->
+          <div class="skill glass card rounded-2xl p-4" data-cat="cloud"><i class="fa-brands fa-aws text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">AWS</h4><p class="mt-1 text-[9px] text-slate-500">Cloud Fundamentals</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="cloud"><i class="fa-solid fa-cloud text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">Cloud Architecture</h4><p class="mt-1 text-[9px] text-slate-500">Foundations</p></div>
 
-<section class="metrics">
+          <div class="skill glass card rounded-2xl p-4" data-cat="cloud"><i class="fa-brands fa-aws text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">AWS EC2</h4><p class="mt-1 text-[9px] text-slate-500">Compute Fundamentals</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="cloud"><i class="fa-solid fa-database text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">AWS S3</h4><p class="mt-1 text-[9px] text-slate-500">Cloud Storage</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="cloud"><i class="fa-solid fa-network-wired text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">AWS VPC</h4><p class="mt-1 text-[9px] text-slate-500">Cloud Networking</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="cloud"><i class="fa-solid fa-user-shield text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">IAM Fundamentals</h4><p class="mt-1 text-[9px] text-slate-500">Access & Security</p></div>
 
-    <div class="metric reveal">
+          <div class="skill glass card rounded-2xl p-4" data-cat="devops"><i class="fa-brands fa-docker text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">Docker</h4><p class="mt-1 text-[9px] text-slate-500">Container Basics</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="devops"><i class="fa-solid fa-arrows-rotate text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">CI/CD Concepts</h4><p class="mt-1 text-[9px] text-slate-500">Automation Fundamentals</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="devops"><i class="fa-brands fa-linux text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">Linux Fundamentals</h4><p class="mt-1 text-[9px] text-slate-500">Server Environment</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="devops"><i class="fa-solid fa-code-branch text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">Deployment Workflow</h4><p class="mt-1 text-[9px] text-slate-500">Git → Build → Deploy</p></div>
 
-        <div class="metric-value" data-count="75.59" data-decimal="2">
-            0
+          <div class="skill glass card rounded-2xl p-4" data-cat="tools"><i class="fa-brands fa-git-alt text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">Git / GitHub</h4><p class="mt-1 text-[9px] text-slate-500">Version Control</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="tools"><i class="fa-solid fa-code text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">VS Code</h4><p class="mt-1 text-[9px] text-slate-500">Development</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="tools"><i class="fa-brands fa-docker text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">Docker</h4><p class="mt-1 text-[9px] text-slate-500">Basics</p></div>
+          <div class="skill glass card rounded-2xl p-4" data-cat="tools"><i class="fa-solid fa-paper-plane text-blue-400"></i><h4 class="mt-4 text-xs font-bold text-white">Postman</h4><p class="mt-1 text-[9px] text-slate-500">API Testing</p></div>
         </div>
+      </div>
+    </section>
 
-        <div class="metric-label">
-            DIPLOMA PERCENTAGE
+    <!-- CLOUD & DEVOPS FOCUS -->
+    <section class="mx-auto max-w-7xl px-5 py-16 sm:px-7">
+      <div class="glass card rounded-3xl p-6 sm:p-9 reveal overflow-hidden relative">
+        <div class="absolute -right-20 -top-24 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl pointer-events-none"></div>
+        <div class="relative grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:items-center">
+          <div>
+            <p class="text-[9px] tracking-[.28em] text-blue-400 small-caps">CLOUD / DEVOPS FOCUS</p>
+            <h3 class="mt-3 text-2xl font-bold text-white sm:text-3xl">From application code to deployment.</h3>
+            <p class="mt-4 max-w-xl text-xs leading-7 text-slate-400">My cloud learning complements the data and software stack: understanding compute, storage, networking, access control, containers and the fundamentals of repeatable deployment.</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md border border-blue-400/15 bg-blue-500/5 px-2.5 py-1 text-[8px] text-blue-200">AWS</span>
+              <span class="rounded-md border border-blue-400/15 bg-blue-500/5 px-2.5 py-1 text-[8px] text-blue-200">EC2</span>
+              <span class="rounded-md border border-blue-400/15 bg-blue-500/5 px-2.5 py-1 text-[8px] text-blue-200">S3</span>
+              <span class="rounded-md border border-blue-400/15 bg-blue-500/5 px-2.5 py-1 text-[8px] text-blue-200">VPC</span>
+              <span class="rounded-md border border-blue-400/15 bg-blue-500/5 px-2.5 py-1 text-[8px] text-blue-200">Docker</span>
+              <span class="rounded-md border border-blue-400/15 bg-blue-500/5 px-2.5 py-1 text-[8px] text-blue-200">CI/CD</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-4 gap-2 sm:gap-3">
+            <div class="rounded-2xl border border-white/10 bg-black/20 p-4 text-center"><i class="fa-solid fa-cloud text-blue-300"></i><p class="mt-3 text-[8px] text-slate-300 small-caps">Cloud</p></div>
+            <div class="rounded-2xl border border-white/10 bg-black/20 p-4 text-center"><i class="fa-solid fa-server text-blue-300"></i><p class="mt-3 text-[8px] text-slate-300 small-caps">Compute</p></div>
+            <div class="rounded-2xl border border-white/10 bg-black/20 p-4 text-center"><i class="fa-brands fa-docker text-blue-300"></i><p class="mt-3 text-[8px] text-slate-300 small-caps">Container</p></div>
+            <div class="rounded-2xl border border-white/10 bg-black/20 p-4 text-center"><i class="fa-solid fa-arrows-rotate text-blue-300"></i><p class="mt-3 text-[8px] text-slate-300 small-caps">Deploy</p></div>
+          </div>
         </div>
-
-    </div>
-
-
-    <div class="metric reveal">
-
-        <div class="metric-value">
-            B.TECH
-        </div>
-
-        <div class="metric-label">
-            COMPUTER SCIENCE
-        </div>
-
-    </div>
-
-
-    <div class="metric reveal">
-
-        <div class="metric-value">
-            DATA
-        </div>
-
-        <div class="metric-label">
-            ANALYTICS / SCIENCE
-        </div>
-
-    </div>
-
-
-    <div class="metric reveal">
-
-        <div class="metric-value">
-            AI
-        </div>
-
-        <div class="metric-label">
-            INTELLIGENT SYSTEMS
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     ABOUT
-========================================= -->
-
-<section id="about" class="section">
-
-    <div class="reveal">
-
-        <div class="section-label">
-            01 / PROFILE
-        </div>
-
-        <h2 class="section-title">
-            A TECHNICAL JOURNEY,
-            <br>
-            STILL IN MOTION.
-        </h2>
-
-        <div class="section-line"></div>
-
-    </div>
-
-
-    <div class="about-grid">
-
-        <div class="glass about-copy reveal">
-
-            <p>
-                I am a final-year B.Tech Computer Science and
-                Engineering student at Brahmdevdada Mane Institute
-                of Technology, Solapur.
-            </p>
-
-            <p>
-                Before entering Computer Science, I completed my
-                Diploma in Electronics & Telecommunication Engineering
-                from Government Polytechnic Solapur, graduating with
-                75.59%.
-            </p>
-
-            <p>
-                My interests have gradually moved toward the
-                intersection of software, data and artificial
-                intelligence — particularly Data Analytics,
-                Data Science, AI-assisted applications and
-                practical software systems.
-            </p>
-
-            <p>
-                My goal is not simply to collect technologies.
-                I want to understand the problem first, work with
-                the data, design the system and eventually turn the
-                solution into something people can actually use.
-            </p>
-
-        </div>
-
-
-        <div class="glass identity-card reveal">
-
-            <div class="identity-row">
-
-                <span>NAME</span>
-
-                <span>
-                    Patel Mohammad Zaki
-                </span>
-
-            </div>
-
-
-            <div class="identity-row">
-
-                <span>DEGREE</span>
-
-                <span>
-                    B.Tech CSE
-                </span>
-
-            </div>
-
-
-            <div class="identity-row">
-
-                <span>STATUS</span>
-
-                <span class="highlight">
-                    FINAL YEAR
-                </span>
-
-            </div>
-
-
-            <div class="identity-row">
-
-                <span>INSTITUTION</span>
-
-                <span>
-                    BMIT, Solapur
-                </span>
-
-            </div>
-
-
-            <div class="identity-row">
-
-                <span>DIPLOMA</span>
-
-                <span>
-                    E&TC — 75.59%
-                </span>
-
-            </div>
-
-
-            <div class="identity-row">
-
-                <span>PRIMARY FOCUS</span>
-
-                <span class="highlight">
-                    DATA & AI
-                </span>
-
-            </div>
-
-
-            <div class="identity-row">
-
-                <span>OPEN TO</span>
-
-                <span>
-                    SOFTWARE / DATA ROLES
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     JOURNEY
-========================================= -->
-
-<section id="journey" class="section">
-
-    <div class="reveal">
-
-        <div class="section-label">
-            02 / JOURNEY
-        </div>
-
-        <h2 class="section-title">
-            FROM ELECTRONICS
-            <br>
-            TO INTELLIGENCE.
-        </h2>
-
-        <div class="section-line"></div>
-
-    </div>
-
-
-    <div class="timeline">
-
-        <div class="timeline-item reveal">
-
-            <div class="timeline-dot"></div>
-
-            <div class="glass timeline-card">
-
-                <div class="timeline-year">
-                    2021 — 2024
-                </div>
-
-                <h3>
-                    Electronics & Telecommunication
-                </h3>
-
-                <p>
-                    Government Polytechnic Solapur.
-                    Built the engineering foundation through
-                    Electronics & Telecommunication Engineering
-                    and completed the diploma with 75.59%.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item reveal">
-
-            <div class="timeline-dot"></div>
-
-            <div class="glass timeline-card">
-
-                <div class="timeline-year">
-                    2024 — 2027
-                </div>
-
-                <h3>
-                    Computer Science Engineering
-                </h3>
-
-                <p>
-                    Continued the engineering journey through
-                    B.Tech in Computer Science at BMIT, Solapur,
-                    moving deeper into software, databases,
-                    analytics, cloud computing and intelligent systems.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item reveal">
-
-            <div class="timeline-dot"></div>
-
-            <div class="glass timeline-card">
-
-                <div class="timeline-year">
-                    2026
-                </div>
-
-                <h3>
-                    Data Analyst Internship
-                </h3>
-
-                <p>
-                    Worked with UnionSys Technologies in a
-                    Data Analyst internship context, gaining
-                    exposure to practical analytics workflows
-                    and professional technical environments.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item reveal">
-
-            <div class="timeline-dot"></div>
-
-            <div class="glass timeline-card">
-
-                <div class="timeline-year">
-                    NOW
-                </div>
-
-                <h3>
-                    Building the Next Version
-                </h3>
-
-                <p>
-                    Developing projects, strengthening the
-                    portfolio, learning modern data and AI
-                    technologies and preparing for the transition
-                    from engineering student to industry professional.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     SKILLS
-========================================= -->
-
-<section id="skills" class="section">
-
-    <div class="skills-head reveal">
-
-        <div>
-
-            <div class="section-label">
-                03 / CAPABILITIES
-            </div>
-
-            <h2 class="section-title">
-                TOOLS FOR
-                <br>
-                BUILDING.
-            </h2>
-
-            <div class="section-line"></div>
-
-        </div>
-
-
-        <div class="filter-bar">
-
-            <button class="filter active" data-filter="all">
-                ALL
-            </button>
-
-            <button class="filter" data-filter="data">
-                DATA
-            </button>
-
-            <button class="filter" data-filter="ai">
-                AI
-            </button>
-
-            <button class="filter" data-filter="software">
-                SOFTWARE
-            </button>
-
-            <button class="filter" data-filter="cloud">
-                CLOUD
-            </button>
-
-            <button class="filter" data-filter="tools">
-                TOOLS
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <div class="skills-grid">
-
-
-        <div class="glass skill reveal" data-category="data">
-
-            <div class="skill-icon">
-                <i class="fa-brands fa-python"></i>
-            </div>
-
-            <div>
-                <h4>Python</h4>
-                <small>DATA / PROGRAMMING</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="data">
-
-            <div class="skill-icon">
-                <i class="fa-solid fa-database"></i>
-            </div>
-
-            <div>
-                <h4>SQL</h4>
-                <small>DATA / DATABASE</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="data">
-
-            <div class="skill-icon">
-                <i class="fa-solid fa-table"></i>
-            </div>
-
-            <div>
-                <h4>Excel</h4>
-                <small>ANALYTICS</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="data">
-
-            <div class="skill-icon">
-                <i class="fa-solid fa-chart-column"></i>
-            </div>
-
-            <div>
-                <h4>Power BI</h4>
-                <small>VISUAL ANALYTICS</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="data">
-
-            <div class="skill-icon">
-                <i class="fa-solid fa-chart-line"></i>
-            </div>
-
-            <div>
-                <h4>Pandas</h4>
-                <small>DATA ANALYSIS</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="data">
-
-            <div class="skill-icon">
-                <i class="fa-solid fa-cubes"></i>
-            </div>
-
-            <div>
-                <h4>NumPy</h4>
-                <small>DATA / COMPUTING</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="ai">
-
-            <div class="skill-icon">
-                <i class="fa-solid fa-brain"></i>
-            </div>
-
-            <div>
-                <h4>Machine Learning</h4>
-                <small>AI / DATA SCIENCE</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="ai">
-
-            <div class="skill-icon">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-            </div>
-
-            <div>
-                <h4>AI APIs</h4>
-                <small>AI APPLICATIONS</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="ai">
-
-            <div class="skill-icon">
-                <i class="fa-solid fa-language"></i>
-            </div>
-
-            <div>
-                <h4>NLP</h4>
-                <small>AI / LANGUAGE</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="software">
-
-            <div class="skill-icon">
-                <i class="fa-brands fa-html5"></i>
-            </div>
-
-            <div>
-                <h4>HTML / CSS</h4>
-                <small>WEB</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="software">
-
-            <div class="skill-icon">
-                <i class="fa-brands fa-js"></i>
-            </div>
-
-            <div>
-                <h4>JavaScript</h4>
-                <small>WEB</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="software">
-
-            <div class="skill-icon">
-                <i class="fa-brands fa-git-alt"></i>
-            </div>
-
-            <div>
-                <h4>Git / GitHub</h4>
-                <small>VERSION CONTROL</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="cloud">
-
-            <div class="skill-icon">
-                <i class="fa-brands fa-microsoft"></i>
-            </div>
-
-            <div>
-                <h4>Azure Fundamentals</h4>
-                <small>CLOUD / AI</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="cloud">
-
-            <div class="skill-icon">
-                <i class="fa-brands fa-aws"></i>
-            </div>
-
-            <div>
-                <h4>AWS Fundamentals</h4>
-                <small>CLOUD</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="tools">
-
-            <div class="skill-icon">
-                <i class="fa-solid fa-code"></i>
-            </div>
-
-            <div>
-                <h4>VS Code</h4>
-                <small>DEVELOPMENT</small>
-            </div>
-
-        </div>
-
-
-        <div class="glass skill reveal" data-category="tools">
-
-            <div class="skill-icon">
-                <i class="fa-solid fa-file-excel"></i>
-            </div>
-
-            <div>
-                <h4>PowerPoint</h4>
-                <small>PRODUCTIVITY</small>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     PROJECTS
-========================================= -->
-
-<section id="projects" class="section">
-
-    <div class="reveal">
-
-        <div class="section-label">
-            04 / SELECTED WORK
-        </div>
-
-        <h2 class="section-title">
-            IDEAS
-            <br>
-            TURNED INTO SYSTEMS.
-        </h2>
-
-        <div class="section-line"></div>
-
-    </div>
-
-
-    <div class="project-grid">
-
-
-        <!-- PROJECT 01 -->
-
-        <article class="glass project reveal" data-project="ecommerce">
-
-            <div>
-
-                <div class="project-number">
-                    PROJECT / 01
-                </div>
-
-                <div class="project-category">
-                    E-COMMERCE • AI • WEB
-                </div>
-
-                <h3>
-                    Mobile Shopping
-                    E-Commerce Website
-                    with AI Chatbot
-                </h3>
-
-                <p>
-                    An AI-assisted shopping experience designed
-                    around product discovery, customer support,
-                    order tracking and recommendation workflows.
-                </p>
-
-
-                <div class="project-tags">
-
-                    <span class="project-tag">WEB</span>
-                    <span class="project-tag">AI CHATBOT</span>
-                    <span class="project-tag">PRODUCT SEARCH</span>
-                    <span class="project-tag">RECOMMENDATIONS</span>
-                    <span class="project-tag">ORDER SUPPORT</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="project-footer">
-
-                <span class="project-open">
-                    OPEN CASE STUDY
-                </span>
-
-                <i class="fa-solid fa-arrow-up-right-from-square" style="color:#60a5fa;font-size:11px;"></i>
-
-            </div>
-
+        <div class="devops-line mt-8 h-px"></div>
+        <p class="relative mt-4 text-[8px] tracking-[.16em] text-slate-600 small-caps">Learning focus • cloud fundamentals • deployment thinking • production awareness</p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="mx-auto max-w-7xl px-5 py-24 sm:px-7">
+      <div class="mb-12 reveal">
+        <p class="text-[9px] tracking-[.28em] text-blue-400 small-caps">03 / PROJECTS</p>
+        <h2 class="mt-3 text-3xl font-bold text-white sm:text-5xl">Things I’ve built.</h2>
+        <p class="mt-4 max-w-2xl text-xs leading-6 text-slate-400">The projects below are presented as systems — what problem they target, how the pieces connect, and what technology sits underneath.</p>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-2">
+        <article class="glass tilt card relative overflow-hidden rounded-3xl p-7 reveal">
+          <div class="flex items-start justify-between gap-4">
+            <div><span class="text-[9px] text-blue-400 small-caps">01 • AI Developer Platform</span><h3 class="mt-2 text-xl font-bold text-white">NextIDE</h3></div>
+            <span class="grid h-10 w-10 place-items-center rounded-xl border border-blue-400/20 bg-blue-500/10 text-blue-300"><i class="fa-solid fa-terminal"></i></span>
+          </div>
+          <p class="mt-5 text-xs leading-7 text-slate-300">An algorithm-to-code development concept that turns plain-language instructions into executable code with an AI engine, interactive editing, execution workflow and persistent records.</p>
+          <div class="mt-5 flex flex-wrap gap-2"><span class="tag rounded-md px-2.5 py-1 text-[8px]">Next.js</span><span class="tag rounded-md px-2.5 py-1 text-[8px]">Node.js</span><span class="tag rounded-md px-2.5 py-1 text-[8px]">Express</span><span class="tag rounded-md px-2.5 py-1 text-[8px]">Gemini API</span><span class="tag rounded-md px-2.5 py-1 text-[8px]">MongoDB</span></div>
+          <button class="project-detail mt-7 text-[9px] font-bold tracking-widest text-blue-300 small-caps hover:text-white transition" data-project="nextide">Open System Brief <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></button>
         </article>
 
-
-        <!-- PROJECT 02 -->
-
-        <article class="glass project reveal" data-project="mobile-ai">
-
-            <div>
-
-                <div class="project-number">
-                    PROJECT / 02
-                </div>
-
-                <div class="project-category">
-                    AI • MOBILE RETAIL • ASSISTANT
-                </div>
-
-                <h3>
-                    Zaid Mobile Shop
-                    AI Assistant
-                </h3>
-
-                <p>
-                    A practical AI assistant concept for a mobile
-                    shop covering used and new phones, accessories,
-                    repairs and customer-oriented assistance.
-                </p>
-
-
-                <div class="project-tags">
-
-                    <span class="project-tag">PYTHON</span>
-                    <span class="project-tag">FLASK</span>
-                    <span class="project-tag">PANDAS</span>
-                    <span class="project-tag">AI API</span>
-                    <span class="project-tag">CHATBOT</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="project-footer">
-
-                <span class="project-open">
-                    OPEN CASE STUDY
-                </span>
-
-                <i class="fa-solid fa-arrow-up-right-from-square" style="color:#60a5fa;font-size:11px;"></i>
-
-            </div>
-
+        <article class="glass tilt card relative overflow-hidden rounded-3xl p-7 reveal" style="transition-delay:.08s">
+          <div class="flex items-start justify-between gap-4">
+            <div><span class="text-[9px] text-blue-400 small-caps">02 • E-Commerce + AI</span><h3 class="mt-2 text-xl font-bold text-white">AI Shopping Assistant</h3></div>
+            <span class="grid h-10 w-10 place-items-center rounded-xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-300"><i class="fa-solid fa-cart-shopping"></i></span>
+          </div>
+          <p class="mt-5 text-xs leading-7 text-slate-300">A conversational shopping concept designed around product discovery, customer preferences, recommendation logic and an AI-assisted interface for a mobile-shopping experience.</p>
+          <div class="mt-5 flex flex-wrap gap-2"><span class="tag rounded-md px-2.5 py-1 text-[8px]">Python</span><span class="tag rounded-md px-2.5 py-1 text-[8px]">Flask / Web</span><span class="tag rounded-md px-2.5 py-1 text-[8px]">SQL</span><span class="tag rounded-md px-2.5 py-1 text-[8px]">NLP</span><span class="tag rounded-md px-2.5 py-1 text-[8px]">Recommendations</span></div>
+          <button class="project-detail mt-7 text-[9px] font-bold tracking-widest text-blue-300 small-caps hover:text-white transition" data-project="shopping">Open System Brief <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></button>
         </article>
 
-
-        <!-- PROJECT 03 -->
-
-        <article class="glass project reveal" data-project="analytics">
-
-            <div>
-
-                <div class="project-number">
-                    PROJECT / 03
-                </div>
-
-                <div class="project-category">
-                    DATA ANALYTICS • BI
-                </div>
-
-                <h3>
-                    Data Analytics
-                    Dashboard
-                </h3>
-
-                <p>
-                    A portfolio-oriented analytics workflow focused
-                    on transforming raw datasets into meaningful
-                    KPIs, visual patterns and decision-support
-                    dashboards.
-                </p>
-
-
-                <div class="project-tags">
-
-                    <span class="project-tag">EXCEL</span>
-                    <span class="project-tag">SQL</span>
-                    <span class="project-tag">POWER BI</span>
-                    <span class="project-tag">DATA CLEANING</span>
-                    <span class="project-tag">KPI</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="project-footer">
-
-                <span class="project-open">
-                    OPEN CASE STUDY
-                </span>
-
-                <i class="fa-solid fa-arrow-up-right-from-square" style="color:#60a5fa;font-size:11px;"></i>
-
-            </div>
-
+        <article class="glass tilt card relative overflow-hidden rounded-3xl p-7 reveal" style="transition-delay:.12s">
+          <div class="flex items-start justify-between gap-4">
+            <div><span class="text-[9px] text-blue-400 small-caps">03 • Academic Mini Project</span><h3 class="mt-2 text-xl font-bold text-white">Mobile Shopping E-Commerce + AI Chatbot</h3></div>
+            <span class="grid h-10 w-10 place-items-center rounded-xl border border-blue-400/20 bg-blue-500/10 text-blue-300"><i class="fa-solid fa-mobile-screen-button"></i></span>
+          </div>
+          <p class="mt-5 text-xs leading-7 text-slate-300">A mobile-oriented e-commerce concept with product search, order tracking, support, recommendations and an AI chatbot layer for customer interaction.</p>
+          <div class="mt-5 flex flex-wrap gap-2"><span class="tag rounded-md px-2.5 py-1 text-[8px]">E-Commerce</span><span class="tag rounded-md px-2.5 py-1 text-[8px]">AI Chatbot</span><span class="tag rounded-md px-2.5 py-1 text-[8px]">Recommendations</span><span class="tag rounded-md px-2.5 py-1 text-[8px]">Secure Payments</span></div>
         </article>
 
-
-        <!-- PROJECT 04 -->
-
-        <article class="glass project reveal" data-project="assistant">
-
-            <div>
-
-                <div class="project-number">
-                    PROJECT / 04
-                </div>
-
-                <div class="project-category">
-                    AI • DATA • PRODUCT EXPERIENCE
-                </div>
-
-                <h3>
-                    Conversational
-                    Shopping Assistant
-                </h3>
-
-                <p>
-                    An intelligent shopping workflow concept where
-                    natural-language requirements can be translated
-                    into product discovery and recommendation logic.
-                </p>
-
-
-                <div class="project-tags">
-
-                    <span class="project-tag">NLP</span>
-                    <span class="project-tag">PYTHON</span>
-                    <span class="project-tag">DATABASE</span>
-                    <span class="project-tag">RECOMMENDATIONS</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="project-footer">
-
-                <span class="project-open">
-                    OPEN CASE STUDY
-                </span>
-
-                <i class="fa-solid fa-arrow-up-right-from-square" style="color:#60a5fa;font-size:11px;"></i>
-
-            </div>
-
+        <article class="glass tilt card relative overflow-hidden rounded-3xl p-7 reveal" style="transition-delay:.16s">
+          <div class="flex items-start justify-between gap-4">
+            <div><span class="text-[9px] text-blue-400 small-caps">04 • Analytics Practice</span><h3 class="mt-2 text-xl font-bold text-white">Business Analytics Portfolio</h3></div>
+            <span class="grid h-10 w-10 place-items-center rounded-xl border border-blue-400/20 bg-blue-500/10 text-blue-300"><i class="fa-solid fa-chart-pie"></i></span>
+          </div>
+          <p class="mt-5 text-xs leading-7 text-slate-300">A growing collection of data analytics, visualization and business problem-solving exercises built through virtual experience programs and independent learning.</p>
+          <div class="mt-5 flex flex-wrap gap-2"><span class="tag rounded-md px-2.5 py-1 text-[8px]">Power BI</span><span class="tag rounded-md px-2.5 py-1 text-[8px]">Excel</span><span class="tag rounded-md px-2.5 py-1 text-[8px]">Data Cleaning</span><span class="tag rounded-md px-2.5 py-1 text-[8px]">Business Insights</span></div>
+          <a href="#experience" class="mt-7 inline-block text-[9px] font-bold tracking-widest text-blue-300 small-caps hover:text-white">See Experience Programs →</a>
         </article>
+      </div>
+    </section>
 
+    <!-- JOURNEY -->
+    <section id="journey" class="border-y border-white/5 bg-white/[.008]">
+      <div class="mx-auto max-w-7xl px-5 py-24 sm:px-7">
+        <div class="mb-14 reveal">
+          <p class="text-[9px] tracking-[.28em] text-blue-400 small-caps">04 / JOURNEY</p>
+          <h2 class="mt-3 text-3xl font-bold text-white sm:text-5xl">From electronics to intelligent systems.</h2>
+        </div>
+
+        <div class="relative ml-2 max-w-4xl">
+          <div class="timeline-line absolute left-[5px] top-1 h-full w-px opacity-60"></div>
+
+          <div class="relative mb-12 pl-10 reveal">
+            <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-blue-300 bg-[#03050c] shadow-[0_0_15px_#60a5fa]"></span>
+            <p class="text-[9px] tracking-widest text-blue-400 small-caps">2021 — 2024</p>
+            <h3 class="mt-2 text-lg font-bold text-white">Government Polytechnic Solapur</h3>
+            <p class="mt-2 text-xs leading-6 text-slate-400">Diploma in Electronics & Telecommunication Engineering • 75.59% • Distinction.</p>
+          </div>
+
+          <div class="relative mb-12 pl-10 reveal">
+            <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-blue-300 bg-[#03050c] shadow-[0_0_15px_#60a5fa]"></span>
+            <p class="text-[9px] tracking-widest text-blue-400 small-caps">2024 — 2026</p>
+            <h3 class="mt-2 text-lg font-bold text-white">BMIT, Solapur • B.Tech CSE</h3>
+            <p class="mt-2 text-xs leading-6 text-slate-400">Computer Science Engineering with an expanding focus on analytics, AI, cloud computing, software engineering and data-centric systems.</p>
+          </div>
+
+          <div class="relative mb-12 pl-10 reveal">
+            <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-cyan-300 bg-[#03050c] shadow-[0_0_15px_#22d3ee]"></span>
+            <p class="text-[9px] tracking-widest text-cyan-400 small-caps">2026 • Industry Exposure</p>
+            <h3 class="mt-2 text-lg font-bold text-white">Data Analytics Internship Exposure</h3>
+            <p class="mt-2 text-xs leading-6 text-slate-400">Exposure to a Data Analyst internship environment at UnionSys Technologies, alongside academic commitments.</p>
+          </div>
+
+          <div class="relative pl-10 reveal">
+            <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-blue-300 bg-[#03050c] shadow-[0_0_15px_#60a5fa]"></span>
+            <p class="text-[9px] tracking-widest text-blue-400 small-caps">Now</p>
+            <h3 class="mt-2 text-lg font-bold text-white">Build • Learn • Apply</h3>
+            <p class="mt-2 text-xs leading-6 text-slate-400">Preparing for the transition from final-year engineering student to a professional role across Data Analytics, Data Science, AI or Software Engineering.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="mx-auto max-w-7xl px-5 py-24 sm:px-7">
+      <div class="mb-12 reveal">
+        <p class="text-[9px] tracking-[.28em] text-blue-400 small-caps">05 / CREDENTIALS</p>
+        <h2 class="mt-3 text-3xl font-bold text-white sm:text-5xl">Learning, documented.</h2>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <a href="C-%20AWS%20Compute%20Service.pdf" target="_blank" class="glass card rounded-2xl p-5 reveal"><span class="text-[8px] text-blue-400 small-caps">Cloud</span><h3 class="mt-2 text-xs font-bold text-white">AWS Compute Service</h3><p class="mt-4 text-[9px] text-slate-500">Open certificate →</p></a>
+        <a href="C-Cloud%20Computing%20Architechture.pdf" target="_blank" class="glass card rounded-2xl p-5 reveal"><span class="text-[8px] text-blue-400 small-caps">Cloud</span><h3 class="mt-2 text-xs font-bold text-white">Cloud Computing Architecture</h3><p class="mt-4 text-[9px] text-slate-500">Open certificate →</p></a>
+        <a href="C-Cloud%20Networking%20With%20AWS%20VPC.pdf" target="_blank" class="glass card rounded-2xl p-5 reveal"><span class="text-[8px] text-blue-400 small-caps">Networking</span><h3 class="mt-2 text-xs font-bold text-white">Cloud Networking With AWS VPC</h3><p class="mt-4 text-[9px] text-slate-500">Open certificate →</p></a>
+        <a href="C-Cloud%20Engineer%20Roles%20and%20Responsibilities.pdf" target="_blank" class="glass card rounded-2xl p-5 reveal"><span class="text-[8px] text-blue-400 small-caps">Cloud</span><h3 class="mt-2 text-xs font-bold text-white">Cloud Engineer Roles & Duties</h3><p class="mt-4 text-[9px] text-slate-500">Open certificate →</p></a>
+        <a href="Data%20Analytics%20By%20quantium.pdf" target="_blank" class="glass card rounded-2xl p-5 reveal"><span class="text-[8px] text-blue-400 small-caps">Analytics</span><h3 class="mt-2 text-xs font-bold text-white">Quantium Analytics</h3><p class="mt-4 text-[9px] text-slate-500">Open certificate →</p></a>
+        <a href="Data%20Analytics%20Consulting%20By%20KPMG.pdf" target="_blank" class="glass card rounded-2xl p-5 reveal"><span class="text-[8px] text-blue-400 small-caps">Consulting</span><h3 class="mt-2 text-xs font-bold text-white">KPMG Data Analytics Consulting</h3><p class="mt-4 text-[9px] text-slate-500">Open certificate →</p></a>
+        <a href="C-Exel%20for%20Beginners.pdf" target="_blank" class="glass card rounded-2xl p-5 reveal"><span class="text-[8px] text-blue-400 small-caps">Data</span><h3 class="mt-2 text-xs font-bold text-white">Excel for Beginners</h3><p class="mt-4 text-[9px] text-slate-500">Open certificate →</p></a>
+        <a href="Communication%20Skills%20By%20TCS.pdf" target="_blank" class="glass card rounded-2xl p-5 reveal"><span class="text-[8px] text-blue-400 small-caps">Professional</span><h3 class="mt-2 text-xs font-bold text-white">Communication Skills by TCS</h3><p class="mt-4 text-[9px] text-slate-500">Open certificate →</p></a>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="border-y border-white/5 bg-white/[.008]">
+      <div class="mx-auto max-w-7xl px-5 py-24 sm:px-7">
+        <div class="mb-12 reveal">
+          <p class="text-[9px] tracking-[.28em] text-blue-400 small-caps">06 / EXPERIENCE PROGRAMS</p>
+          <h2 class="mt-3 text-3xl font-bold text-white sm:text-5xl">Industry-style problem solving.</h2>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <a href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf" target="_blank" class="glass card rounded-2xl p-6 reveal"><span class="text-[8px] text-blue-400 small-caps">Power BI Case Study</span><h3 class="mt-2 text-base font-bold text-white">PwC Switzerland</h3><p class="mt-3 text-[10px] leading-6 text-slate-400">Power BI dashboarding, KPI analysis and workforce insights.</p><span class="mt-5 inline-block text-[9px] text-blue-300">View document →</span></a>
+          <a href="Data%20Visualisation%20By%20TATA.pdf" target="_blank" class="glass card rounded-2xl p-6 reveal"><span class="text-[8px] text-blue-400 small-caps">Data Visualization</span><h3 class="mt-2 text-base font-bold text-white">Tata Group</h3><p class="mt-3 text-[10px] leading-6 text-slate-400">Business metrics, visual communication and executive presentation work.</p><span class="mt-5 inline-block text-[9px] text-blue-300">View document →</span></a>
+          <a href="Data%20Analytics%20by%20Acccenture.pdf" target="_blank" class="glass card rounded-2xl p-6 reveal"><span class="text-[8px] text-blue-400 small-caps">Data Analytics</span><h3 class="mt-2 text-base font-bold text-white">Accenture</h3><p class="mt-3 text-[10px] leading-6 text-slate-400">Data cleaning, analysis and business trend interpretation.</p><span class="mt-5 inline-block text-[9px] text-blue-300">View document →</span></a>
+          <a href="BCG%20Data%20Science.pdf" target="_blank" class="glass card rounded-2xl p-6 reveal"><span class="text-[8px] text-blue-400 small-caps">Data Science</span><h3 class="mt-2 text-base font-bold text-white">Boston Consulting Group</h3><p class="mt-3 text-[10px] leading-6 text-slate-400">Customer churn analysis and predictive modeling exercise.</p><span class="mt-5 inline-block text-[9px] text-blue-300">View document →</span></a>
+          <a href="Data%20Science%20By%20British%20Airways.pdf" target="_blank" class="glass card rounded-2xl p-6 reveal"><span class="text-[8px] text-blue-400 small-caps">Data Science</span><h3 class="mt-2 text-base font-bold text-white">British Airways</h3><p class="mt-3 text-[10px] leading-6 text-slate-400">Customer review analysis and predictive modeling exercise.</p><span class="mt-5 inline-block text-[9px] text-blue-300">View document →</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="mx-auto max-w-7xl px-5 py-28 sm:px-7">
+      <div class="relative overflow-hidden rounded-[28px] border border-blue-400/15 bg-gradient-to-br from-blue-500/[.09] via-transparent to-cyan-400/[.04] p-8 sm:p-12 reveal">
+        <div class="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"></div>
+        <div class="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <p class="text-[9px] tracking-[.28em] text-blue-400 small-caps">07 / CONTACT</p>
+            <h2 class="mt-3 max-w-3xl text-3xl font-bold text-white sm:text-5xl">Let’s build something worth showing.</h2>
+            <p class="mt-5 max-w-2xl text-xs leading-7 text-slate-400">For internships, fresher opportunities, technical collaborations, analytics work or professional networking — reach out.</p>
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a href="mailto:zakipatel2811@gmail.com" class="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-[9px] text-white hover:border-blue-400/40 transition"><i class="fa-solid fa-envelope mr-2 text-blue-300"></i>zakipatel2811@gmail.com</a>
+              <a href="https://www.linkedin.com/in/zaki-patel-25767a285/" target="_blank" rel="noreferrer" class="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-[9px] text-white hover:border-blue-400/40 transition"><i class="fa-brands fa-linkedin mr-2 text-blue-300"></i>LinkedIn</a>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2 lg:justify-end">
+            <a href="resume.pdf" download class="rounded-lg bg-white px-5 py-3 text-[9px] font-bold tracking-widest text-black small-caps hover:bg-blue-50 transition">Download Resume</a>
+            <a href="https://github.com/zakipatel89" target="_blank" rel="noreferrer" class="rounded-lg border border-white/15 bg-white/5 px-5 py-3 text-[9px] font-bold tracking-widest text-white small-caps hover:border-blue-400/40 transition">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-black/20 px-5 py-8 text-center">
+    <p class="text-[9px] text-slate-600 small-caps">© 2026 Patel Mohammad Zaki • Built with curiosity, code & data.</p>
+  </footer>
+
+  <!-- PROJECT MODAL -->
+  <div id="projectModal" class="modal fixed inset-0 z-[200] grid place-items-center bg-black/70 p-5 backdrop-blur-sm">
+    <div class="modal-box glass w-full max-w-2xl rounded-3xl p-7 sm:p-9">
+      <div class="flex items-start justify-between gap-5">
+        <div><p id="modalEyebrow" class="text-[9px] text-blue-400 small-caps"></p><h3 id="modalTitle" class="mt-2 text-2xl font-bold text-white"></h3></div>
+        <button id="closeModal" class="grid h-9 w-9 place-items-center rounded-lg border border-white/10 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <p id="modalText" class="mt-6 text-xs leading-7 text-slate-300"></p>
+      <div id="modalTags" class="mt-6 flex flex-wrap gap-2"></div>
+      <a id="modalRepo" href="https://github.com/zakipatel89" target="_blank" rel="noreferrer" class="mt-8 inline-flex items-center gap-2 text-[9px] font-bold tracking-widest text-blue-300 small-caps">GitHub Profile <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
     </div>
+  </div>
 
-</section>
-
-
-<!-- =========================================
-     EXPERIENCE
-========================================= -->
-
-<section id="experience" class="section">
-
-    <div class="reveal">
-
-        <div class="section-label">
-            05 / EXPERIENCE
+  <!-- COMMAND PALETTE -->
+  <div id="commandModal" class="modal fixed inset-0 z-[210] bg-black/70 p-5 backdrop-blur-sm">
+    <div class="mx-auto mt-[12vh] w-full max-w-xl">
+      <div class="glass overflow-hidden rounded-2xl">
+        <div class="flex items-center gap-3 border-b border-white/10 px-4">
+          <i class="fa-solid fa-terminal text-blue-400"></i>
+          <input id="commandInput" autocomplete="off" class="cmd h-14 w-full bg-transparent text-xs text-white outline-none placeholder:text-slate-600" placeholder="Type a section or action...">
+          <kbd class="rounded border border-white/10 px-2 py-1 text-[8px] text-slate-500">ESC</kbd>
         </div>
-
-        <h2 class="section-title">
-            LEARNING
-            <br>
-            THROUGH REAL PROBLEMS.
-        </h2>
-
-        <div class="section-line"></div>
-
+        <div id="commandList" class="p-2">
+          <button data-go="#projects" class="cmd-item flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-[10px] text-slate-300 hover:bg-white/5"><i class="fa-solid fa-code w-5 text-blue-400"></i>Open projects</button>
+          <button data-go="#skills" class="cmd-item flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-[10px] text-slate-300 hover:bg-white/5"><i class="fa-solid fa-layer-group w-5 text-blue-400"></i>Open tech stack</button>
+          <button data-go="#journey" class="cmd-item flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-[10px] text-slate-300 hover:bg-white/5"><i class="fa-solid fa-route w-5 text-blue-400"></i>Open journey</button>
+          <button data-go="#contact" class="cmd-item flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-[10px] text-slate-300 hover:bg-white/5"><i class="fa-solid fa-paper-plane w-5 text-blue-400"></i>Contact Zaki</button>
+          <a href="resume.pdf" download class="cmd-item flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-[10px] text-slate-300 hover:bg-white/5"><i class="fa-solid fa-file-arrow-down w-5 text-blue-400"></i>Download resume</a>
+        </div>
+      </div>
     </div>
-
-
-    <div class="experience-grid">
-
-
-        <div class="glass experience reveal">
-
-            <div class="exp-label">
-                INDUSTRY EXPERIENCE
-            </div>
-
-            <h3>
-                UnionSys Technologies
-            </h3>
-
-            <p>
-                Data Analyst Intern. Exposure to professional
-                data-analysis workflows and technical workplace
-                practices.
-            </p>
-
-            <div style="margin-top:15px; color:#475569; font-size:8px; letter-spacing:.1em;">
-                2026
-            </div>
-
-        </div>
-
-
-        <div class="glass experience reveal">
-
-            <div class="exp-label">
-                VIRTUAL EXPERIENCE
-            </div>
-
-            <h3>
-                PwC
-            </h3>
-
-            <p>
-                Power BI-oriented case experience involving
-                workforce KPIs, dashboard development and
-                analytical insights.
-            </p>
-
-            <a class="exp-link" href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf" target="_blank">
-                VIEW DOCUMENT →
-            </a>
-
-        </div>
-
-
-        <div class="glass experience reveal">
-
-            <div class="exp-label">
-                VIRTUAL EXPERIENCE
-            </div>
-
-            <h3>
-                Tata Group
-            </h3>
-
-            <p>
-                Data visualization and business-oriented
-                analytical communication experience.
-            </p>
-
-            <a class="exp-link" href="Data%20Visualisation%20By%20TATA.pdf" target="_blank">
-                VIEW DOCUMENT →
-            </a>
-
-        </div>
-
-
-        <div class="glass experience reveal">
-
-            <div class="exp-label">
-                VIRTUAL EXPERIENCE
-            </div>
-
-            <h3>
-                Accenture
-            </h3>
-
-            <p>
-                Data analytics experience focused on data
-                preparation, analysis and communicating
-                business-oriented insights.
-            </p>
-
-            <a class="exp-link" href="Data%20Analytics%20by%20Acccenture.pdf" target="_blank">
-                VIEW DOCUMENT →
-            </a>
-
-        </div>
-
-
-        <div class="glass experience reveal">
-
-            <div class="exp-label">
-                VIRTUAL EXPERIENCE
-            </div>
-
-            <h3>
-                Boston Consulting Group
-            </h3>
-
-            <p>
-                Data science case experience involving customer
-                churn analysis and predictive modelling concepts.
-            </p>
-
-            <a class="exp-link" href="BCG%20Data%20Science.pdf" target="_blank">
-                VIEW DOCUMENT →
-            </a>
-
-        </div>
-
-
-        <div class="glass experience reveal">
-
-            <div class="exp-label">
-                VIRTUAL EXPERIENCE
-            </div>
-
-            <h3>
-                British Airways
-            </h3>
-
-            <p>
-                Data science and customer-review analysis
-                experience involving sentiment and predictive
-                analysis concepts.
-            </p>
-
-            <a class="exp-link" href="Data%20Science%20By%20British%20Airways.pdf" target="_blank">
-                VIEW DOCUMENT →
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     CERTIFICATIONS
-========================================= -->
-
-<section id="certifications" class="section">
-
-    <div class="reveal">
-
-        <div class="section-label">
-            06 / CREDENTIALS
-        </div>
-
-        <h2 class="section-title">
-            CERTIFICATIONS &
-            <br>
-            LEARNING.
-        </h2>
-
-        <div class="section-line"></div>
-
-    </div>
-
-
-    <div class="cert-grid">
-
-
-        <div class="glass cert reveal">
-
-            <div>
-
-                <div class="cert-icon">
-                    <i class="fa-brands fa-aws"></i>
-                </div>
-
-                <small>
-                    CLOUD
-                </small>
-
-                <h3>
-                    AWS Compute Service
-                </h3>
-
-            </div>
-
-            <a href="C-%20AWS%20Compute%20Service.pdf" target="_blank">
-                VIEW CERTIFICATE →
-            </a>
-
-        </div>
-
-
-        <div class="glass cert reveal">
-
-            <div>
-
-                <div class="cert-icon">
-                    <i class="fa-solid fa-cloud"></i>
-                </div>
-
-                <small>
-                    CLOUD
-                </small>
-
-                <h3>
-                    Cloud Computing Architecture
-                </h3>
-
-            </div>
-
-            <a href="C-Cloud%20Computing%20Architechture.pdf" target="_blank">
-                VIEW CERTIFICATE →
-            </a>
-
-        </div>
-
-
-        <div class="glass cert reveal">
-
-            <div>
-
-                <div class="cert-icon">
-                    <i class="fa-solid fa-network-wired"></i>
-                </div>
-
-                <small>
-                    AWS
-                </small>
-
-                <h3>
-                    Cloud Networking With AWS VPC
-                </h3>
-
-            </div>
-
-            <a href="C-Cloud%20Networking%20With%20AWS%20VPC.pdf" target="_blank">
-                VIEW CERTIFICATE →
-            </a>
-
-        </div>
-
-
-        <div class="glass cert reveal">
-
-            <div>
-
-                <div class="cert-icon">
-                    <i class="fa-solid fa-server"></i>
-                </div>
-
-                <small>
-                    CLOUD
-                </small>
-
-                <h3>
-                    Cloud Engineer Roles & Duties
-                </h3>
-
-            </div>
-
-            <a href="C-Cloud%20Engineer%20Roles%20and%20Responsibilities.pdf" target="_blank">
-                VIEW CERTIFICATE →
-            </a>
-
-        </div>
-
-
-        <div class="glass cert reveal">
-
-            <div>
-
-                <div class="cert-icon">
-                    <i class="fa-solid fa-chart-line"></i>
-                </div>
-
-                <small>
-                    DATA ANALYTICS
-                </small>
-
-                <h3>
-                    Quantium Analytics
-                </h3>
-
-            </div>
-
-            <a href="Data%20Analytics%20By%20quantium.pdf" target="_blank">
-                VIEW CERTIFICATE →
-            </a>
-
-        </div>
-
-
-        <div class="glass cert reveal">
-
-            <div>
-
-                <div class="cert-icon">
-                    <i class="fa-solid fa-chart-pie"></i>
-                </div>
-
-                <small>
-                    CONSULTING
-                </small>
-
-                <h3>
-                    KPMG Data Analytics Consulting
-                </h3>
-
-            </div>
-
-            <a href="Data%20Analytics%20Consulting%20By%20KPMG.pdf" target="_blank">
-                VIEW CERTIFICATE →
-            </a>
-
-        </div>
-
-
-        <div class="glass cert reveal">
-
-            <div>
-
-                <div class="cert-icon">
-                    <i class="fa-solid fa-file-excel"></i>
-                </div>
-
-                <small>
-                    DATA
-                </small>
-
-                <h3>
-                    Excel for Beginners
-                </h3>
-
-            </div>
-
-            <a href="C-Exel%20for%20Beginners.pdf" target="_blank">
-                VIEW CERTIFICATE →
-            </a>
-
-        </div>
-
-
-        <div class="glass cert reveal">
-
-            <div>
-
-                <div class="cert-icon">
-                    <i class="fa-solid fa-comments"></i>
-                </div>
-
-                <small>
-                    COMMUNICATION
-                </small>
-
-                <h3>
-                    Communication Skills by TCS
-                </h3>
-
-            </div>
-
-            <a href="Communication%20Skills%20By%20TCS.pdf" target="_blank">
-                VIEW CERTIFICATE →
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     TERMINAL / PERSONAL SYSTEM
-========================================= -->
-
-<section class="section">
-
-    <div class="glass terminal reveal">
-
-        <div class="terminal-head">
-
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-
-            <span class="terminal-title">
-                zaki@portfolio ~ /identity
-            </span>
-
-        </div>
-
-
-        <div class="terminal-body">
-
-            <div>
-                <span>zaki@portfolio:~$</span>
-                whoami
-            </div>
-
-            <div>
-                Patel Mohammad Zaki
-            </div>
-
-            <div>
-                <span>zaki@portfolio:~$</span>
-                focus
-            </div>
-
-            <div>
-                Software Engineering · Data Analytics · Data Science · AI
-            </div>
-
-            <div>
-                <span>zaki@portfolio:~$</span>
-                current_state
-            </div>
-
-            <div>
-                Final-year CSE student → building → learning → preparing
-            </div>
-
-            <div>
-                <span>zaki@portfolio:~$</span>
-                philosophy
-            </div>
-
-            <div>
-                Understand the problem → work with the data →
-                build the system → make it useful.
-            </div>
-
-            <div>
-                <span>zaki@portfolio:~$</span>
-                _
-                <span class="terminal-cursor"></span>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     CONTACT
-========================================= -->
-
-<section id="contact" class="section">
-
-    <div class="glass contact-box reveal">
-
-        <div class="section-label">
-            07 / CONTACT
-        </div>
-
-
-        <h2 class="contact-title">
-            LET'S BUILD
-            <br>
-            SOMETHING USEFUL.
-        </h2>
-
-
-        <p class="contact-text">
-
-            Whether it is a software opportunity, data project,
-            AI idea or professional connection — I’m always open
-            to meaningful conversations.
-
-        </p>
-
-
-        <div class="contact-grid">
-
-            <a class="contact-link" href="mailto:zakipatel2811@gmail.com">
-
-                <i class="fa-solid fa-envelope"></i>
-
-                EMAIL
-
-            </a>
-
-
-            <a class="contact-link" href="https://www.linkedin.com/in/zaki-patel-25767a285/" target="_blank">
-
-                <i class="fa-brands fa-linkedin"></i>
-
-                LINKEDIN
-
-            </a>
-
-
-            <a class="contact-link" href="https://github.com/zakipatel89" target="_blank">
-
-                <i class="fa-brands fa-github"></i>
-
-                GITHUB
-
-            </a>
-
-
-            <a class="contact-link" href="https://wa.me/918468809905" target="_blank">
-
-                <i class="fa-brands fa-whatsapp"></i>
-
-                WHATSAPP
-
-            </a>
-
-
-            <a class="contact-link" href="resume.pdf" download>
-
-                <i class="fa-solid fa-file-arrow-down"></i>
-
-                DOWNLOAD RESUME
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<!-- =========================================
-     PROJECT MODAL
-========================================= -->
-
-<div class="modal" id="projectModal">
-
-    <div class="modal-card">
-
-        <button class="modal-close" id="modalClose">
-
-            <i class="fa-solid fa-xmark"></i>
-
-        </button>
-
-
-        <div class="modal-label" id="modalLabel">
-        </div>
-
-
-        <h2 class="modal-title" id="modalTitle">
-        </h2>
-
-
-        <p class="modal-description" id="modalDescription">
-        </p>
-
-
-        <div class="modal-stack" id="modalStack">
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================
-     COMMAND PALETTE
-========================================= -->
-
-<div class="command" id="commandPalette">
-
-    <div class="command-box">
-
-        <input type="text"
-               class="command-input"
-               id="commandInput"
-               placeholder="Type a command...">
-
-
-        <div class="command-items">
-
-            <button class="command-item" data-target="#about">
-                <i class="fa-solid fa-user"></i> Open Profile
-            </button>
-
-            <button class="command-item" data-target="#journey">
-                <i class="fa-solid fa-route"></i> View Journey
-            </button>
-
-            <button class="command-item" data-target="#skills">
-                <i class="fa-solid fa-code"></i> Explore Skills
-            </button>
-
-            <button class="command-item" data-target="#projects">
-                <i class="fa-solid fa-layer-group"></i> Explore Projects
-            </button>
-
-            <button class="command-item" data-target="#experience">
-                <i class="fa-solid fa-briefcase"></i> View Experience
-            </button>
-
-            <button class="command-item" data-target="#contact">
-                <i class="fa-solid fa-paper-plane"></i> Contact Patel Zaki
-            </button>
-
-            <button class="command-item" onclick="window.location.href='resume.pdf'">
-                <i class="fa-solid fa-file-arrow-down"></i> Download Resume
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================
-     FOOTER
-========================================= -->
-
-<footer>
-
-    © 2026 PATEL MOHAMMAD ZAKI
-    ·
-    ENGINEERING INTELLIGENCE & RESILIENT SYSTEMS
-
-</footer>
-
-
-<script>
-
-/* =========================================
-   LOADER (Optimized)
-========================================= */
-
-let progress = 0;
-
-const loader = document.getElementById("loader");
-const loaderProgress = document.getElementById("loaderProgress");
-const loaderPercent = document.getElementById("loaderPercent");
-
-const loaderTimer = setInterval(() => {
-    progress += Math.floor(Math.random() * 7) + 3;
-    if(progress >= 100){
-        progress = 100;
-        clearInterval(loaderTimer);
-        setTimeout(() => {
-            loader.classList.add("hide");
-        },500);
-    }
-    // requestAnimationFrame ensures smooth rendering of UI changes
-    requestAnimationFrame(() => {
-        loaderProgress.style.width = progress + "%";
-        loaderPercent.textContent = progress + "%";
+  </div>
+
+  <script>
+    // ---------- PRELOADER ----------
+    const preloader=document.getElementById('preloader'), bar=document.getElementById('loaderBar'), pct=document.getElementById('loaderPct');
+    let p=0;
+    const loader=setInterval(()=>{
+      p=Math.min(100,p+Math.floor(Math.random()*10)+5);
+      bar.style.width=p+'%'; pct.textContent=p+'%';
+      if(p>=100){clearInterval(loader);setTimeout(()=>preloader.style.opacity='0',350);setTimeout(()=>preloader.remove(),1050)}
+    },55);
+
+    // ---------- SCROLL PROGRESS ----------
+    const progress=document.getElementById('progress');
+    const updateProgress=()=>{const h=document.documentElement.scrollHeight-innerHeight;progress.style.width=(h>0?(scrollY/h)*100:0)+'%'}
+    addEventListener('scroll',updateProgress,{passive:true}); updateProgress();
+
+    // ---------- REVEAL ----------
+    const revealObs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');revealObs.unobserve(e.target)}})
+    },{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+    // ---------- SPOTLIGHT + CURSOR ----------
+    const spotlight=document.querySelector('.spotlight'), ring=document.getElementById('cursorRing');
+    addEventListener('pointermove',e=>{
+      spotlight.style.setProperty('--mx',e.clientX+'px');spotlight.style.setProperty('--my',e.clientY+'px');
+      ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';
     });
-},50);
+    document.querySelectorAll('a,button,.tilt').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{ring.style.width='46px';ring.style.height='46px';ring.style.background='rgba(96,165,250,.04)'});
+      el.addEventListener('mouseleave',()=>{ring.style.width='28px';ring.style.height='28px';ring.style.background='transparent'});
+    });
 
-/* =========================================
-   NAVBAR (Throttled Scroll)
-========================================= */
-
-const navbar = document.getElementById("navbar");
-let isNavScrolled = false;
-
-window.addEventListener("scroll",() => {
-    const shouldBeScrolled = window.scrollY > 50;
-    if (shouldBeScrolled !== isNavScrolled) {
-        isNavScrolled = shouldBeScrolled;
-        requestAnimationFrame(() => {
-            if(isNavScrolled){
-                navbar.classList.add("scrolled");
-            }else{
-                navbar.classList.remove("scrolled");
-            }
+    // ---------- SKILL FILTER ----------
+    document.querySelectorAll('.filter').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter=btn.dataset.filter;
+        document.querySelectorAll('.skill').forEach(card=>{
+          const show=filter==='all'||card.dataset.cat===filter;
+          card.classList.toggle('hide',!show);
         });
-    }
-}, { passive: true });
-
-/* =========================================
-   MOBILE NAV
-========================================= */
-
-const mobileMenu = document.getElementById("mobileMenu");
-const mobileNav = document.getElementById("mobileNav");
-
-mobileMenu.addEventListener("click",() => {
-    mobileNav.classList.toggle("show");
-});
-
-document.querySelectorAll(".mobile-nav a").forEach(link => {
-    link.addEventListener("click",() => {
-        mobileNav.classList.remove("show");
+      });
     });
-});
 
-/* =========================================
-   SCROLL PROGRESS (Throttled)
-========================================= */
-
-const scrollProgress = document.getElementById("scroll-progress");
-
-window.addEventListener("scroll",() => {
-    requestAnimationFrame(() => {
-        const scrollTop = document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const percentage = (scrollTop / height) * 100;
-        scrollProgress.style.width = percentage + "%";
+    // ---------- 3D TILT ----------
+    document.querySelectorAll('.tilt').forEach(card=>{
+      card.addEventListener('pointermove',e=>{
+        if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+        const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+        card.style.transform=`perspective(900px) rotateX(${(-y*4).toFixed(2)}deg) rotateY(${(x*5).toFixed(2)}deg) translateY(-4px)`;
+      });
+      card.addEventListener('pointerleave',()=>card.style.transform='');
     });
-}, { passive: true });
 
+    // ---------- PROJECT MODALS ----------
+    const projects={
+      nextide:{eyebrow:'AI DEVELOPER PLATFORM',title:'NextIDE — Algorithm-To-Code Workspace',text:'A developer workspace concept that connects natural-language algorithm instructions to an AI code-generation workflow. The broader system combines an interactive interface, backend APIs, authentication/persistence concepts and execution records.',tags:['Next.js','Node.js','Express.js','Gemini API','MongoDB']},
+      shopping:{eyebrow:'AI + E-COMMERCE',title:'AI Conversational Shopping Assistant',text:'A conversational e-commerce concept designed around customer intent. The idea is to reduce manual product discovery by taking natural-language preferences such as product type, budget and requirements and turning them into structured recommendations.',tags:['Python','Web App','SQL','NLP','Recommendations']}
+    };
+    const modal=document.getElementById('projectModal');
+    document.querySelectorAll('.project-detail').forEach(btn=>btn.addEventListener('click',()=>{
+      const d=projects[btn.dataset.project];document.getElementById('modalEyebrow').textContent=d.eyebrow;document.getElementById('modalTitle').textContent=d.title;document.getElementById('modalText').textContent=d.text;document.getElementById('modalTags').innerHTML=d.tags.map(t=>`<span class="tag rounded-md px-2.5 py-1 text-[8px] text-slate-300">${t}</span>`).join('');modal.classList.add('open');
+    }));
+    const closeProject=()=>modal.classList.remove('open');
+    document.getElementById('closeModal').onclick=closeProject;modal.addEventListener('click',e=>{if(e.target===modal)closeProject()});
 
-/* =========================================
-   REVEAL
-========================================= */
-
-const observer = new IntersectionObserver(
-    entries => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                entry.target.classList.add("visible");
-                // Stop observing once revealed to save CPU
-                observer.unobserve(entry.target); 
-            }
-        });
-    },
-    { threshold:.12 }
-);
-
-document.querySelectorAll(".reveal").forEach(element => {
-    observer.observe(element);
-});
-
-
-/* =========================================
-   SKILL FILTER
-========================================= */
-
-const filters = document.querySelectorAll(".filter");
-const skills = document.querySelectorAll(".skill");
-
-filters.forEach(filter => {
-    filter.addEventListener("click",() => {
-        filters.forEach(f => f.classList.remove("active"));
-        filter.classList.add("active");
-        
-        const category = filter.dataset.filter;
-
-        skills.forEach(skill => {
-            if(category === "all" || skill.dataset.category === category){
-                skill.classList.remove("hidden");
-                requestAnimationFrame(() => {
-                    skill.style.opacity = "1";
-                    skill.style.transform = "scale(1) translateZ(0)";
-                });
-            }else{
-                skill.style.opacity = "0";
-                skill.style.transform = "scale(.95) translateZ(0)";
-                setTimeout(() => {
-                    skill.classList.add("hidden");
-                },250);
-            }
-        });
+    // ---------- COMMAND PALETTE ----------
+    const commandModal=document.getElementById('commandModal'),commandInput=document.getElementById('commandInput');
+    const openCommand=()=>{commandModal.classList.add('open');setTimeout(()=>commandInput.focus(),80)}
+    document.getElementById('commandBtn').onclick=openCommand;
+    document.addEventListener('keydown',e=>{
+      if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openCommand()}
+      if(e.key==='Escape'){commandModal.classList.remove('open');closeProject()}
     });
-});
-
-
-/* =========================================
-   COUNTERS
-========================================= */
-
-const counters = document.querySelectorAll("[data-count]");
-
-const counterObserver = new IntersectionObserver(
-    entries => {
-        entries.forEach(entry => {
-            if(!entry.isIntersecting) return;
-            
-            const element = entry.target;
-            const target = parseFloat(element.dataset.count);
-            const decimal = parseInt(element.dataset.decimal || 0);
-            let current = 0;
-            const duration = 1200;
-            const start = performance.now();
-
-            function update(time){
-                const elapsed = time - start;
-                const progress = Math.min(elapsed / duration, 1);
-                current = target * progress;
-                element.textContent = current.toFixed(decimal);
-
-                if(progress < 1){
-                    requestAnimationFrame(update);
-                }
-            }
-            requestAnimationFrame(update);
-            counterObserver.unobserve(element);
-        });
-    }
-);
-
-counters.forEach(counter => counterObserver.observe(counter));
-
-
-/* =========================================
-   CUSTOM CURSOR (Throttled using rAF)
-========================================= */
-
-const cursorDot = document.querySelector(".cursor-dot");
-const cursorRing = document.querySelector(".cursor-ring");
-
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
-let ringX = mouseX;
-let ringY = mouseY;
-let isDesktop = window.innerWidth > 800;
-
-window.addEventListener("resize", () => {
-    isDesktop = window.innerWidth > 800;
-}, {passive:true});
-
-
-window.addEventListener("mousemove",e => {
-    if(!isDesktop) return;
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    // Direct DOM update for dot to avoid any perceivable lag
-    cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%,-50%)`;
-}, {passive:true});
-
-function animateCursor(){
-    if(isDesktop){
-        ringX += (mouseX - ringX) * 0.2; // Increased interpolation speed for responsiveness
-        ringY += (mouseY - ringY) * 0.2;
-        cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%,-50%)`;
-    }
-    requestAnimationFrame(animateCursor);
-}
-animateCursor();
-
-document.querySelectorAll("a,button,.project,.skill").forEach(element => {
-    element.addEventListener("mouseenter", () => cursorRing.classList.add("active"));
-    element.addEventListener("mouseleave", () => cursorRing.classList.remove("active"));
-});
-
-
-/* =========================================
-   PROJECT DATA
-========================================= */
-
-const projectData = {
-    ecommerce: {
-        label: "PROJECT / 01 · E-COMMERCE / AI",
-        title: "Mobile Shopping E-Commerce Website with AI Chatbot",
-        description: "A mobile-oriented e-commerce concept combining product discovery, customer assistance, order tracking and AI-powered conversational interaction. The project reflects the goal of making shopping workflows more accessible through intelligent assistance.",
-        stack:[ "E-Commerce", "AI Chatbot", "Product Search", "Recommendations", "Order Tracking", "Customer Support" ]
-    },
-    "mobile-ai": {
-        label: "PROJECT / 02 · AI / RETAIL",
-        title: "Zaid Mobile Shop AI Assistant",
-        description: "A practical AI assistant concept designed around a mobile shop. The idea brings together new and used phones, accessories, repairs and customer assistance into one conversational experience.",
-        stack:[ "Python", "Flask", "Pandas", "AI API", "Chatbot", "Retail Assistant" ]
-    },
-    analytics: {
-        label: "PROJECT / 03 · DATA ANALYTICS",
-        title: "Data Analytics Dashboard",
-        description: "A data analytics workflow focused on turning raw information into clean datasets, useful KPIs, visual patterns and decision-support dashboards.",
-        stack:[ "Excel", "SQL", "Power BI", "Data Cleaning", "KPIs", "Visualization" ]
-    },
-    assistant: {
-        label: "PROJECT / 04 · AI / DATA",
-        title: "Conversational Shopping Assistant",
-        description: "An intelligent shopping workflow concept where natural-language requirements can be transformed into product discovery and recommendation logic.",
-        stack:[ "NLP", "Python", "Database", "Recommendations", "Conversational AI" ]
-    }
-};
-
-
-/* =========================================
-   PROJECT MODAL
-========================================= */
-
-const projectModal = document.getElementById("projectModal");
-const modalClose = document.getElementById("modalClose");
-const modalLabel = document.getElementById("modalLabel");
-const modalTitle = document.getElementById("modalTitle");
-const modalDescription = document.getElementById("modalDescription");
-const modalStack = document.getElementById("modalStack");
-
-document.querySelectorAll(".project").forEach(project => {
-    project.addEventListener("click",() => {
-        const data = projectData[project.dataset.project];
-        if(!data) return;
-
-        modalLabel.textContent = data.label;
-        modalTitle.textContent = data.title;
-        modalDescription.textContent = data.description;
-        modalStack.innerHTML = data.stack.map(item => `<span class="project-tag">${item}</span>`).join("");
-
-        projectModal.classList.add("show");
-        document.body.style.overflow = "hidden";
+    commandModal.addEventListener('click',e=>{if(e.target===commandModal)commandModal.classList.remove('open')});
+    document.querySelectorAll('.cmd-item[data-go]').forEach(item=>item.addEventListener('click',()=>{commandModal.classList.remove('open');document.querySelector(item.dataset.go).scrollIntoView({behavior:'smooth'})}));
+    commandInput.addEventListener('input',()=>{
+      const q=commandInput.value.toLowerCase();
+      document.querySelectorAll('#commandList .cmd-item').forEach(i=>i.style.display=i.textContent.toLowerCase().includes(q)?'flex':'none');
     });
-});
 
-function closeModal(){
-    projectModal.classList.remove("show");
-    document.body.style.overflow = "";
-}
-
-modalClose.addEventListener("click", closeModal);
-projectModal.addEventListener("click", e => {
-    if(e.target === projectModal) closeModal();
-});
-document.addEventListener("keydown", e => {
-    if(e.key === "Escape") closeModal();
-});
-
-
-/* =========================================
-   COMMAND PALETTE
-========================================= */
-
-const commandPalette = document.getElementById("commandPalette");
-const commandInput = document.getElementById("commandInput");
-
-function openCommand(){
-    commandPalette.classList.add("show");
-    setTimeout(() => { commandInput.focus(); },100);
-}
-
-function closeCommand(){
-    commandPalette.classList.remove("show");
-    commandInput.value = "";
-}
-
-document.addEventListener("keydown", e => {
-    if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k"){
-        e.preventDefault();
-        openCommand();
+    // ---------- LIGHTWEIGHT INTERACTIVE CANVAS FIELD ----------
+    // Kept intentionally lightweight so the portfolio feels premium without feeling heavy.
+    const canvas=document.getElementById('webgl');
+    const ctx=canvas.getContext('2d',{alpha:true});
+    let W=0,H=0,dpr=1,particles=[],mouse={x:-9999,y:-9999};
+    const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mobile=window.matchMedia('(max-width: 700px)').matches;
+    const COUNT=mobile?55:105;
+    function resizeCanvas(){
+      dpr=Math.min(window.devicePixelRatio||1,1.5);
+      W=window.innerWidth;H=window.innerHeight;
+      canvas.width=Math.floor(W*dpr);canvas.height=Math.floor(H*dpr);
+      canvas.style.width=W+'px';canvas.style.height=H+'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
     }
-    if(e.key === "Escape" && commandPalette.classList.contains("show")){
-        closeCommand();
+    function resetParticles(){
+      particles=Array.from({length:COUNT},()=>({
+        x:Math.random()*W,y:Math.random()*H,
+        vx:(Math.random()-.5)*.16,vy:(Math.random()-.5)*.16,
+        r:Math.random()*1.35+.35
+      }));
     }
-});
+    resizeCanvas();resetParticles();
+    addEventListener('resize',()=>{resizeCanvas();resetParticles()});
+    addEventListener('pointermove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+    addEventListener('pointerleave',()=>{mouse.x=-9999;mouse.y=-9999});
 
-commandPalette.addEventListener("click", e => {
-    if(e.target === commandPalette) closeCommand();
-});
-
-document.querySelectorAll(".command-item").forEach(item => {
-    item.addEventListener("click",() => {
-        const target = item.dataset.target;
-        if(target){
-            closeCommand();
-            setTimeout(() => {
-                document.querySelector(target).scrollIntoView({ behavior:"smooth" });
-            },100);
+    let lastFrame=0;
+    function drawField(now){
+      if(document.hidden){requestAnimationFrame(drawField);return}
+      if(!reduceMotion && now-lastFrame<28){requestAnimationFrame(drawField);return}
+      lastFrame=now;
+      ctx.clearRect(0,0,W,H);
+      const linkDist=mobile?105:135;
+      for(const p of particles){
+        if(!reduceMotion){p.x+=p.vx;p.y+=p.vy}
+        if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;
+        if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;
+        const md=Math.hypot(p.x-mouse.x,p.y-mouse.y);
+        if(md<130 && !reduceMotion){
+          p.x+=(mouse.x-p.x)*.0008;p.y+=(mouse.y-p.y)*.0008;
         }
-    });
-});
-
-commandInput.addEventListener("input", () => {
-    const query = commandInput.value.toLowerCase().trim();
-    document.querySelectorAll(".command-item").forEach(item => {
-        const text = item.textContent.toLowerCase();
-        item.style.display = text.includes(query) ? "flex" : "none";
-    });
-});
-
-
-/* =========================================
-   THREE.JS HIGH-TECH DATA NETWORK (Optimized)
-========================================= */
-
-const canvas = document.getElementById("webgl-canvas");
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 32;
-
-// Optimize renderer
-const renderer = new THREE.WebGLRenderer({
-    canvas:canvas,
-    alpha:true,
-    antialias:false, // Turned off antialiasing for better performance on large grids
-    powerPreference: "high-performance"
-});
-
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Capped pixel ratio for performance
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-/* ---------- PARTICLES ---------- */
-
-// Reduced particle count for smoother frame rendering
-const particleCount = window.innerWidth < 700 ? 150 : 350; 
-const particlePositions = new Float32Array(particleCount * 3);
-
-for(let i=0; i<particleCount*3; i++){
-    particlePositions[i] = (Math.random()-.5) * 90;
-}
-
-const particleGeometry = new THREE.BufferGeometry();
-particleGeometry.setAttribute("position", new THREE.BufferAttribute(particlePositions, 3));
-
-const particleMaterial = new THREE.PointsMaterial({
-    color:0x60a5fa,
-    size: window.innerWidth < 700 ? .15 : .2,
-    transparent:true,
-    opacity:.4, // Lower opacity to reduce overdraw
-    depthWrite: false
-});
-
-const particles = new THREE.Points(particleGeometry, particleMaterial);
-scene.add(particles);
-
-/* ---------- CORE ---------- */
-
-// Reduced geometry complexity from Icosahedron to lower poly count
-const coreGeometry = new THREE.IcosahedronGeometry(9, 1); 
-const coreMaterial = new THREE.MeshBasicMaterial({
-    color:0x2563eb,
-    wireframe:true,
-    transparent:true,
-    opacity:.1,
-    depthWrite: false
-});
-
-const core = new THREE.Mesh(coreGeometry, coreMaterial);
-core.position.set(18, 2, -15);
-scene.add(core);
-
-
-/* ---------- SECOND CORE ---------- */
-
-const secondGeometry = new THREE.IcosahedronGeometry(5, 0); 
-const secondMaterial = new THREE.MeshBasicMaterial({
-    color:0x38bdf8,
-    wireframe:true,
-    transparent:true,
-    opacity:.06,
-    depthWrite: false
-});
-
-const secondCore = new THREE.Mesh(secondGeometry, secondMaterial);
-secondCore.position.set(-17, -5, -10);
-scene.add(secondCore);
-
-
-/* ---------- MOUSE ---------- */
-
-let targetMouseX = 0;
-let targetMouseY = 0;
-let smoothMouseX = 0;
-let smoothMouseY = 0;
-
-window.addEventListener("mousemove", e => {
-    if(!isDesktop) return; // Only track on desktop
-    targetMouseX = (e.clientX / window.innerWidth) - .5;
-    targetMouseY = (e.clientY / window.innerHeight) - .5;
-}, {passive:true});
-
-
-/* ---------- ANIMATION LOOP (Optimized) ---------- */
-
-const clock = new THREE.Clock();
-
-function animate3D(){
-    requestAnimationFrame(animate3D);
-
-    const elapsed = clock.getElapsedTime();
-
-    if(isDesktop) {
-        smoothMouseX += (targetMouseX - smoothMouseX) * .05;
-        smoothMouseY += (targetMouseY - smoothMouseY) * .05;
-    }
-
-    particles.rotation.y = elapsed * .01;
-    particles.rotation.x = elapsed * .005;
-
-    core.rotation.x = elapsed * .05;
-    core.rotation.y = elapsed * .08;
-
-    secondCore.rotation.x = -elapsed * .08;
-    secondCore.rotation.z = elapsed * .05;
-
-    if(isDesktop) {
-        core.position.x = 18 + smoothMouseX * 5;
-        core.position.y = 2 - smoothMouseY * 4;
-        secondCore.position.x = -17 - smoothMouseX * 3;
-        
-        camera.position.x += (smoothMouseX * 2 - camera.position.x) * .05;
-        camera.position.y += (-smoothMouseY * 2 - camera.position.y) * .05;
-    }
-
-    camera.lookAt(0, 0, -5);
-    renderer.render(scene, camera);
-}
-
-animate3D();
-
-/* =========================================
-   RESIZE (Throttled)
-========================================= */
-
-let resizeTimeout;
-window.addEventListener("resize", () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    }, 100);
-}, {passive:true});
-
-
-/* =========================================
-   CARD TILT (Optimized with rAF)
-========================================= */
-
-document.querySelectorAll(".glass").forEach(card => {
-    let ticking = false;
-
-    card.addEventListener("mousemove", e => {
-        if(window.innerWidth < 800) return;
-        
-        if(!ticking) {
-            requestAnimationFrame(() => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = ((y-centerY) / centerY) * -2;
-                const rotateY = ((x-centerX) / centerX) * 2;
-                
-                card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0) translateY(-4px)`;
-                ticking = false;
-            });
-            ticking = true;
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba(96,165,250,.38)';ctx.fill();
+      }
+      for(let i=0;i<particles.length;i++){
+        for(let j=i+1;j<particles.length;j++){
+          const a=particles[i],b=particles[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);
+          if(d<linkDist){
+            const alpha=(1-d/linkDist)*.085;
+            ctx.strokeStyle=`rgba(96,165,250,${alpha})`;
+            ctx.lineWidth=.55;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+          }
         }
-    });
+      }
+      // small interactive glow
+      if(mouse.x>0 && !mobile){
+        const g=ctx.createRadialGradient(mouse.x,mouse.y,0,mouse.x,mouse.y,180);
+        g.addColorStop(0,'rgba(59,130,246,.07)');g.addColorStop(1,'rgba(59,130,246,0)');
+        ctx.fillStyle=g;ctx.beginPath();ctx.arc(mouse.x,mouse.y,180,0,Math.PI*2);ctx.fill();
+      }
+      requestAnimationFrame(drawField);
+    }
+    requestAnimationFrame(drawField);
 
-    card.addEventListener("mouseleave", () => {
-        card.style.transform = "translateZ(0)";
-    });
-});
-
-
-/* =========================================
-   SMOOTH ANCHOR FALLBACK
-========================================= */
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", e => {
-        const target = document.querySelector(anchor.getAttribute("href"));
-        if(!target) return;
-        e.preventDefault();
-        target.scrollIntoView({ behavior:"smooth" });
-    });
-});
-
-</script>
-
+    // ---------- MAGNETIC BUTTONS ----------
+    if(window.matchMedia('(pointer:fine)').matches){
+      document.querySelectorAll('.magnetic').forEach(el=>{
+        el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.045}px,${(e.clientY-r.top-r.height/2)*.045}px)`});
+        el.addEventListener('pointerleave',()=>el.style.transform='');
+      });
+    }
+  </script>
 </body>
 </html>
