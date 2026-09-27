@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patel Mohammad Zaki | Software Engineer & Data Specialist</title>
+  <title>Patel Mohammad Zaki | Data Analyst & Cloud DevOps Engineer</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Three.js CDN for 3D Interactive WebGL Graphics -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   
   <!-- Same Cinzel Serif Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,14 +23,14 @@
     }
 
     body {
-      background-color: #030712;
+      background-color: #03050c;
       color: #e2e8f0;
       overflow-x: hidden;
     }
 
     .small-caps {
       font-variant: small-caps;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.08em;
     }
 
     .justified-text {
@@ -37,30 +39,8 @@
       line-height: 1.85;
     }
 
-    /* Ambient Dynamic Pulsing Nebulae */
-    .nebula-glow {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -2;
-      background: radial-gradient(circle at 18% 22%, rgba(37, 99, 235, 0.22), transparent 45%),
-                  radial-gradient(circle at 82% 35%, rgba(99, 102, 241, 0.18), transparent 45%),
-                  radial-gradient(circle at 45% 85%, rgba(14, 165, 233, 0.14), transparent 50%);
-      filter: blur(80px);
-      pointer-events: none;
-      animation: pulseGlow 14s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulseGlow {
-      0% { transform: scale(1) translate(0px, 0px); opacity: 0.85; }
-      50% { transform: scale(1.08) translate(25px, -30px); opacity: 1; }
-      100% { transform: scale(0.95) translate(-20px, 20px); opacity: 0.9; }
-    }
-
-    /* Background Interactive Graphics Canvas */
-    #graphics-canvas {
+    /* 3D WebGL Canvas Layer */
+    #webgl-canvas {
       position: fixed;
       top: 0;
       left: 0;
@@ -70,46 +50,51 @@
       pointer-events: none;
     }
 
-    /* High-Gloss Glassmorphism Card with Dynamic Hover Glow */
-    .elite-card {
-      background: rgba(10, 16, 32, 0.65);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-      transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-
-    .elite-card:hover {
-      border-color: rgba(96, 165, 250, 0.55);
-      transform: translateY(-7px) scale(1.01);
-      box-shadow: 0 28px 60px -15px rgba(37, 99, 235, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.25);
-    }
-
-    /* Floating Graphic Geometric Ring */
-    .floating-ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px dashed rgba(96, 165, 250, 0.25);
+    /* Geometric Cyber Grid Overlay */
+    .grid-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: -2;
       pointer-events: none;
-      animation: rotateRing 30s linear infinite;
     }
 
-    @keyframes rotateRing {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    /* Glassmorphism Card with 3D Tilt Glow */
+    .glass-card {
+      background: rgba(8, 14, 28, 0.65);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Glowing Border Animation for Profile Frame */
-    .royal-border {
+    .glass-card:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 25px 60px -15px rgba(37, 99, 235, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Modern Neon Metric Badges */
+    .stat-badge {
+      background: rgba(30, 58, 138, 0.25);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Portrait Hologram Frame */
+    .holo-frame {
       position: relative;
-      background: linear-gradient(135deg, rgba(96, 165, 250, 0.4), rgba(255, 255, 255, 0.1), rgba(59, 130, 246, 0.4));
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.6), rgba(147, 197, 253, 0.1), rgba(37, 99, 235, 0.5));
       padding: 2px;
-      box-shadow: 0 0 50px rgba(37, 99, 235, 0.25);
+      box-shadow: 0 0 60px rgba(37, 99, 235, 0.25);
     }
 
-    /* Reveal On Scroll Animation Class */
     .reveal-elem {
       opacity: 0;
       transform: translateY(30px);
@@ -124,12 +109,12 @@
 </head>
 <body class="selection:bg-blue-600 selection:text-white antialiased">
 
-  <!-- Visual Graphics Engines: Mesh + Canvas -->
-  <div class="nebula-glow"></div>
-  <canvas id="graphics-canvas"></canvas>
+  <!-- Interactive 3D Three.js WebGL & Cyber Grid Canvas -->
+  <div class="grid-overlay"></div>
+  <canvas id="webgl-canvas"></canvas>
 
   <!-- Navbar -->
-  <nav class="fixed top-0 left-0 w-full bg-[#030712]/85 backdrop-blur-xl border-b border-white/10 z-50">
+  <nav class="fixed top-0 left-0 w-full bg-[#03050c]/80 backdrop-blur-xl border-b border-white/10 z-50">
     <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
       <a href="#hero" class="text-xl font-bold tracking-widest text-white small-caps flex items-center gap-3">
         <span class="w-2.5 h-2.5 bg-blue-500 rotate-45 shadow-[0_0_12px_#3b82f6]"></span>
@@ -137,46 +122,59 @@
       </a>
 
       <div class="space-x-8 text-xs font-semibold small-caps hidden md:flex text-slate-300">
-        <a href="#about" class="hover:text-blue-400 transition duration-300">About</a>
-        <a href="#skills" class="hover:text-blue-400 transition duration-300">Skills</a>
+        <a href="#about" class="hover:text-blue-400 transition duration-300">Profile</a>
+        <a href="#skills" class="hover:text-blue-400 transition duration-300">Tech Stack</a>
         <a href="#projects" class="hover:text-blue-400 transition duration-300">Projects</a>
         <a href="#certifications" class="hover:text-blue-400 transition duration-300">Certificates</a>
         <a href="#experience" class="hover:text-blue-400 transition duration-300">Experience</a>
         <a href="#contact" class="hover:text-blue-400 transition duration-300">Contact</a>
       </div>
 
-      <a href="resume.pdf" download class="px-5 py-2.5 text-xs font-bold small-caps transition border border-white/20 hover:border-blue-400 bg-white/5 hover:bg-blue-600/20 text-white flex items-center gap-2">
+      <a href="resume.pdf" download class="px-5 py-2.5 text-xs font-bold small-caps transition border border-blue-500/40 hover:border-blue-400 bg-blue-600/10 hover:bg-blue-600/20 text-white flex items-center gap-2">
         <i class="fa-solid fa-file-arrow-down text-blue-400"></i> Download Resume
       </a>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section id="hero" class="relative pt-36 pb-24 px-6 max-w-6xl mx-auto min-h-screen flex flex-col justify-center">
-    <!-- Floating Graphics Decoration -->
-    <div class="floating-ring w-96 h-96 -top-10 -left-20"></div>
-
+  <section id="hero" class="pt-36 pb-24 px-6 max-w-6xl mx-auto min-h-screen flex flex-col justify-center">
     <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 lg:gap-16">
       
       <div class="space-y-6 md:w-3/5 text-center md:text-left reveal-elem">
-        <div class="inline-flex items-center gap-3 px-4 py-1.5 border border-blue-500/30 bg-blue-950/40 rounded-full text-blue-300 text-xs small-caps tracking-widest backdrop-blur-md">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse"></span> Open For Immediate Opportunities
+        <div class="inline-flex items-center gap-3 px-4 py-1.5 stat-badge rounded-full text-blue-300 text-xs small-caps tracking-widest">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse"></span> Open For Data Analyst & DevOps Roles
         </div>
         
         <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight small-caps">
-          Software Development & Applied Artificial Intelligence
+          Data Analytics & Cloud DevOps Engineering
         </h1>
         
         <p class="text-sm sm:text-base text-slate-300 max-w-xl font-normal leading-relaxed tracking-wide justified-text">
-          Computer Science Engineering student with hands-on expertise in developing scalable web applications, integrating modern AI models, and building analytical data dashboards.
+          Computer Science Engineering student specializing in exploratory data analysis, business intelligence dashboards, and resilient AWS cloud infrastructure architectures.
         </p>
+
+        <!-- Metric Badges -->
+        <div class="grid grid-cols-3 gap-4 pt-2">
+          <div class="stat-badge p-3 rounded text-center">
+            <span class="text-xl font-bold text-white block">5+</span>
+            <span class="text-[10px] text-blue-300 small-caps">Case Studies</span>
+          </div>
+          <div class="stat-badge p-3 rounded text-center">
+            <span class="text-xl font-bold text-white block">AWS</span>
+            <span class="text-[10px] text-blue-300 small-caps">Cloud Architecture</span>
+          </div>
+          <div class="stat-badge p-3 rounded text-center">
+            <span class="text-xl font-bold text-white block">Power BI</span>
+            <span class="text-[10px] text-blue-300 small-caps">BI Modeling</span>
+          </div>
+        </div>
 
         <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
           <a href="#projects" class="px-8 py-3.5 text-xs font-bold small-caps tracking-widest text-black bg-white hover:bg-slate-200 transition shadow-[0_10px_25px_rgba(255,255,255,0.15)]">
-            Explore Projects
+            Explore Work
           </a>
           <a href="mailto:zakipatel2811@gmail.com" class="px-8 py-3.5 text-xs font-bold small-caps tracking-widest text-white border border-white/20 hover:border-blue-400 bg-white/5 backdrop-blur-md transition">
-            Get In Touch
+            Hire / Connect
           </a>
         </div>
 
@@ -188,14 +186,14 @@
         </div>
       </div>
 
-      <!-- Studio Portrait with Animated Border -->
+      <!-- Studio Portrait -->
       <div class="md:w-2/5 flex justify-center reveal-elem">
-        <div class="royal-border">
+        <div class="holo-frame">
           <div class="relative w-64 h-80 sm:w-72 sm:h-96 group overflow-hidden bg-[#0a0f1d]">
             <img src="profile.jpg" alt="Patel Mohammad Zaki" class="w-full h-full object-cover object-top filter brightness-95 contrast-110 group-hover:scale-105 transition duration-700 ease-out">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#03050c] via-transparent to-transparent pointer-events-none"></div>
             <div class="absolute bottom-4 left-4 right-4 text-center">
-              <span class="text-[11px] small-caps tracking-widest text-slate-300 font-semibold">Patel Mohammad Zaki</span>
+              <span class="text-[11px] small-caps tracking-widest text-blue-300 font-semibold">Data Analyst & Cloud DevOps</span>
             </div>
           </div>
         </div>
@@ -204,98 +202,99 @@
     </div>
   </section>
 
-  <!-- About Me Section (Clean Indian Professional English & Justified Text) -->
-  <section id="about" class="py-24 px-6 border-t border-white/10 relative">
+  <!-- About Me Section -->
+  <section id="about" class="py-24 px-6 border-t border-white/10">
     <div class="max-w-6xl mx-auto space-y-12">
       <div class="space-y-2 reveal-elem">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white small-caps">About Me</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white small-caps">Professional Summary</h2>
         <div class="w-20 h-0.5 bg-gradient-to-r from-blue-500 to-transparent"></div>
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 leading-relaxed text-sm sm:text-base">
-        
-        <!-- Corrected, Justified & Simple Professional English -->
         <div class="space-y-6 text-slate-300 font-light reveal-elem">
           <p class="justified-text">
-            I am a final-year Computer Science and Engineering student at Brahmdevdada Mane Institute of Technology (BMIT), Solapur, with a prior Diploma in Electronics and Telecommunication Engineering. My technical journey is driven by a passion for solving real-world challenges through clean code, scalable system design, and applied artificial intelligence.
+            I am a final-year Computer Science and Engineering student at Brahmdevdada Mane Institute of Technology (BMIT), Solapur, with a diploma in Electronics and Telecommunication Engineering. My core career aspirations are rooted in **Data Analytics** and **Cloud DevOps Engineering**, focusing on transforming raw business datasets into actionable KPIs and automating scalable cloud workloads.
           </p>
           <p class="justified-text">
-            My core technical focus includes full-stack web development, intelligent applications powered by Google Gemini API, and practical data analytics. I enjoy transforming complex requirements into reliable, responsive, and user-friendly software solutions that create genuine business value.
+            On the data front, I specialize in data visualization, exploratory analysis, Power BI modeling, and SQL querying. In cloud and DevOps, I have developed a strong practical foundation in AWS core compute, VPC network architecture, storage services, and Linux systems.
           </p>
           <p class="justified-text">
-            Additionally, I have completed industry virtual internship simulations with leading global organizations including PwC, Tata Group, Accenture, and Boston Consulting Group. These programs helped me build strong competencies in Power BI dashboarding, exploratory data visualization, predictive modeling, and structured problem analysis.
+            My competencies are backed by hands-on industry virtual experience programs with global firms including PwC, Tata Group, Accenture, and Boston Consulting Group, where I conducted customer churn analysis, predictive data modeling, and executive BI dashboards.
           </p>
         </div>
 
-        <div class="elite-card p-8 space-y-4 reveal-elem">
-          <h3 class="text-white text-sm font-bold small-caps border-b border-white/10 pb-3">Educational Background</h3>
+        <div class="glass-card p-8 space-y-4 reveal-elem">
+          <h3 class="text-white text-sm font-bold small-caps border-b border-white/10 pb-3">Educational Credentials</h3>
           <ul class="space-y-3 text-xs sm:text-sm">
             <li class="flex justify-between py-1 border-b border-white/5"><span class="text-slate-400 small-caps">Current Degree:</span> <span class="text-white font-medium">B.Tech in CSE (Final Year)</span></li>
-            <li class="flex justify-between py-1 border-b border-white/5"><span class="text-slate-400 small-caps">College:</span> <span class="text-white font-medium">BMIT, Solapur</span></li>
+            <li class="flex justify-between py-1 border-b border-white/5"><span class="text-slate-400 small-caps">Institution:</span> <span class="text-white font-medium">BMIT, Solapur</span></li>
             <li class="flex justify-between py-1 border-b border-white/5"><span class="text-slate-400 small-caps">Diploma:</span> <span class="text-white font-medium">GP Solapur (75.59%)</span></li>
             <li class="flex justify-between py-1 border-b border-white/5"><span class="text-slate-400 small-caps">Secondary (10th):</span> <span class="text-white font-medium">SSC Board (89.20%)</span></li>
-            <li class="flex justify-between py-1 border-b border-white/5"><span class="text-slate-400 small-caps">Status:</span> <span class="text-emerald-400 font-medium">Ready For Immediate Joining</span></li>
+            <li class="flex justify-between py-1 border-b border-white/5"><span class="text-slate-400 small-caps">Availability:</span> <span class="text-emerald-400 font-medium">Immediate Joining for Internships / Roles</span></li>
           </ul>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Technical Competencies -->
+  <!-- Technical Competencies Tailored to Data Analyst & DevOps -->
   <section id="skills" class="py-24 px-6 max-w-6xl mx-auto space-y-12">
     <div class="space-y-2 reveal-elem">
-      <h2 class="text-3xl sm:text-4xl font-bold text-white small-caps">Technical Skills</h2>
+      <h2 class="text-3xl sm:text-4xl font-bold text-white small-caps">Technical Stack & Domains</h2>
       <div class="w-20 h-0.5 bg-gradient-to-r from-blue-500 to-transparent"></div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       
-      <div class="elite-card p-6 space-y-4 reveal-elem">
-        <div class="text-blue-400 text-2xl"><i class="fa-solid fa-code"></i></div>
-        <h3 class="text-white text-base font-bold small-caps">Web Development</h3>
-        <ul class="text-xs text-slate-300 space-y-2 font-light">
-          <li>• Next.js & React Frameworks</li>
-          <li>• Node.js & Express.js</li>
-          <li>• Python (Django Framework)</li>
-          <li>• Modern JavaScript (ES6+)</li>
-          <li>• HTML5, CSS3 & Tailwind CSS</li>
-        </ul>
-      </div>
-
-      <div class="elite-card p-6 space-y-4 reveal-elem">
-        <div class="text-blue-400 text-2xl"><i class="fa-solid fa-brain"></i></div>
-        <h3 class="text-white text-base font-bold small-caps">Artificial Intelligence</h3>
-        <ul class="text-xs text-slate-300 space-y-2 font-light">
-          <li>• Google Gemini AI Integration</li>
-          <li>• Natural Language Processing (NLP)</li>
-          <li>• Algorithmic Code Generation</li>
-          <li>• Machine Learning Fundamentals</li>
-          <li>• Effective Prompt Engineering</li>
-        </ul>
-      </div>
-
-      <div class="elite-card p-6 space-y-4 reveal-elem">
-        <div class="text-blue-400 text-2xl"><i class="fa-solid fa-chart-line"></i></div>
-        <h3 class="text-white text-base font-bold small-caps">Data & Business Analytics</h3>
+      <!-- Data Analytics -->
+      <div class="glass-card p-6 space-y-4 reveal-elem">
+        <div class="text-blue-400 text-2xl"><i class="fa-solid fa-chart-pie"></i></div>
+        <h3 class="text-white text-base font-bold small-caps">Data Analytics & BI</h3>
         <ul class="text-xs text-slate-300 space-y-2 font-light">
           <li>• Microsoft Power BI Dashboards</li>
-          <li>• Advanced Microsoft Excel</li>
-          <li>• Business Data Visualization</li>
-          <li>• Customer Churn Modeling</li>
-          <li>• Data Cleaning & Analysis</li>
+          <li>• Advanced Microsoft Excel & Pivot</li>
+          <li>• Exploratory Data Analysis (EDA)</li>
+          <li>• KPI Reporting & Business Telemetry</li>
+          <li>• Data Cleaning & Transformation</li>
         </ul>
       </div>
 
-      <div class="elite-card p-6 space-y-4 reveal-elem">
-        <div class="text-blue-400 text-2xl"><i class="fa-solid fa-database"></i></div>
-        <h3 class="text-white text-base font-bold small-caps">Cloud & Databases</h3>
+      <!-- Cloud & DevOps -->
+      <div class="glass-card p-6 space-y-4 reveal-elem">
+        <div class="text-blue-400 text-2xl"><i class="fa-solid fa-cloud"></i></div>
+        <h3 class="text-white text-base font-bold small-caps">Cloud & DevOps</h3>
         <ul class="text-xs text-slate-300 space-y-2 font-light">
-          <li>• AWS Cloud & VPC Fundamentals</li>
-          <li>• MongoDB (NoSQL Database)</li>
-          <li>• MySQL (Relational Database)</li>
-          <li>• Git & GitHub Version Control</li>
-          <li>• Cloud Deployment Pipelines</li>
+          <li>• AWS Compute (EC2 Instances)</li>
+          <li>• AWS VPC & Subnet Networking</li>
+          <li>• Cloud Security & Route Tables</li>
+          <li>• Git & GitHub Version Pipelines</li>
+          <li>• Cloud Storage (S3 Architecture)</li>
+        </ul>
+      </div>
+
+      <!-- Databases & Backend -->
+      <div class="glass-card p-6 space-y-4 reveal-elem">
+        <div class="text-blue-400 text-2xl"><i class="fa-solid fa-database"></i></div>
+        <h3 class="text-white text-base font-bold small-caps">Databases & Querying</h3>
+        <ul class="text-xs text-slate-300 space-y-2 font-light">
+          <li>• MySQL (Relational Modeling)</li>
+          <li>• MongoDB (NoSQL Document Store)</li>
+          <li>• Complex SQL Queries & Joins</li>
+          <li>• Database Schema Normalization</li>
+          <li>• RESTful API Integration</li>
+        </ul>
+      </div>
+
+      <!-- AI & Automation -->
+      <div class="glass-card p-6 space-y-4 reveal-elem">
+        <div class="text-blue-400 text-2xl"><i class="fa-solid fa-brain"></i></div>
+        <h3 class="text-white text-base font-bold small-caps">AI & Scripting</h3>
+        <ul class="text-xs text-slate-300 space-y-2 font-light">
+          <li>• Python Scripting & Data Handling</li>
+          <li>• Google Gemini AI Integration</li>
+          <li>• Machine Learning Foundations</li>
+          <li>• Natural Language Processing (NLP)</li>
+          <li>• Predictive Customer Modeling</li>
         </ul>
       </div>
 
@@ -313,22 +312,22 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         
         <!-- Project 1: NextIDE -->
-        <div class="elite-card p-8 flex flex-col justify-between space-y-6 reveal-elem">
+        <div class="glass-card p-8 flex flex-col justify-between space-y-6 reveal-elem">
           <div class="space-y-4">
             <div class="flex justify-between items-center text-xs text-blue-400 small-caps">
-              <span>Developer Workspace</span>
+              <span>Developer Workspace & DevOps</span>
               <span>Gemini AI Engine</span>
             </div>
             <h3 class="text-2xl font-bold text-white small-caps">NextIDE – Algorithm-To-Code Platform</h3>
             <p class="text-slate-300 text-xs sm:text-sm font-light leading-relaxed justified-text">
-              An intelligent development platform that translates plain English algorithm descriptions into executable, multi-language code using Google Gemini AI. It provides an interactive code editor, real-time code execution with custom inputs, user authentication, and persistent algorithm history.
+              An automated development environment that translates plain English algorithmic instructions into executable source code using Google Gemini AI. Features containerized logic testing, custom I/O execution runs, user authentication, and persistent MongoDB execution records.
             </p>
             <div class="flex flex-wrap gap-2 pt-2 text-[11px]">
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-slate-200">Next.js</span>
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-slate-200">Node.js</span>
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-slate-200">Express.js</span>
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-slate-200">Google Gemini API</span>
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-slate-200">MongoDB</span>
+              <span class="px-2.5 py-1 stat-badge text-blue-200">Next.js</span>
+              <span class="px-2.5 py-1 stat-badge text-blue-200">Node.js</span>
+              <span class="px-2.5 py-1 stat-badge text-blue-200">Express.js</span>
+              <span class="px-2.5 py-1 stat-badge text-blue-200">Google Gemini API</span>
+              <span class="px-2.5 py-1 stat-badge text-blue-200">MongoDB</span>
             </div>
           </div>
           <div class="pt-4 border-t border-white/10">
@@ -339,21 +338,21 @@
         </div>
 
         <!-- Project 2: AI Shopping Assistant -->
-        <div class="elite-card p-8 flex flex-col justify-between space-y-6 reveal-elem">
+        <div class="glass-card p-8 flex flex-col justify-between space-y-6 reveal-elem">
           <div class="space-y-4">
             <div class="flex justify-between items-center text-xs text-blue-400 small-caps">
-              <span>Smart E-Commerce</span>
+              <span>Data Analytics & Recommendation</span>
               <span>NLP & Machine Learning</span>
             </div>
-            <h3 class="text-2xl font-bold text-white small-caps">AI-Based Shopping Assistant Website</h3>
+            <h3 class="text-2xl font-bold text-white small-caps">AI Conversational Shopping Assistant</h3>
             <p class="text-slate-300 text-xs sm:text-sm font-light leading-relaxed justified-text">
-              An interactive conversational shopping assistant built to streamline online shopping. Using Natural Language Processing, the system understands user preferences such as budget, brand, and size, automatically compares product pricing across multiple online retailers, and presents real-time curated recommendations.
+              A data-driven e-commerce assistant built to eliminate manual product searching. The system parses customer parameters (pricing thresholds, brand, and sizing) using Natural Language Processing, executes comparative price queries across multi-retailer databases, and presents real-time recommendations.
             </p>
             <div class="flex flex-wrap gap-2 pt-2 text-[11px]">
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-slate-200">Python (Django)</span>
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-slate-200">Machine Learning</span>
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-slate-200">MySQL</span>
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-slate-200">NLP</span>
+              <span class="px-2.5 py-1 stat-badge text-blue-200">Python (Django)</span>
+              <span class="px-2.5 py-1 stat-badge text-blue-200">Machine Learning</span>
+              <span class="px-2.5 py-1 stat-badge text-blue-200">MySQL</span>
+              <span class="px-2.5 py-1 stat-badge text-blue-200">NLP</span>
             </div>
           </div>
           <div class="pt-4 border-t border-white/10">
@@ -370,13 +369,13 @@
   <!-- Licensures & Certifications -->
   <section id="certifications" class="py-24 px-6 max-w-6xl mx-auto space-y-12">
     <div class="space-y-2 reveal-elem">
-      <h2 class="text-3xl sm:text-4xl font-bold text-white small-caps">Licenses & Certifications</h2>
+      <h2 class="text-3xl sm:text-4xl font-bold text-white small-caps">Cloud & Data Certifications</h2>
       <div class="w-20 h-0.5 bg-gradient-to-r from-blue-500 to-transparent"></div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
-      <div class="elite-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
+      <div class="glass-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
         <div>
           <span class="text-[10px] text-blue-400 small-caps">Cloud Systems</span>
           <h4 class="text-sm font-bold text-white small-caps mt-1">AWS Compute Service</h4>
@@ -386,9 +385,9 @@
         </a>
       </div>
 
-      <div class="elite-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
+      <div class="glass-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
         <div>
-          <span class="text-[10px] text-blue-400 small-caps">Cloud Infrastructure</span>
+          <span class="text-[10px] text-blue-400 small-caps">Cloud Architecture</span>
           <h4 class="text-sm font-bold text-white small-caps mt-1">Cloud Computing Architecture</h4>
         </div>
         <a href="C-Cloud%20Computing%20Architechture.pdf" target="_blank" class="text-[11px] text-slate-300 hover:text-blue-400 underline small-caps">
@@ -396,9 +395,9 @@
         </a>
       </div>
 
-      <div class="elite-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
+      <div class="glass-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
         <div>
-          <span class="text-[10px] text-blue-400 small-caps">Networking</span>
+          <span class="text-[10px] text-blue-400 small-caps">Cloud Networking</span>
           <h4 class="text-sm font-bold text-white small-caps mt-1">Cloud Networking With AWS VPC</h4>
         </div>
         <a href="C-Cloud%20Networking%20With%20AWS%20VPC.pdf" target="_blank" class="text-[11px] text-slate-300 hover:text-blue-400 underline small-caps">
@@ -406,9 +405,9 @@
         </a>
       </div>
 
-      <div class="elite-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
+      <div class="glass-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
         <div>
-          <span class="text-[10px] text-blue-400 small-caps">Cloud Operations</span>
+          <span class="text-[10px] text-blue-400 small-caps">DevOps & Cloud Roles</span>
           <h4 class="text-sm font-bold text-white small-caps mt-1">Cloud Engineer Roles & Duties</h4>
         </div>
         <a href="C-Cloud%20Engineer%20Roles%20and%20Responsibilities.pdf" target="_blank" class="text-[11px] text-slate-300 hover:text-blue-400 underline small-caps">
@@ -416,9 +415,9 @@
         </a>
       </div>
 
-      <div class="elite-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
+      <div class="glass-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
         <div>
-          <span class="text-[10px] text-blue-400 small-caps">Customer Analytics</span>
+          <span class="text-[10px] text-blue-400 small-caps">Data Analytics</span>
           <h4 class="text-sm font-bold text-white small-caps mt-1">Quantium Analytics Simulation</h4>
         </div>
         <a href="Data%20Analytics%20By%20quantium.pdf" target="_blank" class="text-[11px] text-slate-300 hover:text-blue-400 underline small-caps">
@@ -426,9 +425,9 @@
         </a>
       </div>
 
-      <div class="elite-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
+      <div class="glass-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
         <div>
-          <span class="text-[10px] text-blue-400 small-caps">Consulting Simulation</span>
+          <span class="text-[10px] text-blue-400 small-caps">Consulting Analytics</span>
           <h4 class="text-sm font-bold text-white small-caps mt-1">KPMG Data Analytics Consulting</h4>
         </div>
         <a href="Data%20Analytics%20Consulting%20By%20KPMG.pdf" target="_blank" class="text-[11px] text-slate-300 hover:text-blue-400 underline small-caps">
@@ -436,9 +435,9 @@
         </a>
       </div>
 
-      <div class="elite-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
+      <div class="glass-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
         <div>
-          <span class="text-[10px] text-blue-400 small-caps">Data Fundamentals</span>
+          <span class="text-[10px] text-blue-400 small-caps">Data Modeling</span>
           <h4 class="text-sm font-bold text-white small-caps mt-1">Excel for Beginners</h4>
         </div>
         <a href="C-Exel%20for%20Beginners.pdf" target="_blank" class="text-[11px] text-slate-300 hover:text-blue-400 underline small-caps">
@@ -446,9 +445,9 @@
         </a>
       </div>
 
-      <div class="elite-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
+      <div class="glass-card p-5 flex flex-col justify-between space-y-4 reveal-elem">
         <div>
-          <span class="text-[10px] text-blue-400 small-caps">Corporate Communication</span>
+          <span class="text-[10px] text-blue-400 small-caps">Professional Skills</span>
           <h4 class="text-sm font-bold text-white small-caps mt-1">Communication Skills by TCS</h4>
         </div>
         <a href="Communication%20Skills%20By%20TCS.pdf" target="_blank" class="text-[11px] text-slate-300 hover:text-blue-400 underline small-caps">
@@ -459,26 +458,26 @@
     </div>
   </section>
 
-  <!-- Virtual Internships / Experience Programs -->
+  <!-- Virtual Internships / Industry Experience Programs -->
   <section id="experience" class="py-24 px-6 border-t border-white/10">
     <div class="max-w-6xl mx-auto space-y-12">
       <div class="space-y-2 reveal-elem">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white small-caps">Industry Experience Programs</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white small-caps">Data & Cloud Simulations</h2>
         <div class="w-20 h-0.5 bg-gradient-to-r from-blue-500 to-transparent"></div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <div class="elite-card p-6 space-y-3 flex flex-col justify-between reveal-elem">
+        <div class="glass-card p-6 space-y-3 flex flex-col justify-between reveal-elem">
           <div class="space-y-2">
-            <span class="text-[10px] text-blue-400 small-caps">Power BI Case Study</span>
+            <span class="text-[10px] text-blue-400 small-caps">Power BI Telemetry</span>
             <h4 class="text-base font-bold text-white small-caps">PwC Switzerland</h4>
             <p class="text-xs text-slate-300 font-light leading-relaxed justified-text">Developed Power BI dashboards, analyzed workforce KPIs, and generated data-driven retention insights for management.</p>
           </div>
           <a href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf" target="_blank" class="text-xs text-blue-400 underline small-caps">View Document →</a>
         </div>
 
-        <div class="elite-card p-6 space-y-3 flex flex-col justify-between reveal-elem">
+        <div class="glass-card p-6 space-y-3 flex flex-col justify-between reveal-elem">
           <div class="space-y-2">
             <span class="text-[10px] text-blue-400 small-caps">Data Visualization</span>
             <h4 class="text-base font-bold text-white small-caps">Tata Group</h4>
@@ -487,7 +486,7 @@
           <a href="Data%20Visualisation%20By%20TATA.pdf" target="_blank" class="text-xs text-blue-400 underline small-caps">View Document →</a>
         </div>
 
-        <div class="elite-card p-6 space-y-3 flex flex-col justify-between reveal-elem">
+        <div class="glass-card p-6 space-y-3 flex flex-col justify-between reveal-elem">
           <div class="space-y-2">
             <span class="text-[10px] text-blue-400 small-caps">Data Analytics</span>
             <h4 class="text-base font-bold text-white small-caps">Accenture</h4>
@@ -496,18 +495,18 @@
           <a href="Data%20Analytics%20by%20Acccenture.pdf" target="_blank" class="text-xs text-blue-400 underline small-caps">View Document →</a>
         </div>
 
-        <div class="elite-card p-6 space-y-3 flex flex-col justify-between reveal-elem">
+        <div class="glass-card p-6 space-y-3 flex flex-col justify-between reveal-elem">
           <div class="space-y-2">
-            <span class="text-[10px] text-blue-400 small-caps">Data Science</span>
-            <h4 class="text-base font-bold text-white small-caps">Boston Consulting Group (BCG)</h4>
+            <span class="text-[10px] text-blue-400 small-caps">Predictive Modeling</span>
+            <h4 class="text-base font-bold text-white small-caps">Boston Consulting Group</h4>
             <p class="text-xs text-slate-300 font-light leading-relaxed justified-text">Analyzed customer churn patterns using predictive machine learning models and estimated financial impacts.</p>
           </div>
           <a href="BCG%20Data%20Science.pdf" target="_blank" class="text-xs text-blue-400 underline small-caps">View Document →</a>
         </div>
 
-        <div class="elite-card p-6 space-y-3 flex flex-col justify-between reveal-elem">
+        <div class="glass-card p-6 space-y-3 flex flex-col justify-between reveal-elem">
           <div class="space-y-2">
-            <span class="text-[10px] text-blue-400 small-caps">Sentiment Analysis</span>
+            <span class="text-[10px] text-blue-400 small-caps">Data Science</span>
             <h4 class="text-base font-bold text-white small-caps">British Airways</h4>
             <p class="text-xs text-slate-300 font-light leading-relaxed justified-text">Conducted customer sentiment analysis on customer reviews and built predictive models for flight booking behavior.</p>
           </div>
@@ -524,25 +523,25 @@
       
       <div class="space-y-3 reveal-elem">
         <h2 class="text-4xl sm:text-5xl font-bold text-white small-caps">
-          Get In Touch
+          Contact & Opportunities
         </h2>
         <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto font-light">
-          Open to software engineering roles, full-stack development, AI integration projects, and data analyst opportunities.
+          Currently open to interviews and roles in Data Analytics, Cloud Support, and DevOps Engineering.
         </p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 text-left pt-6">
-        <a href="mailto:zakipatel2811@gmail.com" class="elite-card p-6 block reveal-elem">
+        <a href="mailto:zakipatel2811@gmail.com" class="glass-card p-6 block reveal-elem">
           <p class="text-[10px] text-blue-400 small-caps">Email Address</p>
           <p class="text-sm font-bold text-white truncate small-caps mt-1">zakipatel2811@gmail.com</p>
         </a>
 
-        <a href="https://wa.me/918468809905" target="_blank" class="elite-card p-6 block reveal-elem">
+        <a href="https://wa.me/918468809905" target="_blank" class="glass-card p-6 block reveal-elem">
           <p class="text-[10px] text-blue-400 small-caps">Phone & WhatsApp</p>
           <p class="text-sm font-bold text-white small-caps mt-1">+91 8468809905</p>
         </a>
 
-        <a href="https://www.linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="elite-card p-6 block reveal-elem">
+        <a href="https://www.linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="glass-card p-6 block reveal-elem">
           <p class="text-[10px] text-blue-400 small-caps">LinkedIn Profile</p>
           <p class="text-sm font-bold text-white small-caps mt-1">Patel Mohammad Zaki</p>
         </a>
@@ -558,115 +557,96 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-8 text-center text-xs text-slate-500 border-t border-white/10 bg-[#02050e]">
-    <p>© 2026 Patel Mohammad Zaki. Built with Modern Web Standards.</p>
+  <footer class="py-8 text-center text-xs text-slate-500 border-t border-white/10 bg-[#020409]">
+    <p>© 2026 Patel Mohammad Zaki. Built for Data Analytics & Cloud Infrastructure.</p>
   </footer>
 
-  <!-- Advanced Interactive Graphics & Animation Controller -->
+  <!-- Three.js 3D Interactive WebGL Graphics Engine -->
   <script>
-    // 1. High-Performance Canvas Graphics with Mouse Interaction
-    const canvas = document.getElementById('graphics-canvas');
-    const ctx = canvas.getContext('2d');
+    const canvas = document.getElementById('webgl-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
 
-    let particles = [];
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    let mouse = { x: null, y: null, radius: 140 };
+    // 3D Geometric Floating Icosahedron Wireframe
+    const geometry = new THREE.IcosahedronGeometry(11, 2);
+    const material = new THREE.MeshBasicMaterial({
+      color: 0x3b82f6,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.18
+    });
+    const sphereMesh = new THREE.Mesh(geometry, material);
+    scene.add(sphereMesh);
+    sphereMesh.position.set(15, 0, -10);
 
-    window.addEventListener('mousemove', (e) => {
-      mouse.x = e.x;
-      mouse.y = e.y;
+    // 3D Particles Cloud
+    const particlesCount = 450;
+    const posArray = new Float32Array(particlesCount * 3);
+
+    for (let i = 0; i < particlesCount * 3; i++) {
+      posArray[i] = (Math.random() - 0.5) * 75;
+    }
+
+    const particlesGeometry = new THREE.BufferGeometry();
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+    const particlesMaterial = new THREE.PointsMaterial({
+      size: 0.12,
+      color: 0x60a5fa,
+      transparent: true,
+      opacity: 0.6
     });
 
-    window.addEventListener('mouseout', () => {
-      mouse.x = null;
-      mouse.y = null;
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+
+    camera.position.z = 25;
+
+    // Mouse movement interaction in 3D Space
+    let mouseX = 0;
+    let mouseY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth) - 0.5;
+      mouseY = (e.clientY / window.innerHeight) - 0.5;
     });
 
     window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      init();
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    class Particle {
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.7;
-        this.vy = (Math.random() - 0.5) * 0.7;
-        this.radius = Math.random() * 1.8 + 0.8;
-      }
+    // Animation Loop
+    const clock = new THREE.Clock();
 
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
+    function render3D() {
+      const elapsedTime = clock.getElapsedTime();
 
-        if (this.x < 0 || this.x > width) this.vx *= -1;
-        if (this.y < 0 || this.y > height) this.vy *= -1;
+      // Continuous mesh rotation
+      sphereMesh.rotation.y = elapsedTime * 0.08;
+      sphereMesh.rotation.x = elapsedTime * 0.05;
 
-        // Interactive mouse connection
-        if (mouse.x && mouse.y) {
-          let dx = mouse.x - this.x;
-          let dy = mouse.y - this.y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < mouse.radius) {
-            let force = (mouse.radius - distance) / mouse.radius;
-            let dirX = (dx / distance) * force * 1.5;
-            let dirY = (dy / distance) * force * 1.5;
-            this.x -= dirX;
-            this.y -= dirY;
-          }
-        }
-      }
+      particlesMesh.rotation.y = -elapsedTime * 0.03;
 
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(147, 197, 253, 0.6)';
-        ctx.fill();
-      }
+      // Smooth mouse follow parallax effect
+      sphereMesh.position.x = 12 + (mouseX * 5);
+      sphereMesh.position.y = -(mouseY * 5);
+
+      camera.position.x += (mouseX * 4 - camera.position.x) * 0.05;
+      camera.position.y += (-mouseY * 4 - camera.position.y) * 0.05;
+
+      renderer.render(scene, camera);
+      requestAnimationFrame(render3D);
     }
 
-    function init() {
-      particles = [];
-      const count = Math.floor((width * height) / 12000);
-      for (let i = 0; i < count; i++) {
-        particles.push(new Particle());
-      }
-    }
+    render3D();
 
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 125) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(96, 165, 250, ${0.2 * (1 - dist / 125)})`;
-            ctx.lineWidth = 0.7;
-            ctx.stroke();
-          }
-        }
-      }
-
-      requestAnimationFrame(animate);
-    }
-
-    init();
-    animate();
-
-    // 2. Smooth Reveal Animations on Scroll
+    // Scroll Reveal Controller
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
