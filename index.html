@@ -3,312 +3,372 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patel Mohammad Zaki — Data Analyst, AI & Full-Stack Engineer</title>
-  <meta name="description" content="Portfolio of Patel Mohammad Zaki — Data Analyst Intern @ UnionSys Technologies, B.Tech CSE Student, AI & Full-Stack Builder.">
-  <meta name="theme-color" content="#03050a">
+  <title>Patel Mohammad Zaki — Data Analyst, Data Science & AI Systems</title>
+  <meta name="description" content="Official Portfolio of Patel Mohammad Zaki — Data Analyst Intern @ UnionSys Technologies, Final-Year B.Tech CSE Student at BMIT Solapur.">
+  <meta name="theme-color" content="#03050c">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome -->
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- Cinzel + Plus Jakarta Sans for Ultra-Clean Readability -->
+  <!-- Original Cinzel Font Everywhere -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #03050a;
-      --card: #0a0e17;
-      --border: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(59, 130, 246, 0.45);
-      --accent: #3b82f6;
+      --bg: #03050c;
+      --card: rgba(10, 15, 29, 0.78);
+      --border: rgba(148, 163, 184, 0.14);
+      --border-hover: rgba(96, 165, 250, 0.55);
+      --blue: #3b82f6;
+      --cyan: #38bdf8;
+    }
+
+    * {
+      font-family: 'Cinzel', 'Times New Roman', Times, serif;
+      box-sizing: border-box;
     }
 
     body {
       background-color: var(--bg);
       color: #e2e8f0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      overflow-x: hidden;
       margin: 0;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Authoritative Cinzel Small-Caps for Headings */
-    h1, h2, h3, .font-cinzel {
-      font-family: 'Cinzel', 'Times New Roman', serif;
+    /* Proper First-Letter Large Small-Caps Styling for Headings */
+    .heading-caps {
       font-variant: small-caps;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
 
-    .font-mono-code {
-      font-family: 'JetBrains Mono', monospace;
+    /* Clean Justified Paragraphs */
+    .para-clean {
+      font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+      letter-spacing: 0.02em;
+      line-height: 1.85;
+      text-align: justify;
     }
 
-    /* Hardware-Accelerated Background Grid (Zero Lag) */
-    .cyber-grid {
+    /* Code & Terminal Blocks */
+    .code-font {
+      font-family: 'Courier New', Courier, monospace !important;
+    }
+
+    /* Ambient Cyber Background (120Hz GPU Accelerated) */
+    .bg-grid {
       position: fixed;
       inset: 0;
       z-index: -2;
-      background-image: 
-        linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: radial-gradient(circle at 50% 30%, black 30%, transparent 85%);
+      background-image:
+        linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(circle at 50% 25%, black 35%, transparent 90%);
       pointer-events: none;
+      transform: translateZ(0);
     }
 
-    .top-glow {
+    .bg-glow {
       position: fixed;
-      top: -150px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 900px;
-      height: 450px;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(14, 165, 233, 0.05) 45%, transparent 70%);
-      z-index: -1;
+      inset: 0;
+      z-index: -3;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.18), transparent 38%),
+        radial-gradient(circle at 85% 20%, rgba(14, 165, 233, 0.14), transparent 38%),
+        radial-gradient(circle at 50% 85%, rgba(59, 130, 246, 0.10), transparent 45%);
       pointer-events: none;
+      transform: translateZ(0);
     }
 
-    /* Bento Card Styling (120Hz Smooth) */
-    .bento-card {
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(7, 10, 19, 0.75) 100%);
+    /* Yahya.in Signature Glass Bento Cards */
+    .yahya-card {
+      background: linear-gradient(155deg, rgba(15, 23, 42, 0.72) 0%, rgba(5, 9, 20, 0.88) 100%);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease, box-shadow 0.28s ease;
       will-change: transform;
     }
 
-    .bento-card:hover {
+    .yahya-card:hover {
       border-color: var(--border-hover);
       transform: translateY(-4px);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px rgba(59, 130, 246, 0.1);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 30px rgba(59, 130, 246, 0.12);
     }
 
-    /* Animated Orbit Photo Border */
-    .photo-wrapper {
+    /* Shimmering Name Gradient */
+    .name-shimmer {
+      background: linear-gradient(110deg, #ffffff 15%, #93c5fd 45%, #38bdf8 70%, #ffffff 90%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 6s linear infinite;
+    }
+
+    @keyframes shine {
+      to { background-position: 200% center; }
+    }
+
+    /* Profile Frame with Dual Rotating Aura */
+    .profile-aura {
       position: relative;
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 3px;
-      background: linear-gradient(135deg, #3b82f6, rgba(255,255,255,0.08), #0ea5e9);
-      box-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
+      background: linear-gradient(135deg, #3b82f6, rgba(255, 255, 255, 0.15), #38bdf8);
+      box-shadow: 0 0 45px rgba(59, 130, 246, 0.22);
     }
 
-    /* Pill Tags */
-    .tech-pill {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 6px 13px;
-      border-radius: 8px;
-      font-size: 12px;
+    /* Pill Badges */
+    .pill-tag {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 11px;
       color: #cbd5e1;
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
     }
 
-    .tech-pill:hover {
+    .pill-tag:hover {
       border-color: #60a5fa;
       color: #ffffff;
-      background: rgba(59, 130, 246, 0.12);
+      background: rgba(37, 99, 235, 0.18);
       transform: translateY(-2px);
     }
 
-    /* Calendar Day Button */
-    .cal-day {
+    /* Calendar Grid Day */
+    .cal-cell {
       aspect-ratio: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 12px;
       cursor: pointer;
-      border: 1px solid transparent;
-      transition: all 0.15s ease;
-    }
-    .cal-day:hover:not(.disabled) {
-      border-color: #3b82f6;
-      background: rgba(59, 130, 246, 0.15);
-      color: white;
-    }
-    .cal-day.selected {
-      background: #3b82f6;
-      color: white;
-      font-weight: 700;
-      box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.02);
+      transition: all 0.18s ease;
     }
 
-    /* Preloader */
+    .cal-cell:hover:not(.empty) {
+      border-color: #60a5fa;
+      background: rgba(59, 130, 246, 0.18);
+      color: #ffffff;
+    }
+
+    .cal-cell.active {
+      background: linear-gradient(135deg, #2563eb, #38bdf8);
+      color: #ffffff;
+      font-weight: 800;
+      border-color: transparent;
+      box-shadow: 0 0 18px rgba(59, 130, 246, 0.5);
+    }
+
+    /* Opening Preloader */
     #preloader {
       position: fixed;
       inset: 0;
       background: #020409;
-      z-index: 9999;
+      z-index: 99999;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
     }
-    #preloader.done {
+    #preloader.hidden-loader {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
 
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #03050a; }
-    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+    ::-webkit-scrollbar { width: 7px; }
+    ::-webkit-scrollbar-track { background: #03050c; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(#2563eb, #38bdf8); border-radius: 20px; }
   </style>
 </head>
 <body class="selection:bg-blue-600 selection:text-white">
 
-  <!-- Fast Opening Loader -->
+  <!-- ================= OPENING PRELOADER ================= -->
   <div id="preloader">
-    <div class="text-center space-y-4 px-6">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono-code">
-        <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span> // zaki.in
-      </div>
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-cinzel tracking-widest">
+    <div class="text-center space-y-5 px-6 max-w-md w-full">
+      <div class="w-12 h-12 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+      <div class="text-xs text-blue-400 tracking-[0.35em] font-bold">INITIALIZING PORTFOLIO SYSTEM</div>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-widest heading-caps">
         Patel Mohammad Zaki
       </h2>
-      <div class="w-56 h-1 bg-slate-800 rounded-full overflow-hidden mx-auto">
-        <div id="loader-bar" class="h-full bg-gradient-to-r from-blue-600 to-cyan-400 w-0 transition-all duration-75"></div>
+      <div class="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
+        <div id="loader-bar" class="h-full bg-gradient-to-r from-blue-600 via-cyan-400 to-white w-0 transition-all duration-75"></div>
       </div>
+      <div id="loader-pct" class="text-[11px] text-slate-400 tracking-widest">0%</div>
     </div>
   </div>
 
-  <!-- Background Effects -->
-  <div class="cyber-grid"></div>
-  <div class="top-glow"></div>
+  <!-- Background Layers -->
+  <div class="bg-glow"></div>
+  <div class="bg-grid"></div>
 
-  <!-- Top Navbar (yahya.in style) -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-[#03050a]/80 backdrop-blur-md border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <a href="#profile" class="flex items-center gap-2.5 text-white font-bold tracking-wider font-cinzel text-lg">
-        <span class="text-blue-500 font-mono-code text-sm font-normal">//</span> Patel Zaki
+  <!-- ================= TOP NAVBAR (yahya.in Exact Style) ================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#03050c]/85 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      
+      <a href="#profile" class="flex items-center gap-3 text-white font-extrabold tracking-widest text-base sm:text-lg heading-caps">
+        <span class="text-blue-400 font-bold">//</span> Patel Mohammad Zaki
       </a>
 
-      <nav class="hidden lg:flex items-center gap-7 text-xs font-medium text-slate-400">
-        <a href="#profile" class="hover:text-white transition">Profile</a>
-        <a href="#projects" class="hover:text-white transition">Projects</a>
-        <a href="#schedule" class="hover:text-white transition">Book a Call</a>
-        <a href="#about" class="hover:text-white transition">About</a>
-        <a href="#skills" class="hover:text-white transition">Skills</a>
-        <a href="#experience" class="hover:text-white transition">Experience</a>
-        <a href="#certifications" class="hover:text-white transition">Credentials</a>
+      <nav class="hidden xl:flex items-center gap-7 text-xs font-semibold tracking-wider text-slate-300 heading-caps">
+        <a href="#profile" class="hover:text-blue-400 transition">Profile</a>
+        <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
+        <a href="#nextide-architecture" class="hover:text-blue-400 transition">NextIDE Live</a>
+        <a href="#appointment" class="hover:text-blue-400 transition">Book a Call</a>
+        <a href="#about" class="hover:text-blue-400 transition">About</a>
+        <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
+        <a href="#experience" class="hover:text-blue-400 transition">Experience</a>
+        <a href="#certifications" class="hover:text-blue-400 transition">Credentials</a>
       </nav>
 
       <div class="flex items-center gap-3">
-        <a href="resume.pdf" download class="px-3.5 py-1.5 rounded-lg border border-white/15 bg-white/5 hover:bg-white/10 text-xs text-white font-medium transition flex items-center gap-2">
-          <i class="fa-solid fa-file-arrow-down text-blue-400"></i> CV
+        <a href="resume.pdf" download class="px-4 py-2 rounded-lg border border-blue-500/40 bg-blue-500/10 hover:bg-blue-500/25 text-xs text-white font-bold tracking-wider heading-caps transition flex items-center gap-2">
+          <i class="fa-solid fa-download text-blue-400"></i> Resume
         </a>
-        <a href="#contact" class="px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-xs text-white font-semibold transition shadow-lg shadow-blue-600/25">
+        <a href="#appointment" class="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 hover:brightness-110 text-xs text-white font-bold tracking-wider heading-caps transition shadow-lg shadow-blue-600/30">
           Connect
         </a>
       </div>
+
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-24 space-y-24">
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-32 pb-24 space-y-28">
 
-    <!-- ================= 1. HERO SECTION (yahya.in Layout) ================= -->
+    <!-- ================= 1. HERO SECTION (yahya.in Exact Structure) ================= -->
     <section id="profile" class="space-y-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
-        <!-- Left Column: Identity + Bullet Proof Points -->
+        <!-- Left Content -->
         <div class="lg:col-span-8 space-y-6">
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 text-xs font-medium">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Data Analytics · Data Science · AI & Full-Stack Engineering
+          
+          <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-emerald-500/35 bg-emerald-500/10 text-emerald-300 text-xs font-bold tracking-widest heading-caps">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            Data Analytics · Data Science · Cloud Computing & AI
           </div>
 
-          <div class="space-y-2">
-            <h1 class="text-4xl sm:text-6xl font-extrabold text-white leading-none">
-              Patel Mohammad Zaki
+          <div class="space-y-3">
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-tight heading-caps">
+              Patel <span class="name-shimmer">Mohammad Zaki</span>
             </h1>
-            <p class="text-base sm:text-lg text-blue-400 font-medium">
-              Data Analyst & AI Software Engineer · B.Tech CSE (Final Year) · Solapur / Pune
+            <p class="text-sm sm:text-lg text-blue-300 font-bold tracking-wider heading-caps">
+              Data Analyst · Data Science & AI Systems · B.Tech CSE (Final Year) · Solapur / Pune
+            </p>
+            <p class="text-xs sm:text-sm text-slate-400 tracking-wider">
+              Data Analyst Intern @ UnionSys Technologies (Pune)  |  Lead Creator of NextIDE Platform
             </p>
           </div>
 
-          <!-- Key Achievement Highlights (Like yahya.in top bullets) -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-            <div class="bento-card p-3.5 flex items-start gap-3">
-              <div class="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
-                <i class="fa-solid fa-briefcase text-xs"></i>
+          <!-- 5 High-Impact Proof Cards (yahya.in Hero List Style) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+            
+            <div class="yahya-card p-4 flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
+                <i class="fa-solid fa-briefcase"></i>
               </div>
-              <div class="text-xs">
-                <strong class="text-white block">Data Analyst Intern @ UnionSys</strong>
-                <span class="text-slate-400">Practical SQL, Power BI & IT data reporting workflows in Pune</span>
-              </div>
-            </div>
-
-            <div class="bento-card p-3.5 flex items-start gap-3">
-              <div class="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
-                <i class="fa-solid fa-code text-xs"></i>
-              </div>
-              <div class="text-xs">
-                <strong class="text-white block">Creator of NextIDE Platform</strong>
-                <span class="text-slate-400">AI-powered natural language algorithm-to-executable code engine</span>
+              <div>
+                <h3 class="text-xs sm:text-sm font-bold text-white heading-caps">Data Analyst Intern — UnionSys Technologies</h3>
+                <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
+                  Working in the IT Department (Pune), supporting data analysis, organization, and reporting workflows under an Oracle Apps Developer.
+                </p>
               </div>
             </div>
 
-            <div class="bento-card p-3.5 flex items-start gap-3">
-              <div class="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
-                <i class="fa-solid fa-chart-pie text-xs"></i>
+            <div class="yahya-card p-4 flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
               </div>
-              <div class="text-xs">
-                <strong class="text-white block">5+ Global Analytics Simulations</strong>
-                <span class="text-slate-400">PwC, Tata Group, Accenture, BCG & British Airways case studies</span>
+              <div>
+                <h3 class="text-xs sm:text-sm font-bold text-white heading-caps">Engineered NextIDE AI Platform</h3>
+                <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
+                  Cloud-based AI Algorithm-to-Code platform powered by Google Gemini API converting plain English logic into C++, Java, Python & JS.
+                </p>
               </div>
             </div>
 
-            <div class="bento-card p-3.5 flex items-start gap-3">
-              <div class="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
-                <i class="fa-solid fa-graduation-cap text-xs"></i>
+            <div class="yahya-card p-4 flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
+                <i class="fa-solid fa-chart-pie"></i>
               </div>
-              <div class="text-xs">
-                <strong class="text-white block">Strong Engineering Pedigree</strong>
-                <span class="text-slate-400">B.Tech CSE @ BMIT · Diploma E&TC (75.59% Distinction) · SSC (89.20%)</span>
+              <div>
+                <h3 class="text-xs sm:text-sm font-bold text-white heading-caps">5 Global Forage Industry Simulations</h3>
+                <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
+                  Completed virtual case studies across BCG (Data Science), PwC (Power BI), Tata (Visualization), Accenture & British Airways.
+                </p>
               </div>
             </div>
+
+            <div class="yahya-card p-4 flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div>
+                <h3 class="text-xs sm:text-sm font-bold text-white heading-caps">Consistent Academic Distinction</h3>
+                <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
+                  Final-Year B.Tech CSE @ BMIT Solapur · Diploma in E&TC with 75.59% (GP Solapur) · 89.20% in 10th SSC Board.
+                </p>
+              </div>
+            </div>
+
           </div>
 
-          <!-- Action Buttons + Quick Links -->
-          <div class="flex flex-wrap items-center gap-3 pt-2">
-            <a href="#schedule" class="px-5 py-3 rounded-xl bg-white text-slate-950 font-bold text-xs font-cinzel tracking-wider hover:bg-slate-200 transition flex items-center gap-2 shadow-lg">
-              <i class="fa-regular fa-calendar-check"></i> Book 1-on-1 Discussion
+          <!-- CTA Buttons & Direct Links -->
+          <div class="flex flex-wrap items-center gap-3.5 pt-3">
+            <a href="#appointment" class="px-6 py-3.5 rounded-xl bg-white text-slate-950 font-extrabold text-xs tracking-widest heading-caps hover:bg-blue-50 transition flex items-center gap-2 shadow-xl">
+              <i class="fa-regular fa-calendar-check text-blue-600"></i> Book 1-on-1 Call
             </a>
-            <a href="#projects" class="px-5 py-3 rounded-xl border border-white/15 bg-white/5 hover:border-blue-400 text-white font-bold text-xs font-cinzel tracking-wider transition">
-              Explore Projects →
+            <a href="#projects" class="px-6 py-3.5 rounded-xl border border-blue-400/40 bg-blue-500/10 hover:bg-blue-500/20 text-white font-bold text-xs tracking-widest heading-caps transition">
+              View Projects →
             </a>
-            <a href="https://github.com/zakipatel89" target="_blank" class="px-4 py-3 rounded-xl border border-white/10 bg-white/5 hover:text-blue-400 text-slate-300 text-xs transition flex items-center gap-2">
-              <i class="fa-brands fa-github"></i> GitHub
+            <a href="https://linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="px-4 py-3.5 rounded-xl border border-white/15 bg-white/5 hover:border-blue-400 text-white text-xs font-bold heading-caps transition flex items-center gap-2">
+              <i class="fa-brands fa-linkedin text-blue-400 text-sm"></i> LinkedIn
             </a>
-            <a href="https://www.linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="px-4 py-3 rounded-xl border border-white/10 bg-white/5 hover:text-blue-400 text-slate-300 text-xs transition flex items-center gap-2">
-              <i class="fa-brands fa-linkedin"></i> LinkedIn
+            <a href="https://github.com/zakipatel89" target="_blank" class="px-4 py-3.5 rounded-xl border border-white/15 bg-white/5 hover:border-blue-400 text-white text-xs font-bold heading-caps transition flex items-center gap-2">
+              <i class="fa-brands fa-github text-sm"></i> GitHub
+            </a>
+            <a href="https://wa.me/918468809905" target="_blank" class="px-4 py-3.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 text-xs font-bold heading-caps transition flex items-center gap-2">
+              <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
             </a>
           </div>
+
         </div>
 
-        <!-- Right Column: Studio Portrait Card -->
+        <!-- Right Column: Verified Portrait Card -->
         <div class="lg:col-span-4 flex justify-center">
-          <div class="photo-wrapper w-72 sm:w-80">
-            <div class="bg-[#070b14] rounded-[14px] overflow-hidden relative">
-              <img src="profile.jpg" alt="Patel Mohammad Zaki" class="w-full h-80 sm:h-96 object-cover object-top brightness-95 contrast-105 hover:scale-105 transition duration-500">
-              <div class="p-4 bg-gradient-to-t from-[#050811] via-[#050811]/95 to-transparent border-t border-white/10 flex items-center justify-between">
-                <div>
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-sm font-bold text-white font-cinzel">Patel M. Zaki</span>
-                    <i class="fa-solid fa-circle-check text-blue-400 text-xs" title="Verified Profile"></i>
+          <div class="profile-aura w-72 sm:w-80">
+            <div class="bg-[#060a14] rounded-2xl overflow-hidden">
+              <div class="relative h-80 sm:h-96 overflow-hidden">
+                <img src="profile.jpg" alt="Patel Mohammad Zaki" class="w-full h-full object-cover object-top brightness-95 contrast-105 hover:scale-105 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#060a14] via-transparent to-transparent"></div>
+              </div>
+              <div class="p-5 border-t border-white/10 space-y-2">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <h2 class="text-base font-extrabold text-white heading-caps">Patel Mohammad Zaki</h2>
+                    <i class="fa-solid fa-circle-check text-blue-400 text-xs" title="Verified Engineer"></i>
                   </div>
-                  <p class="text-[11px] text-slate-400">Data Analyst · AI · B.Tech CSE</p>
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
                 </div>
-                <a href="https://wa.me/918468809905" target="_blank" class="w-9 h-9 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 hover:bg-emerald-500 hover:text-white transition">
-                  <i class="fa-brands fa-whatsapp"></i>
-                </a>
+                <p class="text-[11px] text-blue-300 tracking-wider heading-caps">
+                  Data Analyst · Data Science · AI
+                </p>
+                <div class="pt-2 flex items-center justify-between text-[11px] text-slate-400 border-t border-white/5">
+                  <span><i class="fa-solid fa-location-dot text-blue-400 mr-1"></i> Solapur / Pune</span>
+                  <a href="mailto:zakipatel2811@gmail.com" class="text-blue-400 hover:underline">Email Me →</a>
+                </div>
               </div>
             </div>
           </div>
@@ -316,182 +376,365 @@
 
       </div>
 
-      <!-- Counter Metrics Bar (yahya.in style) -->
-      <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-4">
-        <div class="bento-card p-4 text-center">
-          <span class="text-2xl sm:text-3xl font-extrabold text-white font-cinzel block">4+</span>
-          <span class="text-[11px] text-slate-400">Core Systems Shipped</span>
+      <!-- 5 Counter Boxes (yahya.in Metrics Bar) -->
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 pt-4">
+        <div class="yahya-card p-5 text-center">
+          <span class="text-2xl sm:text-3xl font-black text-white heading-caps block">4+</span>
+          <span class="text-[11px] text-slate-400 tracking-wider heading-caps mt-1 block">Featured Projects</span>
         </div>
-        <div class="bento-card p-4 text-center">
-          <span class="text-2xl sm:text-3xl font-extrabold text-blue-400 font-cinzel block">13+</span>
-          <span class="text-[11px] text-slate-400">Verified Certifications</span>
+        <div class="yahya-card p-5 text-center">
+          <span class="text-2xl sm:text-3xl font-black text-blue-400 heading-caps block">5+</span>
+          <span class="text-[11px] text-slate-400 tracking-wider heading-caps mt-1 block">Global Simulations</span>
         </div>
-        <div class="bento-card p-4 text-center">
-          <span class="text-2xl sm:text-3xl font-extrabold text-white font-cinzel block">89.20%</span>
-          <span class="text-[11px] text-slate-400">SSC Board Score</span>
+        <div class="yahya-card p-5 text-center">
+          <span class="text-2xl sm:text-3xl font-black text-white heading-caps block">13+</span>
+          <span class="text-[11px] text-slate-400 tracking-wider heading-caps mt-1 block">Verified Credentials</span>
         </div>
-        <div class="bento-card p-4 text-center">
-          <span class="text-2xl sm:text-3xl font-extrabold text-white font-cinzel block">75.59%</span>
-          <span class="text-[11px] text-slate-400">Diploma Distinction</span>
+        <div class="yahya-card p-5 text-center">
+          <span class="text-2xl sm:text-3xl font-black text-emerald-400 heading-caps block">75.59%</span>
+          <span class="text-[11px] text-slate-400 tracking-wider heading-caps mt-1 block">Diploma Distinction</span>
         </div>
-        <div class="bento-card p-4 text-center col-span-2 sm:col-span-1">
-          <span class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-cinzel block">2027</span>
-          <span class="text-[11px] text-slate-400">B.Tech CSE Batch</span>
+        <div class="yahya-card p-5 text-center col-span-2 sm:col-span-1">
+          <span class="text-2xl sm:text-3xl font-black text-white heading-caps block">89.20%</span>
+          <span class="text-[11px] text-slate-400 tracking-wider heading-caps mt-1 block">SSC Board Score</span>
         </div>
       </div>
     </section>
 
-    <!-- ================= 2. FEATURED FLAGSHIP PROJECTS ================= -->
-    <section id="projects" class="space-y-8">
+    <!-- ================= 2. FEATURED PROJECTS (Including Detailed NextIDE Capstone) ================= -->
+    <section id="projects" class="space-y-10">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-5">
         <div>
-          <span class="text-xs font-mono-code text-blue-400 uppercase tracking-widest">// Flagship Engineering</span>
-          <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">Featured Systems & Analytics</h2>
+          <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">// 01 · Flagship Work</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white heading-caps mt-1">Featured Projects & Systems</h2>
         </div>
-        <a href="https://github.com/zakipatel89" target="_blank" class="text-xs text-blue-400 hover:underline flex items-center gap-1.5">
-          View All Repositories on GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        <a href="https://github.com/zakipatel89" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white tracking-wider heading-caps transition">
+          Explore GitHub (@zakipatel89) →
         </a>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        
-        <!-- Flagship 1: NextIDE -->
-        <div class="bento-card p-6 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Project 1: NextIDE (From Your PPT) -->
+        <div class="yahya-card p-7 flex flex-col justify-between space-y-6 border-t-2 border-t-blue-500">
+          <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <span class="px-2.5 py-1 rounded-md bg-blue-500/15 border border-blue-500/30 text-blue-300 text-[11px] font-semibold">
-                ⚡ Flagship AI Platform
+              <span class="px-3 py-1 rounded-full bg-blue-500/15 border border-blue-500/35 text-blue-300 text-[11px] font-bold heading-caps">
+                ⚡ Flagship Capstone Project
               </span>
-              <span class="text-xs font-mono-code text-slate-500">Gemini API</span>
+              <span class="text-xs text-slate-400 heading-caps"><2s Synthesis</span>
             </div>
-            <h3 class="text-xl font-bold text-white">NextIDE — AI Algorithm-to-Code Engine</h3>
-            <p class="text-xs text-slate-400 leading-relaxed text-justify">
-              Full-stack AI development workspace that converts plain-English algorithmic prompts into syntactically accurate, executable source code. Features an in-browser code editor, custom I/O test execution, and MongoDB history tracking.
+            <h3 class="text-2xl font-extrabold text-white heading-caps">
+              NextIDE — AI Algorithm-To-Code Platform
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 para-clean">
+              Smart cloud-based coding platform engineered for computer science students and developers to overcome the syntax bottleneck. Users write step-by-step algorithms in plain English, and NextIDE leverages Google Gemini AI to synthesize clean, executable code in C++, Java, Python, and JavaScript within a unified 3-panel workspace with live I/O testing and MongoDB session history.
             </p>
-          </div>
-          <div class="space-y-4 pt-2 border-t border-white/5">
-            <div class="flex flex-wrap gap-1.5">
-              <span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300">Next.js</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300">Node.js</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300">Express</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300">MongoDB</span>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="pill-tag">Google Gemini AI</span>
+              <span class="pill-tag">Next.js & Tailwind</span>
+              <span class="pill-tag">Node.js & Express</span>
+              <span class="pill-tag">MongoDB Atlas</span>
+              <span class="pill-tag">JWT Auth</span>
             </div>
-            <a href="https://github.com/zakipatel89" target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold text-blue-400 hover:text-white transition">
-              Explore Project Code →
+          </div>
+          <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+            <a href="#nextide-architecture" class="text-xs font-bold text-blue-400 hover:text-white tracking-wider heading-caps">
+              Inspect 3-Panel Workspace & Architecture ↓
+            </a>
+            <a href="https://github.com/zakipatel89" target="_blank" class="text-xs font-bold text-slate-300 hover:text-blue-400 heading-caps">
+              GitHub Repo ↗
             </a>
           </div>
         </div>
 
-        <!-- Flagship 2: AI Shopping Assistant -->
-        <div class="bento-card p-6 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
+        <!-- Project 2: Power BI & Churn Analytics -->
+        <div class="yahya-card p-7 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <span class="px-2.5 py-1 rounded-md bg-purple-500/15 border border-purple-500/30 text-purple-300 text-[11px] font-semibold">
-                🤖 Conversational AI
+              <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/35 text-emerald-300 text-[11px] font-bold heading-caps">
+                📊 Data Analytics & BI
               </span>
-              <span class="text-xs font-mono-code text-slate-500">Python · NLP</span>
+              <span class="text-xs text-slate-400 heading-caps">Power BI · SQL · Excel</span>
             </div>
-            <h3 class="text-xl font-bold text-white">AI Shopping Assistant & Price Aggregator</h3>
-            <p class="text-xs text-slate-400 leading-relaxed text-justify">
-              Intelligent e-commerce assistant leveraging Natural Language Processing to decode user budget, brand, and specification requirements, querying multi-retailer SQL catalogs for real-time product recommendations.
+            <h3 class="text-2xl font-extrabold text-white heading-caps">
+              Enterprise KPI Telemetry & Churn Analytics
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 para-clean">
+              Comprehensive data analytics and visualization suite developed across PwC, Tata Group, and BCG case workflows. Transforms raw relational datasets into interactive Power BI executive dashboards, workforce retention monitors, and predictive customer attrition models.
             </p>
-          </div>
-          <div class="space-y-4 pt-2 border-t border-white/5">
-            <div class="flex flex-wrap gap-1.5">
-              <span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300">Python</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300">Flask / Django</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300">MySQL</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300">Scikit-learn</span>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="pill-tag">Microsoft Power BI</span>
+              <span class="pill-tag">SQL Querying</span>
+              <span class="pill-tag">Advanced Excel</span>
+              <span class="pill-tag">Data Cleaning</span>
+              <span class="pill-tag">KPI Reporting</span>
             </div>
-            <a href="https://github.com/zakipatel89" target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold text-blue-400 hover:text-white transition">
-              Explore Project Code →
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+            <a href="#experience" class="text-xs font-bold text-blue-400 hover:text-white tracking-wider heading-caps">
+              View Case Study Documents →
             </a>
+            <span class="text-[11px] text-slate-500 heading-caps">Verified on Forage</span>
           </div>
         </div>
 
-        <!-- Flagship 3: Executive Power BI & Churn Suite -->
-        <div class="bento-card p-6 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
+        <!-- Project 3: Conversational AI Shopping Assistant -->
+        <div class="yahya-card p-7 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-[11px] font-semibold">
-                📊 Data Science & BI
+              <span class="px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/35 text-purple-300 text-[11px] font-bold heading-caps">
+                🤖 AI & Data Product
               </span>
-              <span class="text-xs font-mono-code text-slate-500">Power BI · SQL</span>
+              <span class="text-xs text-slate-400 heading-caps">Python · NLP · SQL</span>
             </div>
-            <h3 class="text-xl font-bold text-white">Enterprise Telemetry & Churn Modeling</h3>
-            <p class="text-xs text-slate-400 leading-relaxed text-justify">
-              End-to-end analytical workflows engineered across PwC and BCG case studies. Includes interactive Power BI KPI dashboards, customer attrition random-forest modeling, and automated Excel/SQL data cleaning pipelines.
+            <h3 class="text-2xl font-extrabold text-white heading-caps">
+              AI Conversational Shopping Assistant
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 para-clean">
+              Intelligent e-commerce recommendation assistant that translates natural-language customer requirements (budget, category, brand preferences) into structured database queries, automating product discovery and real-time price comparison.
             </p>
-          </div>
-          <div class="space-y-4 pt-2 border-t border-white/5">
-            <div class="flex flex-wrap gap-1.5">
-              <span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300">Power BI</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300">Pandas & NumPy</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300">SQL</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300">Advanced Excel</span>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="pill-tag">Python</span>
+              <span class="pill-tag">NLP Parsing</span>
+              <span class="pill-tag">Flask</span>
+              <span class="pill-tag">MySQL</span>
+              <span class="pill-tag">Recommendation Logic</span>
             </div>
-            <a href="#experience" class="inline-flex items-center gap-2 text-xs font-semibold text-blue-400 hover:text-white transition">
-              View Case Credentials →
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+            <a href="https://github.com/zakipatel89" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white tracking-wider heading-caps">
+              Explore on GitHub →
             </a>
+            <span class="text-[11px] text-slate-500 heading-caps">AI System</span>
+          </div>
+        </div>
+
+        <!-- Project 4: Zaid Mobile Shop AI Assistant -->
+        <div class="yahya-card p-7 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/35 text-cyan-300 text-[11px] font-bold heading-caps">
+                📱 Retail AI Automation
+              </span>
+              <span class="text-xs text-slate-400 heading-caps">Python · Pandas · AI API</span>
+            </div>
+            <h3 class="text-2xl font-extrabold text-white heading-caps">
+              Zaid Mobile Shop — Retail AI Assistant
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 para-clean">
+              Practical retail AI assistant tailored for mobile inventory management, covering new and pre-owned smartphones, accessories, repair status tracking, and automated customer query resolution.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="pill-tag">Python</span>
+              <span class="pill-tag">Pandas</span>
+              <span class="pill-tag">Flask</span>
+              <span class="pill-tag">AI Chatbot</span>
+              <span class="pill-tag">Inventory Data</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+            <a href="https://github.com/zakipatel89" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white tracking-wider heading-caps">
+              Explore on GitHub →
+            </a>
+            <span class="text-[11px] text-slate-500 heading-caps">Retail Tech</span>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ================= 3. INTERACTIVE 1-ON-1 APPOINTMENT BOOKING (yahya.in Special) ================= -->
-    <section id="schedule" class="bento-card p-6 sm:p-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        
-        <div class="lg:col-span-5 space-y-4 border-b lg:border-b-0 lg:border-r border-white/10 pb-6 lg:pb-0 lg:pr-8">
-          <div class="inline-flex items-center gap-2 text-xs text-blue-400 font-mono-code">
-            <i class="fa-solid fa-video"></i> Instant Confirmation
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white">
-            Book a 1-on-1 Technical & Hiring Discussion
+    <!-- ================= 3. NEXTIDE INTERACTIVE 3-PANEL WORKSPACE SHOWCASE (From PPT) ================= -->
+    <section id="nextide-architecture" class="yahya-card p-6 sm:p-10 space-y-8 border border-blue-500/30">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-white/10 pb-6">
+        <div>
+          <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">
+            // BMIT CSE Capstone Project · Guided by Prof. Chabukswar S.A. & Prof. M. N. Gaikwad
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white heading-caps mt-1">
+            NextIDE — Interactive 3-Panel Coding Workspace
           </h2>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Select a date and preferred slot for an interview, internship/role discussion, or project collaboration via Google Meet or Phone Call.
-          </p>
-          <div class="pt-2 space-y-2 text-xs text-slate-300">
-            <div class="flex items-center gap-2.5">
-              <i class="fa-solid fa-clock text-blue-400"></i>
-              <span>Duration: <strong>30 Mins / 1 Hour</strong> (Flexible)</span>
-            </div>
-            <div class="flex items-center gap-2.5">
-              <i class="fa-solid fa-earth-asia text-blue-400"></i>
-              <span>Timezone: <strong>India Standard Time (IST, GMT+5:30)</strong></span>
-            </div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold heading-caps">
+            100% Cloud-Based · Zero Local Setup
+          </span>
+        </div>
+      </div>
+
+      <!-- 3-Panel Workspace Simulation (Exact Slide 10 of Your PPT) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        
+        <!-- Left Panel: Plain English Algorithm Input -->
+        <div class="lg:col-span-5 bg-[#050811] border border-white/10 rounded-xl p-5 flex flex-col justify-between space-y-4">
+          <div class="flex items-center justify-between border-b border-white/10 pb-3">
+            <span class="text-xs font-bold text-blue-400 heading-caps">Left Panel: Algorithm Input</span>
+            <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 text-[10px]">Plain English</span>
+          </div>
+          <div class="space-y-2 text-xs text-slate-300 code-font leading-relaxed">
+            <p>1. Take an array of positive integers.</p>
+            <p>2. Find two numbers that sum up to target.</p>
+            <p>3. Use an unordered hash map for single-pass.</p>
+            <p>4. If match exists, return indices.</p>
+            <p>5. If no match found, return empty array.</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
+            <span>Target: C++ / Python / Java / JS</span>
+            <span class="text-emerald-400 font-bold">● Logic Parsed</span>
           </div>
         </div>
 
-        <!-- Interactive Calendar Picker -->
-        <div class="lg:col-span-7 space-y-5">
-          <div class="flex flex-wrap items-center justify-between gap-3">
-            <span class="text-sm font-bold text-white font-cinzel" id="cal-month-label">Select Date & Time Slot</span>
-            <div class="flex gap-2">
-              <button onclick="setDuration('30 Mins', this)" class="dur-btn px-3 py-1 rounded-md text-xs bg-blue-600 text-white font-medium">30 Mins</button>
-              <button onclick="setDuration('1 Hour', this)" class="dur-btn px-3 py-1 rounded-md text-xs bg-white/5 text-slate-400 hover:text-white">1 Hour</button>
+        <!-- Right Panels: Top Synthesized Code + Bottom I/O Console -->
+        <div class="lg:col-span-7 space-y-4">
+          
+          <!-- Top Right: Synthesized C++ Code -->
+          <div class="bg-[#050811] border border-blue-500/30 rounded-xl p-5 space-y-3">
+            <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
+              <span class="text-xs font-bold text-emerald-400 heading-caps">Top Right: Synthesized C++ Code</span>
+              <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 text-[10px]">Google Gemini 1.5 AI</span>
+            </div>
+            <pre class="text-xs text-blue-200 code-font overflow-x-auto leading-relaxed"><code>vector<int> twoSum(vector<int>& nums, int target) {
+    unordered_map<int, int> mp;
+    for (int i = 0; i < nums.size(); i++) {
+        int diff = target - nums[i];
+        if (mp.count(diff)) return {mp[diff], i};
+        mp[nums[i]] = i;
+    }
+    return {};
+}</code></pre>
+          </div>
+
+          <!-- Bottom Right: Live I/O Sandbox Console -->
+          <div class="bg-[#050811] border border-emerald-500/30 rounded-xl p-4 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-white heading-caps">Bottom Right: Live I/O Sandbox Console</span>
+              <span class="text-[11px] text-emerald-400 code-font font-bold">Status: 200 OK (8ms)</span>
+            </div>
+            <div class="text-xs text-slate-300 code-font space-y-1">
+              <div><span class="text-slate-500">Input:</span> [2, 7, 11, 15], target = 9</div>
+              <div><span class="text-emerald-400">Output:</span> [0, 1] (Indices Verified & Saved to MongoDB Atlas)</div>
             </div>
           </div>
 
-          <!-- 7-Day Quick Picker Grid -->
-          <div class="grid grid-cols-4 sm:grid-cols-7 gap-2" id="quick-dates"></div>
+        </div>
 
-          <!-- Time Slots -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
-            <button onclick="selectSlot('11:00 AM IST', this)" class="slot-btn py-2 px-3 rounded-lg border border-blue-500 bg-blue-500/20 text-white text-xs font-medium">11:00 AM</button>
-            <button onclick="selectSlot('02:30 PM IST', this)" class="slot-btn py-2 px-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 hover:border-blue-400 text-xs">02:30 PM</button>
-            <button onclick="selectSlot('05:00 PM IST', this)" class="slot-btn py-2 px-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 hover:border-blue-400 text-xs">05:00 PM</button>
-            <button onclick="selectSlot('08:00 PM IST', this)" class="slot-btn py-2 px-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 hover:border-blue-400 text-xs">08:00 PM</button>
+      </div>
+
+      <!-- 4-Tier Architecture Summary Strip (Slide 6 of PPT) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10">
+          <span class="text-[10px] text-blue-400 font-bold heading-caps">1. Frontend Layer</span>
+          <h4 class="text-sm font-bold text-white heading-caps mt-1">Next.js & Tailwind</h4>
+          <p class="text-[11px] text-slate-400 mt-1">Algorithm Editor, Code Viewer, I/O Console & User Auth UI.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10">
+          <span class="text-[10px] text-blue-400 font-bold heading-caps">2. Backend Server</span>
+          <h4 class="text-sm font-bold text-white heading-caps mt-1">Node.js & Express</h4>
+          <p class="text-[11px] text-slate-400 mt-1">RESTful JSON API Routes, JWT Verification & Execution Dispatcher.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10">
+          <span class="text-[10px] text-blue-400 font-bold heading-caps">3. AI Synthesis Engine</span>
+          <h4 class="text-sm font-bold text-white heading-caps mt-1">Google Gemini API</h4>
+          <p class="text-[11px] text-slate-400 mt-1">Large-context LLM parsing plain English logic into target syntax.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10">
+          <span class="text-[10px] text-blue-400 font-bold heading-caps">4. Cloud Database</span>
+          <h4 class="text-sm font-bold text-white heading-caps mt-1">MongoDB Atlas</h4>
+          <p class="text-[11px] text-slate-400 mt-1">Encrypted credentials, algorithm history & revision bank.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. BOOK AN APPOINTMENT WIDGET (yahya.in Exact Style) ================= -->
+    <section id="appointment" class="yahya-card p-6 sm:p-10 space-y-8">
+      <div class="border-b border-white/10 pb-5">
+        <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">// Instant Scheduling</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white heading-caps mt-1">
+          Book an Appointment with Patel Mohammad Zaki
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Select a convenient date and time slot for technical interviews, data analytics discussions, or project collaboration.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Info Card -->
+        <div class="lg:col-span-5 space-y-5 bg-[#050811] p-6 rounded-2xl border border-white/10">
+          <div class="flex items-center gap-3.5">
+            <img src="profile.jpg" alt="Patel Mohammad Zaki" class="w-14 h-14 rounded-full object-cover object-top border border-blue-400">
+            <div>
+              <div class="flex items-center gap-1.5">
+                <h3 class="text-base font-bold text-white heading-caps">Patel Mohammad Zaki</h3>
+                <i class="fa-solid fa-circle-check text-blue-400 text-xs"></i>
+              </div>
+              <p class="text-xs text-slate-400">Data Analyst · Data Science & AI</p>
+            </div>
           </div>
 
-          <div class="pt-2 flex flex-wrap gap-3">
-            <button onclick="confirmBooking('whatsapp')" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs font-cinzel tracking-wider transition flex items-center gap-2">
-              <i class="fa-brands fa-whatsapp text-sm"></i> Confirm Slot via WhatsApp
+          <div class="space-y-3 pt-3 border-t border-white/10 text-xs text-slate-300">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-video text-blue-400 w-4"></i>
+              <span>Google Meet / Phone Call</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-earth-asia text-blue-400 w-4"></i>
+              <span>Time Zone: India Standard Time (IST, GMT+5:30)</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-bolt text-emerald-400 w-4"></i>
+              <span>Selected Slot: <strong id="selected-summary" class="text-white">Tomorrow · 11:00 AM (30 Mins)</strong></span>
+            </div>
+          </div>
+
+          <!-- Duration Selector -->
+          <div class="space-y-2 pt-3 border-t border-white/10">
+            <span class="text-[11px] text-slate-400 heading-caps block">Choose Duration:</span>
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="setMeetDuration('30 Mins', this)" class="dur-pill py-2 rounded-lg text-xs font-bold bg-blue-600 text-white heading-caps">30 Mins</button>
+              <button onclick="setMeetDuration('1 Hour', this)" class="dur-pill py-2 rounded-lg text-xs font-bold bg-white/5 text-slate-300 hover:text-white heading-caps">1 Hour</button>
+              <button onclick="setMeetDuration('Flexible', this)" class="dur-pill py-2 rounded-lg text-xs font-bold bg-white/5 text-slate-300 hover:text-white heading-caps">Flexible</button>
+            </div>
+          </div>
+
+          <p class="text-[11px] text-slate-400 leading-relaxed pt-2">
+            <strong>Flexible Timing:</strong> Need more time? Meetings can be adjusted or extended as needed.
+          </p>
+        </div>
+
+        <!-- Right Interactive Month Calendar + Time Slots -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-base font-bold text-white heading-caps" id="month-title"> October / November 2026</h3>
+            <span class="text-xs text-blue-400 heading-caps">Available Dates Highlighted</span>
+          </div>
+
+          <!-- Days Header -->
+          <div class="grid grid-cols-7 gap-2 text-center text-[11px] font-bold text-slate-400 heading-caps">
+            <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+          </div>
+
+          <!-- 14-Day Interactive Calendar Grid -->
+          <div id="calendar-grid" class="grid grid-cols-7 gap-2"></div>
+
+          <!-- Preferred Time Slots -->
+          <div class="space-y-2">
+            <span class="text-xs text-slate-400 heading-caps block">Select Preferred Time Slot (IST):</span>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              <button onclick="setMeetTime('11:00 AM', this)" class="time-pill py-2.5 px-3 rounded-xl border border-blue-500 bg-blue-500/20 text-white text-xs font-bold heading-caps">11:00 AM</button>
+              <button onclick="setMeetTime('02:30 PM', this)" class="time-pill py-2.5 px-3 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:border-blue-400 text-xs font-bold heading-caps">02:30 PM</button>
+              <button onclick="setMeetTime('05:30 PM', this)" class="time-pill py-2.5 px-3 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:border-blue-400 text-xs font-bold heading-caps">05:30 PM</button>
+              <button onclick="setMeetTime('08:00 PM', this)" class="time-pill py-2.5 px-3 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:border-blue-400 text-xs font-bold heading-caps">08:00 PM</button>
+            </div>
+          </div>
+
+          <!-- Instant Confirm Buttons -->
+          <div class="flex flex-wrap gap-3 pt-2">
+            <button onclick="bookAppointment('whatsapp')" class="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs tracking-widest heading-caps transition flex items-center gap-2 shadow-lg">
+              <i class="fa-brands fa-whatsapp text-sm"></i> Confirm Instant via WhatsApp
             </button>
-            <button onclick="confirmBooking('email')" class="px-5 py-2.5 rounded-xl border border-white/15 bg-white/5 hover:border-blue-400 text-white font-bold text-xs font-cinzel tracking-wider transition flex items-center gap-2">
-              <i class="fa-solid fa-envelope text-xs"></i> Confirm via Email
+            <button onclick="bookAppointment('email')" class="px-6 py-3.5 rounded-xl border border-white/20 bg-white/5 hover:border-blue-400 text-white font-bold text-xs tracking-widest heading-caps transition flex items-center gap-2">
+              <i class="fa-solid fa-envelope"></i> Confirm via Email
             </button>
           </div>
         </div>
@@ -499,73 +742,100 @@
       </div>
     </section>
 
-    <!-- ================= 4. ABOUT & TIMELINE (yahya.in Split Structure) ================= -->
+    <!-- ================= 5. ABOUT ME + AI LLM DISCOVERABILITY + TIMELINE ================= -->
     <section id="about" class="space-y-10">
       <div class="border-b border-white/10 pb-5">
-        <span class="text-xs font-mono-code text-blue-400 uppercase tracking-widest">// Who I Am & Trajectory</span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">About & Engineering Timeline</h2>
+        <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">// 02 · Who I Am</span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white heading-caps mt-1">About Me & Academic Pedigree</h2>
       </div>
 
+      <!-- AI Search Bar (yahya.in Signature Element) -->
+      <div class="yahya-card p-6 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <span class="text-xs font-bold text-white heading-caps">
+            You Can Search About Patel Mohammad Zaki On Major AI LLMs & Search Engines:
+          </span>
+          <span class="text-[11px] text-blue-400 heading-caps">Click Any Engine to Query</span>
+        </div>
+        <div class="flex flex-wrap gap-2.5">
+          <a href="https://www.google.com/search?q=Patel+Mohammad+Zaki+Solapur+BMIT+Data+Analyst" target="_blank" class="pill-tag"><i class="fa-brands fa-google text-blue-400"></i> Google Search</a>
+          <a href="https://chatgpt.com/?q=Tell+me+about+Patel+Mohammad+Zaki+Computer+Science+Engineer+and+Data+Analyst+from+BMIT+Solapur" target="_blank" class="pill-tag"><i class="fa-solid fa-robot text-emerald-400"></i> ChatGPT</a>
+          <a href="https://gemini.google.com/" target="_blank" class="pill-tag"><i class="fa-solid fa-wand-magic-sparkles text-blue-400"></i> Google Gemini</a>
+          <a href="https://www.perplexity.ai/search?q=Patel+Mohammad+Zaki+Solapur+Data+Analyst" target="_blank" class="pill-tag"><i class="fa-solid fa-magnifying-glass-chart text-cyan-400"></i> Perplexity AI</a>
+          <a href="https://claude.ai/" target="_blank" class="pill-tag"><i class="fa-solid fa-brain text-amber-400"></i> Claude AI</a>
+          <a href="https://linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="pill-tag"><i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Profile</a>
+        </div>
+      </div>
+
+      <!-- Split Biography & Timeline -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <!-- Detailed Narrative -->
-        <div class="lg:col-span-7 space-y-6">
-          <div class="bento-card p-6 sm:p-8 space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
-            <h3 class="text-lg font-bold text-white">Engineering Data-Driven & Intelligent Systems</h3>
+        <!-- Left Bio (Exact Resume Alignment) -->
+        <div class="lg:col-span-7 yahya-card p-7 sm:p-9 space-y-5">
+          <h3 class="text-xl font-extrabold text-white heading-caps border-b border-white/10 pb-3">
+            Professional Summary
+          </h3>
+          <div class="space-y-4 text-xs sm:text-sm text-slate-300 para-clean">
             <p>
-              I'm <strong>Patel Mohammad Zaki</strong> — a final-year Computer Science and Engineering student at Brahmdevdada Mane Institute of Technology (BMIT), Solapur, and a <strong>Data Analyst Intern at UnionSys Technologies, Pune</strong>.
+              I am <strong>Patel Mohammad Zaki</strong> — a detail-oriented and responsible Computer Science Engineering student at <strong>Brahmdevdada Mane Institute of Technology (BMIT), Solapur</strong>, with a strong academic foundation across Computer Science, Electronics, and Data Analytics.
             </p>
             <p>
-              Before transitioning into Computer Science, I earned my Diploma in Electronics and Telecommunication Engineering from <strong>Government Polytechnic, Solapur with Distinction (75.59%)</strong>, building a disciplined analytical foundation after scoring <strong>89.20% in SSC (10th)</strong>.
+              Currently, I work as a <strong>Data Analyst Intern in the IT Department at UnionSys Technologies, Pune</strong> (July 2026 – Present), where I support data analysis, data organization, and reporting activities while gaining hands-on exposure to enterprise IT workflows under the guidance of an Oracle Apps Developer.
             </p>
             <p>
-              My core specialization lies at the intersection of <strong>Data Analytics, Data Science, Cloud Infrastructure (AWS), and Full-Stack AI Applications</strong>. From engineering <em>NextIDE</em> (an AI code-generation platform powered by Google Gemini) to executing predictive churn and BI case simulations across <strong>PwC, Tata Group, Accenture, BCG, and British Airways</strong>, I focus on turning messy datasets and business problems into clean, production-ready software.
+              Prior to my B.Tech degree, I completed my <strong>Diploma in Electronics and Telecommunication Engineering from Government Polytechnic, Solapur with Distinction (75.59%)</strong>, following an <strong>89.20% score in my 10th SSC Board examinations</strong>.
+            </p>
+            <p>
+              I am passionate about applying analytical thinking, SQL, Power BI, Python, and cloud fundamentals to solve real-world business problems while continuously learning and contributing in professional environments.
             </p>
           </div>
 
-          <!-- AI Discoverability Bar (Inspired by yahya.in) -->
-          <div class="bento-card p-5 space-y-3">
-            <span class="text-[11px] font-mono-code text-slate-400 block">Verify & Explore My Technical Stack Across Platforms:</span>
-            <div class="flex flex-wrap gap-2">
-              <a href="https://github.com/zakipatel89" target="_blank" class="tech-pill"><i class="fa-brands fa-github text-blue-400"></i> GitHub (@zakipatel89)</a>
-              <a href="https://www.linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="tech-pill"><i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Verified</a>
-              <a href="resume.pdf" download class="tech-pill"><i class="fa-solid fa-file-pdf text-blue-400"></i> Official Resume PDF</a>
+          <!-- Key Strengths (From Resume) -->
+          <div class="pt-4 border-t border-white/10 space-y-3">
+            <h4 class="text-xs font-bold text-blue-400 heading-caps">Core Professional Strengths</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-300">
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Strong Analytical & Problem-Solving Skills</div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Responsible & Disciplined Attitude</div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Quick Learner & Adaptable to New Tech</div>
+              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Effective Teamwork & Collaboration</div>
             </div>
           </div>
         </div>
 
-        <!-- Education & Career Timeline -->
-        <div class="lg:col-span-5 bento-card p-6 sm:p-8 space-y-6">
-          <h3 class="text-lg font-bold text-white border-b border-white/10 pb-3">Education & Career Milestones</h3>
-          
-          <div class="space-y-5 relative before:absolute before:left-2 before:top-2 before:bottom-2 before:w-px before:bg-blue-500/30">
+        <!-- Right Education & Career Timeline -->
+        <div class="lg:col-span-5 yahya-card p-7 sm:p-9 space-y-6">
+          <h3 class="text-xl font-extrabold text-white heading-caps border-b border-white/10 pb-3">
+            Education & Timeline
+          </h3>
+
+          <div class="space-y-6 relative before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-px before:bg-blue-500/35">
             
-            <div class="pl-7 relative">
-              <span class="w-3 h-3 rounded-full bg-blue-500 absolute left-[3px] top-1 shadow-[0_0_10px_#3b82f6]"></span>
-              <span class="text-[11px] font-mono-code text-blue-400">2026 — Present</span>
-              <h4 class="text-sm font-bold text-white mt-0.5">Data Analyst Intern — UnionSys Technologies</h4>
-              <p class="text-xs text-slate-400 mt-1">IT Department, Pune · Data manipulation, SQL querying, Power BI reporting & enterprise analytics workflows.</p>
+            <div class="pl-8 relative">
+              <span class="w-3.5 h-3.5 rounded-full bg-emerald-400 absolute left-[4px] top-1 shadow-[0_0_12px_#34d399]"></span>
+              <span class="text-[11px] text-emerald-400 font-bold heading-caps">July 2026 — Present</span>
+              <h4 class="text-sm font-extrabold text-white heading-caps mt-0.5">Data Analyst Intern — UnionSys Technologies</h4>
+              <p class="text-xs text-slate-400 mt-1">IT Department, Pune · Data analysis, organization & reporting under Oracle Apps Developer guidance.</p>
             </div>
 
-            <div class="pl-7 relative">
-              <span class="w-3 h-3 rounded-full bg-slate-700 border border-blue-400 absolute left-[3px] top-1"></span>
-              <span class="text-[11px] font-mono-code text-blue-400">2024 — 2027</span>
-              <h4 class="text-sm font-bold text-white mt-0.5">B.Tech in Computer Science & Engineering</h4>
+            <div class="pl-8 relative">
+              <span class="w-3.5 h-3.5 rounded-full bg-blue-500 absolute left-[4px] top-1 shadow-[0_0_10px_#3b82f6]"></span>
+              <span class="text-[11px] text-blue-400 font-bold heading-caps">2024 — 2027 (Present)</span>
+              <h4 class="text-sm font-extrabold text-white heading-caps mt-0.5">B.Tech in Computer Science Engineering</h4>
               <p class="text-xs text-slate-400 mt-1">Brahmdevdada Mane Institute of Technology (BMIT), Solapur · Final-Year Student.</p>
             </div>
 
-            <div class="pl-7 relative">
-              <span class="w-3 h-3 rounded-full bg-slate-700 border border-blue-400 absolute left-[3px] top-1"></span>
-              <span class="text-[11px] font-mono-code text-blue-400">2021 — 2024</span>
-              <h4 class="text-sm font-bold text-white mt-0.5">Diploma in E&TC Engineering (Distinction)</h4>
-              <p class="text-xs text-slate-400 mt-1">Government Polytechnic, Solapur · Graduated with 75.59%.</p>
+            <div class="pl-8 relative">
+              <span class="w-3.5 h-3.5 rounded-full bg-slate-800 border border-blue-400 absolute left-[4px] top-1"></span>
+              <span class="text-[11px] text-blue-400 font-bold heading-caps">2021 — 2024</span>
+              <h4 class="text-sm font-extrabold text-white heading-caps mt-0.5">Diploma in E&TC Engineering — 75.59%</h4>
+              <p class="text-xs text-slate-400 mt-1">Government Polytechnic, Solapur · First Class with Distinction.</p>
             </div>
 
-            <div class="pl-7 relative">
-              <span class="w-3 h-3 rounded-full bg-slate-700 border border-blue-400 absolute left-[3px] top-1"></span>
-              <span class="text-[11px] font-mono-code text-blue-400">2021</span>
-              <h4 class="text-sm font-bold text-white mt-0.5">Secondary School Certificate (10th Board)</h4>
-              <p class="text-xs text-slate-400 mt-1">Maharashtra State Board · Scored 89.20%.</p>
+            <div class="pl-8 relative">
+              <span class="w-3.5 h-3.5 rounded-full bg-slate-800 border border-blue-400 absolute left-[4px] top-1"></span>
+              <span class="text-[11px] text-blue-400 font-bold heading-caps">2021</span>
+              <h4 class="text-sm font-extrabold text-white heading-caps mt-0.5">Secondary School Certificate (10th) — 89.20%</h4>
+              <p class="text-xs text-slate-400 mt-1">Maharashtra State Board · Solapur.</p>
             </div>
 
           </div>
@@ -574,328 +844,327 @@
       </div>
     </section>
 
-    <!-- ================= 5. SKILLS & EXPERTISE (yahya.in Domain Cards + Pill Cloud) ================= -->
+    <!-- ================= 6. SKILLS & EXPERTISE (Filterable Grid + Domain Cards) ================= -->
     <section id="skills" class="space-y-10">
-      <div class="border-b border-white/10 pb-5">
-        <span class="text-xs font-mono-code text-blue-400 uppercase tracking-widest">// Technical Capabilities</span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">Skills, Domains & Tooling</h2>
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-5">
+        <div>
+          <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">// 03 · Skills & Tools</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white heading-caps mt-1">Technologies I Work With</h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1">
+            My primary stack for data analytics, machine learning workflows, cloud computing, and intelligent software systems.
+          </p>
+        </div>
+
+        <!-- Interactive Filter Tabs -->
+        <div class="flex flex-wrap gap-1.5 p-1.5 rounded-xl bg-[#070b16] border border-white/10">
+          <button onclick="filterSkillCards('all', this)" class="skill-tab active px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white heading-caps transition">All Skills</button>
+          <button onclick="filterSkillCards('analytics', this)" class="skill-tab px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white heading-caps transition">Data & BI</button>
+          <button onclick="filterSkillCards('ai', this)" class="skill-tab px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white heading-caps transition">Data Science & AI</button>
+          <button onclick="filterSkillCards('languages', this)" class="skill-tab px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white heading-caps transition">Languages</button>
+          <button onclick="filterSkillCards('database', this)" class="skill-tab px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white heading-caps transition">Databases & Cloud</button>
+          <button onclick="filterSkillCards('tools', this)" class="skill-tab px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white heading-caps transition">Tools</button>
+        </div>
       </div>
 
-      <!-- Domain Cards Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Interactive Skill Cards Grid -->
+      <div id="skills-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         
-        <div class="bento-card p-6 space-y-2.5">
-          <div class="text-blue-400 text-lg"><i class="fa-solid fa-chart-Simple"></i></div>
-          <h3 class="text-base font-bold text-white">Data Analytics & BI</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Power BI interactive dashboards, DAX calculations, Advanced Excel (Pivot Tables, VLOOKUP), KPI telemetry, and exploratory data storytelling.
-          </p>
+        <!-- Data Analytics & BI -->
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="analytics">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-chart-pie"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Power BI</h4><span class="text-[10px] text-slate-400 heading-caps">Data & BI</span></div>
         </div>
 
-        <div class="bento-card p-6 space-y-2.5">
-          <div class="text-blue-400 text-lg"><i class="fa-solid fa-brain"></i></div>
-          <h3 class="text-base font-bold text-white">Data Science & Machine Learning</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Python data pipelines using Pandas, NumPy, Matplotlib, Scikit-learn, and TensorFlow. Predictive churn modeling, sentiment classification, and regression.
-          </p>
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="analytics">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-file-excel"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Microsoft Excel</h4><span class="text-[10px] text-slate-400 heading-caps">Data & BI</span></div>
         </div>
 
-        <div class="bento-card p-6 space-y-2.5">
-          <div class="text-blue-400 text-lg"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-          <h3 class="text-base font-bold text-white">Generative AI & LLM Integration</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Google Gemini API & OpenAI integration, structured prompt engineering, NLP query parsing, and automated algorithm-to-code synthesis.
-          </p>
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="analytics">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-chart-column"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Data Reporting</h4><span class="text-[10px] text-slate-400 heading-caps">Data & BI</span></div>
         </div>
 
-        <div class="bento-card p-6 space-y-2.5">
-          <div class="text-blue-400 text-lg"><i class="fa-solid fa-layer-group"></i></div>
-          <h3 class="text-base font-bold text-white">Full-Stack Web Engineering</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            React.js, Next.js, Node.js, Express.js, Python (Flask/Django), HTML5, CSS3, Tailwind CSS, and responsive RESTful API architectures.
-          </p>
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="analytics">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-Magnifying-glass-chart"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Data Interpretation</h4><span class="text-[10px] text-slate-400 heading-caps">Data & BI</span></div>
         </div>
 
-        <div class="bento-card p-6 space-y-2.5">
-          <div class="text-blue-400 text-lg"><i class="fa-solid fa-database"></i></div>
-          <h3 class="text-base font-bold text-white">Databases & Data Modeling</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Relational SQL (MySQL) complex joins & schema design, NoSQL document stores (MongoDB), and cloud backend services (Supabase).
-          </p>
+        <!-- Data Science & AI -->
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="ai">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-cubes"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Pandas & NumPy</h4><span class="text-[10px] text-slate-400 heading-caps">Data Science</span></div>
         </div>
 
-        <div class="bento-card p-6 space-y-2.5">
-          <div class="text-blue-400 text-lg"><i class="fa-brands fa-aws"></i></div>
-          <h3 class="text-base font-bold text-white">Cloud Infrastructure & DevOps</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            AWS Compute (EC2), Virtual Private Cloud (VPC) subnet networking, cloud architecture design, Linux CLI, Docker basics, and Git/GitHub CI workflows.
-          </p>
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="ai">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-chart-line"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Matplotlib & Sklearn</h4><span class="text-[10px] text-slate-400 heading-caps">Data Science</span></div>
         </div>
 
-      </div>
-
-      <!-- Categorized Pill Cloud (Exact yahya.in Bottom Stack) -->
-      <div class="bento-card p-6 sm:p-8 space-y-6">
-        <div class="space-y-3">
-          <span class="text-xs font-mono-code text-blue-400 uppercase tracking-wider block">Languages</span>
-          <div class="flex flex-wrap gap-2">
-            <span class="tech-pill"><i class="fa-brands fa-python text-blue-400"></i> Python</span>
-            <span class="tech-pill"><i class="fa-solid fa-database text-blue-400"></i> SQL</span>
-            <span class="tech-pill"><i class="fa-brands fa-js text-blue-400"></i> JavaScript (ES6+)</span>
-            <span class="tech-pill"><i class="fa-brands fa-java text-blue-400"></i> Java</span>
-            <span class="tech-pill"><i class="fa-brands fa-php text-blue-400"></i> PHP</span>
-            <span class="tech-pill"><i class="fa-brands fa-html5 text-blue-400"></i> HTML5 / CSS3</span>
-          </div>
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="ai">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-microchip"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">TensorFlow</h4><span class="text-[10px] text-slate-400 heading-caps">AI & ML</span></div>
         </div>
 
-        <div class="space-y-3 pt-2 border-t border-white/5">
-          <span class="text-xs font-mono-code text-blue-400 uppercase tracking-wider block">Frameworks, Data & AI Libraries</span>
-          <div class="flex flex-wrap gap-2">
-            <span class="tech-pill">Pandas</span>
-            <span class="tech-pill">NumPy</span>
-            <span class="tech-pill">Scikit-learn</span>
-            <span class="tech-pill">Matplotlib</span>
-            <span class="tech-pill">TensorFlow</span>
-            <span class="tech-pill">React.js</span>
-            <span class="tech-pill">Next.js</span>
-            <span class="tech-pill">Node.js</span>
-            <span class="tech-pill">Express.js</span>
-            <span class="tech-pill">Flask / Django</span>
-            <span class="tech-pill">Tailwind CSS</span>
-            <span class="tech-pill">Bootstrap</span>
-          </div>
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="ai">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Gemini & OpenAI API</h4><span class="text-[10px] text-slate-400 heading-caps">AI & Prompt Eng.</span></div>
         </div>
 
-        <div class="space-y-3 pt-2 border-t border-white/5">
-          <span class="text-xs font-mono-code text-blue-400 uppercase tracking-wider block">Platforms, Cloud & Tools</span>
-          <div class="flex flex-wrap gap-2">
-            <span class="tech-pill">Microsoft Power BI</span>
-            <span class="tech-pill">Advanced Excel</span>
-            <span class="tech-pill">AWS (EC2 / VPC)</span>
-            <span class="tech-pill">MySQL</span>
-            <span class="tech-pill">MongoDB</span>
-            <span class="tech-pill">Supabase</span>
-            <span class="tech-pill">Google Gemini API</span>
-            <span class="tech-pill">OpenAI API</span>
-            <span class="tech-pill">Git & GitHub</span>
-            <span class="tech-pill">Docker (Basics)</span>
-            <span class="tech-pill">Postman</span>
-            <span class="tech-pill">VS Code</span>
-            <span class="tech-pill">Linux</span>
-            <span class="tech-pill">Vite</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 6. INDUSTRY EXPERIENCE & VIRTUAL CASE STUDIES ================= -->
-    <section id="experience" class="space-y-8">
-      <div class="border-b border-white/10 pb-5">
-        <span class="text-xs font-mono-code text-blue-400 uppercase tracking-widest">// Corporate Exposure</span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">Experience & Global Case Simulations</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        
-        <div class="bento-card p-6 flex flex-col justify-between space-y-4 border-l-2 border-l-emerald-400">
-          <div class="space-y-2">
-            <span class="text-[11px] font-mono-code text-emerald-400 uppercase">Corporate Internship · 2026</span>
-            <h3 class="text-lg font-bold text-white">UnionSys Technologies, Pune</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Working as a Data Analyst Intern in the IT Department. Responsible for database querying, data cleaning, and building analytical reports for operational tracking.
-            </p>
-          </div>
-          <span class="text-[11px] text-emerald-300 font-medium">● Active Role (Pune)</span>
+        <!-- Languages -->
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="languages">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-brands fa-python"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Python</h4><span class="text-[10px] text-slate-400 heading-caps">Languages</span></div>
         </div>
 
-        <div class="bento-card p-6 flex flex-col justify-between space-y-4">
-          <div class="space-y-2">
-            <span class="text-[11px] font-mono-code text-blue-400 uppercase">Forage Case Simulation</span>
-            <h3 class="text-lg font-bold text-white">PwC Switzerland — Power BI</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Designed interactive Power BI dashboards analyzing call center trends, customer retention metrics, and gender diversity KPIs.
-            </p>
-          </div>
-          <a href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf" target="_blank" class="text-xs text-blue-400 hover:text-white font-semibold">
-            Verify Credential PDF →
-          </a>
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="languages">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-database"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">SQL</h4><span class="text-[10px] text-slate-400 heading-caps">Languages</span></div>
         </div>
 
-        <div class="bento-card p-6 flex flex-col justify-between space-y-4">
-          <div class="space-y-2">
-            <span class="text-[11px] font-mono-code text-blue-400 uppercase">Forage Case Simulation</span>
-            <h3 class="text-lg font-bold text-white">Boston Consulting Group (BCG)</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Executed Data Science customer churn modeling using Python, evaluating price sensitivity and random forest predictions.
-            </p>
-          </div>
-          <a href="BCG%20Data%20Science.pdf" target="_blank" class="text-xs text-blue-400 hover:text-white font-semibold">
-            Verify Credential PDF →
-          </a>
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="languages">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-brands fa-js"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">JavaScript</h4><span class="text-[10px] text-slate-400 heading-caps">Languages</span></div>
         </div>
 
-        <div class="bento-card p-6 flex flex-col justify-between space-y-4">
-          <div class="space-y-2">
-            <span class="text-[11px] font-mono-code text-blue-400 uppercase">Forage Case Simulation</span>
-            <h3 class="text-lg font-bold text-white">Tata Group — Data Visualization</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Framed executive questions for CEO/CMO review and built visual analytics charts to drive retail expansion strategy.
-            </p>
-          </div>
-          <a href="Data%20Visualisation%20By%20TATA.pdf" target="_blank" class="text-xs text-blue-400 hover:text-white font-semibold">
-            Verify Credential PDF →
-          </a>
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="languages">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-brands fa-java"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Java</h4><span class="text-[10px] text-slate-400 heading-caps">Languages</span></div>
         </div>
 
-        <div class="bento-card p-6 flex flex-col justify-between space-y-4">
-          <div class="space-y-2">
-            <span class="text-[11px] font-mono-code text-blue-400 uppercase">Forage Case Simulation</span>
-            <h3 class="text-lg font-bold text-white">Accenture — Data Analytics</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Cleaned, modeled, and analyzed 7 datasets to uncover content category performance insights for client presentation.
-            </p>
-          </div>
-          <a href="Data%20Analytics%20by%20Acccenture.pdf" target="_blank" class="text-xs text-blue-400 hover:text-white font-semibold">
-            Verify Credential PDF →
-          </a>
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="languages">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-brands fa-html5"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">HTML5 / CSS3</h4><span class="text-[10px] text-slate-400 heading-caps">Web Technologies</span></div>
         </div>
 
-        <div class="bento-card p-6 flex flex-col justify-between space-y-4">
-          <div class="space-y-2">
-            <span class="text-[11px] font-mono-code text-blue-400 uppercase">Forage Case Simulation</span>
-            <h3 class="text-lg font-bold text-white">British Airways — Data Science</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Scraped and analyzed customer skytrax reviews for sentiment patterns and built predictive booking models.
-            </p>
-          </div>
-          <a href="Data%20Science%20By%20British%20Airways.pdf" target="_blank" class="text-xs text-blue-400 hover:text-white font-semibold">
-            Verify Credential PDF →
-          </a>
+        <!-- Databases & Cloud -->
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="database">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-brands fa-aws"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">AWS Cloud (EC2/VPC)</h4><span class="text-[10px] text-slate-400 heading-caps">Cloud Computing</span></div>
+        </div>
+
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="database">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-table"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">MySQL</h4><span class="text-[10px] text-slate-400 heading-caps">Database</span></div>
+        </div>
+
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="database">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-leaf"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">MongoDB Atlas</h4><span class="text-[10px] text-slate-400 heading-caps">Database</span></div>
+        </div>
+
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="database">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-bolt"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Supabase</h4><span class="text-[10px] text-slate-400 heading-caps">Database</span></div>
+        </div>
+
+        <!-- Tools -->
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="tools">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-brands fa-git-alt"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Git & GitHub</h4><span class="text-[10px] text-slate-400 heading-caps">Tools</span></div>
+        </div>
+
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="tools">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-code"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">VS Code</h4><span class="text-[10px] text-slate-400 heading-caps">Tools</span></div>
+        </div>
+
+        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="tools">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-file-powerpoint"></i></div>
+          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Word & PowerPoint</h4><span class="text-[10px] text-slate-400 heading-caps">Office Tools</span></div>
         </div>
 
       </div>
     </section>
 
-    <!-- ================= 7. VERIFIED CERTIFICATIONS VAULT ================= -->
-    <section id="certifications" class="space-y-8">
+    <!-- ================= 7. INTERNSHIPS & VIRTUAL EXPERIENCE ================= -->
+    <section id="experience" class="space-y-10">
       <div class="border-b border-white/10 pb-5">
-        <span class="text-xs font-mono-code text-blue-400 uppercase tracking-widest">// Verified Licenses</span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">Cloud, Data & Professional Certifications</h2>
+        <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">// 04 · Corporate & Virtual Experience</span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white heading-caps mt-1">Internships & Global Case Studies</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="yahya-card p-6 flex flex-col justify-between space-y-4 border-l-2 border-l-emerald-400">
+          <div class="space-y-2">
+            <span class="text-[11px] text-emerald-400 font-bold heading-caps">July 2026 — Present · Pune</span>
+            <h3 class="text-lg font-extrabold text-white heading-caps">UnionSys Technologies</h3>
+            <p class="text-xs text-slate-300 para-clean">
+              Working as a Data Analyst Intern in the IT Department, supporting data analysis, organization, and reporting activities under the guidance of an Oracle Apps Developer.
+            </p>
+          </div>
+          <span class="text-xs text-emerald-300 font-bold heading-caps">● Active Corporate Internship</span>
+        </div>
+
+        <div class="yahya-card p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-[11px] text-blue-400 font-bold heading-caps">Forage Virtual Internship</span>
+            <h3 class="text-lg font-extrabold text-white heading-caps">PwC — Power BI Case Study</h3>
+            <p class="text-xs text-slate-300 para-clean">
+              Built interactive Power BI dashboards evaluating call center KPIs, customer retention patterns, and workforce diversity metrics.
+            </p>
+          </div>
+          <a href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white heading-caps">
+            View Verified Certificate →
+          </a>
+        </div>
+
+        <div class="yahya-card p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-[11px] text-blue-400 font-bold heading-caps">Forage Virtual Internship</span>
+            <h3 class="text-lg font-extrabold text-white heading-caps">BCG — Data Science Experience</h3>
+            <p class="text-xs text-slate-300 para-clean">
+              Conducted customer churn analysis and predictive machine learning modeling to estimate financial impact and retention strategies.
+            </p>
+          </div>
+          <a href="BCG%20Data%20Science.pdf" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white heading-caps">
+            View Verified Certificate →
+          </a>
+        </div>
+
+        <div class="yahya-card p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-[11px] text-blue-400 font-bold heading-caps">Forage Virtual Internship</span>
+            <h3 class="text-lg font-extrabold text-white heading-caps">Tata Group — Data Visualization</h3>
+            <p class="text-xs text-slate-300 para-clean">
+              Created executive business visuals and analytical charts to support C-suite strategic decision-making and revenue forecasting.
+            </p>
+          </div>
+          <a href="Data%20Visualisation%20By%20TATA.pdf" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white heading-caps">
+            View Verified Certificate →
+          </a>
+        </div>
+
+        <div class="yahya-card p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-[11px] text-blue-400 font-bold heading-caps">Forage Virtual Internship</span>
+            <h3 class="text-lg font-extrabold text-white heading-caps">Accenture — Data Analytics</h3>
+            <p class="text-xs text-slate-300 para-clean">
+              Cleaned, modeled, and analyzed multi-table datasets to uncover key content performance trends and business insights.
+            </p>
+          </div>
+          <a href="Data%20Analytics%20by%20Acccenture.pdf" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white heading-caps">
+            View Verified Certificate →
+          </a>
+        </div>
+
+        <div class="yahya-card p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-[11px] text-blue-400 font-bold heading-caps">Forage Virtual Internship</span>
+            <h3 class="text-lg font-extrabold text-white heading-caps">British Airways — Data Science</h3>
+            <p class="text-xs text-slate-300 para-clean">
+              Analyzed customer review sentiment and engineered predictive models to evaluate factors driving flight booking behavior.
+            </p>
+          </div>
+          <a href="Data%20Science%20By%20British%20Airways.pdf" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white heading-caps">
+            View Verified Certificate →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 8. CERTIFICATIONS & CREDENTIALS ================= -->
+    <section id="certifications" class="space-y-10">
+      <div class="border-b border-white/10 pb-5">
+        <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">// 05 · Verified Licenses</span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white heading-caps mt-1">Certifications & Credentials</h2>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
-        <a href="C-%20AWS%20Compute%20Service.pdf" target="_blank" class="bento-card p-5 flex flex-col justify-between space-y-3 group">
-          <div class="flex items-center justify-between text-blue-400">
-            <i class="fa-brands fa-aws text-xl"></i>
-            <span class="text-[10px] font-mono-code uppercase">AWS Cloud</span>
-          </div>
-          <h3 class="text-sm font-bold text-white group-hover:text-blue-400 transition">AWS Compute Service</h3>
-          <span class="text-[11px] text-slate-400">View Certificate PDF →</span>
+        <a href="C-%20AWS%20Compute%20Service.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
+          <div class="flex items-center justify-between text-blue-400"><i class="fa-brands fa-aws text-xl"></i><span class="text-[10px] heading-caps">AWS Cloud</span></div>
+          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">AWS Compute Service</h3>
+          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
         </a>
 
-        <a href="C-Cloud%20Computing%20Architechture.pdf" target="_blank" class="bento-card p-5 flex flex-col justify-between space-y-3 group">
-          <div class="flex items-center justify-between text-blue-400">
-            <i class="fa-solid fa-cloud text-xl"></i>
-            <span class="text-[10px] font-mono-code uppercase">Architecture</span>
-          </div>
-          <h3 class="text-sm font-bold text-white group-hover:text-blue-400 transition">Cloud Computing Architecture</h3>
-          <span class="text-[11px] text-slate-400">View Certificate PDF →</span>
+        <a href="C-Cloud%20Computing%20Architechture.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
+          <div class="flex items-center justify-between text-blue-400"><i class="fa-solid fa-cloud text-xl"></i><span class="text-[10px] heading-caps">Cloud</span></div>
+          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">Cloud Computing Architecture</h3>
+          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
         </a>
 
-        <a href="C-Cloud%20Networking%20With%20AWS%20VPC.pdf" target="_blank" class="bento-card p-5 flex flex-col justify-between space-y-3 group">
-          <div class="flex items-center justify-between text-blue-400">
-            <i class="fa-solid fa-network-wired text-xl"></i>
-            <span class="text-[10px] font-mono-code uppercase">AWS VPC</span>
-          </div>
-          <h3 class="text-sm font-bold text-white group-hover:text-blue-400 transition">Cloud Networking With AWS VPC</h3>
-          <span class="text-[11px] text-slate-400">View Certificate PDF →</span>
+        <a href="C-Cloud%20Networking%20With%20AWS%20VPC.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
+          <div class="flex items-center justify-between text-blue-400"><i class="fa-solid fa-network-wired text-xl"></i><span class="text-[10px] heading-caps">AWS VPC</span></div>
+          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">Cloud Networking With AWS VPC</h3>
+          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
         </a>
 
-        <a href="C-Cloud%20Engineer%20Roles%20and%20Responsibilities.pdf" target="_blank" class="bento-card p-5 flex flex-col justify-between space-y-3 group">
-          <div class="flex items-center justify-between text-blue-400">
-            <i class="fa-solid fa-server text-xl"></i>
-            <span class="text-[10px] font-mono-code uppercase">Cloud Ops</span>
-          </div>
-          <h3 class="text-sm font-bold text-white group-hover:text-blue-400 transition">Cloud Engineer Roles & Duties</h3>
-          <span class="text-[11px] text-slate-400">View Certificate PDF →</span>
+        <a href="C-Cloud%20Engineer%20Roles%20and%20Responsibilities.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
+          <div class="flex items-center justify-between text-blue-400"><i class="fa-solid fa-server text-xl"></i><span class="text-[10px] heading-caps">Cloud Ops</span></div>
+          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">Cloud Engineer Roles & Duties</h3>
+          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
         </a>
 
-        <a href="Data%20Analytics%20By%20quantium.pdf" target="_blank" class="bento-card p-5 flex flex-col justify-between space-y-3 group">
-          <div class="flex items-center justify-between text-blue-400">
-            <i class="fa-solid fa-chart-line text-xl"></i>
-            <span class="text-[10px] font-mono-code uppercase">Quantium</span>
-          </div>
-          <h3 class="text-sm font-bold text-white group-hover:text-blue-400 transition">Data Analytics by Quantium</h3>
-          <span class="text-[11px] text-slate-400">View Certificate PDF →</span>
+        <a href="Data%20Analytics%20By%20quantium.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
+          <div class="flex items-center justify-between text-blue-400"><i class="fa-solid fa-chart-line text-xl"></i><span class="text-[10px] heading-caps">Quantium</span></div>
+          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">Data Analytics by Quantium</h3>
+          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
         </a>
 
-        <a href="Data%20Analytics%20Consulting%20By%20KPMG.pdf" target="_blank" class="bento-card p-5 flex flex-col justify-between space-y-3 group">
-          <div class="flex items-center justify-between text-blue-400">
-            <i class="fa-solid fa-chart-pie text-xl"></i>
-            <span class="text-[10px] font-mono-code uppercase">KPMG</span>
-          </div>
-          <h3 class="text-sm font-bold text-white group-hover:text-blue-400 transition">KPMG Data Analytics Consulting</h3>
-          <span class="text-[11px] text-slate-400">View Certificate PDF →</span>
+        <a href="Data%20Analytics%20Consulting%20By%20KPMG.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
+          <div class="flex items-center justify-between text-blue-400"><i class="fa-solid fa-chart-pie text-xl"></i><span class="text-[10px] heading-caps">KPMG</span></div>
+          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">KPMG Data Analytics Consulting</h3>
+          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
         </a>
 
-        <a href="C-Exel%20for%20Beginners.pdf" target="_blank" class="bento-card p-5 flex flex-col justify-between space-y-3 group">
-          <div class="flex items-center justify-between text-blue-400">
-            <i class="fa-solid fa-file-excel text-xl"></i>
-            <span class="text-[10px] font-mono-code uppercase">Analytics</span>
-          </div>
-          <h3 class="text-sm font-bold text-white group-hover:text-blue-400 transition">Excel for Beginners</h3>
-          <span class="text-[11px] text-slate-400">View Certificate PDF →</span>
+        <a href="C-Exel%20for%20Beginners.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
+          <div class="flex items-center justify-between text-blue-400"><i class="fa-solid fa-file-excel text-xl"></i><span class="text-[10px] heading-caps">Microsoft Excel</span></div>
+          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">Excel for Beginners</h3>
+          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
         </a>
 
-        <a href="Communication%20Skills%20By%20TCS.pdf" target="_blank" class="bento-card p-5 flex flex-col justify-between space-y-3 group">
-          <div class="flex items-center justify-between text-blue-400">
-            <i class="fa-solid fa-comments text-xl"></i>
-            <span class="text-[10px] font-mono-code uppercase">TCS iON</span>
-          </div>
-          <h3 class="text-sm font-bold text-white group-hover:text-blue-400 transition">Communication Skills by TCS</h3>
-          <span class="text-[11px] text-slate-400">View Certificate PDF →</span>
+        <a href="Communication%20Skills%20By%20TCS.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
+          <div class="flex items-center justify-between text-blue-400"><i class="fa-solid fa-comments text-xl"></i><span class="text-[10px] heading-caps">TCS iON</span></div>
+          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">Communication Skills by TCS</h3>
+          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
         </a>
 
       </div>
     </section>
 
-    <!-- ================= 8. DIRECT CONNECT & DETAILS ================= -->
-    <section id="contact" class="bento-card p-8 sm:p-12">
+    <!-- ================= 9. CONTACT & LOCATION DETAILS (From Resume) ================= -->
+    <section id="contact" class="yahya-card p-8 sm:p-12">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
         <div class="lg:col-span-7 space-y-4">
-          <span class="text-xs font-mono-code text-blue-400 uppercase tracking-widest">// Direct Contact</span>
-          <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Let's Build & Scale Together</h2>
-          <p class="text-xs sm:text-sm text-slate-400 max-w-xl leading-relaxed">
-            Available for Data Analyst, Data Science, AI Engineering, and Full-Stack Software roles across Pune, Mumbai, Bengaluru, and remote teams.
+          <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">// 06 · Direct Contact</span>
+          <h2 class="text-3xl sm:text-5xl font-black text-white heading-caps">
+            Connect With Patel Mohammad Zaki
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
+            Open for Data Analyst, Business Intelligence, Data Science, and AI Software opportunities across Pune, Mumbai, Bengaluru, and Solapur.
           </p>
-          <div class="flex flex-wrap gap-3 pt-2">
-            <a href="mailto:zakipatel2811@gmail.com" class="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs font-cinzel tracking-wider transition flex items-center gap-2">
+          <div class="flex flex-wrap gap-3 pt-3">
+            <a href="mailto:zakipatel2811@gmail.com" class="px-5 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs tracking-wider heading-caps transition flex items-center gap-2">
               <i class="fa-solid fa-envelope"></i> zakipatel2811@gmail.com
             </a>
-            <a href="https://wa.me/918468809905" target="_blank" class="px-5 py-3 rounded-xl bg-emerald-600/20 border border-emerald-500/40 hover:bg-emerald-600 hover:text-white text-emerald-300 font-bold text-xs font-cinzel tracking-wider transition flex items-center gap-2">
+            <a href="https://wa.me/918468809905" target="_blank" class="px-5 py-3.5 rounded-xl border border-emerald-500/40 bg-emerald-500/15 hover:bg-emerald-600 text-white font-bold text-xs tracking-wider heading-caps transition flex items-center gap-2">
               <i class="fa-brands fa-whatsapp"></i> +91 8468809905
+            </a>
+            <a href="https://linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="px-5 py-3.5 rounded-xl border border-white/15 bg-white/5 hover:border-blue-400 text-white font-bold text-xs tracking-wider heading-caps transition flex items-center gap-2">
+              <i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn
+            </a>
+            <a href="https://github.com/zakipatel89" target="_blank" class="px-5 py-3.5 rounded-xl border border-white/15 bg-white/5 hover:border-blue-400 text-white font-bold text-xs tracking-wider heading-caps transition flex items-center gap-2">
+              <i class="fa-brands fa-github"></i> GitHub
             </a>
           </div>
         </div>
 
-        <div class="lg:col-span-5 grid grid-cols-2 gap-3 text-xs">
-          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-            <span class="text-slate-500 block text-[10px] font-mono-code">LOCATION</span>
-            <strong class="text-white mt-1 block">Solapur / Pune, MH</strong>
+        <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10">
+            <span class="text-slate-500 text-[10px] heading-caps block">Current Role</span>
+            <strong class="text-emerald-400 mt-1 block heading-caps">Data Analyst Intern @ UnionSys</strong>
           </div>
-          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-            <span class="text-slate-500 block text-[10px] font-mono-code">ROLE</span>
-            <strong class="text-white mt-1 block">Data & AI Engineer</strong>
+          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10">
+            <span class="text-slate-500 text-[10px] heading-caps block">College</span>
+            <strong class="text-white mt-1 block heading-caps">BMIT, Solapur (B.Tech CSE)</strong>
           </div>
-          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-            <span class="text-slate-500 block text-[10px] font-mono-code">COLLEGE</span>
-            <strong class="text-white mt-1 block">BMIT, Solapur</strong>
-          </div>
-          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-            <span class="text-slate-500 block text-[10px] font-mono-code">INTERNSHIP</span>
-            <strong class="text-emerald-400 mt-1 block">UnionSys Tech</strong>
+          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 sm:col-span-2">
+            <span class="text-slate-500 text-[10px] heading-caps block">Address</span>
+            <strong class="text-white mt-1 block heading-caps">191, Basaveshwar Nagar, Near Zindagi, Majrewadi, Solapur — 413003, Maharashtra</strong>
           </div>
         </div>
 
@@ -904,75 +1173,105 @@
 
   </main>
 
-  <footer class="border-t border-white/10 py-8 text-center text-xs text-slate-500 font-mono-code">
-    © 2026 Patel Mohammad Zaki · Engineered for High-Performance 120Hz Web Standards
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-8 text-center text-xs text-slate-400 heading-caps tracking-widest bg-[#020409]">
+    © 2026 Patel Mohammad Zaki · Data Analytics, Data Science & AI Systems
   </footer>
 
-  <!-- Lightweight Scripts (Zero Lag) -->
+  <!-- ================= SCRIPTS (Zero Lag, Instant Response) ================= -->
   <script>
-    // 1. Fast Preloader
-    const bar = document.getElementById('loader-bar');
+    // 1. Preloader
+    const loaderBar = document.getElementById('loader-bar');
+    const loaderPct = document.getElementById('loader-pct');
     const preloader = document.getElementById('preloader');
-    let p = 0;
-    const timer = setInterval(() => {
-      p += 25;
-      bar.style.width = p + '%';
-      if (p >= 100) {
-        clearInterval(timer);
-        setTimeout(() => preloader.classList.add('done'), 200);
+    let prog = 0;
+    const loadTimer = setInterval(() => {
+      prog += 20;
+      if (prog > 100) prog = 100;
+      loaderBar.style.width = prog + '%';
+      loaderPct.textContent = prog + '%';
+      if (prog === 100) {
+        clearInterval(loadTimer);
+        setTimeout(() => preloader.classList.add('hidden-loader'), 250);
       }
-    }, 60);
+    }, 55);
 
-    // 2. Interactive Appointment Scheduler Logic
-    let selectedDateStr = '';
-    let selectedSlotStr = '11:00 AM IST';
-    let selectedDurationStr = '30 Mins';
+    // 2. Interactive Calendar & Booking Logic
+    let chosenDate = '';
+    let chosenTime = '11:00 AM';
+    let chosenDuration = '30 Mins';
 
-    const quickDatesEl = document.getElementById('quick-dates');
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const calGrid = document.getElementById('calendar-grid');
+    const summaryEl = document.getElementById('selected-summary');
+    const monthsShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const daysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-    const today = new Date();
-    for (let i = 1; i <= 7; i++) {
-      const d = new Date(today);
-      d.setDate(today.getDate() + i);
-      const label = `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]}`;
-      const btn = document.createElement('button');
-      btn.className = `cal-day p-2.5 rounded-xl border border-white/10 bg-white/5 text-center flex flex-col items-center justify-center ${i === 1 ? 'selected' : 'text-slate-300'}`;
-      if (i === 1) selectedDateStr = label;
-      btn.innerHTML = `<span class="text-[10px] uppercase opacity-75">${days[d.getDay()]}</span><strong class="text-sm mt-0.5">${d.getDate()} ${months[d.getMonth()]}</strong>`;
-      btn.onclick = () => {
-        document.querySelectorAll('#quick-dates button').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-        selectedDateStr = label;
+    function updateSummary() {
+      summaryEl.textContent = `${chosenDate} · ${chosenTime} (${chosenDuration})`;
+    }
+
+    const baseDate = new Date();
+    for (let i = 0; i < 14; i++) {
+      const d = new Date(baseDate);
+      d.setDate(baseDate.getDate() + i + 1);
+      const formatted = `${daysShort[d.getDay()]}, ${d.getDate()} ${monthsShort[d.getMonth()]}`;
+      const cell = document.createElement('button');
+      cell.className = `cal-cell flex-col py-2 ${i === 0 ? 'active' : 'text-slate-300'}`;
+      if (i === 0) chosenDate = formatted;
+      cell.innerHTML = `<span class="text-[9px] opacity-70">${monthsShort[d.getMonth()]}</span><strong class="text-sm">${d.getDate()}</strong>`;
+      cell.onclick = () => {
+        document.querySelectorAll('#calendar-grid .cal-cell').forEach(c => c.classList.remove('active'));
+        cell.classList.add('active');
+        chosenDate = formatted;
+        updateSummary();
       };
-      quickDatesEl.appendChild(btn);
+      calGrid.appendChild(cell);
     }
+    updateSummary();
 
-    function setDuration(dur, el) {
-      selectedDurationStr = dur;
-      document.querySelectorAll('.dur-btn').forEach(b => {
-        b.className = 'dur-btn px-3 py-1 rounded-md text-xs bg-white/5 text-slate-400 hover:text-white';
+    function setMeetDuration(dur, btn) {
+      chosenDuration = dur;
+      document.querySelectorAll('.dur-pill').forEach(b => {
+        b.className = 'dur-pill py-2 rounded-lg text-xs font-bold bg-white/5 text-slate-300 hover:text-white heading-caps';
       });
-      el.className = 'dur-btn px-3 py-1 rounded-md text-xs bg-blue-600 text-white font-medium';
+      btn.className = 'dur-pill py-2 rounded-lg text-xs font-bold bg-blue-600 text-white heading-caps';
+      updateSummary();
     }
 
-    function selectSlot(slot, el) {
-      selectedSlotStr = slot;
-      document.querySelectorAll('.slot-btn').forEach(b => {
-        b.className = 'slot-btn py-2 px-3 rounded-lg border border-white/10 bg-white/5 text-slate-300 hover:border-blue-400 text-xs';
+    function setMeetTime(time, btn) {
+      chosenTime = time;
+      document.querySelectorAll('.time-pill').forEach(b => {
+        b.className = 'time-pill py-2.5 px-3 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:border-blue-400 text-xs font-bold heading-caps';
       });
-      el.className = 'slot-btn py-2 px-3 rounded-lg border border-blue-500 bg-blue-500/20 text-white text-xs font-medium';
+      btn.className = 'time-pill py-2.5 px-3 rounded-xl border border-blue-500 bg-blue-500/20 text-white text-xs font-bold heading-caps';
+      updateSummary();
     }
 
-    function confirmBooking(channel) {
-      const msg = `Hi Zaki, I'd like to schedule a ${selectedDurationStr} 1-on-1 discussion with you on ${selectedDateStr} at ${selectedSlotStr}.`;
-      if (channel === 'whatsapp') {
-        window.open(`https://wa.me/918468809905?text=${encodeURIComponent(msg)}`, '_blank');
+    function bookAppointment(mode) {
+      const text = `Hello Patel Mohammad Zaki, I would like to book a ${chosenDuration} 1-on-1 discussion with you on ${chosenDate} at ${chosenTime} IST.`;
+      if (mode === 'whatsapp') {
+        window.open(`https://wa.me/918468809905?text=${encodeURIComponent(text)}`, '_blank');
       } else {
-        window.location.href = `mailto:zakipatel2811@gmail.com?subject=1-on-1 Discussion Booking (${selectedDateStr})&body=${encodeURIComponent(msg)}`;
+        window.location.href = `mailto:zakipatel2811@gmail.com?subject=1-on-1 Appointment (${chosenDate} at ${chosenTime})&body=${encodeURIComponent(text)}`;
       }
+    }
+
+    // 3. Skills Filter
+    function filterSkillCards(category, btn) {
+      document.querySelectorAll('.skill-tab').forEach(t => {
+        t.className = 'skill-tab px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white heading-caps transition';
+      });
+      btn.className = 'skill-tab active px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white heading-caps transition';
+
+      document.querySelectorAll('.skill-item').forEach(item => {
+        if (category === 'all' || item.getAttribute('data-cat') === category) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
     }
   </script>
+
 </body>
 </html>
