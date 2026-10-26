@@ -1,29 +1,63 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patel Mohammad Zaki — Data Analyst, Data Science & AI Systems</title>
-  <meta name="description" content="Official Portfolio of Patel Mohammad Zaki — Data Analyst Intern @ UnionSys Technologies, Final-Year B.Tech CSE Student at BMIT Solapur.">
-  <meta name="theme-color" content="#03050c">
+  <title>Patel Mohammad Zaki — Data Analyst, Data Science & AI Engineer</title>
+  <meta name="description" content="Official Portfolio of Patel Mohammad Zaki — Final-Year B.Tech Computer Science Engineering Student & Data Analyst Intern at UnionSys Technologies.">
+  <meta name="author" content="Patel Mohammad Zaki">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- Original Cinzel Font Everywhere -->
+  <!-- Cinzel Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg: #03050c;
-      --card: rgba(10, 15, 29, 0.78);
-      --border: rgba(148, 163, 184, 0.14);
-      --border-hover: rgba(96, 165, 250, 0.55);
-      --blue: #3b82f6;
-      --cyan: #38bdf8;
+    /* ==========================================================================
+       Author: Patel Mohammad Zaki
+       Portfolio Stylesheet — Light & Dark Adaptive Theme System
+       ========================================================================== */
+
+    :root[data-theme="light"] {
+      --bg-main: #f8fafc;
+      --bg-surface: rgba(255, 255, 255, 0.88);
+      --bg-nav: rgba(248, 250, 252, 0.88);
+      --bg-subtle: #f1f5f9;
+      --text-main: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --border-hover: #2563eb;
+      --grid-line: rgba(37, 99, 235, 0.055);
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --badge-bg: #eff6ff;
+      --badge-border: #bfdbfe;
+      --badge-text: #1d4ed8;
+      --card-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.07);
+    }
+
+    :root[data-theme="dark"] {
+      --bg-main: #030712;
+      --bg-surface: rgba(15, 23, 42, 0.75);
+      --bg-nav: rgba(3, 7, 18, 0.85);
+      --bg-subtle: #0f172a;
+      --text-main: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-color: rgba(148, 163, 184, 0.15);
+      --border-hover: #60a5fa;
+      --grid-line: rgba(59, 130, 246, 0.05);
+      --primary: #2563eb;
+      --primary-hover: #3b82f6;
+      --badge-bg: rgba(37, 99, 235, 0.12);
+      --badge-border: rgba(96, 165, 250, 0.3);
+      --badge-text: #93c5fd;
+      --card-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
 
     * {
@@ -32,709 +66,601 @@
     }
 
     body {
-      background-color: var(--bg);
-      color: #e2e8f0;
+      background-color: var(--bg-main);
+      color: var(--text-main);
       margin: 0;
       overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Proper First-Letter Large Small-Caps Styling for Headings */
-    .heading-caps {
+    .zaki-caps {
       font-variant: small-caps;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
     }
 
-    /* Clean Justified Paragraphs */
-    .para-clean {
-      font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
-      letter-spacing: 0.02em;
-      line-height: 1.85;
+    .zaki-justify {
       text-align: justify;
+      line-height: 1.8;
     }
 
-    /* Code & Terminal Blocks */
-    .code-font {
-      font-family: 'Courier New', Courier, monospace !important;
-    }
-
-    /* Ambient Cyber Background (120Hz GPU Accelerated) */
-    .bg-grid {
+    /* Subtle Blueprint Grid Background */
+    .zaki-grid-bg {
       position: fixed;
       inset: 0;
-      z-index: -2;
+      z-index: -1;
       background-image:
-        linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
-      background-size: 52px 52px;
-      mask-image: radial-gradient(circle at 50% 25%, black 35%, transparent 90%);
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 56px 56px;
       pointer-events: none;
-      transform: translateZ(0);
     }
 
-    .bg-glow {
-      position: fixed;
-      inset: 0;
-      z-index: -3;
-      background:
-        radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.18), transparent 38%),
-        radial-gradient(circle at 85% 20%, rgba(14, 165, 233, 0.14), transparent 38%),
-        radial-gradient(circle at 50% 85%, rgba(59, 130, 246, 0.10), transparent 45%);
-      pointer-events: none;
-      transform: translateZ(0);
+    /* Navigation Bar */
+    .zaki-navbar {
+      background-color: var(--bg-nav);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
     }
 
-    /* Yahya.in Signature Glass Bento Cards */
-    .yahya-card {
-      background: linear-gradient(155deg, rgba(15, 23, 42, 0.72) 0%, rgba(5, 9, 20, 0.88) 100%);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease, box-shadow 0.28s ease;
-      will-change: transform;
+    /* Surface Cards */
+    .zaki-card {
+      background-color: var(--bg-surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .yahya-card:hover {
+    .zaki-card:hover {
       border-color: var(--border-hover);
-      transform: translateY(-4px);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 30px rgba(59, 130, 246, 0.12);
+      transform: translateY(-3px);
     }
 
-    /* Shimmering Name Gradient */
-    .name-shimmer {
-      background: linear-gradient(110deg, #ffffff 15%, #93c5fd 45%, #38bdf8 70%, #ffffff 90%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shine 6s linear infinite;
+    /* Info Strip Box */
+    .zaki-strip {
+      background-color: var(--badge-bg);
+      border: 1px solid var(--badge-border);
+      color: var(--text-main);
+      border-radius: 10px;
     }
 
-    @keyframes shine {
-      to { background-position: 200% center; }
-    }
-
-    /* Profile Frame with Dual Rotating Aura */
-    .profile-aura {
-      position: relative;
-      border-radius: 18px;
-      padding: 3px;
-      background: linear-gradient(135deg, #3b82f6, rgba(255, 255, 255, 0.15), #38bdf8);
-      box-shadow: 0 0 45px rgba(59, 130, 246, 0.22);
-    }
-
-    /* Pill Badges */
-    .pill-tag {
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-size: 11px;
-      color: #cbd5e1;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .pill-tag:hover {
-      border-color: #60a5fa;
+    /* Primary Royal Blue CTA Button */
+    .zaki-cta-btn {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
       color: #ffffff;
-      background: rgba(37, 99, 235, 0.18);
-      transform: translateY(-2px);
+      border-radius: 14px;
+      box-shadow: 0 12px 28px -6px rgba(37, 99, 235, 0.45);
+      transition: all 0.25s ease;
     }
 
-    /* Calendar Grid Day */
-    .cal-cell {
-      aspect-ratio: 1;
+    .zaki-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px -6px rgba(37, 99, 235, 0.6);
+      filter: brightness(1.06);
+    }
+
+    /* Circular Portrait Frame with Subtle Orbiting Rings */
+    .zaki-avatar-wrap {
+      position: relative;
+      width: 290px;
+      height: 290px;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    @media (min-width: 640px) {
+      .zaki-avatar-wrap {
+        width: 330px;
+        height: 330px;
+      }
+    }
+
+    .zaki-orbit-outer {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-color);
+      border-top-color: #2563eb;
+      animation: zakiSpin 14s linear infinite;
+    }
+
+    .zaki-orbit-inner {
+      position: absolute;
+      inset: 12px;
+      border-radius: 50%;
+      border: 1px dashed rgba(37, 99, 235, 0.35);
+      animation: zakiSpinReverse 20s linear infinite;
+    }
+
+    @keyframes zakiSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes zakiSpinReverse {
+      to { transform: rotate(-360deg); }
+    }
+
+    /* Pill Links */
+    .zaki-pill {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      border-radius: 999px;
+      padding: 7px 15px;
+      font-size: 11px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s ease;
+    }
+
+    .zaki-pill:hover {
+      border-color: var(--border-hover);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Calendar Cells */
+    .zaki-cal-day {
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       border-radius: 10px;
-      font-size: 12px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-surface);
       cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      background: rgba(255, 255, 255, 0.02);
       transition: all 0.18s ease;
     }
 
-    .cal-cell:hover:not(.empty) {
-      border-color: #60a5fa;
-      background: rgba(59, 130, 246, 0.18);
-      color: #ffffff;
+    .zaki-cal-day:hover {
+      border-color: #2563eb;
     }
 
-    .cal-cell.active {
-      background: linear-gradient(135deg, #2563eb, #38bdf8);
-      color: #ffffff;
-      font-weight: 800;
-      border-color: transparent;
-      box-shadow: 0 0 18px rgba(59, 130, 246, 0.5);
+    .zaki-cal-day.active {
+      background-color: #2563eb;
+      color: #ffffff !important;
+      border-color: #2563eb;
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
     }
 
-    /* Opening Preloader */
-    #preloader {
+    /* Preloader */
+    #zaki-loader {
       position: fixed;
       inset: 0;
-      background: #020409;
+      background-color: var(--bg-main);
       z-index: 99999;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
+      transition: opacity 0.45s ease, visibility 0.45s ease;
     }
-    #preloader.hidden-loader {
+
+    #zaki-loader.done {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
-
-    ::-webkit-scrollbar { width: 7px; }
-    ::-webkit-scrollbar-track { background: #03050c; }
-    ::-webkit-scrollbar-thumb { background: linear-gradient(#2563eb, #38bdf8); border-radius: 20px; }
   </style>
 </head>
-<body class="selection:bg-blue-600 selection:text-white">
+<body>
 
-  <!-- ================= OPENING PRELOADER ================= -->
-  <div id="preloader">
-    <div class="text-center space-y-5 px-6 max-w-md w-full">
-      <div class="w-12 h-12 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
-      <div class="text-xs text-blue-400 tracking-[0.35em] font-bold">INITIALIZING PORTFOLIO SYSTEM</div>
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-widest heading-caps">
-        Patel Mohammad Zaki
-      </h2>
-      <div class="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
-        <div id="loader-bar" class="h-full bg-gradient-to-r from-blue-600 via-cyan-400 to-white w-0 transition-all duration-75"></div>
+  <!-- Opening Loader -->
+  <div id="zaki-loader">
+    <div class="text-center space-y-4 px-6 max-w-md w-full">
+      <div class="w-10 h-10 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+      <div class="text-xs text-blue-600 font-bold tracking-[0.3em] zaki-caps">LOADING PORTFOLIO</div>
+      <h2 class="text-2xl sm:text-4xl font-black zaki-caps">Patel Mohammad Zaki</h2>
+      <div class="w-full h-1 bg-slate-300 dark:bg-slate-800 rounded-full overflow-hidden">
+        <div id="zaki-loader-bar" class="h-full bg-blue-600 w-0 transition-all duration-75"></div>
       </div>
-      <div id="loader-pct" class="text-[11px] text-slate-400 tracking-widest">0%</div>
     </div>
   </div>
 
-  <!-- Background Layers -->
-  <div class="bg-glow"></div>
-  <div class="bg-grid"></div>
+  <!-- Blueprint Grid Background -->
+  <div class="zaki-grid-bg"></div>
 
-  <!-- ================= TOP NAVBAR (yahya.in Exact Style) ================= -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-[#03050c]/85 backdrop-blur-xl border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 zaki-navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
       
-      <a href="#profile" class="flex items-center gap-3 text-white font-extrabold tracking-widest text-base sm:text-lg heading-caps">
-        <span class="text-blue-400 font-bold">//</span> Patel Mohammad Zaki
+      <!-- Brand Name -->
+      <a href="#profile" class="flex items-center gap-2 font-extrabold text-sm sm:text-base tracking-wider zaki-caps">
+        <span class="text-blue-600 font-bold">//</span> Mohammad Zaki
       </a>
 
-      <nav class="hidden xl:flex items-center gap-7 text-xs font-semibold tracking-wider text-slate-300 heading-caps">
-        <a href="#profile" class="hover:text-blue-400 transition">Profile</a>
-        <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
-        <a href="#nextide-architecture" class="hover:text-blue-400 transition">NextIDE Live</a>
-        <a href="#appointment" class="hover:text-blue-400 transition">Book a Call</a>
-        <a href="#about" class="hover:text-blue-400 transition">About</a>
-        <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
-        <a href="#experience" class="hover:text-blue-400 transition">Experience</a>
-        <a href="#certifications" class="hover:text-blue-400 transition">Credentials</a>
+      <!-- Center Nav Links -->
+      <nav class="hidden lg:flex items-center gap-1.5 text-xs font-bold zaki-caps">
+        <a href="#profile" class="px-3.5 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800/80">Profile</a>
+        <a href="#appointment" class="px-3.5 py-1.5 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">Appointment</a>
+        <a href="#about" class="px-3.5 py-1.5 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">About</a>
+        <a href="#skills" class="px-3.5 py-1.5 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">Skills</a>
+        <a href="#projects" class="px-3.5 py-1.5 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">Projects</a>
+        <a href="#experience" class="px-3.5 py-1.5 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">Experience</a>
+        <a href="#certifications" class="px-3.5 py-1.5 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">Credentials</a>
       </nav>
 
-      <div class="flex items-center gap-3">
-        <a href="resume.pdf" download class="px-4 py-2 rounded-lg border border-blue-500/40 bg-blue-500/10 hover:bg-blue-500/25 text-xs text-white font-bold tracking-wider heading-caps transition flex items-center gap-2">
-          <i class="fa-solid fa-download text-blue-400"></i> Resume
-        </a>
-        <a href="#appointment" class="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 hover:brightness-110 text-xs text-white font-bold tracking-wider heading-caps transition shadow-lg shadow-blue-600/30">
-          Connect
+      <!-- Right Theme Toggle & Hire Button -->
+      <div class="flex items-center gap-2.5">
+        <button id="theme-toggle" onclick="toggleTheme()" class="w-9 h-9 rounded-lg border border-slate-300 dark:border-slate-700 flex items-center justify-center text-sm hover:border-blue-600 transition" title="Switch Dark / Light Theme">
+          <i id="theme-icon" class="fa-solid fa-moon text-slate-700"></i>
+        </button>
+        <a href="#contact" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold zaki-caps tracking-wider transition shadow-md shadow-blue-600/25">
+          Hire Me
         </a>
       </div>
 
     </div>
   </header>
 
-  <!-- ================= MAIN CONTENT ================= -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-32 pb-24 space-y-28">
+  <!-- ================= MAIN CONTAINER ================= -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-28 pb-24 space-y-24">
 
-    <!-- ================= 1. HERO SECTION (yahya.in Exact Structure) ================= -->
+    <!-- ================= 1. HERO PROFILE SECTION (Exact Screenshot Layout) ================= -->
     <section id="profile" class="space-y-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
-        <!-- Left Content -->
-        <div class="lg:col-span-8 space-y-6">
+        <!-- Left Column -->
+        <div class="lg:col-span-8 space-y-5">
           
-          <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-emerald-500/35 bg-emerald-500/10 text-emerald-300 text-xs font-bold tracking-widest heading-caps">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-            Data Analytics · Data Science · Cloud Computing & AI
+          <!-- Available Status Pill -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full zaki-strip text-xs font-bold zaki-caps">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Available for Work · Fresher (2027 Batch)
           </div>
 
-          <div class="space-y-3">
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-tight heading-caps">
-              Patel <span class="name-shimmer">Mohammad Zaki</span>
+          <!-- Big Stacked Name -->
+          <div class="space-y-1">
+            <h1 class="text-5xl sm:text-7xl font-black tracking-tight leading-none zaki-caps">
+              Patel<br>Mohammad Zaki
             </h1>
-            <p class="text-sm sm:text-lg text-blue-300 font-bold tracking-wider heading-caps">
-              Data Analyst · Data Science & AI Systems · B.Tech CSE (Final Year) · Solapur / Pune
-            </p>
-            <p class="text-xs sm:text-sm text-slate-400 tracking-wider">
-              Data Analyst Intern @ UnionSys Technologies (Pune)  |  Lead Creator of NextIDE Platform
-            </p>
           </div>
 
-          <!-- 5 High-Impact Proof Cards (yahya.in Hero List Style) -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+          <!-- Role Subtitles -->
+          <div class="space-y-1 text-xs sm:text-sm font-semibold" style="color: var(--text-secondary);">
+            <p class="zaki-caps">Data Analyst · Data Science · Cloud & AI Systems</p>
+            <p class="font-bold">Data Analyst Intern @ <span class="text-blue-600 underline">UnionSys Technologies, Pune</span></p>
+            <p class="text-xs" style="color: var(--text-muted);">B.Tech CSE (Final Year) · BMIT, Solapur, Maharashtra</p>
+          </div>
+
+          <!-- Prominent Royal Blue Book Appointment CTA Box -->
+          <div class="pt-1">
+            <a href="#appointment" class="zaki-cta-btn inline-flex items-center justify-between gap-8 px-6 py-4 w-full sm:w-auto min-w-[300px]">
+              <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-white relative">
+                  <i class="fa-regular fa-calendar-check text-lg"></i>
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-blue-600 absolute -top-1 -right-1"></span>
+                </div>
+                <div class="text-left">
+                  <span class="text-sm font-extrabold block zaki-caps tracking-wider">Book an Appointment</span>
+                  <span class="text-[11px] text-blue-100 block">1-on-1 Online Meeting / Interview</span>
+                </div>
+              </div>
+              <i class="fa-solid fa-chevron-right text-xs text-blue-100"></i>
+            </a>
+          </div>
+
+          <!-- 2x2 Grid Achievement Cards (Clean & Realistic) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
             
-            <div class="yahya-card p-4 flex items-start gap-3.5">
-              <div class="w-9 h-9 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
-                <i class="fa-solid fa-briefcase"></i>
-              </div>
-              <div>
-                <h3 class="text-xs sm:text-sm font-bold text-white heading-caps">Data Analyst Intern — UnionSys Technologies</h3>
-                <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
-                  Working in the IT Department (Pune), supporting data analysis, organization, and reporting workflows under an Oracle Apps Developer.
-                </p>
+            <div class="zaki-card p-3.5 flex items-start gap-3">
+              <i class="fa-solid fa-briefcase text-blue-600 text-xs mt-1 shrink-0"></i>
+              <div class="text-xs leading-relaxed">
+                <strong class="zaki-caps">Data Analyst Intern:</strong>
+                <span style="color: var(--text-secondary);"> Supporting IT data analysis & reporting workflows at UnionSys Technologies, Pune</span>
               </div>
             </div>
 
-            <div class="yahya-card p-4 flex items-start gap-3.5">
-              <div class="w-9 h-9 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-              </div>
-              <div>
-                <h3 class="text-xs sm:text-sm font-bold text-white heading-caps">Engineered NextIDE AI Platform</h3>
-                <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
-                  Cloud-based AI Algorithm-to-Code platform powered by Google Gemini API converting plain English logic into C++, Java, Python & JS.
-                </p>
+            <div class="zaki-card p-3.5 flex items-start gap-3">
+              <i class="fa-solid fa-graduation-cap text-blue-600 text-xs mt-1 shrink-0"></i>
+              <div class="text-xs leading-relaxed">
+                <strong class="zaki-caps">75.59% Diploma & 89.20% SSC:</strong>
+                <span style="color: var(--text-secondary);"> First Class with Distinction at GP Solapur & Final-Year B.Tech CSE</span>
               </div>
             </div>
 
-            <div class="yahya-card p-4 flex items-start gap-3.5">
-              <div class="w-9 h-9 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
-                <i class="fa-solid fa-chart-pie"></i>
-              </div>
-              <div>
-                <h3 class="text-xs sm:text-sm font-bold text-white heading-caps">5 Global Forage Industry Simulations</h3>
-                <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
-                  Completed virtual case studies across BCG (Data Science), PwC (Power BI), Tata (Visualization), Accenture & British Airways.
-                </p>
+            <div class="zaki-card p-3.5 flex items-start gap-3">
+              <i class="fa-solid fa-chart-pie text-blue-600 text-xs mt-1 shrink-0"></i>
+              <div class="text-xs leading-relaxed">
+                <strong class="zaki-caps">5 Global Case Simulations:</strong>
+                <span style="color: var(--text-secondary);"> Completed Data Science & Power BI simulations with BCG, PwC, Tata, Accenture & BA</span>
               </div>
             </div>
 
-            <div class="yahya-card p-4 flex items-start gap-3.5">
-              <div class="w-9 h-9 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
-                <i class="fa-solid fa-graduation-cap"></i>
-              </div>
-              <div>
-                <h3 class="text-xs sm:text-sm font-bold text-white heading-caps">Consistent Academic Distinction</h3>
-                <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
-                  Final-Year B.Tech CSE @ BMIT Solapur · Diploma in E&TC with 75.59% (GP Solapur) · 89.20% in 10th SSC Board.
-                </p>
+            <div class="zaki-card p-3.5 flex items-start gap-3">
+              <i class="fa-solid fa-cloud text-blue-600 text-xs mt-1 shrink-0"></i>
+              <div class="text-xs leading-relaxed">
+                <strong class="zaki-caps">13+ Verified Certifications:</strong>
+                <span style="color: var(--text-secondary);"> Certified across AWS Cloud (EC2, VPC), KPMG Analytics, Quantium & TCS</span>
               </div>
             </div>
 
           </div>
 
-          <!-- CTA Buttons & Direct Links -->
-          <div class="flex flex-wrap items-center gap-3.5 pt-3">
-            <a href="#appointment" class="px-6 py-3.5 rounded-xl bg-white text-slate-950 font-extrabold text-xs tracking-widest heading-caps hover:bg-blue-50 transition flex items-center gap-2 shadow-xl">
-              <i class="fa-regular fa-calendar-check text-blue-600"></i> Book 1-on-1 Call
+          <!-- Wide Summary Strip Banners -->
+          <div class="space-y-2.5">
+            <div class="zaki-card px-4 py-3 text-xs flex items-center gap-3">
+              <i class="fa-solid fa-chart-line text-blue-600 shrink-0"></i>
+              <span style="color: var(--text-secondary);">
+                As a dedicated Computer Science Engineering fresher, I specialize in transforming raw datasets into actionable KPIs, Power BI dashboards, and AI-assisted software solutions.
+              </span>
+            </div>
+
+            <div class="zaki-strip px-4 py-2.5 text-xs flex items-center gap-3">
+              <strong class="text-blue-600 zaki-caps shrink-0">Fresher Ready for Industry:</strong>
+              <span style="color: var(--text-secondary);">Open to Data Analyst, Business Intelligence, Cloud Support, and Entry-Level Software Engineering roles.</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons Row -->
+          <div class="flex flex-wrap items-center gap-2.5 pt-2">
+            <a href="#contact" class="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold zaki-caps flex items-center gap-2 transition shadow-sm">
+              <i class="fa-regular fa-envelope"></i> Get in Touch
             </a>
-            <a href="#projects" class="px-6 py-3.5 rounded-xl border border-blue-400/40 bg-blue-500/10 hover:bg-blue-500/20 text-white font-bold text-xs tracking-widest heading-caps transition">
-              View Projects →
+            <a href="https://linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="zaki-card px-4 py-2.5 text-xs font-bold zaki-caps flex items-center gap-2">
+              <i class="fa-brands fa-linkedin text-blue-600"></i> LinkedIn
             </a>
-            <a href="https://linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="px-4 py-3.5 rounded-xl border border-white/15 bg-white/5 hover:border-blue-400 text-white text-xs font-bold heading-caps transition flex items-center gap-2">
-              <i class="fa-brands fa-linkedin text-blue-400 text-sm"></i> LinkedIn
+            <a href="https://github.com/zakipatel89" target="_blank" class="zaki-card px-4 py-2.5 text-xs font-bold zaki-caps flex items-center gap-2">
+              <i class="fa-brands fa-github"></i> GitHub
             </a>
-            <a href="https://github.com/zakipatel89" target="_blank" class="px-4 py-3.5 rounded-xl border border-white/15 bg-white/5 hover:border-blue-400 text-white text-xs font-bold heading-caps transition flex items-center gap-2">
-              <i class="fa-brands fa-github text-sm"></i> GitHub
+            <a href="resume.pdf" download class="zaki-card px-4 py-2.5 text-xs font-bold zaki-caps flex items-center gap-2">
+              <i class="fa-regular fa-file-pdf text-blue-600"></i> Download Resume
             </a>
-            <a href="https://wa.me/918468809905" target="_blank" class="px-4 py-3.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 text-xs font-bold heading-caps transition flex items-center gap-2">
-              <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+            <a href="#projects" class="zaki-card px-4 py-2.5 text-xs font-bold zaki-caps flex items-center gap-2">
+              <i class="fa-regular fa-folder-open text-blue-600"></i> View Projects
             </a>
+          </div>
+
+          <!-- Bottom Quick Project & Credential Pills -->
+          <div class="flex flex-wrap gap-2 pt-1">
+            <a href="#projects" class="zaki-pill"><i class="fa-solid fa-code text-blue-600"></i> NextIDE — Capstone Project</a>
+            <a href="#projects" class="zaki-pill"><i class="fa-solid fa-robot text-blue-600"></i> AI Shopping Assistant</a>
+            <a href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf" target="_blank" class="zaki-pill"><i class="fa-solid fa-chart-column text-blue-600"></i> PwC Power BI Case Study</a>
+            <a href="BCG%20Data%20Science.pdf" target="_blank" class="zaki-pill"><i class="fa-solid fa-brain text-blue-600"></i> BCG Data Science Simulation</a>
           </div>
 
         </div>
 
-        <!-- Right Column: Verified Portrait Card -->
+        <!-- Right Column: Circular Orbiting Profile Picture (Exact Screenshot Style) -->
         <div class="lg:col-span-4 flex justify-center">
-          <div class="profile-aura w-72 sm:w-80">
-            <div class="bg-[#060a14] rounded-2xl overflow-hidden">
-              <div class="relative h-80 sm:h-96 overflow-hidden">
-                <img src="profile.jpg" alt="Patel Mohammad Zaki" class="w-full h-full object-cover object-top brightness-95 contrast-105 hover:scale-105 transition duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-[#060a14] via-transparent to-transparent"></div>
-              </div>
-              <div class="p-5 border-t border-white/10 space-y-2">
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-2">
-                    <h2 class="text-base font-extrabold text-white heading-caps">Patel Mohammad Zaki</h2>
-                    <i class="fa-solid fa-circle-check text-blue-400 text-xs" title="Verified Engineer"></i>
-                  </div>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
-                </div>
-                <p class="text-[11px] text-blue-300 tracking-wider heading-caps">
-                  Data Analyst · Data Science · AI
-                </p>
-                <div class="pt-2 flex items-center justify-between text-[11px] text-slate-400 border-t border-white/5">
-                  <span><i class="fa-solid fa-location-dot text-blue-400 mr-1"></i> Solapur / Pune</span>
-                  <a href="mailto:zakipatel2811@gmail.com" class="text-blue-400 hover:underline">Email Me →</a>
-                </div>
-              </div>
+          <div class="zaki-avatar-wrap">
+            <div class="zaki-orbit-outer"></div>
+            <div class="zaki-orbit-inner"></div>
+            <div class="w-60 h-60 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl relative z-10 bg-slate-200 dark:bg-slate-900">
+              <img src="profile.jpg" alt="Patel Mohammad Zaki" class="w-full h-full object-cover object-top hover:scale-105 transition duration-500">
             </div>
           </div>
         </div>
 
       </div>
 
-      <!-- 5 Counter Boxes (yahya.in Metrics Bar) -->
-      <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 pt-4">
-        <div class="yahya-card p-5 text-center">
-          <span class="text-2xl sm:text-3xl font-black text-white heading-caps block">4+</span>
-          <span class="text-[11px] text-slate-400 tracking-wider heading-caps mt-1 block">Featured Projects</span>
+      <!-- 5 Counter Boxes Row -->
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-3.5 pt-6">
+        <div class="zaki-card p-4 text-center">
+          <span class="text-2xl sm:text-3xl font-black text-blue-600 zaki-caps block">Fresher</span>
+          <span class="text-[11px] zaki-caps mt-1 block" style="color: var(--text-muted);">B.Tech CSE 2027</span>
         </div>
-        <div class="yahya-card p-5 text-center">
-          <span class="text-2xl sm:text-3xl font-black text-blue-400 heading-caps block">5+</span>
-          <span class="text-[11px] text-slate-400 tracking-wider heading-caps mt-1 block">Global Simulations</span>
+        <div class="zaki-card p-4 text-center">
+          <span class="text-2xl sm:text-3xl font-black zaki-caps block">4+</span>
+          <span class="text-[11px] zaki-caps mt-1 block" style="color: var(--text-muted);">Academic Projects</span>
         </div>
-        <div class="yahya-card p-5 text-center">
-          <span class="text-2xl sm:text-3xl font-black text-white heading-caps block">13+</span>
-          <span class="text-[11px] text-slate-400 tracking-wider heading-caps mt-1 block">Verified Credentials</span>
+        <div class="zaki-card p-4 text-center">
+          <span class="text-2xl sm:text-3xl font-black zaki-caps block">5+</span>
+          <span class="text-[11px] zaki-caps mt-1 block" style="color: var(--text-muted);">Global Case Studies</span>
         </div>
-        <div class="yahya-card p-5 text-center">
-          <span class="text-2xl sm:text-3xl font-black text-emerald-400 heading-caps block">75.59%</span>
-          <span class="text-[11px] text-slate-400 tracking-wider heading-caps mt-1 block">Diploma Distinction</span>
+        <div class="zaki-card p-4 text-center">
+          <span class="text-2xl sm:text-3xl font-black text-blue-600 zaki-caps block">75.59%</span>
+          <span class="text-[11px] zaki-caps mt-1 block" style="color: var(--text-muted);">Diploma Distinction</span>
         </div>
-        <div class="yahya-card p-5 text-center col-span-2 sm:col-span-1">
-          <span class="text-2xl sm:text-3xl font-black text-white heading-caps block">89.20%</span>
-          <span class="text-[11px] text-slate-400 tracking-wider heading-caps mt-1 block">SSC Board Score</span>
+        <div class="zaki-card p-4 text-center col-span-2 sm:col-span-1">
+          <span class="text-2xl sm:text-3xl font-black zaki-caps block">89.20%</span>
+          <span class="text-[11px] zaki-caps mt-1 block" style="color: var(--text-muted);">SSC Board Score</span>
         </div>
       </div>
     </section>
 
-    <!-- ================= 2. FEATURED PROJECTS (Including Detailed NextIDE Capstone) ================= -->
-    <section id="projects" class="space-y-10">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-5">
+    <!-- ================= 2. FEATURED PROJECTS SECTION ================= -->
+    <section id="projects" class="space-y-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b pb-4" style="border-color: var(--border-color);">
         <div>
-          <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">// 01 · Flagship Work</span>
-          <h2 class="text-3xl sm:text-5xl font-extrabold text-white heading-caps mt-1">Featured Projects & Systems</h2>
+          <span class="text-xs text-blue-600 font-bold tracking-[0.2em] zaki-caps">// Selected Engineering Work</span>
+          <h2 class="text-3xl sm:text-4xl font-black zaki-caps mt-1">Featured Projects</h2>
         </div>
-        <a href="https://github.com/zakipatel89" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white tracking-wider heading-caps transition">
-          Explore GitHub (@zakipatel89) →
+        <a href="https://github.com/zakipatel89" target="_blank" class="text-xs font-bold text-blue-600 hover:underline zaki-caps">
+          GitHub Repositories (@zakipatel89) →
         </a>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <!-- Project 1: NextIDE (From Your PPT) -->
-        <div class="yahya-card p-7 flex flex-col justify-between space-y-6 border-t-2 border-t-blue-500">
-          <div class="space-y-4">
+        
+        <!-- Project 1: NextIDE -->
+        <div class="zaki-card p-6 flex flex-col justify-between space-y-5">
+          <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-blue-500/15 border border-blue-500/35 text-blue-300 text-[11px] font-bold heading-caps">
-                ⚡ Flagship Capstone Project
+              <span class="px-3 py-1 rounded-full zaki-strip text-[11px] font-bold text-blue-600 zaki-caps">
+                ⚡ B.Tech Capstone Project
               </span>
-              <span class="text-xs text-slate-400 heading-caps"><2s Synthesis</span>
+              <span class="text-xs font-bold zaki-caps" style="color: var(--text-muted);">Gemini AI · Cloud IDE</span>
             </div>
-            <h3 class="text-2xl font-extrabold text-white heading-caps">
-              NextIDE — AI Algorithm-To-Code Platform
+            <h3 class="text-xl font-extrabold zaki-caps">
+              NextIDE — Algorithm-to-Code Platform
             </h3>
-            <p class="text-xs sm:text-sm text-slate-300 para-clean">
-              Smart cloud-based coding platform engineered for computer science students and developers to overcome the syntax bottleneck. Users write step-by-step algorithms in plain English, and NextIDE leverages Google Gemini AI to synthesize clean, executable code in C++, Java, Python, and JavaScript within a unified 3-panel workspace with live I/O testing and MongoDB session history.
+            <p class="text-xs sm:text-sm zaki-justify" style="color: var(--text-secondary);">
+              A web-based coding platform designed for computer science students to translate plain-English algorithm steps into clean, executable code in C++, Java, Python, and JavaScript using Google Gemini AI. Includes a 3-panel coding workspace, custom I/O test sandbox, and MongoDB Atlas session history.
             </p>
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="pill-tag">Google Gemini AI</span>
-              <span class="pill-tag">Next.js & Tailwind</span>
-              <span class="pill-tag">Node.js & Express</span>
-              <span class="pill-tag">MongoDB Atlas</span>
-              <span class="pill-tag">JWT Auth</span>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="zaki-pill">Next.js</span>
+              <span class="zaki-pill">Node.js & Express</span>
+              <span class="zaki-pill">Google Gemini API</span>
+              <span class="zaki-pill">MongoDB Atlas</span>
             </div>
           </div>
-          <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
-            <a href="#nextide-architecture" class="text-xs font-bold text-blue-400 hover:text-white tracking-wider heading-caps">
-              Inspect 3-Panel Workspace & Architecture ↓
-            </a>
-            <a href="https://github.com/zakipatel89" target="_blank" class="text-xs font-bold text-slate-300 hover:text-blue-400 heading-caps">
-              GitHub Repo ↗
-            </a>
+          <div class="pt-3 border-t flex items-center justify-between text-xs font-bold zaki-caps" style="border-color: var(--border-color);">
+            <a href="https://github.com/zakipatel89" target="_blank" class="text-blue-600 hover:underline">Explore Project →</a>
+            <span style="color: var(--text-muted);">BMIT Solapur</span>
           </div>
         </div>
 
-        <!-- Project 2: Power BI & Churn Analytics -->
-        <div class="yahya-card p-7 flex flex-col justify-between space-y-6">
-          <div class="space-y-4">
+        <!-- Project 2: AI Shopping Assistant -->
+        <div class="zaki-card p-6 flex flex-col justify-between space-y-5">
+          <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/35 text-emerald-300 text-[11px] font-bold heading-caps">
+              <span class="px-3 py-1 rounded-full zaki-strip text-[11px] font-bold text-blue-600 zaki-caps">
+                🤖 Conversational AI
+              </span>
+              <span class="text-xs font-bold zaki-caps" style="color: var(--text-muted);">Python · NLP · SQL</span>
+            </div>
+            <h3 class="text-xl font-extrabold zaki-caps">
+              AI-Based Shopping Assistant
+            </h3>
+            <p class="text-xs sm:text-sm zaki-justify" style="color: var(--text-secondary);">
+              An intelligent e-commerce assistant that uses Natural Language Processing to interpret customer requirements (budget, brand, specifications) and queries relational product databases to generate real-time recommendations.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="zaki-pill">Python</span>
+              <span class="zaki-pill">Flask</span>
+              <span class="zaki-pill">MySQL</span>
+              <span class="zaki-pill">NLP</span>
+            </div>
+          </div>
+          <div class="pt-3 border-t flex items-center justify-between text-xs font-bold zaki-caps" style="border-color: var(--border-color);">
+            <a href="https://github.com/zakipatel89" target="_blank" class="text-blue-600 hover:underline">Explore Project →</a>
+            <span style="color: var(--text-muted);">AI & Data</span>
+          </div>
+        </div>
+
+        <!-- Project 3: Power BI & Data Analytics Dashboard -->
+        <div class="zaki-card p-6 flex flex-col justify-between space-y-5">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full zaki-strip text-[11px] font-bold text-blue-600 zaki-caps">
                 📊 Data Analytics & BI
               </span>
-              <span class="text-xs text-slate-400 heading-caps">Power BI · SQL · Excel</span>
+              <span class="text-xs font-bold zaki-caps" style="color: var(--text-muted);">Power BI · Excel · SQL</span>
             </div>
-            <h3 class="text-2xl font-extrabold text-white heading-caps">
-              Enterprise KPI Telemetry & Churn Analytics
+            <h3 class="text-xl font-extrabold zaki-caps">
+              Executive Power BI & KPI Dashboards
             </h3>
-            <p class="text-xs sm:text-sm text-slate-300 para-clean">
-              Comprehensive data analytics and visualization suite developed across PwC, Tata Group, and BCG case workflows. Transforms raw relational datasets into interactive Power BI executive dashboards, workforce retention monitors, and predictive customer attrition models.
+            <p class="text-xs sm:text-sm zaki-justify" style="color: var(--text-secondary);">
+              Interactive business intelligence workflow focused on cleaning raw datasets, modeling relational tables, and visualizing key performance indicators (KPIs), workforce diversity, and customer churn trends.
             </p>
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="pill-tag">Microsoft Power BI</span>
-              <span class="pill-tag">SQL Querying</span>
-              <span class="pill-tag">Advanced Excel</span>
-              <span class="pill-tag">Data Cleaning</span>
-              <span class="pill-tag">KPI Reporting</span>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="zaki-pill">Power BI</span>
+              <span class="zaki-pill">SQL</span>
+              <span class="zaki-pill">Microsoft Excel</span>
+              <span class="zaki-pill">Data Cleaning</span>
             </div>
           </div>
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
-            <a href="#experience" class="text-xs font-bold text-blue-400 hover:text-white tracking-wider heading-caps">
-              View Case Study Documents →
-            </a>
-            <span class="text-[11px] text-slate-500 heading-caps">Verified on Forage</span>
+          <div class="pt-3 border-t flex items-center justify-between text-xs font-bold zaki-caps" style="border-color: var(--border-color);">
+            <a href="#experience" class="text-blue-600 hover:underline">View Case Studies →</a>
+            <span style="color: var(--text-muted);">Analytics</span>
           </div>
         </div>
 
-        <!-- Project 3: Conversational AI Shopping Assistant -->
-        <div class="yahya-card p-7 flex flex-col justify-between space-y-6">
-          <div class="space-y-4">
+        <!-- Project 4: Retail Mobile Shop AI Assistant -->
+        <div class="zaki-card p-6 flex flex-col justify-between space-y-5">
+          <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/35 text-purple-300 text-[11px] font-bold heading-caps">
-                🤖 AI & Data Product
+              <span class="px-3 py-1 rounded-full zaki-strip text-[11px] font-bold text-blue-600 zaki-caps">
+                📱 Retail Automation
               </span>
-              <span class="text-xs text-slate-400 heading-caps">Python · NLP · SQL</span>
+              <span class="text-xs font-bold zaki-caps" style="color: var(--text-muted);">Python · Pandas</span>
             </div>
-            <h3 class="text-2xl font-extrabold text-white heading-caps">
-              AI Conversational Shopping Assistant
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 para-clean">
-              Intelligent e-commerce recommendation assistant that translates natural-language customer requirements (budget, category, brand preferences) into structured database queries, automating product discovery and real-time price comparison.
-            </p>
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="pill-tag">Python</span>
-              <span class="pill-tag">NLP Parsing</span>
-              <span class="pill-tag">Flask</span>
-              <span class="pill-tag">MySQL</span>
-              <span class="pill-tag">Recommendation Logic</span>
-            </div>
-          </div>
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
-            <a href="https://github.com/zakipatel89" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white tracking-wider heading-caps">
-              Explore on GitHub →
-            </a>
-            <span class="text-[11px] text-slate-500 heading-caps">AI System</span>
-          </div>
-        </div>
-
-        <!-- Project 4: Zaid Mobile Shop AI Assistant -->
-        <div class="yahya-card p-7 flex flex-col justify-between space-y-6">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/35 text-cyan-300 text-[11px] font-bold heading-caps">
-                📱 Retail AI Automation
-              </span>
-              <span class="text-xs text-slate-400 heading-caps">Python · Pandas · AI API</span>
-            </div>
-            <h3 class="text-2xl font-extrabold text-white heading-caps">
+            <h3 class="text-xl font-extrabold zaki-caps">
               Zaid Mobile Shop — Retail AI Assistant
             </h3>
-            <p class="text-xs sm:text-sm text-slate-300 para-clean">
-              Practical retail AI assistant tailored for mobile inventory management, covering new and pre-owned smartphones, accessories, repair status tracking, and automated customer query resolution.
+            <p class="text-xs sm:text-sm zaki-justify" style="color: var(--text-secondary);">
+              Customer-oriented retail chatbot concept covering new and pre-owned phones, accessories, repair inquiries, and automated inventory lookup.
             </p>
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="pill-tag">Python</span>
-              <span class="pill-tag">Pandas</span>
-              <span class="pill-tag">Flask</span>
-              <span class="pill-tag">AI Chatbot</span>
-              <span class="pill-tag">Inventory Data</span>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="zaki-pill">Python</span>
+              <span class="zaki-pill">Pandas</span>
+              <span class="zaki-pill">Flask</span>
+              <span class="zaki-pill">AI API</span>
             </div>
           </div>
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
-            <a href="https://github.com/zakipatel89" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white tracking-wider heading-caps">
-              Explore on GitHub →
-            </a>
-            <span class="text-[11px] text-slate-500 heading-caps">Retail Tech</span>
+          <div class="pt-3 border-t flex items-center justify-between text-xs font-bold zaki-caps" style="border-color: var(--border-color);">
+            <a href="https://github.com/zakipatel89" target="_blank" class="text-blue-600 hover:underline">Explore Project →</a>
+            <span style="color: var(--text-muted);">Retail AI</span>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ================= 3. NEXTIDE INTERACTIVE 3-PANEL WORKSPACE SHOWCASE (From PPT) ================= -->
-    <section id="nextide-architecture" class="yahya-card p-6 sm:p-10 space-y-8 border border-blue-500/30">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-white/10 pb-6">
-        <div>
-          <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">
-            // BMIT CSE Capstone Project · Guided by Prof. Chabukswar S.A. & Prof. M. N. Gaikwad
-          </span>
-          <h2 class="text-2xl sm:text-4xl font-extrabold text-white heading-caps mt-1">
-            NextIDE — Interactive 3-Panel Coding Workspace
-          </h2>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <span class="px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold heading-caps">
-            100% Cloud-Based · Zero Local Setup
-          </span>
-        </div>
-      </div>
-
-      <!-- 3-Panel Workspace Simulation (Exact Slide 10 of Your PPT) -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        
-        <!-- Left Panel: Plain English Algorithm Input -->
-        <div class="lg:col-span-5 bg-[#050811] border border-white/10 rounded-xl p-5 flex flex-col justify-between space-y-4">
-          <div class="flex items-center justify-between border-b border-white/10 pb-3">
-            <span class="text-xs font-bold text-blue-400 heading-caps">Left Panel: Algorithm Input</span>
-            <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 text-[10px]">Plain English</span>
-          </div>
-          <div class="space-y-2 text-xs text-slate-300 code-font leading-relaxed">
-            <p>1. Take an array of positive integers.</p>
-            <p>2. Find two numbers that sum up to target.</p>
-            <p>3. Use an unordered hash map for single-pass.</p>
-            <p>4. If match exists, return indices.</p>
-            <p>5. If no match found, return empty array.</p>
-          </div>
-          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
-            <span>Target: C++ / Python / Java / JS</span>
-            <span class="text-emerald-400 font-bold">● Logic Parsed</span>
-          </div>
-        </div>
-
-        <!-- Right Panels: Top Synthesized Code + Bottom I/O Console -->
-        <div class="lg:col-span-7 space-y-4">
-          
-          <!-- Top Right: Synthesized C++ Code -->
-          <div class="bg-[#050811] border border-blue-500/30 rounded-xl p-5 space-y-3">
-            <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
-              <span class="text-xs font-bold text-emerald-400 heading-caps">Top Right: Synthesized C++ Code</span>
-              <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 text-[10px]">Google Gemini 1.5 AI</span>
-            </div>
-            <pre class="text-xs text-blue-200 code-font overflow-x-auto leading-relaxed"><code>vector<int> twoSum(vector<int>& nums, int target) {
-    unordered_map<int, int> mp;
-    for (int i = 0; i < nums.size(); i++) {
-        int diff = target - nums[i];
-        if (mp.count(diff)) return {mp[diff], i};
-        mp[nums[i]] = i;
-    }
-    return {};
-}</code></pre>
-          </div>
-
-          <!-- Bottom Right: Live I/O Sandbox Console -->
-          <div class="bg-[#050811] border border-emerald-500/30 rounded-xl p-4 space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-white heading-caps">Bottom Right: Live I/O Sandbox Console</span>
-              <span class="text-[11px] text-emerald-400 code-font font-bold">Status: 200 OK (8ms)</span>
-            </div>
-            <div class="text-xs text-slate-300 code-font space-y-1">
-              <div><span class="text-slate-500">Input:</span> [2, 7, 11, 15], target = 9</div>
-              <div><span class="text-emerald-400">Output:</span> [0, 1] (Indices Verified & Saved to MongoDB Atlas)</div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- 4-Tier Architecture Summary Strip (Slide 6 of PPT) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
-        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10">
-          <span class="text-[10px] text-blue-400 font-bold heading-caps">1. Frontend Layer</span>
-          <h4 class="text-sm font-bold text-white heading-caps mt-1">Next.js & Tailwind</h4>
-          <p class="text-[11px] text-slate-400 mt-1">Algorithm Editor, Code Viewer, I/O Console & User Auth UI.</p>
-        </div>
-        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10">
-          <span class="text-[10px] text-blue-400 font-bold heading-caps">2. Backend Server</span>
-          <h4 class="text-sm font-bold text-white heading-caps mt-1">Node.js & Express</h4>
-          <p class="text-[11px] text-slate-400 mt-1">RESTful JSON API Routes, JWT Verification & Execution Dispatcher.</p>
-        </div>
-        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10">
-          <span class="text-[10px] text-blue-400 font-bold heading-caps">3. AI Synthesis Engine</span>
-          <h4 class="text-sm font-bold text-white heading-caps mt-1">Google Gemini API</h4>
-          <p class="text-[11px] text-slate-400 mt-1">Large-context LLM parsing plain English logic into target syntax.</p>
-        </div>
-        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10">
-          <span class="text-[10px] text-blue-400 font-bold heading-caps">4. Cloud Database</span>
-          <h4 class="text-sm font-bold text-white heading-caps mt-1">MongoDB Atlas</h4>
-          <p class="text-[11px] text-slate-400 mt-1">Encrypted credentials, algorithm history & revision bank.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 4. BOOK AN APPOINTMENT WIDGET (yahya.in Exact Style) ================= -->
-    <section id="appointment" class="yahya-card p-6 sm:p-10 space-y-8">
-      <div class="border-b border-white/10 pb-5">
-        <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">// Instant Scheduling</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white heading-caps mt-1">
+    <!-- ================= 3. BOOK AN APPOINTMENT SECTION ================= -->
+    <section id="appointment" class="zaki-card p-6 sm:p-10 space-y-8">
+      <div class="border-b pb-4" style="border-color: var(--border-color);">
+        <span class="text-xs text-blue-600 font-bold tracking-[0.2em] zaki-caps">// Direct Scheduling</span>
+        <h2 class="text-2xl sm:text-4xl font-black zaki-caps mt-1">
           Book an Appointment with Patel Mohammad Zaki
         </h2>
-        <p class="text-xs sm:text-sm text-slate-400 mt-1">
-          Select a convenient date and time slot for technical interviews, data analytics discussions, or project collaboration.
+        <p class="text-xs sm:text-sm mt-1" style="color: var(--text-muted);">
+          Select a date and convenient time slot for interviews, internship discussions, or technical collaborations.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        <!-- Left Info Card -->
-        <div class="lg:col-span-5 space-y-5 bg-[#050811] p-6 rounded-2xl border border-white/10">
+        <!-- Left Host Details -->
+        <div class="lg:col-span-5 space-y-4 p-5 rounded-xl border" style="background-color: var(--bg-subtle); border-color: var(--border-color);">
           <div class="flex items-center gap-3.5">
-            <img src="profile.jpg" alt="Patel Mohammad Zaki" class="w-14 h-14 rounded-full object-cover object-top border border-blue-400">
+            <img src="profile.jpg" alt="Patel Mohammad Zaki" class="w-14 h-14 rounded-full object-cover object-top border-2 border-blue-600">
             <div>
               <div class="flex items-center gap-1.5">
-                <h3 class="text-base font-bold text-white heading-caps">Patel Mohammad Zaki</h3>
-                <i class="fa-solid fa-circle-check text-blue-400 text-xs"></i>
+                <h3 class="text-base font-extrabold zaki-caps">Patel Mohammad Zaki</h3>
+                <i class="fa-solid fa-circle-check text-blue-600 text-xs"></i>
               </div>
-              <p class="text-xs text-slate-400">Data Analyst · Data Science & AI</p>
+              <p class="text-xs" style="color: var(--text-muted);">B.Tech CSE Fresher · Data Analyst Intern</p>
             </div>
           </div>
 
-          <div class="space-y-3 pt-3 border-t border-white/10 text-xs text-slate-300">
-            <div class="flex items-center gap-3">
-              <i class="fa-solid fa-video text-blue-400 w-4"></i>
-              <span>Google Meet / Phone Call</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <i class="fa-solid fa-earth-asia text-blue-400 w-4"></i>
-              <span>Time Zone: India Standard Time (IST, GMT+5:30)</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <i class="fa-solid fa-bolt text-emerald-400 w-4"></i>
-              <span>Selected Slot: <strong id="selected-summary" class="text-white">Tomorrow · 11:00 AM (30 Mins)</strong></span>
-            </div>
+          <div class="space-y-2.5 pt-3 border-t text-xs" style="border-color: var(--border-color); color: var(--text-secondary);">
+            <div class="flex items-center gap-2.5"><i class="fa-solid fa-video text-blue-600 w-4"></i> Google Meet / Phone Call</div>
+            <div class="flex items-center gap-2.5"><i class="fa-solid fa-clock text-blue-600 w-4"></i> Timezone: IST (GMT+5:30)</div>
+            <div class="flex items-center gap-2.5"><i class="fa-solid fa-calendar-check text-blue-600 w-4"></i> Slot: <strong id="zaki-slot-summary">Tomorrow · 11:00 AM (30 Mins)</strong></div>
           </div>
 
-          <!-- Duration Selector -->
-          <div class="space-y-2 pt-3 border-t border-white/10">
-            <span class="text-[11px] text-slate-400 heading-caps block">Choose Duration:</span>
+          <div class="space-y-2 pt-3 border-t" style="border-color: var(--border-color);">
+            <span class="text-[11px] font-bold zaki-caps block" style="color: var(--text-muted);">Meeting Duration:</span>
             <div class="grid grid-cols-3 gap-2">
-              <button onclick="setMeetDuration('30 Mins', this)" class="dur-pill py-2 rounded-lg text-xs font-bold bg-blue-600 text-white heading-caps">30 Mins</button>
-              <button onclick="setMeetDuration('1 Hour', this)" class="dur-pill py-2 rounded-lg text-xs font-bold bg-white/5 text-slate-300 hover:text-white heading-caps">1 Hour</button>
-              <button onclick="setMeetDuration('Flexible', this)" class="dur-pill py-2 rounded-lg text-xs font-bold bg-white/5 text-slate-300 hover:text-white heading-caps">Flexible</button>
+              <button onclick="updateDuration('30 Mins', this)" class="zaki-dur-btn py-2 rounded-lg text-xs font-bold bg-blue-600 text-white zaki-caps">30 Mins</button>
+              <button onclick="updateDuration('1 Hour', this)" class="zaki-dur-btn py-2 rounded-lg text-xs font-bold border zaki-caps" style="border-color: var(--border-color);">1 Hour</button>
+              <button onclick="updateDuration('Flexible', this)" class="zaki-dur-btn py-2 rounded-lg text-xs font-bold border zaki-caps" style="border-color: var(--border-color);">Flexible</button>
             </div>
           </div>
-
-          <p class="text-[11px] text-slate-400 leading-relaxed pt-2">
-            <strong>Flexible Timing:</strong> Need more time? Meetings can be adjusted or extended as needed.
-          </p>
         </div>
 
-        <!-- Right Interactive Month Calendar + Time Slots -->
-        <div class="lg:col-span-7 space-y-6">
-          <div class="flex items-center justify-between">
-            <h3 class="text-base font-bold text-white heading-caps" id="month-title"> October / November 2026</h3>
-            <span class="text-xs text-blue-400 heading-caps">Available Dates Highlighted</span>
-          </div>
-
-          <!-- Days Header -->
-          <div class="grid grid-cols-7 gap-2 text-center text-[11px] font-bold text-slate-400 heading-caps">
+        <!-- Right Interactive Date & Time Picker -->
+        <div class="lg:col-span-7 space-y-5">
+          <div class="grid grid-cols-7 gap-2 text-center text-[11px] font-bold zaki-caps" style="color: var(--text-muted);">
             <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
           </div>
 
-          <!-- 14-Day Interactive Calendar Grid -->
-          <div id="calendar-grid" class="grid grid-cols-7 gap-2"></div>
+          <div id="zaki-calendar-days" class="grid grid-cols-7 gap-2"></div>
 
-          <!-- Preferred Time Slots -->
           <div class="space-y-2">
-            <span class="text-xs text-slate-400 heading-caps block">Select Preferred Time Slot (IST):</span>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-              <button onclick="setMeetTime('11:00 AM', this)" class="time-pill py-2.5 px-3 rounded-xl border border-blue-500 bg-blue-500/20 text-white text-xs font-bold heading-caps">11:00 AM</button>
-              <button onclick="setMeetTime('02:30 PM', this)" class="time-pill py-2.5 px-3 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:border-blue-400 text-xs font-bold heading-caps">02:30 PM</button>
-              <button onclick="setMeetTime('05:30 PM', this)" class="time-pill py-2.5 px-3 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:border-blue-400 text-xs font-bold heading-caps">05:30 PM</button>
-              <button onclick="setMeetTime('08:00 PM', this)" class="time-pill py-2.5 px-3 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:border-blue-400 text-xs font-bold heading-caps">08:00 PM</button>
+            <span class="text-xs font-bold zaki-caps block" style="color: var(--text-muted);">Preferred Time (IST):</span>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              <button onclick="updateTime('11:00 AM', this)" class="zaki-time-btn py-2.5 px-3 rounded-xl border border-blue-600 bg-blue-600 text-white text-xs font-bold zaki-caps">11:00 AM</button>
+              <button onclick="updateTime('02:30 PM', this)" class="zaki-time-btn py-2.5 px-3 rounded-xl border text-xs font-bold zaki-caps" style="border-color: var(--border-color);">02:30 PM</button>
+              <button onclick="updateTime('05:30 PM', this)" class="zaki-time-btn py-2.5 px-3 rounded-xl border text-xs font-bold zaki-caps" style="border-color: var(--border-color);">05:30 PM</button>
+              <button onclick="updateTime('08:00 PM', this)" class="zaki-time-btn py-2.5 px-3 rounded-xl border text-xs font-bold zaki-caps" style="border-color: var(--border-color);">08:00 PM</button>
             </div>
           </div>
 
-          <!-- Instant Confirm Buttons -->
           <div class="flex flex-wrap gap-3 pt-2">
-            <button onclick="bookAppointment('whatsapp')" class="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs tracking-widest heading-caps transition flex items-center gap-2 shadow-lg">
-              <i class="fa-brands fa-whatsapp text-sm"></i> Confirm Instant via WhatsApp
+            <button onclick="sendBooking('whatsapp')" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs zaki-caps tracking-wider transition flex items-center gap-2 shadow-md">
+              <i class="fa-brands fa-whatsapp text-sm"></i> Confirm via WhatsApp
             </button>
-            <button onclick="bookAppointment('email')" class="px-6 py-3.5 rounded-xl border border-white/20 bg-white/5 hover:border-blue-400 text-white font-bold text-xs tracking-widest heading-caps transition flex items-center gap-2">
-              <i class="fa-solid fa-envelope"></i> Confirm via Email
+            <button onclick="sendBooking('email')" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs zaki-caps tracking-wider transition flex items-center gap-2 shadow-md">
+              <i class="fa-regular fa-envelope"></i> Confirm via Email
             </button>
           </div>
         </div>
@@ -742,100 +668,70 @@
       </div>
     </section>
 
-    <!-- ================= 5. ABOUT ME + AI LLM DISCOVERABILITY + TIMELINE ================= -->
-    <section id="about" class="space-y-10">
-      <div class="border-b border-white/10 pb-5">
-        <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">// 02 · Who I Am</span>
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-white heading-caps mt-1">About Me & Academic Pedigree</h2>
+    <!-- ================= 4. ABOUT ME & EDUCATION TIMELINE ================= -->
+    <section id="about" class="space-y-8">
+      <div class="border-b pb-4" style="border-color: var(--border-color);">
+        <span class="text-xs text-blue-600 font-bold tracking-[0.2em] zaki-caps">// Profile & Background</span>
+        <h2 class="text-3xl sm:text-4xl font-black zaki-caps mt-1">About Patel Mohammad Zaki</h2>
       </div>
 
-      <!-- AI Search Bar (yahya.in Signature Element) -->
-      <div class="yahya-card p-6 space-y-4">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-          <span class="text-xs font-bold text-white heading-caps">
-            You Can Search About Patel Mohammad Zaki On Major AI LLMs & Search Engines:
-          </span>
-          <span class="text-[11px] text-blue-400 heading-caps">Click Any Engine to Query</span>
-        </div>
-        <div class="flex flex-wrap gap-2.5">
-          <a href="https://www.google.com/search?q=Patel+Mohammad+Zaki+Solapur+BMIT+Data+Analyst" target="_blank" class="pill-tag"><i class="fa-brands fa-google text-blue-400"></i> Google Search</a>
-          <a href="https://chatgpt.com/?q=Tell+me+about+Patel+Mohammad+Zaki+Computer+Science+Engineer+and+Data+Analyst+from+BMIT+Solapur" target="_blank" class="pill-tag"><i class="fa-solid fa-robot text-emerald-400"></i> ChatGPT</a>
-          <a href="https://gemini.google.com/" target="_blank" class="pill-tag"><i class="fa-solid fa-wand-magic-sparkles text-blue-400"></i> Google Gemini</a>
-          <a href="https://www.perplexity.ai/search?q=Patel+Mohammad+Zaki+Solapur+Data+Analyst" target="_blank" class="pill-tag"><i class="fa-solid fa-magnifying-glass-chart text-cyan-400"></i> Perplexity AI</a>
-          <a href="https://claude.ai/" target="_blank" class="pill-tag"><i class="fa-solid fa-brain text-amber-400"></i> Claude AI</a>
-          <a href="https://linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="pill-tag"><i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn Profile</a>
-        </div>
-      </div>
-
-      <!-- Split Biography & Timeline -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <!-- Left Bio (Exact Resume Alignment) -->
-        <div class="lg:col-span-7 yahya-card p-7 sm:p-9 space-y-5">
-          <h3 class="text-xl font-extrabold text-white heading-caps border-b border-white/10 pb-3">
-            Professional Summary
+        <!-- Left Bio -->
+        <div class="lg:col-span-7 zaki-card p-6 sm:p-8 space-y-4">
+          <h3 class="text-lg font-extrabold zaki-caps border-b pb-3" style="border-color: var(--border-color);">
+            Who I Am (Fresher Profile)
           </h3>
-          <div class="space-y-4 text-xs sm:text-sm text-slate-300 para-clean">
+          <div class="space-y-4 text-xs sm:text-sm zaki-justify" style="color: var(--text-secondary);">
             <p>
-              I am <strong>Patel Mohammad Zaki</strong> — a detail-oriented and responsible Computer Science Engineering student at <strong>Brahmdevdada Mane Institute of Technology (BMIT), Solapur</strong>, with a strong academic foundation across Computer Science, Electronics, and Data Analytics.
+              I am <strong>Patel Mohammad Zaki</strong> — a detail-oriented and responsible final-year <strong>B.Tech Computer Science and Engineering student (Fresher, 2027 Batch)</strong> at <strong>Brahmdevdada Mane Institute of Technology (BMIT), Solapur</strong>.
             </p>
             <p>
-              Currently, I work as a <strong>Data Analyst Intern in the IT Department at UnionSys Technologies, Pune</strong> (July 2026 – Present), where I support data analysis, data organization, and reporting activities while gaining hands-on exposure to enterprise IT workflows under the guidance of an Oracle Apps Developer.
+              Currently, I am working as a <strong>Data Analyst Intern in the IT Department at UnionSys Technologies, Pune</strong> (July 2026 – Present), supporting data analysis, data organization, and reporting activities under the guidance of an Oracle Apps Developer.
             </p>
             <p>
-              Prior to my B.Tech degree, I completed my <strong>Diploma in Electronics and Telecommunication Engineering from Government Polytechnic, Solapur with Distinction (75.59%)</strong>, following an <strong>89.20% score in my 10th SSC Board examinations</strong>.
+              Before entering my engineering degree, I completed my <strong>Diploma in Electronics and Telecommunication Engineering from Government Polytechnic, Solapur with 75.59% (Distinction)</strong>, building on an <strong>89.20% score in 10th SSC Board</strong>.
             </p>
             <p>
-              I am passionate about applying analytical thinking, SQL, Power BI, Python, and cloud fundamentals to solve real-world business problems while continuously learning and contributing in professional environments.
+              I am passionate about applying my skills in Data Analytics, Power BI, SQL, Python, and AWS Cloud fundamentals to solve real-world business problems and contribute effectively in professional corporate environments.
             </p>
-          </div>
-
-          <!-- Key Strengths (From Resume) -->
-          <div class="pt-4 border-t border-white/10 space-y-3">
-            <h4 class="text-xs font-bold text-blue-400 heading-caps">Core Professional Strengths</h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-300">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Strong Analytical & Problem-Solving Skills</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Responsible & Disciplined Attitude</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Quick Learner & Adaptable to New Tech</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Effective Teamwork & Collaboration</div>
-            </div>
           </div>
         </div>
 
-        <!-- Right Education & Career Timeline -->
-        <div class="lg:col-span-5 yahya-card p-7 sm:p-9 space-y-6">
-          <h3 class="text-xl font-extrabold text-white heading-caps border-b border-white/10 pb-3">
+        <!-- Right Education & Internship Timeline -->
+        <div class="lg:col-span-5 zaki-card p-6 sm:p-8 space-y-5">
+          <h3 class="text-lg font-extrabold zaki-caps border-b pb-3" style="border-color: var(--border-color);">
             Education & Timeline
           </h3>
 
-          <div class="space-y-6 relative before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-px before:bg-blue-500/35">
+          <div class="space-y-5 relative before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-blue-600/30">
             
-            <div class="pl-8 relative">
-              <span class="w-3.5 h-3.5 rounded-full bg-emerald-400 absolute left-[4px] top-1 shadow-[0_0_12px_#34d399]"></span>
-              <span class="text-[11px] text-emerald-400 font-bold heading-caps">July 2026 — Present</span>
-              <h4 class="text-sm font-extrabold text-white heading-caps mt-0.5">Data Analyst Intern — UnionSys Technologies</h4>
-              <p class="text-xs text-slate-400 mt-1">IT Department, Pune · Data analysis, organization & reporting under Oracle Apps Developer guidance.</p>
+            <div class="pl-7 relative">
+              <span class="w-3 h-3 rounded-full bg-emerald-500 absolute left-[3px] top-1"></span>
+              <span class="text-[11px] font-bold text-emerald-600 zaki-caps">July 2026 — Present</span>
+              <h4 class="text-sm font-extrabold zaki-caps mt-0.5">Data Analyst Intern — UnionSys Technologies</h4>
+              <p class="text-xs mt-1" style="color: var(--text-muted);">IT Department, Pune · Data analysis, organization & reporting workflows.</p>
             </div>
 
-            <div class="pl-8 relative">
-              <span class="w-3.5 h-3.5 rounded-full bg-blue-500 absolute left-[4px] top-1 shadow-[0_0_10px_#3b82f6]"></span>
-              <span class="text-[11px] text-blue-400 font-bold heading-caps">2024 — 2027 (Present)</span>
-              <h4 class="text-sm font-extrabold text-white heading-caps mt-0.5">B.Tech in Computer Science Engineering</h4>
-              <p class="text-xs text-slate-400 mt-1">Brahmdevdada Mane Institute of Technology (BMIT), Solapur · Final-Year Student.</p>
+            <div class="pl-7 relative">
+              <span class="w-3 h-3 rounded-full bg-blue-600 absolute left-[3px] top-1"></span>
+              <span class="text-[11px] font-bold text-blue-600 zaki-caps">2024 — 2027 (Final Year)</span>
+              <h4 class="text-sm font-extrabold zaki-caps mt-0.5">B.Tech Computer Science Engineering</h4>
+              <p class="text-xs mt-1" style="color: var(--text-muted);">Brahmdevdada Mane Institute of Technology (BMIT), Solapur.</p>
             </div>
 
-            <div class="pl-8 relative">
-              <span class="w-3.5 h-3.5 rounded-full bg-slate-800 border border-blue-400 absolute left-[4px] top-1"></span>
-              <span class="text-[11px] text-blue-400 font-bold heading-caps">2021 — 2024</span>
-              <h4 class="text-sm font-extrabold text-white heading-caps mt-0.5">Diploma in E&TC Engineering — 75.59%</h4>
-              <p class="text-xs text-slate-400 mt-1">Government Polytechnic, Solapur · First Class with Distinction.</p>
+            <div class="pl-7 relative">
+              <span class="w-3 h-3 rounded-full bg-blue-600/60 absolute left-[3px] top-1"></span>
+              <span class="text-[11px] font-bold text-blue-600 zaki-caps">2021 — 2024</span>
+              <h4 class="text-sm font-extrabold zaki-caps mt-0.5">Diploma in E&TC Engineering — 75.59%</h4>
+              <p class="text-xs mt-1" style="color: var(--text-muted);">Government Polytechnic, Solapur · First Class with Distinction.</p>
             </div>
 
-            <div class="pl-8 relative">
-              <span class="w-3.5 h-3.5 rounded-full bg-slate-800 border border-blue-400 absolute left-[4px] top-1"></span>
-              <span class="text-[11px] text-blue-400 font-bold heading-caps">2021</span>
-              <h4 class="text-sm font-extrabold text-white heading-caps mt-0.5">Secondary School Certificate (10th) — 89.20%</h4>
-              <p class="text-xs text-slate-400 mt-1">Maharashtra State Board · Solapur.</p>
+            <div class="pl-7 relative">
+              <span class="w-3 h-3 rounded-full bg-blue-600/40 absolute left-[3px] top-1"></span>
+              <span class="text-[11px] font-bold text-blue-600 zaki-caps">2021</span>
+              <h4 class="text-sm font-extrabold zaki-caps mt-0.5">SSC (10th Board) — 89.20%</h4>
+              <p class="text-xs mt-1" style="color: var(--text-muted);">Maharashtra State Board, Solapur.</p>
             </div>
 
           </div>
@@ -844,327 +740,250 @@
       </div>
     </section>
 
-    <!-- ================= 6. SKILLS & EXPERTISE (Filterable Grid + Domain Cards) ================= -->
-    <section id="skills" class="space-y-10">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-5">
+    <!-- ================= 5. SKILLS & TOOLS SECTION ================= -->
+    <section id="skills" class="space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b pb-4" style="border-color: var(--border-color);">
         <div>
-          <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">// 03 · Skills & Tools</span>
-          <h2 class="text-3xl sm:text-5xl font-extrabold text-white heading-caps mt-1">Technologies I Work With</h2>
-          <p class="text-xs sm:text-sm text-slate-400 mt-1">
-            My primary stack for data analytics, machine learning workflows, cloud computing, and intelligent software systems.
-          </p>
+          <span class="text-xs text-blue-600 font-bold tracking-[0.2em] zaki-caps">// Technical Competencies</span>
+          <h2 class="text-3xl sm:text-4xl font-black zaki-caps mt-1">Skills & Tools</h2>
         </div>
 
-        <!-- Interactive Filter Tabs -->
-        <div class="flex flex-wrap gap-1.5 p-1.5 rounded-xl bg-[#070b16] border border-white/10">
-          <button onclick="filterSkillCards('all', this)" class="skill-tab active px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white heading-caps transition">All Skills</button>
-          <button onclick="filterSkillCards('analytics', this)" class="skill-tab px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white heading-caps transition">Data & BI</button>
-          <button onclick="filterSkillCards('ai', this)" class="skill-tab px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white heading-caps transition">Data Science & AI</button>
-          <button onclick="filterSkillCards('languages', this)" class="skill-tab px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white heading-caps transition">Languages</button>
-          <button onclick="filterSkillCards('database', this)" class="skill-tab px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white heading-caps transition">Databases & Cloud</button>
-          <button onclick="filterSkillCards('tools', this)" class="skill-tab px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white heading-caps transition">Tools</button>
+        <div class="flex flex-wrap gap-1.5">
+          <button onclick="filterSkills('all', this)" class="zaki-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white zaki-caps">All</button>
+          <button onclick="filterSkills('data', this)" class="zaki-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border zaki-caps" style="border-color: var(--border-color);">Data & BI</button>
+          <button onclick="filterSkills('ai', this)" class="zaki-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border zaki-caps" style="border-color: var(--border-color);">AI & Science</button>
+          <button onclick="filterSkills('code', this)" class="zaki-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border zaki-caps" style="border-color: var(--border-color);">Programming</button>
+          <button onclick="filterSkills('cloud', this)" class="zaki-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border zaki-caps" style="border-color: var(--border-color);">Cloud & DB</button>
         </div>
       </div>
 
-      <!-- Interactive Skill Cards Grid -->
-      <div id="skills-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5">
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="data">
+          <i class="fa-solid fa-chart-pie text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">Power BI</h4><span class="text-[10px]" style="color: var(--text-muted);">Visual Analytics</span></div>
+        </div>
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="data">
+          <i class="fa-solid fa-file-excel text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">MS Excel</h4><span class="text-[10px]" style="color: var(--text-muted);">Data Analysis</span></div>
+        </div>
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="data">
+          <i class="fa-solid fa-database text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">SQL</h4><span class="text-[10px]" style="color: var(--text-muted);">Querying</span></div>
+        </div>
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="data">
+          <i class="fa-solid fa-chart-column text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">KPI Reporting</h4><span class="text-[10px]" style="color: var(--text-muted);">Data Interpretation</span></div>
+        </div>
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="ai">
+          <i class="fa-brands fa-python text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">Python</h4><span class="text-[10px]" style="color: var(--text-muted);">Data & AI</span></div>
+        </div>
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="ai">
+          <i class="fa-solid fa-cubes text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">Pandas & NumPy</h4><span class="text-[10px]" style="color: var(--text-muted);">Data Science</span></div>
+        </div>
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="ai">
+          <i class="fa-solid fa-brain text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">Scikit-Learn</h4><span class="text-[10px]" style="color: var(--text-muted);">Machine Learning</span></div>
+        </div>
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="ai">
+          <i class="fa-solid fa-wand-magic-sparkles text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">Gemini AI API</h4><span class="text-[10px]" style="color: var(--text-muted);">Prompt Engineering</span></div>
+        </div>
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="code">
+          <i class="fa-brands fa-js text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">JavaScript</h4><span class="text-[10px]" style="color: var(--text-muted);">Web Logic</span></div>
+        </div>
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="code">
+          <i class="fa-brands fa-html5 text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">HTML5 / CSS3</h4><span class="text-[10px]" style="color: var(--text-muted);">Web Fundamentals</span></div>
+        </div>
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="cloud">
+          <i class="fa-brands fa-aws text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">AWS Cloud</h4><span class="text-[10px]" style="color: var(--text-muted);">EC2 & VPC Basics</span></div>
+        </div>
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="cloud">
+          <i class="fa-solid fa-table text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">MySQL & MongoDB</h4><span class="text-[10px]" style="color: var(--text-muted);">Databases</span></div>
+        </div>
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="cloud">
+          <i class="fa-brands fa-git-alt text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">Git & GitHub</h4><span class="text-[10px]" style="color: var(--text-muted);">Version Control</span></div>
+        </div>
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="data">
+          <i class="fa-solid fa-file-powerpoint text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">MS Word & PPT</h4><span class="text-[10px]" style="color: var(--text-muted);">Documentation</span></div>
+        </div>
+        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="code">
+          <i class="fa-solid fa-code text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold zaki-caps">VS Code</h4><span class="text-[10px]" style="color: var(--text-muted);">Workspace</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 6. INTERNSHIPS & VIRTUAL EXPERIENCE ================= -->
+    <section id="experience" class="space-y-8">
+      <div class="border-b pb-4" style="border-color: var(--border-color);">
+        <span class="text-xs text-blue-600 font-bold tracking-[0.2em] zaki-caps">// Practical Exposure</span>
+        <h2 class="text-3xl sm:text-4xl font-black zaki-caps mt-1">Internships & Virtual Experience</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         
-        <!-- Data Analytics & BI -->
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="analytics">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-chart-pie"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Power BI</h4><span class="text-[10px] text-slate-400 heading-caps">Data & BI</span></div>
+        <div class="zaki-card p-6 flex flex-col justify-between space-y-4 border-l-4 border-l-blue-600">
+          <div class="space-y-2">
+            <span class="text-[11px] font-bold text-blue-600 zaki-caps">July 2026 — Present · Pune</span>
+            <h3 class="text-lg font-extrabold zaki-caps">UnionSys Technologies</h3>
+            <p class="text-xs zaki-justify" style="color: var(--text-secondary);">
+              Data Analyst Intern in the IT Department. Supporting data analysis, organization, and reporting activities under the guidance of an Oracle Apps Developer.
+            </p>
+          </div>
+          <span class="text-xs font-bold text-emerald-600 zaki-caps">● Current Internship</span>
         </div>
 
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="analytics">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-file-excel"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Microsoft Excel</h4><span class="text-[10px] text-slate-400 heading-caps">Data & BI</span></div>
+        <div class="zaki-card p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-[11px] font-bold text-blue-600 zaki-caps">Forage Program</span>
+            <h3 class="text-lg font-extrabold zaki-caps">PwC — Power BI Virtual Case Study</h3>
+            <p class="text-xs zaki-justify" style="color: var(--text-secondary);">
+              Created interactive Power BI dashboards analyzing workforce KPIs, customer churn, and retention insights.
+            </p>
+          </div>
+          <a href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline zaki-caps">View Certificate →</a>
         </div>
 
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="analytics">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-chart-column"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Data Reporting</h4><span class="text-[10px] text-slate-400 heading-caps">Data & BI</span></div>
+        <div class="zaki-card p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-[11px] font-bold text-blue-600 zaki-caps">Forage Program</span>
+            <h3 class="text-lg font-extrabold zaki-caps">BCG — Data Science Virtual Experience</h3>
+            <p class="text-xs zaki-justify" style="color: var(--text-secondary);">
+              Performed customer churn analysis and predictive data science modeling for strategic retention.
+            </p>
+          </div>
+          <a href="BCG%20Data%20Science.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline zaki-caps">View Certificate →</a>
         </div>
 
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="analytics">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-Magnifying-glass-chart"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Data Interpretation</h4><span class="text-[10px] text-slate-400 heading-caps">Data & BI</span></div>
+        <div class="zaki-card p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-[11px] font-bold text-blue-600 zaki-caps">Forage Program</span>
+            <h3 class="text-lg font-extrabold zaki-caps">Tata — Data Visualization</h3>
+            <p class="text-xs zaki-justify" style="color: var(--text-secondary);">
+              Built executive visual charts and business-oriented analytical reports for leadership decision support.
+            </p>
+          </div>
+          <a href="Data%20Visualisation%20By%20TATA.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline zaki-caps">View Certificate →</a>
         </div>
 
-        <!-- Data Science & AI -->
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="ai">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-cubes"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Pandas & NumPy</h4><span class="text-[10px] text-slate-400 heading-caps">Data Science</span></div>
+        <div class="zaki-card p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-[11px] font-bold text-blue-600 zaki-caps">Forage Program</span>
+            <h3 class="text-lg font-extrabold zaki-caps">Accenture — Data Analytics</h3>
+            <p class="text-xs zaki-justify" style="color: var(--text-secondary);">
+              Executed data cleaning, modeling, and trend analysis across multi-table client datasets.
+            </p>
+          </div>
+          <a href="Data%20Analytics%20by%20Acccenture.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline zaki-caps">View Certificate →</a>
         </div>
 
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="ai">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-chart-line"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Matplotlib & Sklearn</h4><span class="text-[10px] text-slate-400 heading-caps">Data Science</span></div>
-        </div>
-
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="ai">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-microchip"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">TensorFlow</h4><span class="text-[10px] text-slate-400 heading-caps">AI & ML</span></div>
-        </div>
-
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="ai">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Gemini & OpenAI API</h4><span class="text-[10px] text-slate-400 heading-caps">AI & Prompt Eng.</span></div>
-        </div>
-
-        <!-- Languages -->
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="languages">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-brands fa-python"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Python</h4><span class="text-[10px] text-slate-400 heading-caps">Languages</span></div>
-        </div>
-
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="languages">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-database"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">SQL</h4><span class="text-[10px] text-slate-400 heading-caps">Languages</span></div>
-        </div>
-
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="languages">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-brands fa-js"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">JavaScript</h4><span class="text-[10px] text-slate-400 heading-caps">Languages</span></div>
-        </div>
-
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="languages">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-brands fa-java"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Java</h4><span class="text-[10px] text-slate-400 heading-caps">Languages</span></div>
-        </div>
-
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="languages">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-brands fa-html5"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">HTML5 / CSS3</h4><span class="text-[10px] text-slate-400 heading-caps">Web Technologies</span></div>
-        </div>
-
-        <!-- Databases & Cloud -->
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="database">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-brands fa-aws"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">AWS Cloud (EC2/VPC)</h4><span class="text-[10px] text-slate-400 heading-caps">Cloud Computing</span></div>
-        </div>
-
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="database">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-table"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">MySQL</h4><span class="text-[10px] text-slate-400 heading-caps">Database</span></div>
-        </div>
-
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="database">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-leaf"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">MongoDB Atlas</h4><span class="text-[10px] text-slate-400 heading-caps">Database</span></div>
-        </div>
-
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="database">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-bolt"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Supabase</h4><span class="text-[10px] text-slate-400 heading-caps">Database</span></div>
-        </div>
-
-        <!-- Tools -->
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="tools">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-brands fa-git-alt"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Git & GitHub</h4><span class="text-[10px] text-slate-400 heading-caps">Tools</span></div>
-        </div>
-
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="tools">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-code"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">VS Code</h4><span class="text-[10px] text-slate-400 heading-caps">Tools</span></div>
-        </div>
-
-        <div class="yahya-card p-4 flex items-center gap-3.5 skill-item" data-cat="tools">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg shrink-0"><i class="fa-solid fa-file-powerpoint"></i></div>
-          <div><h4 class="text-xs sm:text-sm font-bold text-white heading-caps">Word & PowerPoint</h4><span class="text-[10px] text-slate-400 heading-caps">Office Tools</span></div>
+        <div class="zaki-card p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-[11px] font-bold text-blue-600 zaki-caps">Forage Program</span>
+            <h3 class="text-lg font-extrabold zaki-caps">British Airways — Data Science</h3>
+            <p class="text-xs zaki-justify" style="color: var(--text-secondary);">
+              Analyzed customer review sentiment and built predictive models for flight booking behavior.
+            </p>
+          </div>
+          <a href="Data%20Science%20By%20British%20Airways.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline zaki-caps">View Certificate →</a>
         </div>
 
       </div>
     </section>
 
-    <!-- ================= 7. INTERNSHIPS & VIRTUAL EXPERIENCE ================= -->
-    <section id="experience" class="space-y-10">
-      <div class="border-b border-white/10 pb-5">
-        <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">// 04 · Corporate & Virtual Experience</span>
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-white heading-caps mt-1">Internships & Global Case Studies</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <div class="yahya-card p-6 flex flex-col justify-between space-y-4 border-l-2 border-l-emerald-400">
-          <div class="space-y-2">
-            <span class="text-[11px] text-emerald-400 font-bold heading-caps">July 2026 — Present · Pune</span>
-            <h3 class="text-lg font-extrabold text-white heading-caps">UnionSys Technologies</h3>
-            <p class="text-xs text-slate-300 para-clean">
-              Working as a Data Analyst Intern in the IT Department, supporting data analysis, organization, and reporting activities under the guidance of an Oracle Apps Developer.
-            </p>
-          </div>
-          <span class="text-xs text-emerald-300 font-bold heading-caps">● Active Corporate Internship</span>
-        </div>
-
-        <div class="yahya-card p-6 flex flex-col justify-between space-y-4">
-          <div class="space-y-2">
-            <span class="text-[11px] text-blue-400 font-bold heading-caps">Forage Virtual Internship</span>
-            <h3 class="text-lg font-extrabold text-white heading-caps">PwC — Power BI Case Study</h3>
-            <p class="text-xs text-slate-300 para-clean">
-              Built interactive Power BI dashboards evaluating call center KPIs, customer retention patterns, and workforce diversity metrics.
-            </p>
-          </div>
-          <a href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white heading-caps">
-            View Verified Certificate →
-          </a>
-        </div>
-
-        <div class="yahya-card p-6 flex flex-col justify-between space-y-4">
-          <div class="space-y-2">
-            <span class="text-[11px] text-blue-400 font-bold heading-caps">Forage Virtual Internship</span>
-            <h3 class="text-lg font-extrabold text-white heading-caps">BCG — Data Science Experience</h3>
-            <p class="text-xs text-slate-300 para-clean">
-              Conducted customer churn analysis and predictive machine learning modeling to estimate financial impact and retention strategies.
-            </p>
-          </div>
-          <a href="BCG%20Data%20Science.pdf" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white heading-caps">
-            View Verified Certificate →
-          </a>
-        </div>
-
-        <div class="yahya-card p-6 flex flex-col justify-between space-y-4">
-          <div class="space-y-2">
-            <span class="text-[11px] text-blue-400 font-bold heading-caps">Forage Virtual Internship</span>
-            <h3 class="text-lg font-extrabold text-white heading-caps">Tata Group — Data Visualization</h3>
-            <p class="text-xs text-slate-300 para-clean">
-              Created executive business visuals and analytical charts to support C-suite strategic decision-making and revenue forecasting.
-            </p>
-          </div>
-          <a href="Data%20Visualisation%20By%20TATA.pdf" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white heading-caps">
-            View Verified Certificate →
-          </a>
-        </div>
-
-        <div class="yahya-card p-6 flex flex-col justify-between space-y-4">
-          <div class="space-y-2">
-            <span class="text-[11px] text-blue-400 font-bold heading-caps">Forage Virtual Internship</span>
-            <h3 class="text-lg font-extrabold text-white heading-caps">Accenture — Data Analytics</h3>
-            <p class="text-xs text-slate-300 para-clean">
-              Cleaned, modeled, and analyzed multi-table datasets to uncover key content performance trends and business insights.
-            </p>
-          </div>
-          <a href="Data%20Analytics%20by%20Acccenture.pdf" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white heading-caps">
-            View Verified Certificate →
-          </a>
-        </div>
-
-        <div class="yahya-card p-6 flex flex-col justify-between space-y-4">
-          <div class="space-y-2">
-            <span class="text-[11px] text-blue-400 font-bold heading-caps">Forage Virtual Internship</span>
-            <h3 class="text-lg font-extrabold text-white heading-caps">British Airways — Data Science</h3>
-            <p class="text-xs text-slate-300 para-clean">
-              Analyzed customer review sentiment and engineered predictive models to evaluate factors driving flight booking behavior.
-            </p>
-          </div>
-          <a href="Data%20Science%20By%20British%20Airways.pdf" target="_blank" class="text-xs font-bold text-blue-400 hover:text-white heading-caps">
-            View Verified Certificate →
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ================= 8. CERTIFICATIONS & CREDENTIALS ================= -->
-    <section id="certifications" class="space-y-10">
-      <div class="border-b border-white/10 pb-5">
-        <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">// 05 · Verified Licenses</span>
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-white heading-caps mt-1">Certifications & Credentials</h2>
+    <!-- ================= 7. CERTIFICATIONS & CREDENTIALS ================= -->
+    <section id="certifications" class="space-y-8">
+      <div class="border-b pb-4" style="border-color: var(--border-color);">
+        <span class="text-xs text-blue-600 font-bold tracking-[0.2em] zaki-caps">// Verified Licenses</span>
+        <h2 class="text-3xl sm:text-4xl font-black zaki-caps mt-1">Certifications & Credentials</h2>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        
-        <a href="C-%20AWS%20Compute%20Service.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
-          <div class="flex items-center justify-between text-blue-400"><i class="fa-brands fa-aws text-xl"></i><span class="text-[10px] heading-caps">AWS Cloud</span></div>
-          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">AWS Compute Service</h3>
-          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
+        <a href="C-%20AWS%20Compute%20Service.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 zaki-caps">AWS Cloud</span>
+          <h3 class="text-sm font-extrabold zaki-caps">AWS Compute Service</h3>
+          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
         </a>
-
-        <a href="C-Cloud%20Computing%20Architechture.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
-          <div class="flex items-center justify-between text-blue-400"><i class="fa-solid fa-cloud text-xl"></i><span class="text-[10px] heading-caps">Cloud</span></div>
-          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">Cloud Computing Architecture</h3>
-          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
+        <a href="C-Cloud%20Computing%20Architechture.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 zaki-caps">Cloud Architecture</span>
+          <h3 class="text-sm font-extrabold zaki-caps">Cloud Computing Architecture</h3>
+          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
         </a>
-
-        <a href="C-Cloud%20Networking%20With%20AWS%20VPC.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
-          <div class="flex items-center justify-between text-blue-400"><i class="fa-solid fa-network-wired text-xl"></i><span class="text-[10px] heading-caps">AWS VPC</span></div>
-          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">Cloud Networking With AWS VPC</h3>
-          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
+        <a href="C-Cloud%20Networking%20With%20AWS%20VPC.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 zaki-caps">Networking</span>
+          <h3 class="text-sm font-extrabold zaki-caps">Cloud Networking With AWS VPC</h3>
+          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
         </a>
-
-        <a href="C-Cloud%20Engineer%20Roles%20and%20Responsibilities.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
-          <div class="flex items-center justify-between text-blue-400"><i class="fa-solid fa-server text-xl"></i><span class="text-[10px] heading-caps">Cloud Ops</span></div>
-          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">Cloud Engineer Roles & Duties</h3>
-          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
+        <a href="C-Cloud%20Engineer%20Roles%20and%20Responsibilities.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 zaki-caps">Cloud Operations</span>
+          <h3 class="text-sm font-extrabold zaki-caps">Cloud Engineer Roles & Duties</h3>
+          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
         </a>
-
-        <a href="Data%20Analytics%20By%20quantium.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
-          <div class="flex items-center justify-between text-blue-400"><i class="fa-solid fa-chart-line text-xl"></i><span class="text-[10px] heading-caps">Quantium</span></div>
-          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">Data Analytics by Quantium</h3>
-          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
+        <a href="Data%20Analytics%20By%20quantium.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 zaki-caps">Quantium</span>
+          <h3 class="text-sm font-extrabold zaki-caps">Data Analytics by Quantium</h3>
+          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
         </a>
-
-        <a href="Data%20Analytics%20Consulting%20By%20KPMG.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
-          <div class="flex items-center justify-between text-blue-400"><i class="fa-solid fa-chart-pie text-xl"></i><span class="text-[10px] heading-caps">KPMG</span></div>
-          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">KPMG Data Analytics Consulting</h3>
-          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
+        <a href="Data%20Analytics%20Consulting%20By%20KPMG.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 zaki-caps">KPMG</span>
+          <h3 class="text-sm font-extrabold zaki-caps">KPMG Data Analytics Consulting</h3>
+          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
         </a>
-
-        <a href="C-Exel%20for%20Beginners.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
-          <div class="flex items-center justify-between text-blue-400"><i class="fa-solid fa-file-excel text-xl"></i><span class="text-[10px] heading-caps">Microsoft Excel</span></div>
-          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">Excel for Beginners</h3>
-          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
+        <a href="C-Exel%20for%20Beginners.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 zaki-caps">Analytics</span>
+          <h3 class="text-sm font-extrabold zaki-caps">Excel for Beginners</h3>
+          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
         </a>
-
-        <a href="Communication%20Skills%20By%20TCS.pdf" target="_blank" class="yahya-card p-5 flex flex-col justify-between space-y-4 group">
-          <div class="flex items-center justify-between text-blue-400"><i class="fa-solid fa-comments text-xl"></i><span class="text-[10px] heading-caps">TCS iON</span></div>
-          <h3 class="text-sm font-extrabold text-white group-hover:text-blue-400 transition heading-caps">Communication Skills by TCS</h3>
-          <span class="text-[11px] text-slate-400 heading-caps">Open Certificate PDF →</span>
+        <a href="Communication%20Skills%20By%20TCS.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 zaki-caps">TCS iON</span>
+          <h3 class="text-sm font-extrabold zaki-caps">Communication Skills by TCS</h3>
+          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
         </a>
-
       </div>
     </section>
 
-    <!-- ================= 9. CONTACT & LOCATION DETAILS (From Resume) ================= -->
-    <section id="contact" class="yahya-card p-8 sm:p-12">
+    <!-- ================= 8. CONTACT SECTION ================= -->
+    <section id="contact" class="zaki-card p-8 sm:p-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
         <div class="lg:col-span-7 space-y-4">
-          <span class="text-xs text-blue-400 font-bold tracking-[0.25em] heading-caps">// 06 · Direct Contact</span>
-          <h2 class="text-3xl sm:text-5xl font-black text-white heading-caps">
-            Connect With Patel Mohammad Zaki
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
-            Open for Data Analyst, Business Intelligence, Data Science, and AI Software opportunities across Pune, Mumbai, Bengaluru, and Solapur.
+          <span class="text-xs text-blue-600 font-bold tracking-[0.2em] zaki-caps">// Direct Contact</span>
+          <h2 class="text-3xl sm:text-4xl font-black zaki-caps">Get in Touch with Mohammad Zaki</h2>
+          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--text-secondary);">
+            Available for entry-level Data Analyst, Business Intelligence, Cloud Support, and Software roles across Pune, Mumbai, Solapur, and Bengaluru.
           </p>
-          <div class="flex flex-wrap gap-3 pt-3">
-            <a href="mailto:zakipatel2811@gmail.com" class="px-5 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs tracking-wider heading-caps transition flex items-center gap-2">
-              <i class="fa-solid fa-envelope"></i> zakipatel2811@gmail.com
+          <div class="flex flex-wrap gap-3 pt-2">
+            <a href="mailto:zakipatel2811@gmail.com" class="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs zaki-caps flex items-center gap-2 transition">
+              <i class="fa-regular fa-envelope"></i> zakipatel2811@gmail.com
             </a>
-            <a href="https://wa.me/918468809905" target="_blank" class="px-5 py-3.5 rounded-xl border border-emerald-500/40 bg-emerald-500/15 hover:bg-emerald-600 text-white font-bold text-xs tracking-wider heading-caps transition flex items-center gap-2">
+            <a href="https://wa.me/918468809905" target="_blank" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs zaki-caps flex items-center gap-2 transition">
               <i class="fa-brands fa-whatsapp"></i> +91 8468809905
             </a>
-            <a href="https://linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="px-5 py-3.5 rounded-xl border border-white/15 bg-white/5 hover:border-blue-400 text-white font-bold text-xs tracking-wider heading-caps transition flex items-center gap-2">
-              <i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn
+            <a href="https://linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="zaki-card px-4 py-3 text-xs font-extrabold zaki-caps flex items-center gap-2">
+              <i class="fa-brands fa-linkedin text-blue-600"></i> LinkedIn
             </a>
-            <a href="https://github.com/zakipatel89" target="_blank" class="px-5 py-3.5 rounded-xl border border-white/15 bg-white/5 hover:border-blue-400 text-white font-bold text-xs tracking-wider heading-caps transition flex items-center gap-2">
+            <a href="https://github.com/zakipatel89" target="_blank" class="zaki-card px-4 py-3 text-xs font-extrabold zaki-caps flex items-center gap-2">
               <i class="fa-brands fa-github"></i> GitHub
             </a>
           </div>
         </div>
 
-        <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10">
-            <span class="text-slate-500 text-[10px] heading-caps block">Current Role</span>
-            <strong class="text-emerald-400 mt-1 block heading-caps">Data Analyst Intern @ UnionSys</strong>
+        <div class="lg:col-span-5 space-y-3 text-xs">
+          <div class="p-4 rounded-xl border" style="background-color: var(--bg-subtle); border-color: var(--border-color);">
+            <span class="text-[10px] font-bold zaki-caps block" style="color: var(--text-muted);">Current Status</span>
+            <strong class="text-sm zaki-caps mt-0.5 block">Fresher (B.Tech CSE Final Year) · Data Analyst Intern</strong>
           </div>
-          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10">
-            <span class="text-slate-500 text-[10px] heading-caps block">College</span>
-            <strong class="text-white mt-1 block heading-caps">BMIT, Solapur (B.Tech CSE)</strong>
-          </div>
-          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 sm:col-span-2">
-            <span class="text-slate-500 text-[10px] heading-caps block">Address</span>
-            <strong class="text-white mt-1 block heading-caps">191, Basaveshwar Nagar, Near Zindagi, Majrewadi, Solapur — 413003, Maharashtra</strong>
+          <div class="p-4 rounded-xl border" style="background-color: var(--bg-subtle); border-color: var(--border-color);">
+            <span class="text-[10px] font-bold zaki-caps block" style="color: var(--text-muted);">Residential Address</span>
+            <strong class="text-sm zaki-caps mt-0.5 block">191, Basaveshwar Nagar, Near Zindagi, Majrewadi, Solapur — 413003</strong>
           </div>
         </div>
 
@@ -1173,101 +992,125 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-white/10 py-8 text-center text-xs text-slate-400 heading-caps tracking-widest bg-[#020409]">
-    © 2026 Patel Mohammad Zaki · Data Analytics, Data Science & AI Systems
+  <footer class="border-t py-8 text-center text-xs zaki-caps tracking-widest" style="border-color: var(--border-color); color: var(--text-muted);">
+    © 2026 Patel Mohammad Zaki · Official Portfolio
   </footer>
 
-  <!-- ================= SCRIPTS (Zero Lag, Instant Response) ================= -->
+  <!-- ================= PORTFOLIO SCRIPTS (Author: Patel Mohammad Zaki) ================= -->
   <script>
     // 1. Preloader
-    const loaderBar = document.getElementById('loader-bar');
-    const loaderPct = document.getElementById('loader-pct');
-    const preloader = document.getElementById('preloader');
-    let prog = 0;
-    const loadTimer = setInterval(() => {
-      prog += 20;
-      if (prog > 100) prog = 100;
-      loaderBar.style.width = prog + '%';
-      loaderPct.textContent = prog + '%';
-      if (prog === 100) {
-        clearInterval(loadTimer);
-        setTimeout(() => preloader.classList.add('hidden-loader'), 250);
+    const loaderBar = document.getElementById('zaki-loader-bar');
+    const loaderWrap = document.getElementById('zaki-loader');
+    let loadVal = 0;
+    const loadTick = setInterval(() => {
+      loadVal += 25;
+      if (loadVal > 100) loadVal = 100;
+      loaderBar.style.width = loadVal + '%';
+      if (loadVal === 100) {
+        clearInterval(loadTick);
+        setTimeout(() => loaderWrap.classList.add('done'), 200);
       }
-    }, 55);
+    }, 50);
 
-    // 2. Interactive Calendar & Booking Logic
-    let chosenDate = '';
-    let chosenTime = '11:00 AM';
-    let chosenDuration = '30 Mins';
+    // 2. Dark / Light Theme Switcher
+    const rootEl = document.documentElement;
+    const themeIcon = document.getElementById('theme-icon');
 
-    const calGrid = document.getElementById('calendar-grid');
-    const summaryEl = document.getElementById('selected-summary');
-    const monthsShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const daysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-    function updateSummary() {
-      summaryEl.textContent = `${chosenDate} · ${chosenTime} (${chosenDuration})`;
+    function toggleTheme() {
+      const current = rootEl.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      rootEl.setAttribute('data-theme', next);
+      localStorage.setItem('zaki_theme', next);
+      updateThemeIcon(next);
     }
 
-    const baseDate = new Date();
-    for (let i = 0; i < 14; i++) {
-      const d = new Date(baseDate);
-      d.setDate(baseDate.getDate() + i + 1);
-      const formatted = `${daysShort[d.getDay()]}, ${d.getDate()} ${monthsShort[d.getMonth()]}`;
-      const cell = document.createElement('button');
-      cell.className = `cal-cell flex-col py-2 ${i === 0 ? 'active' : 'text-slate-300'}`;
-      if (i === 0) chosenDate = formatted;
-      cell.innerHTML = `<span class="text-[9px] opacity-70">${monthsShort[d.getMonth()]}</span><strong class="text-sm">${d.getDate()}</strong>`;
-      cell.onclick = () => {
-        document.querySelectorAll('#calendar-grid .cal-cell').forEach(c => c.classList.remove('active'));
-        cell.classList.add('active');
-        chosenDate = formatted;
-        updateSummary();
-      };
-      calGrid.appendChild(cell);
-    }
-    updateSummary();
-
-    function setMeetDuration(dur, btn) {
-      chosenDuration = dur;
-      document.querySelectorAll('.dur-pill').forEach(b => {
-        b.className = 'dur-pill py-2 rounded-lg text-xs font-bold bg-white/5 text-slate-300 hover:text-white heading-caps';
-      });
-      btn.className = 'dur-pill py-2 rounded-lg text-xs font-bold bg-blue-600 text-white heading-caps';
-      updateSummary();
-    }
-
-    function setMeetTime(time, btn) {
-      chosenTime = time;
-      document.querySelectorAll('.time-pill').forEach(b => {
-        b.className = 'time-pill py-2.5 px-3 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:border-blue-400 text-xs font-bold heading-caps';
-      });
-      btn.className = 'time-pill py-2.5 px-3 rounded-xl border border-blue-500 bg-blue-500/20 text-white text-xs font-bold heading-caps';
-      updateSummary();
-    }
-
-    function bookAppointment(mode) {
-      const text = `Hello Patel Mohammad Zaki, I would like to book a ${chosenDuration} 1-on-1 discussion with you on ${chosenDate} at ${chosenTime} IST.`;
-      if (mode === 'whatsapp') {
-        window.open(`https://wa.me/918468809905?text=${encodeURIComponent(text)}`, '_blank');
+    function updateThemeIcon(theme) {
+      if (theme === 'dark') {
+        themeIcon.className = 'fa-solid fa-sun text-amber-400';
       } else {
-        window.location.href = `mailto:zakipatel2811@gmail.com?subject=1-on-1 Appointment (${chosenDate} at ${chosenTime})&body=${encodeURIComponent(text)}`;
+        themeIcon.className = 'fa-solid fa-moon text-slate-700';
       }
     }
 
-    // 3. Skills Filter
-    function filterSkillCards(category, btn) {
-      document.querySelectorAll('.skill-tab').forEach(t => {
-        t.className = 'skill-tab px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white heading-caps transition';
-      });
-      btn.className = 'skill-tab active px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white heading-caps transition';
+    const savedTheme = localStorage.getItem('zaki_theme') || 'light';
+    rootEl.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
 
-      document.querySelectorAll('.skill-item').forEach(item => {
-        if (category === 'all' || item.getAttribute('data-cat') === category) {
-          item.style.display = 'flex';
+    // 3. Appointment Scheduler
+    let pickedDate = '';
+    let pickedTime = '11:00 AM';
+    let pickedDuration = '30 Mins';
+
+    const calContainer = document.getElementById('zaki-calendar-days');
+    const slotSummary = document.getElementById('zaki-slot-summary');
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    function refreshSlotText() {
+      slotSummary.textContent = `${pickedDate} · ${pickedTime} (${pickedDuration})`;
+    }
+
+    const now = new Date();
+    for (let i = 0; i < 14; i++) {
+      const d = new Date(now);
+      d.setDate(now.getDate() + i + 1);
+      const label = `${dayNames[d.getDay()]}, ${d.getDate()} ${monthNames[d.getMonth()]}`;
+      const btn = document.createElement('button');
+      btn.className = `zaki-cal-day py-2 ${i === 0 ? 'active' : ''}`;
+      if (i === 0) pickedDate = label;
+      btn.innerHTML = `<span class="text-[9px] opacity-75">${monthNames[d.getMonth()]}</span><strong class="text-xs sm:text-sm">${d.getDate()}</strong>`;
+      btn.onclick = () => {
+        document.querySelectorAll('#zaki-calendar-days .zaki-cal-day').forEach(el => el.classList.remove('active'));
+        btn.classList.add('active');
+        pickedDate = label;
+        refreshSlotText();
+      };
+      calContainer.appendChild(btn);
+    }
+    refreshSlotText();
+
+    function updateDuration(dur, btn) {
+      pickedDuration = dur;
+      document.querySelectorAll('.zaki-dur-btn').forEach(b => {
+        b.className = 'zaki-dur-btn py-2 rounded-lg text-xs font-bold border zaki-caps';
+        b.style.borderColor = 'var(--border-color)';
+      });
+      btn.className = 'zaki-dur-btn py-2 rounded-lg text-xs font-bold bg-blue-600 text-white zaki-caps';
+      refreshSlotText();
+    }
+
+    function updateTime(t, btn) {
+      pickedTime = t;
+      document.querySelectorAll('.zaki-time-btn').forEach(b => {
+        b.className = 'zaki-time-btn py-2.5 px-3 rounded-xl border text-xs font-bold zaki-caps';
+        b.style.borderColor = 'var(--border-color)';
+      });
+      btn.className = 'zaki-time-btn py-2.5 px-3 rounded-xl border border-blue-600 bg-blue-600 text-white text-xs font-bold zaki-caps';
+      refreshSlotText();
+    }
+
+    function sendBooking(platform) {
+      const msg = `Hello Mohammad Zaki, I would like to schedule a ${pickedDuration} 1-on-1 meeting with you on ${pickedDate} at ${pickedTime} IST.`;
+      if (platform === 'whatsapp') {
+        window.open(`https://wa.me/918468809905?text=${encodeURIComponent(msg)}`, '_blank');
+      } else {
+        window.location.href = `mailto:zakipatel2811@gmail.com?subject=Meeting Request (${pickedDate})&body=${encodeURIComponent(msg)}`;
+      }
+    }
+
+    // 4. Skills Filter
+    function filterSkills(group, btn) {
+      document.querySelectorAll('.zaki-filter-btn').forEach(b => {
+        b.className = 'zaki-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border zaki-caps';
+        b.style.borderColor = 'var(--border-color)';
+      });
+      btn.className = 'zaki-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white zaki-caps';
+
+      document.querySelectorAll('.zaki-skill-box').forEach(card => {
+        if (group === 'all' || card.getAttribute('data-group') === group) {
+          card.style.display = 'flex';
         } else {
-          item.style.display = 'none';
+          card.style.display = 'none';
         }
       });
     }
