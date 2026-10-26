@@ -3,61 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patel Mohammad Zaki — Data Analyst, Data Science & AI Engineer</title>
-  <meta name="description" content="Official Portfolio of Patel Mohammad Zaki — Final-Year B.Tech Computer Science Engineering Student & Data Analyst Intern at UnionSys Technologies.">
+  <title>Patel Mohammad Zaki | Data Systems, Analytics & Cloud Infrastructure</title>
+  <meta name="description" content="Portfolio of Patel Mohammad Zaki (Mohammad Zaki Rafique Ahmed Patel) — Data Analyst Intern at UnionSys Technologies, B.Tech CSE at BMIT Solapur.">
   <meta name="author" content="Patel Mohammad Zaki">
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- Cinzel Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    /* ==========================================================================
-       Author: Patel Mohammad Zaki
-       Portfolio Stylesheet — Light & Dark Adaptive Theme System
-       ========================================================================== */
-
+    /* styles by Mohammad Zaki */
     :root[data-theme="light"] {
-      --bg-main: #f8fafc;
-      --bg-surface: rgba(255, 255, 255, 0.88);
-      --bg-nav: rgba(248, 250, 252, 0.88);
-      --bg-subtle: #f1f5f9;
-      --text-main: #0f172a;
-      --text-secondary: #334155;
-      --text-muted: #64748b;
-      --border-color: #e2e8f0;
-      --border-hover: #2563eb;
-      --grid-line: rgba(37, 99, 235, 0.055);
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --badge-bg: #eff6ff;
-      --badge-border: #bfdbfe;
-      --badge-text: #1d4ed8;
-      --card-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.07);
+      --bg: #f8fafc;
+      --surface: rgba(255, 255, 255, 0.92);
+      --nav: rgba(248, 250, 252, 0.9);
+      --subtle: #f1f5f9;
+      --text: #0f172a;
+      --text-sec: #334155;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --border-hi: #2563eb;
+      --grid: rgba(37, 99, 235, 0.05);
+      --accent: #2563eb;
+      --strip-bg: #eff6ff;
+      --strip-bd: #bfdbfe;
+      --shadow: 0 10px 28px -10px rgba(15, 23, 42, 0.07);
     }
 
     :root[data-theme="dark"] {
-      --bg-main: #030712;
-      --bg-surface: rgba(15, 23, 42, 0.75);
-      --bg-nav: rgba(3, 7, 18, 0.85);
-      --bg-subtle: #0f172a;
-      --text-main: #f8fafc;
-      --text-secondary: #cbd5e1;
-      --text-muted: #94a3b8;
-      --border-color: rgba(148, 163, 184, 0.15);
-      --border-hover: #60a5fa;
-      --grid-line: rgba(59, 130, 246, 0.05);
-      --primary: #2563eb;
-      --primary-hover: #3b82f6;
-      --badge-bg: rgba(37, 99, 235, 0.12);
-      --badge-border: rgba(96, 165, 250, 0.3);
-      --badge-text: #93c5fd;
-      --card-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      --bg: #030712;
+      --surface: rgba(15, 23, 42, 0.78);
+      --nav: rgba(3, 7, 18, 0.88);
+      --subtle: #0f172a;
+      --text: #f8fafc;
+      --text-sec: #cbd5e1;
+      --muted: #94a3b8;
+      --border: rgba(148, 163, 184, 0.15);
+      --border-hi: #60a5fa;
+      --grid: rgba(59, 130, 246, 0.05);
+      --accent: #3b82f6;
+      --strip-bg: rgba(37, 99, 235, 0.12);
+      --strip-bd: rgba(96, 165, 250, 0.3);
+      --shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
     }
 
     * {
@@ -66,183 +55,185 @@
     }
 
     body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
+      background-color: var(--bg);
+      color: var(--text);
       margin: 0;
       overflow-x: hidden;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
-    .zaki-caps {
+    .sc {
       font-variant: small-caps;
       letter-spacing: 0.05em;
     }
 
-    .zaki-justify {
+    .txt-justify {
       text-align: justify;
       line-height: 1.8;
     }
 
-    /* Subtle Blueprint Grid Background */
-    .zaki-grid-bg {
+    .mono-code {
+      font-family: 'Courier New', Courier, monospace !important;
+    }
+
+    .bg-grid-layer {
       position: fixed;
       inset: 0;
       z-index: -1;
       background-image:
-        linear-gradient(var(--grid-line) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-      background-size: 56px 56px;
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 54px 54px;
       pointer-events: none;
     }
 
-    /* Navigation Bar */
-    .zaki-navbar {
-      background-color: var(--bg-nav);
+    .top-nav {
+      background-color: var(--nav);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border-color);
-      transition: all 0.3s ease;
+      border-bottom: 1px solid var(--border);
     }
 
-    /* Surface Cards */
-    .zaki-card {
-      background-color: var(--bg-surface);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border-color);
+    .mz-card {
+      background-color: var(--surface);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
       border-radius: 12px;
-      box-shadow: var(--card-shadow);
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: var(--shadow);
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
     }
 
-    .zaki-card:hover {
-      border-color: var(--border-hover);
+    .mz-card:hover {
+      border-color: var(--border-hi);
       transform: translateY(-3px);
     }
 
-    /* Info Strip Box */
-    .zaki-strip {
-      background-color: var(--badge-bg);
-      border: 1px solid var(--badge-border);
-      color: var(--text-main);
+    .mz-strip {
+      background-color: var(--strip-bg);
+      border: 1px solid var(--strip-bd);
       border-radius: 10px;
     }
 
-    /* Primary Royal Blue CTA Button */
-    .zaki-cta-btn {
+    .mz-btn-blue {
       background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-      color: #ffffff;
+      color: #fff;
       border-radius: 14px;
-      box-shadow: 0 12px 28px -6px rgba(37, 99, 235, 0.45);
-      transition: all 0.25s ease;
+      box-shadow: 0 12px 26px -6px rgba(37, 99, 235, 0.45);
+      transition: all 0.22s ease;
     }
 
-    .zaki-cta-btn:hover {
+    .mz-btn-blue:hover {
       transform: translateY(-2px);
-      box-shadow: 0 16px 34px -6px rgba(37, 99, 235, 0.6);
-      filter: brightness(1.06);
+      box-shadow: 0 16px 32px -6px rgba(37, 99, 235, 0.6);
+      filter: brightness(1.05);
     }
 
-    /* Circular Portrait Frame with Subtle Orbiting Rings */
-    .zaki-avatar-wrap {
+    /* portrait frame positioned higher */
+    .photo-box {
       position: relative;
-      width: 290px;
-      height: 290px;
+      width: 280px;
+      height: 280px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     @media (min-width: 640px) {
-      .zaki-avatar-wrap {
-        width: 330px;
-        height: 330px;
+      .photo-box {
+        width: 320px;
+        height: 320px;
       }
     }
 
-    .zaki-orbit-outer {
+    .ring-1 {
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      border: 1.5px solid var(--border-color);
+      border: 1.5px solid var(--border);
       border-top-color: #2563eb;
-      animation: zakiSpin 14s linear infinite;
+      border-right-color: rgba(37, 99, 235, 0.4);
+      animation: spinCw 14s linear infinite;
     }
 
-    .zaki-orbit-inner {
+    .ring-2 {
       position: absolute;
-      inset: 12px;
+      inset: 11px;
       border-radius: 50%;
       border: 1px dashed rgba(37, 99, 235, 0.35);
-      animation: zakiSpinReverse 20s linear infinite;
+      animation: spinCcw 20s linear infinite;
     }
 
-    @keyframes zakiSpin {
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spinCw { to { transform: rotate(360deg); } }
+    @keyframes spinCcw { to { transform: rotate(-360deg); } }
 
-    @keyframes zakiSpinReverse {
-      to { transform: rotate(-360deg); }
-    }
-
-    /* Pill Links */
-    .zaki-pill {
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      color: var(--text-secondary);
+    .mz-pill {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-sec);
       border-radius: 999px;
-      padding: 7px 15px;
+      padding: 6px 14px;
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 6px;
       transition: all 0.2s ease;
     }
 
-    .zaki-pill:hover {
-      border-color: var(--border-hover);
-      color: var(--primary);
+    .mz-pill:hover {
+      border-color: var(--border-hi);
+      color: var(--accent);
       transform: translateY(-2px);
     }
 
-    /* Calendar Cells */
-    .zaki-cal-day {
+    .day-btn {
       aspect-ratio: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       border-radius: 10px;
-      border: 1px solid var(--border-color);
-      background-color: var(--bg-surface);
+      border: 1px solid var(--border);
+      background-color: var(--surface);
       cursor: pointer;
-      transition: all 0.18s ease;
+      transition: all 0.15s ease;
     }
 
-    .zaki-cal-day:hover {
-      border-color: #2563eb;
-    }
-
-    .zaki-cal-day.active {
+    .day-btn:hover { border-color: #2563eb; }
+    .day-btn.active {
       background-color: #2563eb;
-      color: #ffffff !important;
+      color: #fff !important;
       border-color: #2563eb;
-      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
     }
 
-    /* Preloader */
-    #zaki-loader {
+    #toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      transform: translateY(120%);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    #toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    #page-loader {
       position: fixed;
       inset: 0;
-      background-color: var(--bg-main);
+      background-color: var(--bg);
       z-index: 99999;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.45s ease, visibility 0.45s ease;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
     }
 
-    #zaki-loader.done {
+    #page-loader.hide {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -251,32 +242,35 @@
 </head>
 <body>
 
-  <!-- Opening Loader -->
-  <div id="zaki-loader">
+  <!-- Copy Notification Toast -->
+  <div id="toast-msg" class="mz-card px-4 py-3 border-l-4 border-l-emerald-500 flex items-center gap-3 text-xs font-bold sc">
+    <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+    <span id="toast-text">Email Copied: zakipatel2811@gmail.com</span>
+  </div>
+
+  <!-- Initial Loader -->
+  <div id="page-loader">
     <div class="text-center space-y-4 px-6 max-w-md w-full">
       <div class="w-10 h-10 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
-      <div class="text-xs text-blue-600 font-bold tracking-[0.3em] zaki-caps">LOADING PORTFOLIO</div>
-      <h2 class="text-2xl sm:text-4xl font-black zaki-caps">Patel Mohammad Zaki</h2>
+      <div class="text-xs text-blue-600 font-bold tracking-[0.28em] sc">INITIALIZING WORKSPACE</div>
+      <h2 class="text-2xl sm:text-4xl font-black sc">Patel Mohammad Zaki</h2>
       <div class="w-full h-1 bg-slate-300 dark:bg-slate-800 rounded-full overflow-hidden">
-        <div id="zaki-loader-bar" class="h-full bg-blue-600 w-0 transition-all duration-75"></div>
+        <div id="load-bar" class="h-full bg-blue-600 w-0 transition-all duration-75"></div>
       </div>
     </div>
   </div>
 
-  <!-- Blueprint Grid Background -->
-  <div class="zaki-grid-bg"></div>
+  <div class="bg-grid-layer"></div>
 
-  <!-- ================= TOP NAVIGATION BAR ================= -->
-  <header class="fixed top-0 left-0 right-0 z-50 zaki-navbar">
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 right-0 z-50 top-nav">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
       
-      <!-- Brand Name -->
-      <a href="#profile" class="flex items-center gap-2 font-extrabold text-sm sm:text-base tracking-wider zaki-caps">
+      <a href="#profile" class="flex items-center gap-2 font-extrabold text-sm sm:text-base tracking-wider sc">
         <span class="text-blue-600 font-bold">//</span> Mohammad Zaki
       </a>
 
-      <!-- Center Nav Links -->
-      <nav class="hidden lg:flex items-center gap-1.5 text-xs font-bold zaki-caps">
+      <nav class="hidden lg:flex items-center gap-1.5 text-xs font-bold sc">
         <a href="#profile" class="px-3.5 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800/80">Profile</a>
         <a href="#appointment" class="px-3.5 py-1.5 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">Appointment</a>
         <a href="#about" class="px-3.5 py-1.5 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">About</a>
@@ -286,12 +280,11 @@
         <a href="#certifications" class="px-3.5 py-1.5 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">Credentials</a>
       </nav>
 
-      <!-- Right Theme Toggle & Hire Button -->
       <div class="flex items-center gap-2.5">
-        <button id="theme-toggle" onclick="toggleTheme()" class="w-9 h-9 rounded-lg border border-slate-300 dark:border-slate-700 flex items-center justify-center text-sm hover:border-blue-600 transition" title="Switch Dark / Light Theme">
-          <i id="theme-icon" class="fa-solid fa-moon text-slate-700"></i>
+        <button onclick="switchTheme()" class="w-9 h-9 rounded-lg border border-slate-300 dark:border-slate-700 flex items-center justify-center text-sm hover:border-blue-600 transition" title="Toggle Dark / Light Mode">
+          <i id="theme-ico" class="fa-solid fa-moon text-slate-700"></i>
         </button>
-        <a href="#contact" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold zaki-caps tracking-wider transition shadow-md shadow-blue-600/25">
+        <a href="#contact" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold sc tracking-wider transition shadow-md shadow-blue-600/25">
           Hire Me
         </a>
       </div>
@@ -299,368 +292,421 @@
     </div>
   </header>
 
-  <!-- ================= MAIN CONTAINER ================= -->
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-28 pb-24 space-y-24">
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-24 space-y-24">
 
-    <!-- ================= 1. HERO PROFILE SECTION (Exact Screenshot Layout) ================= -->
-    <section id="profile" class="space-y-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+    <!-- ================= 1. HERO SECTION ================= -->
+    <section id="profile" class="space-y-8">
+      <!-- items-start keeps the photo aligned near the top with your name -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:items-start">
         
         <!-- Left Column -->
         <div class="lg:col-span-8 space-y-5">
           
-          <!-- Available Status Pill -->
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full zaki-strip text-xs font-bold zaki-caps">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full mz-strip text-xs font-bold sc">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             Available for Work · Fresher (2027 Batch)
           </div>
 
-          <!-- Big Stacked Name -->
           <div class="space-y-1">
-            <h1 class="text-5xl sm:text-7xl font-black tracking-tight leading-none zaki-caps">
+            <h1 class="text-5xl sm:text-7xl font-black tracking-tight leading-none sc">
               Patel<br>Mohammad Zaki
             </h1>
           </div>
 
-          <!-- Role Subtitles -->
-          <div class="space-y-1 text-xs sm:text-sm font-semibold" style="color: var(--text-secondary);">
-            <p class="zaki-caps">Data Analyst · Data Science · Cloud & AI Systems</p>
-            <p class="font-bold">Data Analyst Intern @ <span class="text-blue-600 underline">UnionSys Technologies, Pune</span></p>
-            <p class="text-xs" style="color: var(--text-muted);">B.Tech CSE (Final Year) · BMIT, Solapur, Maharashtra</p>
+          <!-- Updated LinkedIn-Matched Headline -->
+          <div class="space-y-1.5 text-xs sm:text-sm font-bold" style="color: var(--text-sec);">
+            <p class="sc text-blue-600 dark:text-blue-400 text-sm sm:text-base">
+              Data Analyst · Data Science · Data Systems · Scalable Pipelines · Cloud & AI Systems
+            </p>
+            <p class="sc text-xs sm:text-sm">
+              Cloud Infrastructure & Architecture  |  Python • SQL • AWS • Power BI
+            </p>
+            <p class="font-bold pt-0.5">
+              Data Analyst Intern @ <a href="#experience" class="text-blue-600 underline">UnionSys Technologies, Pune</a>
+            </p>
+            <p class="text-xs" style="color: var(--muted);">
+              B.Tech CSE (Final Year) · BMIT, Solapur, Maharashtra
+            </p>
           </div>
 
-          <!-- Prominent Royal Blue Book Appointment CTA Box -->
+          <!-- Book Appointment CTA -->
           <div class="pt-1">
-            <a href="#appointment" class="zaki-cta-btn inline-flex items-center justify-between gap-8 px-6 py-4 w-full sm:w-auto min-w-[300px]">
+            <a href="#appointment" class="mz-btn-blue inline-flex items-center justify-between gap-8 px-6 py-4 w-full sm:w-auto min-w-[300px]">
               <div class="flex items-center gap-3.5">
                 <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-white relative">
                   <i class="fa-regular fa-calendar-check text-lg"></i>
                   <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-blue-600 absolute -top-1 -right-1"></span>
                 </div>
                 <div class="text-left">
-                  <span class="text-sm font-extrabold block zaki-caps tracking-wider">Book an Appointment</span>
-                  <span class="text-[11px] text-blue-100 block">1-on-1 Online Meeting / Interview</span>
+                  <span class="text-sm font-extrabold block sc tracking-wider">Book an Appointment</span>
+                  <span class="text-[11px] text-blue-100 block">1-on-1 Online Meeting / Technical Discussion</span>
                 </div>
               </div>
               <i class="fa-solid fa-chevron-right text-xs text-blue-100"></i>
             </a>
           </div>
 
-          <!-- 2x2 Grid Achievement Cards (Clean & Realistic) -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+          <!-- 2x2 Key Highlight Boxes -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
             
-            <div class="zaki-card p-3.5 flex items-start gap-3">
+            <div class="mz-card p-3.5 flex items-start gap-3">
               <i class="fa-solid fa-briefcase text-blue-600 text-xs mt-1 shrink-0"></i>
               <div class="text-xs leading-relaxed">
-                <strong class="zaki-caps">Data Analyst Intern:</strong>
-                <span style="color: var(--text-secondary);"> Supporting IT data analysis & reporting workflows at UnionSys Technologies, Pune</span>
+                <strong class="sc">Data Analyst Intern:</strong>
+                <span style="color: var(--text-sec);"> Supporting IT data analysis, SQL pipelines & reporting workflows at UnionSys Technologies, Pune</span>
               </div>
             </div>
 
-            <div class="zaki-card p-3.5 flex items-start gap-3">
+            <div class="mz-card p-3.5 flex items-start gap-3">
               <i class="fa-solid fa-graduation-cap text-blue-600 text-xs mt-1 shrink-0"></i>
               <div class="text-xs leading-relaxed">
-                <strong class="zaki-caps">75.59% Diploma & 89.20% SSC:</strong>
-                <span style="color: var(--text-secondary);"> First Class with Distinction at GP Solapur & Final-Year B.Tech CSE</span>
+                <strong class="sc">75.59% Diploma & 89.20% SSC:</strong>
+                <span style="color: var(--text-sec);"> First Class with Distinction at GP Solapur & Final-Year B.Tech CSE at BMIT</span>
               </div>
             </div>
 
-            <div class="zaki-card p-3.5 flex items-start gap-3">
+            <div class="mz-card p-3.5 flex items-start gap-3">
               <i class="fa-solid fa-chart-pie text-blue-600 text-xs mt-1 shrink-0"></i>
               <div class="text-xs leading-relaxed">
-                <strong class="zaki-caps">5 Global Case Simulations:</strong>
-                <span style="color: var(--text-secondary);"> Completed Data Science & Power BI simulations with BCG, PwC, Tata, Accenture & BA</span>
+                <strong class="sc">5 Global Case Simulations:</strong>
+                <span style="color: var(--text-sec);"> Completed Data Science & Power BI simulations with BCG, PwC, Tata, Accenture & BA</span>
               </div>
             </div>
 
-            <div class="zaki-card p-3.5 flex items-start gap-3">
+            <div class="mz-card p-3.5 flex items-start gap-3">
               <i class="fa-solid fa-cloud text-blue-600 text-xs mt-1 shrink-0"></i>
               <div class="text-xs leading-relaxed">
-                <strong class="zaki-caps">13+ Verified Certifications:</strong>
-                <span style="color: var(--text-secondary);"> Certified across AWS Cloud (EC2, VPC), KPMG Analytics, Quantium & TCS</span>
+                <strong class="sc">Cloud & Data Architecture:</strong>
+                <span style="color: var(--text-sec);"> Certified across AWS Compute (EC2), AWS VPC Networking, KPMG & Quantium Analytics</span>
               </div>
             </div>
 
           </div>
 
-          <!-- Wide Summary Strip Banners -->
+          <!-- Wide Summary Strips -->
           <div class="space-y-2.5">
-            <div class="zaki-card px-4 py-3 text-xs flex items-center gap-3">
-              <i class="fa-solid fa-chart-line text-blue-600 shrink-0"></i>
-              <span style="color: var(--text-secondary);">
-                As a dedicated Computer Science Engineering fresher, I specialize in transforming raw datasets into actionable KPIs, Power BI dashboards, and AI-assisted software solutions.
+            <div class="mz-card px-4 py-3 text-xs flex items-center gap-3">
+              <i class="fa-solid fa-database text-blue-600 shrink-0"></i>
+              <span style="color: var(--text-sec);">
+                Focused on engineering reliable data systems, scalable SQL & Python pipelines, AWS cloud architectures, and executive Power BI telemetry dashboards.
               </span>
             </div>
 
-            <div class="zaki-strip px-4 py-2.5 text-xs flex items-center gap-3">
-              <strong class="text-blue-600 zaki-caps shrink-0">Fresher Ready for Industry:</strong>
-              <span style="color: var(--text-secondary);">Open to Data Analyst, Business Intelligence, Cloud Support, and Entry-Level Software Engineering roles.</span>
+            <div class="mz-strip px-4 py-2.5 text-xs flex items-center gap-3">
+              <strong class="text-blue-600 sc shrink-0">Fresher Ready for Industry:</strong>
+              <span style="color: var(--text-sec);">Open to Data Analyst, Data Engineer, Cloud Infrastructure, and Software Engineering roles.</span>
             </div>
           </div>
 
-          <!-- Action Buttons Row -->
+          <!-- Action Buttons Row (Added Direct Gmail + Copy Email + Public LinkedIn) -->
           <div class="flex flex-wrap items-center gap-2.5 pt-2">
-            <a href="#contact" class="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold zaki-caps flex items-center gap-2 transition shadow-sm">
-              <i class="fa-regular fa-envelope"></i> Get in Touch
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=zakipatel2811@gmail.com&su=Opportunity%20/%20Discussion%20with%20Mohammad%20Zaki" target="_blank" class="px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold sc flex items-center gap-2 transition shadow-sm">
+              <i class="fa-solid fa-envelope"></i> Gmail Compose
             </a>
-            <a href="https://linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="zaki-card px-4 py-2.5 text-xs font-bold zaki-caps flex items-center gap-2">
+            <button onclick="copyMail()" class="mz-card px-4 py-2.5 text-xs font-bold sc flex items-center gap-2 cursor-pointer" title="Click to copy zakipatel2811@gmail.com">
+              <i class="fa-regular fa-copy text-blue-600"></i> zakipatel2811@gmail.com
+            </button>
+            <a href="https://www.linkedin.com/in/zaki-patel-25767a285" target="_blank" rel="noopener noreferrer" class="mz-card px-4 py-2.5 text-xs font-bold sc flex items-center gap-2">
               <i class="fa-brands fa-linkedin text-blue-600"></i> LinkedIn
             </a>
-            <a href="https://github.com/zakipatel89" target="_blank" class="zaki-card px-4 py-2.5 text-xs font-bold zaki-caps flex items-center gap-2">
+            <a href="https://github.com/zakipatel89" target="_blank" rel="noopener noreferrer" class="mz-card px-4 py-2.5 text-xs font-bold sc flex items-center gap-2">
               <i class="fa-brands fa-github"></i> GitHub
             </a>
-            <a href="resume.pdf" download class="zaki-card px-4 py-2.5 text-xs font-bold zaki-caps flex items-center gap-2">
+            <a href="resume.pdf" download class="mz-card px-4 py-2.5 text-xs font-bold sc flex items-center gap-2">
               <i class="fa-regular fa-file-pdf text-blue-600"></i> Download Resume
-            </a>
-            <a href="#projects" class="zaki-card px-4 py-2.5 text-xs font-bold zaki-caps flex items-center gap-2">
-              <i class="fa-regular fa-folder-open text-blue-600"></i> View Projects
             </a>
           </div>
 
-          <!-- Bottom Quick Project & Credential Pills -->
+          <!-- Quick Pills -->
           <div class="flex flex-wrap gap-2 pt-1">
-            <a href="#projects" class="zaki-pill"><i class="fa-solid fa-code text-blue-600"></i> NextIDE — Capstone Project</a>
-            <a href="#projects" class="zaki-pill"><i class="fa-solid fa-robot text-blue-600"></i> AI Shopping Assistant</a>
-            <a href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf" target="_blank" class="zaki-pill"><i class="fa-solid fa-chart-column text-blue-600"></i> PwC Power BI Case Study</a>
-            <a href="BCG%20Data%20Science.pdf" target="_blank" class="zaki-pill"><i class="fa-solid fa-brain text-blue-600"></i> BCG Data Science Simulation</a>
+            <a href="#pipeline-sim" class="mz-pill"><i class="fa-solid fa-diagram-project text-blue-600"></i> Interactive Pipeline Explorer</a>
+            <a href="#projects" class="mz-pill"><i class="fa-solid fa-code text-blue-600"></i> NextIDE — Capstone Project</a>
+            <a href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf" target="_blank" class="mz-pill"><i class="fa-solid fa-chart-column text-blue-600"></i> PwC Power BI Case Study</a>
+            <a href="BCG%20Data%20Science.pdf" target="_blank" class="mz-pill"><i class="fa-solid fa-brain text-blue-600"></i> BCG Data Science</a>
           </div>
 
         </div>
 
-        <!-- Right Column: Circular Orbiting Profile Picture (Exact Screenshot Style) -->
-        <div class="lg:col-span-4 flex justify-center">
-          <div class="zaki-avatar-wrap">
-            <div class="zaki-orbit-outer"></div>
-            <div class="zaki-orbit-inner"></div>
+        <!-- Right Column: Photo Positioned Higher + Live Telemetry Badge -->
+        <div class="lg:col-span-4 flex flex-col items-center lg:pt-6 space-y-5">
+          <div class="photo-box">
+            <div class="ring-1"></div>
+            <div class="ring-2"></div>
             <div class="w-60 h-60 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl relative z-10 bg-slate-200 dark:bg-slate-900">
               <img src="profile.jpg" alt="Patel Mohammad Zaki" class="w-full h-full object-cover object-top hover:scale-105 transition duration-500">
             </div>
           </div>
+
+          <!-- Mature Status Card Under Photo -->
+          <div class="mz-card p-4 w-full max-w-[300px] text-center space-y-1.5">
+            <div class="flex items-center justify-center gap-1.5">
+              <span class="text-sm font-black sc">Mohammad Zaki Patel</span>
+              <i class="fa-solid fa-circle-check text-blue-600 text-xs" title="Verified Profile"></i>
+            </div>
+            <p class="text-[11px] sc font-bold text-blue-600">Data Systems & Cloud Infrastructure</p>
+            <div class="pt-2 border-t flex items-center justify-between text-[10px] sc" style="border-color: var(--border); color: var(--muted);">
+              <span><i class="fa-solid fa-location-dot text-blue-600 mr-1"></i>Solapur / Pune</span>
+              <span id="live-ist-clock">IST --:--</span>
+            </div>
+          </div>
         </div>
 
       </div>
 
-      <!-- 5 Counter Boxes Row -->
-      <div class="grid grid-cols-2 sm:grid-cols-5 gap-3.5 pt-6">
-        <div class="zaki-card p-4 text-center">
-          <span class="text-2xl sm:text-3xl font-black text-blue-600 zaki-caps block">Fresher</span>
-          <span class="text-[11px] zaki-caps mt-1 block" style="color: var(--text-muted);">B.Tech CSE 2027</span>
+      <!-- 5 Counter Boxes -->
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-3.5 pt-4">
+        <div class="mz-card p-4 text-center">
+          <span class="text-2xl sm:text-3xl font-black text-blue-600 sc block">Fresher</span>
+          <span class="text-[11px] sc mt-1 block" style="color: var(--muted);">B.Tech CSE 2027</span>
         </div>
-        <div class="zaki-card p-4 text-center">
-          <span class="text-2xl sm:text-3xl font-black zaki-caps block">4+</span>
-          <span class="text-[11px] zaki-caps mt-1 block" style="color: var(--text-muted);">Academic Projects</span>
+        <div class="mz-card p-4 text-center">
+          <span class="text-2xl sm:text-3xl font-black sc block">4+</span>
+          <span class="text-[11px] sc mt-1 block" style="color: var(--muted);">Core Systems Built</span>
         </div>
-        <div class="zaki-card p-4 text-center">
-          <span class="text-2xl sm:text-3xl font-black zaki-caps block">5+</span>
-          <span class="text-[11px] zaki-caps mt-1 block" style="color: var(--text-muted);">Global Case Studies</span>
+        <div class="mz-card p-4 text-center">
+          <span class="text-2xl sm:text-3xl font-black sc block">5+</span>
+          <span class="text-[11px] sc mt-1 block" style="color: var(--muted);">Global Simulations</span>
         </div>
-        <div class="zaki-card p-4 text-center">
-          <span class="text-2xl sm:text-3xl font-black text-blue-600 zaki-caps block">75.59%</span>
-          <span class="text-[11px] zaki-caps mt-1 block" style="color: var(--text-muted);">Diploma Distinction</span>
+        <div class="mz-card p-4 text-center">
+          <span class="text-2xl sm:text-3xl font-black text-blue-600 sc block">75.59%</span>
+          <span class="text-[11px] sc mt-1 block" style="color: var(--muted);">Diploma Distinction</span>
         </div>
-        <div class="zaki-card p-4 text-center col-span-2 sm:col-span-1">
-          <span class="text-2xl sm:text-3xl font-black zaki-caps block">89.20%</span>
-          <span class="text-[11px] zaki-caps mt-1 block" style="color: var(--text-muted);">SSC Board Score</span>
+        <div class="mz-card p-4 text-center col-span-2 sm:col-span-1">
+          <span class="text-2xl sm:text-3xl font-black sc block">89.20%</span>
+          <span class="text-[11px] sc mt-1 block" style="color: var(--muted);">SSC Board Score</span>
         </div>
       </div>
     </section>
 
-    <!-- ================= 2. FEATURED PROJECTS SECTION ================= -->
-    <section id="projects" class="space-y-8">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b pb-4" style="border-color: var(--border-color);">
+    <!-- ================= 2. INNOVATIVE INTERACTIVE PIPELINE & CLOUD SIMULATOR ================= -->
+    <section id="pipeline-sim" class="mz-card p-6 sm:p-8 space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b pb-4" style="border-color: var(--border);">
         <div>
-          <span class="text-xs text-blue-600 font-bold tracking-[0.2em] zaki-caps">// Selected Engineering Work</span>
-          <h2 class="text-3xl sm:text-4xl font-black zaki-caps mt-1">Featured Projects</h2>
+          <span class="text-xs text-blue-600 font-bold tracking-[0.2em] sc">// Interactive Architecture Blueprint</span>
+          <h2 class="text-2xl sm:text-3xl font-black sc mt-1">Data Pipelines & Cloud System Workflows</h2>
         </div>
-        <a href="https://github.com/zakipatel89" target="_blank" class="text-xs font-bold text-blue-600 hover:underline zaki-caps">
+        <div class="flex flex-wrap gap-2">
+          <button onclick="switchBlueprint('etl', this)" class="bp-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white sc">1. Data & BI Pipeline</button>
+          <button onclick="switchBlueprint('aws', this)" class="bp-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border sc" style="border-color: var(--border);">2. AWS VPC Cloud</button>
+          <button onclick="switchBlueprint('ai', this)" class="bp-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border sc" style="border-color: var(--border);">3. NextIDE AI Engine</button>
+        </div>
+      </div>
+
+      <!-- Dynamic Pipeline Display -->
+      <div id="bp-display" class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+        <div class="p-4 rounded-xl border" style="background-color: var(--subtle); border-color: var(--border);">
+          <span class="text-[10px] font-bold text-blue-600 sc">Stage 01 · Ingestion</span>
+          <h4 class="text-sm font-black sc mt-1" id="bp-t1">Raw SQL & CSV Sources</h4>
+          <p class="text-xs mt-1" style="color: var(--text-sec);" id="bp-d1">Extracting operational records from relational MySQL databases and multi-sheet Excel logs.</p>
+        </div>
+        <div class="p-4 rounded-xl border" style="background-color: var(--subtle); border-color: var(--border);">
+          <span class="text-[10px] font-bold text-blue-600 sc">Stage 02 · Processing</span>
+          <h4 class="text-sm font-black sc mt-1" id="bp-t2">Python & Pandas ETL</h4>
+          <p class="text-xs mt-1" style="color: var(--text-sec);" id="bp-d2">Data hygiene, null handling, schema normalization, and feature engineering using Python & NumPy.</p>
+        </div>
+        <div class="p-4 rounded-xl border" style="background-color: var(--subtle); border-color: var(--border);">
+          <span class="text-[10px] font-bold text-blue-600 sc">Stage 03 · Modeling</span>
+          <h4 class="text-sm font-black sc mt-1" id="bp-t3">DAX & Predictive Logic</h4>
+          <p class="text-xs mt-1" style="color: var(--text-sec);" id="bp-d3">Building KPI measures, customer churn Random Forest models, and statistical aggregations.</p>
+        </div>
+        <div class="p-4 rounded-xl border" style="background-color: var(--subtle); border-color: var(--border);">
+          <span class="text-[10px] font-bold text-emerald-600 sc">Stage 04 · Delivery</span>
+          <h4 class="text-sm font-black sc mt-1" id="bp-t4">Power BI Executive Telemetry</h4>
+          <p class="text-xs mt-1" style="color: var(--text-sec);" id="bp-d4">Interactive visual dashboards delivering real-time retention and revenue insights to stakeholders.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. FEATURED PROJECTS SECTION ================= -->
+    <section id="projects" class="space-y-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b pb-4" style="border-color: var(--border);">
+        <div>
+          <span class="text-xs text-blue-600 font-bold tracking-[0.2em] sc">// Selected Engineering Work</span>
+          <h2 class="text-3xl sm:text-4xl font-black sc mt-1">Featured Projects</h2>
+        </div>
+        <a href="https://github.com/zakipatel89" target="_blank" class="text-xs font-bold text-blue-600 hover:underline sc">
           GitHub Repositories (@zakipatel89) →
         </a>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         
-        <!-- Project 1: NextIDE -->
-        <div class="zaki-card p-6 flex flex-col justify-between space-y-5">
+        <div class="mz-card p-6 flex flex-col justify-between space-y-5">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full zaki-strip text-[11px] font-bold text-blue-600 zaki-caps">
+              <span class="px-3 py-1 rounded-full mz-strip text-[11px] font-bold text-blue-600 sc">
                 ⚡ B.Tech Capstone Project
               </span>
-              <span class="text-xs font-bold zaki-caps" style="color: var(--text-muted);">Gemini AI · Cloud IDE</span>
+              <span class="text-xs font-bold sc" style="color: var(--muted);">Gemini AI · Cloud IDE</span>
             </div>
-            <h3 class="text-xl font-extrabold zaki-caps">
+            <h3 class="text-xl font-extrabold sc">
               NextIDE — Algorithm-to-Code Platform
             </h3>
-            <p class="text-xs sm:text-sm zaki-justify" style="color: var(--text-secondary);">
-              A web-based coding platform designed for computer science students to translate plain-English algorithm steps into clean, executable code in C++, Java, Python, and JavaScript using Google Gemini AI. Includes a 3-panel coding workspace, custom I/O test sandbox, and MongoDB Atlas session history.
+            <p class="text-xs sm:text-sm txt-justify" style="color: var(--text-sec);">
+              A cloud-based coding platform designed for computer science students to translate plain-English algorithm steps into clean, executable code in C++, Java, Python, and JavaScript using Google Gemini AI. Includes a 3-panel coding workspace, custom I/O test sandbox, and MongoDB Atlas session history.
             </p>
             <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="zaki-pill">Next.js</span>
-              <span class="zaki-pill">Node.js & Express</span>
-              <span class="zaki-pill">Google Gemini API</span>
-              <span class="zaki-pill">MongoDB Atlas</span>
+              <span class="mz-pill">Next.js</span>
+              <span class="mz-pill">Node.js & Express</span>
+              <span class="mz-pill">Google Gemini API</span>
+              <span class="mz-pill">MongoDB Atlas</span>
             </div>
           </div>
-          <div class="pt-3 border-t flex items-center justify-between text-xs font-bold zaki-caps" style="border-color: var(--border-color);">
+          <div class="pt-3 border-t flex items-center justify-between text-xs font-bold sc" style="border-color: var(--border);">
             <a href="https://github.com/zakipatel89" target="_blank" class="text-blue-600 hover:underline">Explore Project →</a>
-            <span style="color: var(--text-muted);">BMIT Solapur</span>
+            <span style="color: var(--muted);">BMIT Solapur</span>
           </div>
         </div>
 
-        <!-- Project 2: AI Shopping Assistant -->
-        <div class="zaki-card p-6 flex flex-col justify-between space-y-5">
+        <div class="mz-card p-6 flex flex-col justify-between space-y-5">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full zaki-strip text-[11px] font-bold text-blue-600 zaki-caps">
-                🤖 Conversational AI
+              <span class="px-3 py-1 rounded-full mz-strip text-[11px] font-bold text-blue-600 sc">
+                🤖 Conversational Data System
               </span>
-              <span class="text-xs font-bold zaki-caps" style="color: var(--text-muted);">Python · NLP · SQL</span>
+              <span class="text-xs font-bold sc" style="color: var(--muted);">Python · NLP · SQL</span>
             </div>
-            <h3 class="text-xl font-extrabold zaki-caps">
+            <h3 class="text-xl font-extrabold sc">
               AI-Based Shopping Assistant
             </h3>
-            <p class="text-xs sm:text-sm zaki-justify" style="color: var(--text-secondary);">
-              An intelligent e-commerce assistant that uses Natural Language Processing to interpret customer requirements (budget, brand, specifications) and queries relational product databases to generate real-time recommendations.
+            <p class="text-xs sm:text-sm txt-justify" style="color: var(--text-sec);">
+              An intelligent e-commerce assistant that uses Natural Language Processing to interpret customer requirements (budget, brand, specifications) and queries relational SQL product databases to generate real-time recommendations.
             </p>
             <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="zaki-pill">Python</span>
-              <span class="zaki-pill">Flask</span>
-              <span class="zaki-pill">MySQL</span>
-              <span class="zaki-pill">NLP</span>
+              <span class="mz-pill">Python</span>
+              <span class="mz-pill">Flask</span>
+              <span class="mz-pill">MySQL</span>
+              <span class="mz-pill">NLP</span>
             </div>
           </div>
-          <div class="pt-3 border-t flex items-center justify-between text-xs font-bold zaki-caps" style="border-color: var(--border-color);">
+          <div class="pt-3 border-t flex items-center justify-between text-xs font-bold sc" style="border-color: var(--border);">
             <a href="https://github.com/zakipatel89" target="_blank" class="text-blue-600 hover:underline">Explore Project →</a>
-            <span style="color: var(--text-muted);">AI & Data</span>
+            <span style="color: var(--muted);">Data & AI</span>
           </div>
         </div>
 
-        <!-- Project 3: Power BI & Data Analytics Dashboard -->
-        <div class="zaki-card p-6 flex flex-col justify-between space-y-5">
+        <div class="mz-card p-6 flex flex-col justify-between space-y-5">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full zaki-strip text-[11px] font-bold text-blue-600 zaki-caps">
-                📊 Data Analytics & BI
+              <span class="px-3 py-1 rounded-full mz-strip text-[11px] font-bold text-blue-600 sc">
+                📊 Data Systems & BI
               </span>
-              <span class="text-xs font-bold zaki-caps" style="color: var(--text-muted);">Power BI · Excel · SQL</span>
+              <span class="text-xs font-bold sc" style="color: var(--muted);">Power BI · Excel · SQL</span>
             </div>
-            <h3 class="text-xl font-extrabold zaki-caps">
-              Executive Power BI & KPI Dashboards
+            <h3 class="text-xl font-extrabold sc">
+              Enterprise Power BI & KPI Dashboards
             </h3>
-            <p class="text-xs sm:text-sm zaki-justify" style="color: var(--text-secondary);">
-              Interactive business intelligence workflow focused on cleaning raw datasets, modeling relational tables, and visualizing key performance indicators (KPIs), workforce diversity, and customer churn trends.
+            <p class="text-xs sm:text-sm txt-justify" style="color: var(--text-sec);">
+              End-to-end business intelligence workflow focused on cleaning raw datasets, modeling relational tables, and visualizing key performance indicators (KPIs), workforce diversity, and customer churn trends.
             </p>
             <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="zaki-pill">Power BI</span>
-              <span class="zaki-pill">SQL</span>
-              <span class="zaki-pill">Microsoft Excel</span>
-              <span class="zaki-pill">Data Cleaning</span>
+              <span class="mz-pill">Power BI</span>
+              <span class="mz-pill">SQL</span>
+              <span class="mz-pill">Microsoft Excel</span>
+              <span class="mz-pill">Data Pipelines</span>
             </div>
           </div>
-          <div class="pt-3 border-t flex items-center justify-between text-xs font-bold zaki-caps" style="border-color: var(--border-color);">
+          <div class="pt-3 border-t flex items-center justify-between text-xs font-bold sc" style="border-color: var(--border);">
             <a href="#experience" class="text-blue-600 hover:underline">View Case Studies →</a>
-            <span style="color: var(--text-muted);">Analytics</span>
+            <span style="color: var(--muted);">Analytics</span>
           </div>
         </div>
 
-        <!-- Project 4: Retail Mobile Shop AI Assistant -->
-        <div class="zaki-card p-6 flex flex-col justify-between space-y-5">
+        <div class="mz-card p-6 flex flex-col justify-between space-y-5">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full zaki-strip text-[11px] font-bold text-blue-600 zaki-caps">
-                📱 Retail Automation
+              <span class="px-3 py-1 rounded-full mz-strip text-[11px] font-bold text-blue-600 sc">
+                📱 Retail Data Automation
               </span>
-              <span class="text-xs font-bold zaki-caps" style="color: var(--text-muted);">Python · Pandas</span>
+              <span class="text-xs font-bold sc" style="color: var(--muted);">Python · Pandas</span>
             </div>
-            <h3 class="text-xl font-extrabold zaki-caps">
+            <h3 class="text-xl font-extrabold sc">
               Zaid Mobile Shop — Retail AI Assistant
             </h3>
-            <p class="text-xs sm:text-sm zaki-justify" style="color: var(--text-secondary);">
-              Customer-oriented retail chatbot concept covering new and pre-owned phones, accessories, repair inquiries, and automated inventory lookup.
+            <p class="text-xs sm:text-sm txt-justify" style="color: var(--text-sec);">
+              Customer-oriented retail assistant covering new and pre-owned phones, accessories, repair inquiries, and automated Pandas inventory lookup.
             </p>
             <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="zaki-pill">Python</span>
-              <span class="zaki-pill">Pandas</span>
-              <span class="zaki-pill">Flask</span>
-              <span class="zaki-pill">AI API</span>
+              <span class="mz-pill">Python</span>
+              <span class="mz-pill">Pandas</span>
+              <span class="mz-pill">Flask</span>
+              <span class="mz-pill">AI API</span>
             </div>
           </div>
-          <div class="pt-3 border-t flex items-center justify-between text-xs font-bold zaki-caps" style="border-color: var(--border-color);">
+          <div class="pt-3 border-t flex items-center justify-between text-xs font-bold sc" style="border-color: var(--border);">
             <a href="https://github.com/zakipatel89" target="_blank" class="text-blue-600 hover:underline">Explore Project →</a>
-            <span style="color: var(--text-muted);">Retail AI</span>
+            <span style="color: var(--muted);">Retail AI</span>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ================= 3. BOOK AN APPOINTMENT SECTION ================= -->
-    <section id="appointment" class="zaki-card p-6 sm:p-10 space-y-8">
-      <div class="border-b pb-4" style="border-color: var(--border-color);">
-        <span class="text-xs text-blue-600 font-bold tracking-[0.2em] zaki-caps">// Direct Scheduling</span>
-        <h2 class="text-2xl sm:text-4xl font-black zaki-caps mt-1">
+    <!-- ================= 4. BOOK AN APPOINTMENT SECTION ================= -->
+    <section id="appointment" class="mz-card p-6 sm:p-10 space-y-8">
+      <div class="border-b pb-4" style="border-color: var(--border);">
+        <span class="text-xs text-blue-600 font-bold tracking-[0.2em] sc">// Direct Scheduling</span>
+        <h2 class="text-2xl sm:text-4xl font-black sc mt-1">
           Book an Appointment with Patel Mohammad Zaki
         </h2>
-        <p class="text-xs sm:text-sm mt-1" style="color: var(--text-muted);">
+        <p class="text-xs sm:text-sm mt-1" style="color: var(--muted);">
           Select a date and convenient time slot for interviews, internship discussions, or technical collaborations.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        <!-- Left Host Details -->
-        <div class="lg:col-span-5 space-y-4 p-5 rounded-xl border" style="background-color: var(--bg-subtle); border-color: var(--border-color);">
+        <div class="lg:col-span-5 space-y-4 p-5 rounded-xl border" style="background-color: var(--subtle); border-color: var(--border);">
           <div class="flex items-center gap-3.5">
             <img src="profile.jpg" alt="Patel Mohammad Zaki" class="w-14 h-14 rounded-full object-cover object-top border-2 border-blue-600">
             <div>
               <div class="flex items-center gap-1.5">
-                <h3 class="text-base font-extrabold zaki-caps">Patel Mohammad Zaki</h3>
+                <h3 class="text-base font-extrabold sc">Patel Mohammad Zaki</h3>
                 <i class="fa-solid fa-circle-check text-blue-600 text-xs"></i>
               </div>
-              <p class="text-xs" style="color: var(--text-muted);">B.Tech CSE Fresher · Data Analyst Intern</p>
+              <p class="text-xs" style="color: var(--muted);">Data Systems · Cloud · B.Tech CSE</p>
             </div>
           </div>
 
-          <div class="space-y-2.5 pt-3 border-t text-xs" style="border-color: var(--border-color); color: var(--text-secondary);">
+          <div class="space-y-2.5 pt-3 border-t text-xs" style="border-color: var(--border); color: var(--text-sec);">
             <div class="flex items-center gap-2.5"><i class="fa-solid fa-video text-blue-600 w-4"></i> Google Meet / Phone Call</div>
             <div class="flex items-center gap-2.5"><i class="fa-solid fa-clock text-blue-600 w-4"></i> Timezone: IST (GMT+5:30)</div>
-            <div class="flex items-center gap-2.5"><i class="fa-solid fa-calendar-check text-blue-600 w-4"></i> Slot: <strong id="zaki-slot-summary">Tomorrow · 11:00 AM (30 Mins)</strong></div>
+            <div class="flex items-center gap-2.5"><i class="fa-solid fa-calendar-check text-blue-600 w-4"></i> Slot: <strong id="slot-summary">Tomorrow · 11:00 AM (30 Mins)</strong></div>
           </div>
 
-          <div class="space-y-2 pt-3 border-t" style="border-color: var(--border-color);">
-            <span class="text-[11px] font-bold zaki-caps block" style="color: var(--text-muted);">Meeting Duration:</span>
+          <div class="space-y-2 pt-3 border-t" style="border-color: var(--border);">
+            <span class="text-[11px] font-bold sc block" style="color: var(--muted);">Meeting Duration:</span>
             <div class="grid grid-cols-3 gap-2">
-              <button onclick="updateDuration('30 Mins', this)" class="zaki-dur-btn py-2 rounded-lg text-xs font-bold bg-blue-600 text-white zaki-caps">30 Mins</button>
-              <button onclick="updateDuration('1 Hour', this)" class="zaki-dur-btn py-2 rounded-lg text-xs font-bold border zaki-caps" style="border-color: var(--border-color);">1 Hour</button>
-              <button onclick="updateDuration('Flexible', this)" class="zaki-dur-btn py-2 rounded-lg text-xs font-bold border zaki-caps" style="border-color: var(--border-color);">Flexible</button>
+              <button onclick="setDur('30 Mins', this)" class="dur-btn py-2 rounded-lg text-xs font-bold bg-blue-600 text-white sc">30 Mins</button>
+              <button onclick="setDur('1 Hour', this)" class="dur-btn py-2 rounded-lg text-xs font-bold border sc" style="border-color: var(--border);">1 Hour</button>
+              <button onclick="setDur('Flexible', this)" class="dur-btn py-2 rounded-lg text-xs font-bold border sc" style="border-color: var(--border);">Flexible</button>
             </div>
           </div>
         </div>
 
-        <!-- Right Interactive Date & Time Picker -->
         <div class="lg:col-span-7 space-y-5">
-          <div class="grid grid-cols-7 gap-2 text-center text-[11px] font-bold zaki-caps" style="color: var(--text-muted);">
+          <div class="grid grid-cols-7 gap-2 text-center text-[11px] font-bold sc" style="color: var(--muted);">
             <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
           </div>
 
-          <div id="zaki-calendar-days" class="grid grid-cols-7 gap-2"></div>
+          <div id="cal-days" class="grid grid-cols-7 gap-2"></div>
 
           <div class="space-y-2">
-            <span class="text-xs font-bold zaki-caps block" style="color: var(--text-muted);">Preferred Time (IST):</span>
+            <span class="text-xs font-bold sc block" style="color: var(--muted);">Preferred Time (IST):</span>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              <button onclick="updateTime('11:00 AM', this)" class="zaki-time-btn py-2.5 px-3 rounded-xl border border-blue-600 bg-blue-600 text-white text-xs font-bold zaki-caps">11:00 AM</button>
-              <button onclick="updateTime('02:30 PM', this)" class="zaki-time-btn py-2.5 px-3 rounded-xl border text-xs font-bold zaki-caps" style="border-color: var(--border-color);">02:30 PM</button>
-              <button onclick="updateTime('05:30 PM', this)" class="zaki-time-btn py-2.5 px-3 rounded-xl border text-xs font-bold zaki-caps" style="border-color: var(--border-color);">05:30 PM</button>
-              <button onclick="updateTime('08:00 PM', this)" class="zaki-time-btn py-2.5 px-3 rounded-xl border text-xs font-bold zaki-caps" style="border-color: var(--border-color);">08:00 PM</button>
+              <button onclick="setTime('11:00 AM', this)" class="time-btn py-2.5 px-3 rounded-xl border border-blue-600 bg-blue-600 text-white text-xs font-bold sc">11:00 AM</button>
+              <button onclick="setTime('02:30 PM', this)" class="time-btn py-2.5 px-3 rounded-xl border text-xs font-bold sc" style="border-color: var(--border);">02:30 PM</button>
+              <button onclick="setTime('05:30 PM', this)" class="time-btn py-2.5 px-3 rounded-xl border text-xs font-bold sc" style="border-color: var(--border);">05:30 PM</button>
+              <button onclick="setTime('08:00 PM', this)" class="time-btn py-2.5 px-3 rounded-xl border text-xs font-bold sc" style="border-color: var(--border);">08:00 PM</button>
             </div>
           </div>
 
           <div class="flex flex-wrap gap-3 pt-2">
-            <button onclick="sendBooking('whatsapp')" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs zaki-caps tracking-wider transition flex items-center gap-2 shadow-md">
+            <button onclick="bookSlot('whatsapp')" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sc tracking-wider transition flex items-center gap-2 shadow-md">
               <i class="fa-brands fa-whatsapp text-sm"></i> Confirm via WhatsApp
             </button>
-            <button onclick="sendBooking('email')" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs zaki-caps tracking-wider transition flex items-center gap-2 shadow-md">
-              <i class="fa-regular fa-envelope"></i> Confirm via Email
+            <button onclick="bookSlot('gmail')" class="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sc tracking-wider transition flex items-center gap-2 shadow-md">
+              <i class="fa-solid fa-envelope"></i> Confirm via Gmail
             </button>
           </div>
         </div>
@@ -668,39 +714,37 @@
       </div>
     </section>
 
-    <!-- ================= 4. ABOUT ME & EDUCATION TIMELINE ================= -->
+    <!-- ================= 5. ABOUT ME & EDUCATION TIMELINE ================= -->
     <section id="about" class="space-y-8">
-      <div class="border-b pb-4" style="border-color: var(--border-color);">
-        <span class="text-xs text-blue-600 font-bold tracking-[0.2em] zaki-caps">// Profile & Background</span>
-        <h2 class="text-3xl sm:text-4xl font-black zaki-caps mt-1">About Patel Mohammad Zaki</h2>
+      <div class="border-b pb-4" style="border-color: var(--border);">
+        <span class="text-xs text-blue-600 font-bold tracking-[0.2em] sc">// Profile & Background</span>
+        <h2 class="text-3xl sm:text-4xl font-black sc mt-1">About Patel Mohammad Zaki</h2>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <!-- Left Bio -->
-        <div class="lg:col-span-7 zaki-card p-6 sm:p-8 space-y-4">
-          <h3 class="text-lg font-extrabold zaki-caps border-b pb-3" style="border-color: var(--border-color);">
-            Who I Am (Fresher Profile)
+        <div class="lg:col-span-7 mz-card p-6 sm:p-8 space-y-4">
+          <h3 class="text-lg font-extrabold sc border-b pb-3" style="border-color: var(--border);">
+            Professional Summary (Fresher · 2027 Batch)
           </h3>
-          <div class="space-y-4 text-xs sm:text-sm zaki-justify" style="color: var(--text-secondary);">
+          <div class="space-y-4 text-xs sm:text-sm txt-justify" style="color: var(--text-sec);">
             <p>
-              I am <strong>Patel Mohammad Zaki</strong> — a detail-oriented and responsible final-year <strong>B.Tech Computer Science and Engineering student (Fresher, 2027 Batch)</strong> at <strong>Brahmdevdada Mane Institute of Technology (BMIT), Solapur</strong>.
+              I am <strong>Patel Mohammad Zaki (Mohammad Zaki Rafique Ahmed Patel)</strong> — a detail-oriented and responsible final-year <strong>B.Tech Computer Science and Engineering student</strong> at <strong>Brahmdevdada Mane Institute of Technology (BMIT), Solapur</strong>.
             </p>
             <p>
-              Currently, I am working as a <strong>Data Analyst Intern in the IT Department at UnionSys Technologies, Pune</strong> (July 2026 – Present), supporting data analysis, data organization, and reporting activities under the guidance of an Oracle Apps Developer.
+              Currently, I work as a <strong>Data Analyst Intern in the IT Department at UnionSys Technologies, Pune</strong> (July 2026 – Present), supporting data analysis, data organization, and reporting activities while gaining hands-on exposure to enterprise IT workflows under the guidance of an Oracle Apps Developer.
             </p>
             <p>
-              Before entering my engineering degree, I completed my <strong>Diploma in Electronics and Telecommunication Engineering from Government Polytechnic, Solapur with 75.59% (Distinction)</strong>, building on an <strong>89.20% score in 10th SSC Board</strong>.
+              Prior to my B.Tech degree, I completed my <strong>Diploma in Electronics and Telecommunication Engineering from Government Polytechnic, Solapur with 75.59% (Distinction)</strong>, building upon an <strong>89.20% score in my 10th SSC Board examinations</strong>.
             </p>
             <p>
-              I am passionate about applying my skills in Data Analytics, Power BI, SQL, Python, and AWS Cloud fundamentals to solve real-world business problems and contribute effectively in professional corporate environments.
+              My core technical focus spans <strong>Data Systems, Scalable Pipelines, Cloud Infrastructure (AWS), SQL, Python, and Power BI</strong>—transforming raw data into structured intelligence and reliable cloud-ready software.
             </p>
           </div>
         </div>
 
-        <!-- Right Education & Internship Timeline -->
-        <div class="lg:col-span-5 zaki-card p-6 sm:p-8 space-y-5">
-          <h3 class="text-lg font-extrabold zaki-caps border-b pb-3" style="border-color: var(--border-color);">
+        <div class="lg:col-span-5 mz-card p-6 sm:p-8 space-y-5">
+          <h3 class="text-lg font-extrabold sc border-b pb-3" style="border-color: var(--border);">
             Education & Timeline
           </h3>
 
@@ -708,30 +752,30 @@
             
             <div class="pl-7 relative">
               <span class="w-3 h-3 rounded-full bg-emerald-500 absolute left-[3px] top-1"></span>
-              <span class="text-[11px] font-bold text-emerald-600 zaki-caps">July 2026 — Present</span>
-              <h4 class="text-sm font-extrabold zaki-caps mt-0.5">Data Analyst Intern — UnionSys Technologies</h4>
-              <p class="text-xs mt-1" style="color: var(--text-muted);">IT Department, Pune · Data analysis, organization & reporting workflows.</p>
+              <span class="text-[11px] font-bold text-emerald-600 sc">July 2026 — Present</span>
+              <h4 class="text-sm font-extrabold sc mt-0.5">Data Analyst Intern — UnionSys Technologies</h4>
+              <p class="text-xs mt-1" style="color: var(--muted);">IT Department, Pune · Data analysis, organization & reporting workflows.</p>
             </div>
 
             <div class="pl-7 relative">
               <span class="w-3 h-3 rounded-full bg-blue-600 absolute left-[3px] top-1"></span>
-              <span class="text-[11px] font-bold text-blue-600 zaki-caps">2024 — 2027 (Final Year)</span>
-              <h4 class="text-sm font-extrabold zaki-caps mt-0.5">B.Tech Computer Science Engineering</h4>
-              <p class="text-xs mt-1" style="color: var(--text-muted);">Brahmdevdada Mane Institute of Technology (BMIT), Solapur.</p>
+              <span class="text-[11px] font-bold text-blue-600 sc">2024 — 2027 (Final Year)</span>
+              <h4 class="text-sm font-extrabold sc mt-0.5">B.Tech Computer Science Engineering</h4>
+              <p class="text-xs mt-1" style="color: var(--muted);">Brahmdevdada Mane Institute of Technology (BMIT), Solapur.</p>
             </div>
 
             <div class="pl-7 relative">
               <span class="w-3 h-3 rounded-full bg-blue-600/60 absolute left-[3px] top-1"></span>
-              <span class="text-[11px] font-bold text-blue-600 zaki-caps">2021 — 2024</span>
-              <h4 class="text-sm font-extrabold zaki-caps mt-0.5">Diploma in E&TC Engineering — 75.59%</h4>
-              <p class="text-xs mt-1" style="color: var(--text-muted);">Government Polytechnic, Solapur · First Class with Distinction.</p>
+              <span class="text-[11px] font-bold text-blue-600 sc">2021 — 2024</span>
+              <h4 class="text-sm font-extrabold sc mt-0.5">Diploma in E&TC Engineering — 75.59%</h4>
+              <p class="text-xs mt-1" style="color: var(--muted);">Government Polytechnic, Solapur · First Class with Distinction.</p>
             </div>
 
             <div class="pl-7 relative">
               <span class="w-3 h-3 rounded-full bg-blue-600/40 absolute left-[3px] top-1"></span>
-              <span class="text-[11px] font-bold text-blue-600 zaki-caps">2021</span>
-              <h4 class="text-sm font-extrabold zaki-caps mt-0.5">SSC (10th Board) — 89.20%</h4>
-              <p class="text-xs mt-1" style="color: var(--text-muted);">Maharashtra State Board, Solapur.</p>
+              <span class="text-[11px] font-bold text-blue-600 sc">2021</span>
+              <h4 class="text-sm font-extrabold sc mt-0.5">SSC (10th Board) — 89.20%</h4>
+              <p class="text-xs mt-1" style="color: var(--muted);">Maharashtra State Board, Solapur.</p>
             </div>
 
           </div>
@@ -740,250 +784,253 @@
       </div>
     </section>
 
-    <!-- ================= 5. SKILLS & TOOLS SECTION ================= -->
+    <!-- ================= 6. SKILLS & TOOLS SECTION ================= -->
     <section id="skills" class="space-y-8">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b pb-4" style="border-color: var(--border-color);">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b pb-4" style="border-color: var(--border);">
         <div>
-          <span class="text-xs text-blue-600 font-bold tracking-[0.2em] zaki-caps">// Technical Competencies</span>
-          <h2 class="text-3xl sm:text-4xl font-black zaki-caps mt-1">Skills & Tools</h2>
+          <span class="text-xs text-blue-600 font-bold tracking-[0.2em] sc">// Technical Competencies</span>
+          <h2 class="text-3xl sm:text-4xl font-black sc mt-1">Skills, Pipelines & Cloud Stack</h2>
         </div>
 
         <div class="flex flex-wrap gap-1.5">
-          <button onclick="filterSkills('all', this)" class="zaki-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white zaki-caps">All</button>
-          <button onclick="filterSkills('data', this)" class="zaki-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border zaki-caps" style="border-color: var(--border-color);">Data & BI</button>
-          <button onclick="filterSkills('ai', this)" class="zaki-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border zaki-caps" style="border-color: var(--border-color);">AI & Science</button>
-          <button onclick="filterSkills('code', this)" class="zaki-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border zaki-caps" style="border-color: var(--border-color);">Programming</button>
-          <button onclick="filterSkills('cloud', this)" class="zaki-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border zaki-caps" style="border-color: var(--border-color);">Cloud & DB</button>
+          <button onclick="filterTech('all', this)" class="f-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white sc">All</button>
+          <button onclick="filterTech('data', this)" class="f-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border sc" style="border-color: var(--border);">Data Systems & BI</button>
+          <button onclick="filterTech('cloud', this)" class="f-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border sc" style="border-color: var(--border);">Cloud & Pipelines</button>
+          <button onclick="filterTech('ai', this)" class="f-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border sc" style="border-color: var(--border);">Data Science & AI</button>
+          <button onclick="filterTech('code', this)" class="f-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border sc" style="border-color: var(--border);">Programming</button>
         </div>
       </div>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5">
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="data">
-          <i class="fa-solid fa-chart-pie text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">Power BI</h4><span class="text-[10px]" style="color: var(--text-muted);">Visual Analytics</span></div>
-        </div>
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="data">
-          <i class="fa-solid fa-file-excel text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">MS Excel</h4><span class="text-[10px]" style="color: var(--text-muted);">Data Analysis</span></div>
-        </div>
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="data">
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="data">
           <i class="fa-solid fa-database text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">SQL</h4><span class="text-[10px]" style="color: var(--text-muted);">Querying</span></div>
+          <div><h4 class="text-xs font-extrabold sc">SQL</h4><span class="text-[10px]" style="color: var(--muted);">Data Systems</span></div>
         </div>
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="data">
-          <i class="fa-solid fa-chart-column text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">KPI Reporting</h4><span class="text-[10px]" style="color: var(--text-muted);">Data Interpretation</span></div>
-        </div>
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="ai">
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="code">
           <i class="fa-brands fa-python text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">Python</h4><span class="text-[10px]" style="color: var(--text-muted);">Data & AI</span></div>
+          <div><h4 class="text-xs font-extrabold sc">Python</h4><span class="text-[10px]" style="color: var(--muted);">Scalable Pipelines</span></div>
         </div>
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="ai">
-          <i class="fa-solid fa-cubes text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">Pandas & NumPy</h4><span class="text-[10px]" style="color: var(--text-muted);">Data Science</span></div>
-        </div>
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="ai">
-          <i class="fa-solid fa-brain text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">Scikit-Learn</h4><span class="text-[10px]" style="color: var(--text-muted);">Machine Learning</span></div>
-        </div>
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="ai">
-          <i class="fa-solid fa-wand-magic-sparkles text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">Gemini AI API</h4><span class="text-[10px]" style="color: var(--text-muted);">Prompt Engineering</span></div>
-        </div>
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="code">
-          <i class="fa-brands fa-js text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">JavaScript</h4><span class="text-[10px]" style="color: var(--text-muted);">Web Logic</span></div>
-        </div>
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="code">
-          <i class="fa-brands fa-html5 text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">HTML5 / CSS3</h4><span class="text-[10px]" style="color: var(--text-muted);">Web Fundamentals</span></div>
-        </div>
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="cloud">
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="cloud">
           <i class="fa-brands fa-aws text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">AWS Cloud</h4><span class="text-[10px]" style="color: var(--text-muted);">EC2 & VPC Basics</span></div>
+          <div><h4 class="text-xs font-extrabold sc">AWS Cloud</h4><span class="text-[10px]" style="color: var(--muted);">EC2 & VPC Infra</span></div>
         </div>
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="cloud">
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="data">
+          <i class="fa-solid fa-chart-pie text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold sc">Power BI</h4><span class="text-[10px]" style="color: var(--muted);">BI Telemetry</span></div>
+        </div>
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="data">
+          <i class="fa-solid fa-file-excel text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold sc">Advanced Excel</h4><span class="text-[10px]" style="color: var(--muted);">Data Analysis</span></div>
+        </div>
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="ai">
+          <i class="fa-solid fa-cubes text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold sc">Pandas & NumPy</h4><span class="text-[10px]" style="color: var(--muted);">ETL Pipelines</span></div>
+        </div>
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="ai">
+          <i class="fa-solid fa-brain text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold sc">Scikit-Learn</h4><span class="text-[10px]" style="color: var(--muted);">Data Science</span></div>
+        </div>
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="cloud">
+          <i class="fa-solid fa-network-wired text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold sc">Cloud Architecture</h4><span class="text-[10px]" style="color: var(--muted);">Infrastructure</span></div>
+        </div>
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="cloud">
           <i class="fa-solid fa-table text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">MySQL & MongoDB</h4><span class="text-[10px]" style="color: var(--text-muted);">Databases</span></div>
+          <div><h4 class="text-xs font-extrabold sc">MySQL & MongoDB</h4><span class="text-[10px]" style="color: var(--muted);">Data Storage</span></div>
         </div>
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="cloud">
-          <i class="fa-brands fa-git-alt text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">Git & GitHub</h4><span class="text-[10px]" style="color: var(--text-muted);">Version Control</span></div>
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="ai">
+          <i class="fa-solid fa-wand-magic-sparkles text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold sc">Gemini AI API</h4><span class="text-[10px]" style="color: var(--muted);">AI Systems</span></div>
         </div>
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="data">
-          <i class="fa-solid fa-file-powerpoint text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">MS Word & PPT</h4><span class="text-[10px]" style="color: var(--text-muted);">Documentation</span></div>
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="code">
+          <i class="fa-brands fa-js text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold sc">JavaScript</h4><span class="text-[10px]" style="color: var(--muted);">Web Logic</span></div>
         </div>
-        <div class="zaki-card p-4 flex items-center gap-3 zaki-skill-box" data-group="code">
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="code">
+          <i class="fa-brands fa-html5 text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold sc">HTML5 / CSS3</h4><span class="text-[10px]" style="color: var(--muted);">Web Tech</span></div>
+        </div>
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="cloud">
+          <i class="fa-brands fa-linux text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold sc">Linux & Git</h4><span class="text-[10px]" style="color: var(--muted);">DevOps Basics</span></div>
+        </div>
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="data">
+          <i class="fa-solid fa-chart-column text-blue-600 text-lg"></i>
+          <div><h4 class="text-xs font-extrabold sc">Data Reporting</h4><span class="text-[10px]" style="color: var(--muted);">KPI Governance</span></div>
+        </div>
+        <div class="mz-card p-4 flex items-center gap-3 tech-item" data-group="code">
           <i class="fa-solid fa-code text-blue-600 text-lg"></i>
-          <div><h4 class="text-xs font-extrabold zaki-caps">VS Code</h4><span class="text-[10px]" style="color: var(--text-muted);">Workspace</span></div>
+          <div><h4 class="text-xs font-extrabold sc">VS Code</h4><span class="text-[10px]" style="color: var(--muted);">Environment</span></div>
         </div>
       </div>
     </section>
 
-    <!-- ================= 6. INTERNSHIPS & VIRTUAL EXPERIENCE ================= -->
+    <!-- ================= 7. INTERNSHIPS & VIRTUAL EXPERIENCE ================= -->
     <section id="experience" class="space-y-8">
-      <div class="border-b pb-4" style="border-color: var(--border-color);">
-        <span class="text-xs text-blue-600 font-bold tracking-[0.2em] zaki-caps">// Practical Exposure</span>
-        <h2 class="text-3xl sm:text-4xl font-black zaki-caps mt-1">Internships & Virtual Experience</h2>
+      <div class="border-b pb-4" style="border-color: var(--border);">
+        <span class="text-xs text-blue-600 font-bold tracking-[0.2em] sc">// Practical Exposure</span>
+        <h2 class="text-3xl sm:text-4xl font-black sc mt-1">Internships & Virtual Experience</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         
-        <div class="zaki-card p-6 flex flex-col justify-between space-y-4 border-l-4 border-l-blue-600">
+        <div class="mz-card p-6 flex flex-col justify-between space-y-4 border-l-4 border-l-blue-600">
           <div class="space-y-2">
-            <span class="text-[11px] font-bold text-blue-600 zaki-caps">July 2026 — Present · Pune</span>
-            <h3 class="text-lg font-extrabold zaki-caps">UnionSys Technologies</h3>
-            <p class="text-xs zaki-justify" style="color: var(--text-secondary);">
+            <span class="text-[11px] font-bold text-blue-600 sc">July 2026 — Present · Pune</span>
+            <h3 class="text-lg font-extrabold sc">UnionSys Technologies</h3>
+            <p class="text-xs txt-justify" style="color: var(--text-sec);">
               Data Analyst Intern in the IT Department. Supporting data analysis, organization, and reporting activities under the guidance of an Oracle Apps Developer.
             </p>
           </div>
-          <span class="text-xs font-bold text-emerald-600 zaki-caps">● Current Internship</span>
+          <span class="text-xs font-bold text-emerald-600 sc">● Active Internship</span>
         </div>
 
-        <div class="zaki-card p-6 flex flex-col justify-between space-y-4">
+        <div class="mz-card p-6 flex flex-col justify-between space-y-4">
           <div class="space-y-2">
-            <span class="text-[11px] font-bold text-blue-600 zaki-caps">Forage Program</span>
-            <h3 class="text-lg font-extrabold zaki-caps">PwC — Power BI Virtual Case Study</h3>
-            <p class="text-xs zaki-justify" style="color: var(--text-secondary);">
+            <span class="text-[11px] font-bold text-blue-600 sc">Forage Program</span>
+            <h3 class="text-lg font-extrabold sc">PwC — Power BI Virtual Case Study</h3>
+            <p class="text-xs txt-justify" style="color: var(--text-sec);">
               Created interactive Power BI dashboards analyzing workforce KPIs, customer churn, and retention insights.
             </p>
           </div>
-          <a href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline zaki-caps">View Certificate →</a>
+          <a href="Power%20BI%20Virtual%20Case%20Experiance%20By%20Pwc.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline sc">View Certificate →</a>
         </div>
 
-        <div class="zaki-card p-6 flex flex-col justify-between space-y-4">
+        <div class="mz-card p-6 flex flex-col justify-between space-y-4">
           <div class="space-y-2">
-            <span class="text-[11px] font-bold text-blue-600 zaki-caps">Forage Program</span>
-            <h3 class="text-lg font-extrabold zaki-caps">BCG — Data Science Virtual Experience</h3>
-            <p class="text-xs zaki-justify" style="color: var(--text-secondary);">
+            <span class="text-[11px] font-bold text-blue-600 sc">Forage Program</span>
+            <h3 class="text-lg font-extrabold sc">BCG — Data Science Virtual Experience</h3>
+            <p class="text-xs txt-justify" style="color: var(--text-sec);">
               Performed customer churn analysis and predictive data science modeling for strategic retention.
             </p>
           </div>
-          <a href="BCG%20Data%20Science.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline zaki-caps">View Certificate →</a>
+          <a href="BCG%20Data%20Science.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline sc">View Certificate →</a>
         </div>
 
-        <div class="zaki-card p-6 flex flex-col justify-between space-y-4">
+        <div class="mz-card p-6 flex flex-col justify-between space-y-4">
           <div class="space-y-2">
-            <span class="text-[11px] font-bold text-blue-600 zaki-caps">Forage Program</span>
-            <h3 class="text-lg font-extrabold zaki-caps">Tata — Data Visualization</h3>
-            <p class="text-xs zaki-justify" style="color: var(--text-secondary);">
+            <span class="text-[11px] font-bold text-blue-600 sc">Forage Program</span>
+            <h3 class="text-lg font-extrabold sc">Tata — Data Visualization</h3>
+            <p class="text-xs txt-justify" style="color: var(--text-sec);">
               Built executive visual charts and business-oriented analytical reports for leadership decision support.
             </p>
           </div>
-          <a href="Data%20Visualisation%20By%20TATA.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline zaki-caps">View Certificate →</a>
+          <a href="Data%20Visualisation%20By%20TATA.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline sc">View Certificate →</a>
         </div>
 
-        <div class="zaki-card p-6 flex flex-col justify-between space-y-4">
+        <div class="mz-card p-6 flex flex-col justify-between space-y-4">
           <div class="space-y-2">
-            <span class="text-[11px] font-bold text-blue-600 zaki-caps">Forage Program</span>
-            <h3 class="text-lg font-extrabold zaki-caps">Accenture — Data Analytics</h3>
-            <p class="text-xs zaki-justify" style="color: var(--text-secondary);">
+            <span class="text-[11px] font-bold text-blue-600 sc">Forage Program</span>
+            <h3 class="text-lg font-extrabold sc">Accenture — Data Analytics</h3>
+            <p class="text-xs txt-justify" style="color: var(--text-sec);">
               Executed data cleaning, modeling, and trend analysis across multi-table client datasets.
             </p>
           </div>
-          <a href="Data%20Analytics%20by%20Acccenture.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline zaki-caps">View Certificate →</a>
+          <a href="Data%20Analytics%20by%20Acccenture.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline sc">View Certificate →</a>
         </div>
 
-        <div class="zaki-card p-6 flex flex-col justify-between space-y-4">
+        <div class="mz-card p-6 flex flex-col justify-between space-y-4">
           <div class="space-y-2">
-            <span class="text-[11px] font-bold text-blue-600 zaki-caps">Forage Program</span>
-            <h3 class="text-lg font-extrabold zaki-caps">British Airways — Data Science</h3>
-            <p class="text-xs zaki-justify" style="color: var(--text-secondary);">
+            <span class="text-[11px] font-bold text-blue-600 sc">Forage Program</span>
+            <h3 class="text-lg font-extrabold sc">British Airways — Data Science</h3>
+            <p class="text-xs txt-justify" style="color: var(--text-sec);">
               Analyzed customer review sentiment and built predictive models for flight booking behavior.
             </p>
           </div>
-          <a href="Data%20Science%20By%20British%20Airways.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline zaki-caps">View Certificate →</a>
+          <a href="Data%20Science%20By%20British%20Airways.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline sc">View Certificate →</a>
         </div>
 
       </div>
     </section>
 
-    <!-- ================= 7. CERTIFICATIONS & CREDENTIALS ================= -->
+    <!-- ================= 8. CERTIFICATIONS & CREDENTIALS ================= -->
     <section id="certifications" class="space-y-8">
-      <div class="border-b pb-4" style="border-color: var(--border-color);">
-        <span class="text-xs text-blue-600 font-bold tracking-[0.2em] zaki-caps">// Verified Licenses</span>
-        <h2 class="text-3xl sm:text-4xl font-black zaki-caps mt-1">Certifications & Credentials</h2>
+      <div class="border-b pb-4" style="border-color: var(--border);">
+        <span class="text-xs text-blue-600 font-bold tracking-[0.2em] sc">// Verified Licenses</span>
+        <h2 class="text-3xl sm:text-4xl font-black sc mt-1">Certifications & Credentials</h2>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <a href="C-%20AWS%20Compute%20Service.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
-          <span class="text-[10px] font-bold text-blue-600 zaki-caps">AWS Cloud</span>
-          <h3 class="text-sm font-extrabold zaki-caps">AWS Compute Service</h3>
-          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
+        <a href="C-%20AWS%20Compute%20Service.pdf" target="_blank" class="mz-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 sc">AWS Cloud</span>
+          <h3 class="text-sm font-extrabold sc">AWS Compute Service</h3>
+          <span class="text-[11px] text-blue-600 font-bold sc">View PDF →</span>
         </a>
-        <a href="C-Cloud%20Computing%20Architechture.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
-          <span class="text-[10px] font-bold text-blue-600 zaki-caps">Cloud Architecture</span>
-          <h3 class="text-sm font-extrabold zaki-caps">Cloud Computing Architecture</h3>
-          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
+        <a href="C-Cloud%20Computing%20Architechture.pdf" target="_blank" class="mz-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 sc">Cloud Architecture</span>
+          <h3 class="text-sm font-extrabold sc">Cloud Computing Architecture</h3>
+          <span class="text-[11px] text-blue-600 font-bold sc">View PDF →</span>
         </a>
-        <a href="C-Cloud%20Networking%20With%20AWS%20VPC.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
-          <span class="text-[10px] font-bold text-blue-600 zaki-caps">Networking</span>
-          <h3 class="text-sm font-extrabold zaki-caps">Cloud Networking With AWS VPC</h3>
-          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
+        <a href="C-Cloud%20Networking%20With%20AWS%20VPC.pdf" target="_blank" class="mz-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 sc">Networking</span>
+          <h3 class="text-sm font-extrabold sc">Cloud Networking With AWS VPC</h3>
+          <span class="text-[11px] text-blue-600 font-bold sc">View PDF →</span>
         </a>
-        <a href="C-Cloud%20Engineer%20Roles%20and%20Responsibilities.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
-          <span class="text-[10px] font-bold text-blue-600 zaki-caps">Cloud Operations</span>
-          <h3 class="text-sm font-extrabold zaki-caps">Cloud Engineer Roles & Duties</h3>
-          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
+        <a href="C-Cloud%20Engineer%20Roles%20and%20Responsibilities.pdf" target="_blank" class="mz-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 sc">Cloud Operations</span>
+          <h3 class="text-sm font-extrabold sc">Cloud Engineer Roles & Duties</h3>
+          <span class="text-[11px] text-blue-600 font-bold sc">View PDF →</span>
         </a>
-        <a href="Data%20Analytics%20By%20quantium.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
-          <span class="text-[10px] font-bold text-blue-600 zaki-caps">Quantium</span>
-          <h3 class="text-sm font-extrabold zaki-caps">Data Analytics by Quantium</h3>
-          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
+        <a href="Data%20Analytics%20By%20quantium.pdf" target="_blank" class="mz-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 sc">Quantium</span>
+          <h3 class="text-sm font-extrabold sc">Data Analytics by Quantium</h3>
+          <span class="text-[11px] text-blue-600 font-bold sc">View PDF →</span>
         </a>
-        <a href="Data%20Analytics%20Consulting%20By%20KPMG.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
-          <span class="text-[10px] font-bold text-blue-600 zaki-caps">KPMG</span>
-          <h3 class="text-sm font-extrabold zaki-caps">KPMG Data Analytics Consulting</h3>
-          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
+        <a href="Data%20Analytics%20Consulting%20By%20KPMG.pdf" target="_blank" class="mz-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 sc">KPMG</span>
+          <h3 class="text-sm font-extrabold sc">KPMG Data Analytics Consulting</h3>
+          <span class="text-[11px] text-blue-600 font-bold sc">View PDF →</span>
         </a>
-        <a href="C-Exel%20for%20Beginners.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
-          <span class="text-[10px] font-bold text-blue-600 zaki-caps">Analytics</span>
-          <h3 class="text-sm font-extrabold zaki-caps">Excel for Beginners</h3>
-          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
+        <a href="C-Exel%20for%20Beginners.pdf" target="_blank" class="mz-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 sc">Analytics</span>
+          <h3 class="text-sm font-extrabold sc">Excel for Beginners</h3>
+          <span class="text-[11px] text-blue-600 font-bold sc">View PDF →</span>
         </a>
-        <a href="Communication%20Skills%20By%20TCS.pdf" target="_blank" class="zaki-card p-5 flex flex-col justify-between space-y-3">
-          <span class="text-[10px] font-bold text-blue-600 zaki-caps">TCS iON</span>
-          <h3 class="text-sm font-extrabold zaki-caps">Communication Skills by TCS</h3>
-          <span class="text-[11px] text-blue-600 font-bold zaki-caps">View PDF →</span>
+        <a href="Communication%20Skills%20By%20TCS.pdf" target="_blank" class="mz-card p-5 flex flex-col justify-between space-y-3">
+          <span class="text-[10px] font-bold text-blue-600 sc">TCS iON</span>
+          <h3 class="text-sm font-extrabold sc">Communication Skills by TCS</h3>
+          <span class="text-[11px] text-blue-600 font-bold sc">View PDF →</span>
         </a>
       </div>
     </section>
 
-    <!-- ================= 8. CONTACT SECTION ================= -->
-    <section id="contact" class="zaki-card p-8 sm:p-10">
+    <!-- ================= 9. CONTACT SECTION (Direct Gmail + Copy + Socials) ================= -->
+    <section id="contact" class="mz-card p-8 sm:p-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
         <div class="lg:col-span-7 space-y-4">
-          <span class="text-xs text-blue-600 font-bold tracking-[0.2em] zaki-caps">// Direct Contact</span>
-          <h2 class="text-3xl sm:text-4xl font-black zaki-caps">Get in Touch with Mohammad Zaki</h2>
-          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--text-secondary);">
-            Available for entry-level Data Analyst, Business Intelligence, Cloud Support, and Software roles across Pune, Mumbai, Solapur, and Bengaluru.
+          <span class="text-xs text-blue-600 font-bold tracking-[0.2em] sc">// Direct Contact</span>
+          <h2 class="text-3xl sm:text-4xl font-black sc">Get in Touch with Mohammad Zaki</h2>
+          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--text-sec);">
+            Open for Data Analyst, Data Systems, Cloud Infrastructure, and Software roles across Pune, Mumbai, Solapur, and Bengaluru.
           </p>
-          <div class="flex flex-wrap gap-3 pt-2">
-            <a href="mailto:zakipatel2811@gmail.com" class="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs zaki-caps flex items-center gap-2 transition">
-              <i class="fa-regular fa-envelope"></i> zakipatel2811@gmail.com
+          <div class="flex flex-wrap gap-2.5 pt-2">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=zakipatel2811@gmail.com&su=Hiring%20/%20Project%20Inquiry%20for%20Mohammad%20Zaki" target="_blank" class="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sc flex items-center gap-2 transition shadow-sm">
+              <i class="fa-solid fa-envelope"></i> Open in Gmail
             </a>
-            <a href="https://wa.me/918468809905" target="_blank" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs zaki-caps flex items-center gap-2 transition">
+            <button onclick="copyMail()" class="mz-card px-4 py-3 text-xs font-extrabold sc flex items-center gap-2 cursor-pointer">
+              <i class="fa-regular fa-copy text-blue-600"></i> Copy: zakipatel2811@gmail.com
+            </button>
+            <a href="https://wa.me/918468809905" target="_blank" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sc flex items-center gap-2 transition shadow-sm">
               <i class="fa-brands fa-whatsapp"></i> +91 8468809905
             </a>
-            <a href="https://linkedin.com/in/zaki-patel-25767a285/" target="_blank" class="zaki-card px-4 py-3 text-xs font-extrabold zaki-caps flex items-center gap-2">
+            <a href="https://www.linkedin.com/in/zaki-patel-25767a285" target="_blank" rel="noopener noreferrer" class="mz-card px-4 py-3 text-xs font-extrabold sc flex items-center gap-2">
               <i class="fa-brands fa-linkedin text-blue-600"></i> LinkedIn
             </a>
-            <a href="https://github.com/zakipatel89" target="_blank" class="zaki-card px-4 py-3 text-xs font-extrabold zaki-caps flex items-center gap-2">
+            <a href="https://github.com/zakipatel89" target="_blank" rel="noopener noreferrer" class="mz-card px-4 py-3 text-xs font-extrabold sc flex items-center gap-2">
               <i class="fa-brands fa-github"></i> GitHub
             </a>
           </div>
         </div>
 
         <div class="lg:col-span-5 space-y-3 text-xs">
-          <div class="p-4 rounded-xl border" style="background-color: var(--bg-subtle); border-color: var(--border-color);">
-            <span class="text-[10px] font-bold zaki-caps block" style="color: var(--text-muted);">Current Status</span>
-            <strong class="text-sm zaki-caps mt-0.5 block">Fresher (B.Tech CSE Final Year) · Data Analyst Intern</strong>
+          <div class="p-4 rounded-xl border" style="background-color: var(--subtle); border-color: var(--border);">
+            <span class="text-[10px] font-bold sc block" style="color: var(--muted);">Email ID</span>
+            <strong class="text-sm sc mt-0.5 block text-blue-600">zakipatel2811@gmail.com</strong>
           </div>
-          <div class="p-4 rounded-xl border" style="background-color: var(--bg-subtle); border-color: var(--border-color);">
-            <span class="text-[10px] font-bold zaki-caps block" style="color: var(--text-muted);">Residential Address</span>
-            <strong class="text-sm zaki-caps mt-0.5 block">191, Basaveshwar Nagar, Near Zindagi, Majrewadi, Solapur — 413003</strong>
+          <div class="p-4 rounded-xl border" style="background-color: var(--subtle); border-color: var(--border);">
+            <span class="text-[10px] font-bold sc block" style="color: var(--muted);">Residential Address</span>
+            <strong class="text-sm sc mt-0.5 block">191, Basaveshwar Nagar, Near Zindagi, Majrewadi, Solapur — 413003</strong>
           </div>
         </div>
 
@@ -992,129 +1039,174 @@
 
   </main>
 
-  <footer class="border-t py-8 text-center text-xs zaki-caps tracking-widest" style="border-color: var(--border-color); color: var(--text-muted);">
-    © 2026 Patel Mohammad Zaki · Official Portfolio
+  <footer class="border-t py-8 text-center text-xs sc tracking-widest" style="border-color: var(--border); color: var(--muted);">
+    © 2026 Patel Mohammad Zaki · Data Systems, Analytics & Cloud Infrastructure
   </footer>
 
-  <!-- ================= PORTFOLIO SCRIPTS (Author: Patel Mohammad Zaki) ================= -->
   <script>
-    // 1. Preloader
-    const loaderBar = document.getElementById('zaki-loader-bar');
-    const loaderWrap = document.getElementById('zaki-loader');
-    let loadVal = 0;
-    const loadTick = setInterval(() => {
-      loadVal += 25;
-      if (loadVal > 100) loadVal = 100;
-      loaderBar.style.width = loadVal + '%';
-      if (loadVal === 100) {
-        clearInterval(loadTick);
-        setTimeout(() => loaderWrap.classList.add('done'), 200);
+    // preloader
+    const loadBar = document.getElementById('load-bar');
+    const pageLoader = document.getElementById('page-loader');
+    let pct = 0;
+    const timer = setInterval(() => {
+      pct += 25;
+      if (pct > 100) pct = 100;
+      loadBar.style.width = pct + '%';
+      if (pct === 100) {
+        clearInterval(timer);
+        setTimeout(() => pageLoader.classList.add('hide'), 180);
       }
-    }, 50);
+    }, 45);
 
-    // 2. Dark / Light Theme Switcher
-    const rootEl = document.documentElement;
-    const themeIcon = document.getElementById('theme-icon');
+    // theme switcher
+    const root = document.documentElement;
+    const themeIco = document.getElementById('theme-ico');
 
-    function toggleTheme() {
-      const current = rootEl.getAttribute('data-theme');
-      const next = current === 'light' ? 'dark' : 'light';
-      rootEl.setAttribute('data-theme', next);
-      localStorage.setItem('zaki_theme', next);
-      updateThemeIcon(next);
+    function switchTheme() {
+      const mode = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', mode);
+      localStorage.setItem('mz_theme', mode);
+      renderThemeIcon(mode);
     }
 
-    function updateThemeIcon(theme) {
-      if (theme === 'dark') {
-        themeIcon.className = 'fa-solid fa-sun text-amber-400';
-      } else {
-        themeIcon.className = 'fa-solid fa-moon text-slate-700';
+    function renderThemeIcon(mode) {
+      themeIco.className = mode === 'dark'
+        ? 'fa-solid fa-sun text-amber-400'
+        : 'fa-solid fa-moon text-slate-700';
+    }
+
+    const saved = localStorage.getItem('mz_theme') || 'light';
+    root.setAttribute('data-theme', saved);
+    renderThemeIcon(saved);
+
+    // live IST clock
+    function updateClock() {
+      const now = new Date();
+      const opts = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: true };
+      const el = document.getElementById('live-ist-clock');
+      if (el) el.textContent = 'IST ' + now.toLocaleTimeString('en-US', opts);
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
+
+    // copy email helper
+    function copyMail() {
+      navigator.clipboard.writeText('zakipatel2811@gmail.com');
+      const toast = document.getElementById('toast-msg');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+
+    // interactive architecture blueprint switcher
+    const blueprints = {
+      etl: [
+        ['Raw SQL & CSV Sources', 'Extracting operational records from relational MySQL databases and multi-sheet Excel logs.'],
+        ['Python & Pandas ETL', 'Data hygiene, null handling, schema normalization, and feature engineering using Python & NumPy.'],
+        ['DAX & Predictive Logic', 'Building KPI measures, customer churn Random Forest models, and statistical aggregations.'],
+        ['Power BI Executive Telemetry', 'Interactive visual dashboards delivering real-time retention and revenue insights to stakeholders.']
+      ],
+      aws: [
+        ['AWS VPC Topology', 'Isolated Virtual Private Cloud with public/private subnets, route tables, and internet gateways.'],
+        ['EC2 Compute Layer', 'Scalable Linux compute instances configured with security groups and IAM role permissions.'],
+        ['Cloud Data Tier', 'Managed relational MySQL & MongoDB Atlas clusters with automated backup snapshots.'],
+        ['High-Availability Delivery', 'Low-latency application routing and resilient cloud infrastructure monitoring.']
+      ],
+      ai: [
+        ['Plain English Input', 'User writes step-by-step algorithmic logic in natural conversational English inside NextIDE.'],
+        ['Node & Express API', 'Stateless REST dispatcher structures prompt context and validates JWT session tokens.'],
+        ['Google Gemini Synthesis', 'LLM engine translates logic into syntactically accurate C++, Java, Python, or JS code.'],
+        ['Sandbox & MongoDB Sync', 'Executes custom I/O test cases in real time and persists revision history in MongoDB.']
+      ]
+    };
+
+    function switchBlueprint(key, btn) {
+      document.querySelectorAll('.bp-btn').forEach(b => {
+        b.className = 'bp-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border sc';
+        b.style.borderColor = 'var(--border)';
+      });
+      btn.className = 'bp-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white sc';
+
+      const steps = blueprints[key];
+      for (let i = 0; i < 4; i++) {
+        document.getElementById('bp-t' + (i + 1)).textContent = steps[i][0];
+        document.getElementById('bp-d' + (i + 1)).textContent = steps[i][1];
       }
     }
 
-    const savedTheme = localStorage.getItem('zaki_theme') || 'light';
-    rootEl.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
+    // appointment calendar
+    let slotDate = '';
+    let slotTime = '11:00 AM';
+    let slotDur = '30 Mins';
 
-    // 3. Appointment Scheduler
-    let pickedDate = '';
-    let pickedTime = '11:00 AM';
-    let pickedDuration = '30 Mins';
+    const calBox = document.getElementById('cal-days');
+    const summaryTxt = document.getElementById('slot-summary');
+    const mList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const dList = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-    const calContainer = document.getElementById('zaki-calendar-days');
-    const slotSummary = document.getElementById('zaki-slot-summary');
-    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-    function refreshSlotText() {
-      slotSummary.textContent = `${pickedDate} · ${pickedTime} (${pickedDuration})`;
+    function syncSlot() {
+      summaryTxt.textContent = `${slotDate} · ${slotTime} (${slotDur})`;
     }
 
-    const now = new Date();
+    const base = new Date();
     for (let i = 0; i < 14; i++) {
-      const d = new Date(now);
-      d.setDate(now.getDate() + i + 1);
-      const label = `${dayNames[d.getDay()]}, ${d.getDate()} ${monthNames[d.getMonth()]}`;
-      const btn = document.createElement('button');
-      btn.className = `zaki-cal-day py-2 ${i === 0 ? 'active' : ''}`;
-      if (i === 0) pickedDate = label;
-      btn.innerHTML = `<span class="text-[9px] opacity-75">${monthNames[d.getMonth()]}</span><strong class="text-xs sm:text-sm">${d.getDate()}</strong>`;
-      btn.onclick = () => {
-        document.querySelectorAll('#zaki-calendar-days .zaki-cal-day').forEach(el => el.classList.remove('active'));
-        btn.classList.add('active');
-        pickedDate = label;
-        refreshSlotText();
+      const d = new Date(base);
+      d.setDate(base.getDate() + i + 1);
+      const str = `${dList[d.getDay()]}, ${d.getDate()} ${mList[d.getMonth()]}`;
+      const b = document.createElement('button');
+      b.className = `day-btn py-2 ${i === 0 ? 'active' : ''}`;
+      if (i === 0) slotDate = str;
+      b.innerHTML = `<span class="text-[9px] opacity-75">${mList[d.getMonth()]}</span><strong class="text-xs sm:text-sm">${d.getDate()}</strong>`;
+      b.onclick = () => {
+        document.querySelectorAll('#cal-days .day-btn').forEach(el => el.classList.remove('active'));
+        b.classList.add('active');
+        slotDate = str;
+        syncSlot();
       };
-      calContainer.appendChild(btn);
+      calBox.appendChild(b);
     }
-    refreshSlotText();
+    syncSlot();
 
-    function updateDuration(dur, btn) {
-      pickedDuration = dur;
-      document.querySelectorAll('.zaki-dur-btn').forEach(b => {
-        b.className = 'zaki-dur-btn py-2 rounded-lg text-xs font-bold border zaki-caps';
-        b.style.borderColor = 'var(--border-color)';
+    function setDur(val, btn) {
+      slotDur = val;
+      document.querySelectorAll('.dur-btn').forEach(el => {
+        el.className = 'dur-btn py-2 rounded-lg text-xs font-bold border sc';
+        el.style.borderColor = 'var(--border)';
       });
-      btn.className = 'zaki-dur-btn py-2 rounded-lg text-xs font-bold bg-blue-600 text-white zaki-caps';
-      refreshSlotText();
+      btn.className = 'dur-btn py-2 rounded-lg text-xs font-bold bg-blue-600 text-white sc';
+      syncSlot();
     }
 
-    function updateTime(t, btn) {
-      pickedTime = t;
-      document.querySelectorAll('.zaki-time-btn').forEach(b => {
-        b.className = 'zaki-time-btn py-2.5 px-3 rounded-xl border text-xs font-bold zaki-caps';
-        b.style.borderColor = 'var(--border-color)';
+    function setTime(val, btn) {
+      slotTime = val;
+      document.querySelectorAll('.time-btn').forEach(el => {
+        el.className = 'time-btn py-2.5 px-3 rounded-xl border text-xs font-bold sc';
+        el.style.borderColor = 'var(--border)';
       });
-      btn.className = 'zaki-time-btn py-2.5 px-3 rounded-xl border border-blue-600 bg-blue-600 text-white text-xs font-bold zaki-caps';
-      refreshSlotText();
+      btn.className = 'time-btn py-2.5 px-3 rounded-xl border border-blue-600 bg-blue-600 text-white text-xs font-bold sc';
+      syncSlot();
     }
 
-    function sendBooking(platform) {
-      const msg = `Hello Mohammad Zaki, I would like to schedule a ${pickedDuration} 1-on-1 meeting with you on ${pickedDate} at ${pickedTime} IST.`;
-      if (platform === 'whatsapp') {
-        window.open(`https://wa.me/918468809905?text=${encodeURIComponent(msg)}`, '_blank');
+    function bookSlot(channel) {
+      const body = `Hello Mohammad Zaki, I would like to schedule a ${slotDur} 1-on-1 meeting with you on ${slotDate} at ${slotTime} IST.`;
+      if (channel === 'whatsapp') {
+        window.open(`https://wa.me/918468809905?text=${encodeURIComponent(body)}`, '_blank');
       } else {
-        window.location.href = `mailto:zakipatel2811@gmail.com?subject=Meeting Request (${pickedDate})&body=${encodeURIComponent(msg)}`;
+        window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=zakipatel2811@gmail.com&su=${encodeURIComponent('1-on-1 Meeting Request (' + slotDate + ')')}&body=${encodeURIComponent(body)}`, '_blank');
       }
     }
 
-    // 4. Skills Filter
-    function filterSkills(group, btn) {
-      document.querySelectorAll('.zaki-filter-btn').forEach(b => {
-        b.className = 'zaki-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border zaki-caps';
-        b.style.borderColor = 'var(--border-color)';
+    // skills filter
+    function filterTech(group, btn) {
+      document.querySelectorAll('.f-btn').forEach(el => {
+        el.className = 'f-btn px-3.5 py-1.5 rounded-lg text-xs font-bold border sc';
+        el.style.borderColor = 'var(--border)';
       });
-      btn.className = 'zaki-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white zaki-caps';
+      btn.className = 'f-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white sc';
 
-      document.querySelectorAll('.zaki-skill-box').forEach(card => {
-        if (group === 'all' || card.getAttribute('data-group') === group) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+      document.querySelectorAll('.tech-item').forEach(card => {
+        card.style.display = (group === 'all' || card.getAttribute('data-group') === group) ? 'flex' : 'none';
       });
     }
   </script>
-
 </body>
 </html>
